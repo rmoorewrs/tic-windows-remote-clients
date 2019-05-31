@@ -1,0 +1,861 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: volume</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>volume</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="user-role.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: user role"></i></a>
+    
+    
+    <a href="volume-backup.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: volume backup"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">volume</a><ul>
+<li><a class="reference internal" href="#volume-create">volume create</a></li>
+<li><a class="reference internal" href="#volume-delete">volume delete</a></li>
+<li><a class="reference internal" href="#volume-list">volume list</a></li>
+<li><a class="reference internal" href="#volume-migrate">volume migrate</a></li>
+<li><a class="reference internal" href="#volume-set">volume set</a></li>
+<li><a class="reference internal" href="#volume-show">volume show</a></li>
+<li><a class="reference internal" href="#volume-unset">volume unset</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="volume">
+<h1>volume<a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h1>
+<p>Block Storage v1, v2</p>
+<div class="section" id="volume-create">
+<h2>volume create<a class="headerlink" href="#volume-create" title="Permalink to this headline">¶</a></h2>
+<p>Create new volume</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">volume</span> <span class="n">create</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">size</span> <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="nb">type</span> <span class="o">&lt;</span><span class="n">volume</span><span class="o">-</span><span class="nb">type</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">image</span> <span class="o">&lt;</span><span class="n">image</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">--</span><span class="n">snapshot</span> <span class="o">&lt;</span><span class="n">snapshot</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">--</span><span class="n">source</span> <span class="o">&lt;</span><span class="n">volume</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">--</span><span class="n">source</span><span class="o">-</span><span class="n">replicated</span> <span class="o">&lt;</span><span class="n">replicated</span><span class="o">-</span><span class="n">volume</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">description</span> <span class="o">&lt;</span><span class="n">description</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">project</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">availability</span><span class="o">-</span><span class="n">zone</span> <span class="o">&lt;</span><span class="n">availability</span><span class="o">-</span><span class="n">zone</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">consistency</span><span class="o">-</span><span class="n">group</span> <span class="o">&lt;</span><span class="n">consistency</span><span class="o">-</span><span class="n">group</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="nb">property</span> <span class="o">&lt;</span><span class="n">key</span><span class="o">=</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">hint</span> <span class="o">&lt;</span><span class="n">key</span><span class="o">=</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">multi</span><span class="o">-</span><span class="n">attach</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">bootable</span> <span class="o">|</span> <span class="o">--</span><span class="n">non</span><span class="o">-</span><span class="n">bootable</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">read</span><span class="o">-</span><span class="n">only</span> <span class="o">|</span> <span class="o">--</span><span class="n">read</span><span class="o">-</span><span class="n">write</span><span class="p">]</span>
+    <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-volume-create-size">
+<code class="descname">--size</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-volume-create-size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Volume size in GB
+(Required unless –snapshot or –source or –source-replicated is specified)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-type">
+<code class="descname">--type</code><code class="descclassname"> &lt;volume-type&gt;</code><a class="headerlink" href="#cmdoption-volume-create-type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the type of volume</p>
+<p>Select <code class="docutils literal"><span class="pre">&lt;volume-type&gt;</span></code> from the available types as shown
+by <code class="docutils literal"><span class="pre">volume</span> <span class="pre">type</span> <span class="pre">list</span></code>.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-image">
+<code class="descname">--image</code><code class="descclassname"> &lt;image&gt;</code><a class="headerlink" href="#cmdoption-volume-create-image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use <code class="docutils literal"><span class="pre">&lt;image&gt;</span></code> as source of volume (name or ID)</p>
+<p>This is commonly used to create a boot volume for a server.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-snapshot">
+<code class="descname">--snapshot</code><code class="descclassname"> &lt;snapshot&gt;</code><a class="headerlink" href="#cmdoption-volume-create-snapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use <code class="docutils literal"><span class="pre">&lt;snapshot&gt;</span></code> as source of volume (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-source">
+<code class="descname">--source</code><code class="descclassname"> &lt;volume&gt;</code><a class="headerlink" href="#cmdoption-volume-create-source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Volume to clone (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-source-replicated">
+<code class="descname">--source-replicated</code><code class="descclassname"> &lt;replicated-volume&gt;</code><a class="headerlink" href="#cmdoption-volume-create-source-replicated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replicated volume to clone (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-description">
+<code class="descname">--description</code><code class="descclassname"> &lt;description&gt;</code><a class="headerlink" href="#cmdoption-volume-create-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Volume description</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-user">
+<code class="descname">--user</code><code class="descclassname"> &lt;user&gt;</code><a class="headerlink" href="#cmdoption-volume-create-user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify an alternate user (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-volume-create-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify an alternate project (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-availability-zone">
+<code class="descname">--availability-zone</code><code class="descclassname"> &lt;availability-zone&gt;</code><a class="headerlink" href="#cmdoption-volume-create-availability-zone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create volume in <code class="docutils literal"><span class="pre">&lt;availability-zone&gt;</span></code></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-consistency-group">
+<code class="descname">--consistency-group</code><code class="descclassname"> &lt;consistency-group&gt;</code><a class="headerlink" href="#cmdoption-volume-create-consistency-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consistency group where the new volume belongs to</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-property">
+<code class="descname">--property</code><code class="descclassname"> &lt;key=value&gt;</code><a class="headerlink" href="#cmdoption-volume-create-property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a property on this volume (repeat option to set multiple properties)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-hint">
+<code class="descname">--hint</code><code class="descclassname"> &lt;key=value&gt;</code><a class="headerlink" href="#cmdoption-volume-create-hint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arbitrary scheduler hint key-value pairs to help boot an instance
+(repeat option to set multiple hints)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-multi-attach">
+<code class="descname">--multi-attach</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-create-multi-attach" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow volume to be attached more than once (default to False)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-bootable">
+<code class="descname">--bootable</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-create-bootable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark volume as bootable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-non-bootable">
+<code class="descname">--non-bootable</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-create-non-bootable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark volume as non-bootable (default)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-read-only">
+<code class="descname">--read-only</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-create-read-only" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set volume to read-only access mode</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-create-read-write">
+<code class="descname">--read-write</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-create-read-write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set volume to read-write access mode (default)</p>
+</dd></dl>
+
+<span class="target" id="volume-create-name"></span><dl class="describe">
+<dt>
+<code class="descname">&lt;name&gt;</code></dt>
+<dd><p>Volume name</p>
+</dd></dl>
+
+<p>The <a class="reference internal" href="#cmdoption-volume-create-project"><code class="xref std std-option docutils literal"><span class="pre">--project</span></code></a> and <a class="reference internal" href="#cmdoption-volume-create-user"><code class="xref std std-option docutils literal"><span class="pre">--user</span></code></a>  options are typically only
+useful for admin users, but may be allowed for other users depending on
+the policy of the cloud and the roles granted to the user.</p>
+</div>
+<div class="section" id="volume-delete">
+<h2>volume delete<a class="headerlink" href="#volume-delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete volume(s)</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">volume</span> <span class="n">delete</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">force</span> <span class="o">|</span> <span class="o">--</span><span class="n">purge</span><span class="p">]</span>
+    <span class="o">&lt;</span><span class="n">volume</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">volume</span><span class="o">&gt;</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-volume-delete-force">
+<code class="descname">--force</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-delete-force" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempt forced removal of volume(s), regardless of state (defaults to False)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-delete-purge">
+<code class="descname">--purge</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-delete-purge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove any snapshots along with volume(s) (defaults to False)</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<span class="target" id="volume-delete-volume"></span><dl class="describe">
+<dt>
+<code class="descname">&lt;volume&gt;</code></dt>
+<dd><p>Volume(s) to delete (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="volume-list">
+<h2>volume list<a class="headerlink" href="#volume-list" title="Permalink to this headline">¶</a></h2>
+<p>List volumes</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">volume</span> <span class="nb">list</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">project</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">--</span><span class="n">project</span><span class="o">-</span><span class="n">domain</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">-</span><span class="n">domain</span><span class="o">&gt;</span><span class="p">]]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">--</span><span class="n">user</span><span class="o">-</span><span class="n">domain</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">-</span><span class="n">domain</span><span class="o">&gt;</span><span class="p">]]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">name</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">status</span> <span class="o">&lt;</span><span class="n">status</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="nb">all</span><span class="o">-</span><span class="n">projects</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">long</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">limit</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">volumes</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">marker</span> <span class="o">&lt;</span><span class="n">volume</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-volume-list-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-volume-list-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter results by <code class="docutils literal"><span class="pre">&lt;project&gt;</span></code> (name or ID) (admin only)</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-list-project-domain">
+<code class="descname">--project-domain</code><code class="descclassname"> &lt;project-domain&gt;</code><a class="headerlink" href="#cmdoption-volume-list-project-domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain the project belongs to (name or ID).</p>
+<p>This can be used in case collisions between project names exist.</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-list-user">
+<code class="descname">--user</code><code class="descclassname"> &lt;user&gt;</code><a class="headerlink" href="#cmdoption-volume-list-user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter results by <code class="docutils literal"><span class="pre">&lt;user&gt;</span></code> (name or ID) (admin only)</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-list-user-domain">
+<code class="descname">--user-domain</code><code class="descclassname"> &lt;user-domain&gt;</code><a class="headerlink" href="#cmdoption-volume-list-user-domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain the user belongs to (name or ID).</p>
+<p>This can be used in case collisions between user names exist.</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-list-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;name&gt;</code><a class="headerlink" href="#cmdoption-volume-list-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter results by volume name</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-list-status">
+<code class="descname">--status</code><code class="descclassname"> &lt;status&gt;</code><a class="headerlink" href="#cmdoption-volume-list-status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter results by status</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-list-all-projects">
+<code class="descname">--all-projects</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-list-all-projects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Include all projects (admin only)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-list-long">
+<code class="descname">--long</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-list-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>List additional fields in output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-list-limit">
+<code class="descname">--limit</code><code class="descclassname"> &lt;num-volumes&gt;</code><a class="headerlink" href="#cmdoption-volume-list-limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum number of volumes to display</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-list-marker">
+<code class="descname">--marker</code><code class="descclassname"> &lt;volume&gt;</code><a class="headerlink" href="#cmdoption-volume-list-marker" title="Permalink to this definition">¶</a></dt>
+<dd><p>The last volume ID of the previous page</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+</div>
+<div class="section" id="volume-migrate">
+<h2>volume migrate<a class="headerlink" href="#volume-migrate" title="Permalink to this headline">¶</a></h2>
+<p>Migrate volume to a new host</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">volume</span> <span class="n">migrate</span>
+    <span class="o">--</span><span class="n">host</span> <span class="o">&lt;</span><span class="n">host</span><span class="o">&gt;</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">host</span><span class="o">-</span><span class="n">copy</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">lock</span><span class="o">-</span><span class="n">volume</span> <span class="o">|</span> <span class="o">--</span><span class="n">unlock</span><span class="o">-</span><span class="n">volume</span><span class="p">]</span>
+    <span class="o">&lt;</span><span class="n">volume</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-volume-migrate-host">
+<code class="descname">--host</code><code class="descclassname"> &lt;host&gt;</code><a class="headerlink" href="#cmdoption-volume-migrate-host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destination host (takes the form: <a class="reference external" href="mailto:host&#37;&#52;&#48;backend-name#pool">host<span>&#64;</span>backend-name#pool</a>) (required)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-migrate-force-host-copy">
+<code class="descname">--force-host-copy</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-migrate-force-host-copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable generic host-based force-migration,
+which bypasses driver optimizations</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-migrate-lock-volume">
+<code class="descname">--lock-volume</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-migrate-lock-volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>If specified, the volume state will be locked and will not allow
+a migration to be aborted (possibly by another operation)</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-migrate-unlock-volume">
+<code class="descname">--unlock-volume</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-migrate-unlock-volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>If specified, the volume state will not be locked and the a
+migration can be aborted (default) (possibly by another operation)</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<span class="target" id="volume-migrate-volume"></span><dl class="describe">
+<dt>
+<code class="descname">&lt;volume&gt;</code></dt>
+<dd><p>Volume to migrate (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="volume-set">
+<h2>volume set<a class="headerlink" href="#volume-set" title="Permalink to this headline">¶</a></h2>
+<p>Set volume properties</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">volume</span> <span class="nb">set</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">name</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">size</span> <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">description</span> <span class="o">&lt;</span><span class="n">description</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="nb">property</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="nb">property</span> <span class="o">&lt;</span><span class="n">key</span><span class="o">=</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">image</span><span class="o">-</span><span class="nb">property</span> <span class="o">&lt;</span><span class="n">key</span><span class="o">=</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">state</span> <span class="o">&lt;</span><span class="n">state</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="nb">type</span> <span class="o">&lt;</span><span class="n">volume</span><span class="o">-</span><span class="nb">type</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">retype</span><span class="o">-</span><span class="n">policy</span> <span class="o">&lt;</span><span class="n">retype</span><span class="o">-</span><span class="n">policy</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">bootable</span> <span class="o">|</span> <span class="o">--</span><span class="n">non</span><span class="o">-</span><span class="n">bootable</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">read</span><span class="o">-</span><span class="n">only</span> <span class="o">|</span> <span class="o">--</span><span class="n">read</span><span class="o">-</span><span class="n">write</span><span class="p">]</span>
+    <span class="o">&lt;</span><span class="n">volume</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-volume-set-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;name&gt;</code><a class="headerlink" href="#cmdoption-volume-set-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>New volume name</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-size">
+<code class="descname">--size</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-volume-set-size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend volume size in GB</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-description">
+<code class="descname">--description</code><code class="descclassname"> &lt;description&gt;</code><a class="headerlink" href="#cmdoption-volume-set-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>New volume description</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-no-property">
+<code class="descname">--no-property</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-set-no-property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all properties from <a class="reference internal" href="#volume-set-volume"><span class="std std-ref">&lt;volume&gt;</span></a>
+(specify both <a class="reference internal" href="#cmdoption-volume-set-no-property"><code class="xref std std-option docutils literal"><span class="pre">--no-property</span></code></a> and <a class="reference internal" href="#cmdoption-volume-set-property"><code class="xref std std-option docutils literal"><span class="pre">--property</span></code></a> to
+remove the current properties before setting new properties.)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-property">
+<code class="descname">--property</code><code class="descclassname"> &lt;key=value&gt;</code><a class="headerlink" href="#cmdoption-volume-set-property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a property on this volume (repeat option to set multiple properties)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-type">
+<code class="descname">--type</code><code class="descclassname"> &lt;volume-type&gt;</code><a class="headerlink" href="#cmdoption-volume-set-type" title="Permalink to this definition">¶</a></dt>
+<dd><p>New volume type (name or ID)</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-retype-policy">
+<code class="descname">--retype-policy</code><code class="descclassname"> &lt;retype-policy&gt;</code><a class="headerlink" href="#cmdoption-volume-set-retype-policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Migration policy while re-typing volume
+(“never” or “on-demand”, default is “never” )
+(available only when <a class="reference internal" href="#cmdoption-volume-set-type"><code class="xref std std-option docutils literal"><span class="pre">--type</span></code></a> option is specified)</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-bootable">
+<code class="descname">--bootable</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-set-bootable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark volume as bootable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-non-bootable">
+<code class="descname">--non-bootable</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-set-non-bootable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark volume as non-bootable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-read-only">
+<code class="descname">--read-only</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-set-read-only" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set volume to read-only access mode</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-read-write">
+<code class="descname">--read-write</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-volume-set-read-write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set volume to read-write access mode</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-image-property">
+<code class="descname">--image-property</code><code class="descclassname"> &lt;key=value&gt;</code><a class="headerlink" href="#cmdoption-volume-set-image-property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set an image property on this volume
+(repeat option to set multiple image properties)</p>
+<p>Image properties are copied along with the image when creating a volume
+using <code class="docutils literal"><span class="pre">--image</span></code>.  Note that these properties are immutable on the image
+itself, this option updates the copy attached to this volume.</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-set-state">
+<code class="descname">--state</code><code class="descclassname"> &lt;state&gt;</code><a class="headerlink" href="#cmdoption-volume-set-state" title="Permalink to this definition">¶</a></dt>
+<dd><p>New volume state
+(“available”, “error”, “creating”, “deleting”, “in-use”,
+“attaching”, “detaching”, “error_deleting” or “maintenance”) (admin only)
+(This option simply changes the state of the volume in the database with
+no regard to actual status, exercise caution when using)</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<span class="target" id="volume-set-volume"></span><dl class="describe">
+<dt>
+<code class="descname">&lt;volume&gt;</code></dt>
+<dd><p>Volume to modify (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="volume-show">
+<h2>volume show<a class="headerlink" href="#volume-show" title="Permalink to this headline">¶</a></h2>
+<p>Show volume details</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">volume</span> <span class="n">show</span>
+    <span class="o">&lt;</span><span class="n">volume</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<span class="target" id="volume-show-volume"></span><dl class="describe">
+<dt>
+<code class="descname">&lt;volume&gt;</code></dt>
+<dd><p>Volume to display (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="volume-unset">
+<h2>volume unset<a class="headerlink" href="#volume-unset" title="Permalink to this headline">¶</a></h2>
+<p>Unset volume properties</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">volume</span> <span class="n">unset</span>
+    <span class="p">[</span><span class="o">--</span><span class="nb">property</span> <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">image</span><span class="o">-</span><span class="nb">property</span> <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="o">&lt;</span><span class="n">volume</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-volume-unset-property">
+<code class="descname">--property</code><code class="descclassname"> &lt;key&gt;</code><a class="headerlink" href="#cmdoption-volume-unset-property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a property from volume (repeat option to remove multiple properties)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-volume-unset-image-property">
+<code class="descname">--image-property</code><code class="descclassname"> &lt;key&gt;</code><a class="headerlink" href="#cmdoption-volume-unset-image-property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an image property from volume
+(repeat option to remove multiple image properties)</p>
+<p><em>Volume version 2 only</em></p>
+</dd></dl>
+
+<span class="target" id="volume-unset-volume"></span><dl class="describe">
+<dt>
+<code class="descname">&lt;volume&gt;</code></dt>
+<dd><p>Volume to modify (name or ID)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="user-role.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: user role"></i></a>
+          
+          
+            <a href="volume-backup.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: volume backup"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../man/openstack.html">Manual Page</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../command-list.html">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands.html">Command Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin-commands.html">Plugin Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interactive.html">Interactive Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decoder.html">Mapping Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backwards-incompatible.html">Backwards Incompatible Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributor/index.html">Contributor Documentation</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/command-objects/volume" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "volume in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

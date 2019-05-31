@@ -1,0 +1,14 @@
+CHANGES
+=======
+
+* 0001-Allow-setting-wrs-binding-vif\_model-using-osclient.patch
+* 0003-US106901-Openstack-CLI-Adoption.patch
+* 0002-US106901-Openstack-CLI-Adoption.patch
+* 0001-US106901-Openstack-CLI-Adoption.patch
+* 0002-US101470-Openstackclient-implementation-of-novaclien.patch
+* 0001-US101470-Openstackclient-implementation-of-novaclien.patch
+* 0001-CGTS-7947-add-os-keystone-region-name-to-identity-cl.patch
+* CGTS-7814-warning-only-when-the-admin-password-chang.patch
+* openstackClient\_Passwordchange\_warning.patch
+* 0001-neutron-extensions.patch
+* python-openstackclient-3.12.0 base

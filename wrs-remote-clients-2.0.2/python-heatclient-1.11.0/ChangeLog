@@ -1,0 +1,5 @@
+CHANGES
+=======
+
+* 0001-timezone-support-for-heatclient.patch
+* python-heatclient-1.11.0 base

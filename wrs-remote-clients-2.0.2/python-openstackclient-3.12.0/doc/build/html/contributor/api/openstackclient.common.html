@@ -1,0 +1,861 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: openstackclient.common package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>openstackclient.common package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="openstackclient.api.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient.api package"></i></a>
+    
+    
+    <a href="openstackclient.compute.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: openstackclient.compute package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">openstackclient.common package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.availability_zone">openstackclient.common.availability_zone module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.client_config">openstackclient.common.client_config module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.clientmanager">openstackclient.common.clientmanager module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.command">openstackclient.common.command module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.commandmanager">openstackclient.common.commandmanager module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.configuration">openstackclient.common.configuration module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.exceptions">openstackclient.common.exceptions module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.extension">openstackclient.common.extension module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.limits">openstackclient.common.limits module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.logs">openstackclient.common.logs module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.module">openstackclient.common.module module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.parseractions">openstackclient.common.parseractions module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.project_purge">openstackclient.common.project_purge module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.quota">openstackclient.common.quota module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.session">openstackclient.common.session module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.timing">openstackclient.common.timing module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common.utils">openstackclient.common.utils module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.common">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="openstackclient-common-package">
+<h1>openstackclient.common package<a class="headerlink" href="#openstackclient-common-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.common.availability_zone">
+<span id="openstackclient-common-availability-zone-module"></span><h2>openstackclient.common.availability_zone module<a class="headerlink" href="#module-openstackclient.common.availability_zone" title="Permalink to this headline">¶</a></h2>
+<p>Availability Zone action implementations</p>
+<dl class="class">
+<dt id="openstackclient.common.availability_zone.ListAvailabilityZone">
+<em class="property">class </em><code class="descclassname">openstackclient.common.availability_zone.</code><code class="descname">ListAvailabilityZone</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.availability_zone.ListAvailabilityZone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.common.availability_zone.ListAvailabilityZone.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.availability_zone.ListAvailabilityZone.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.availability_zone.ListAvailabilityZone.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6c85610&gt;</em><a class="headerlink" href="#openstackclient.common.availability_zone.ListAvailabilityZone.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.availability_zone.ListAvailabilityZone.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.availability_zone.ListAvailabilityZone.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.client_config">
+<span id="openstackclient-common-client-config-module"></span><h2>openstackclient.common.client_config module<a class="headerlink" href="#module-openstackclient.common.client_config" title="Permalink to this headline">¶</a></h2>
+<p>OpenStackConfig subclass for argument compatibility</p>
+<dl class="class">
+<dt id="openstackclient.common.client_config.OSC_Config">
+<em class="property">class </em><code class="descclassname">openstackclient.common.client_config.</code><code class="descname">OSC_Config</code><span class="sig-paren">(</span><em>config_files=None</em>, <em>vendor_files=None</em>, <em>override_defaults=None</em>, <em>force_ipv4=None</em>, <em>envvar_prefix=None</em>, <em>secure_files=None</em>, <em>pw_func=None</em>, <em>session_constructor=None</em>, <em>app_name=None</em>, <em>app_version=None</em>, <em>load_yaml_config=True</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.client_config.OSC_Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.cli.client_config.OSC_Config</span></code></p>
+<dl class="method">
+<dt id="openstackclient.common.client_config.OSC_Config.load_auth_plugin">
+<code class="descname">load_auth_plugin</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.client_config.OSC_Config.load_auth_plugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get auth plugin and validate args</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.clientmanager">
+<span id="openstackclient-common-clientmanager-module"></span><h2>openstackclient.common.clientmanager module<a class="headerlink" href="#module-openstackclient.common.clientmanager" title="Permalink to this headline">¶</a></h2>
+<p>Manage access to the clients, including authenticating when needed.</p>
+<dl class="class">
+<dt id="openstackclient.common.clientmanager.ClientManager">
+<em class="property">class </em><code class="descclassname">openstackclient.common.clientmanager.</code><code class="descname">ClientManager</code><span class="sig-paren">(</span><em>cli_options=None</em>, <em>api_version=None</em>, <em>pw_func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.clientmanager.ClientManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.clientmanager.ClientManager</span></code></p>
+<p>Manages access to API clients, including authentication</p>
+<p>Wrap osc_lib’s ClientManager to maintain compatibility for the existing
+plugin V2 interface.  Some currently private attributes become public
+in osc-lib so we need to maintain a transition period.</p>
+<dl class="attribute">
+<dt id="openstackclient.common.clientmanager.ClientManager.PLUGIN_INTERFACE_VERSION">
+<code class="descname">PLUGIN_INTERFACE_VERSION</code><em class="property"> = ‘2’</em><a class="headerlink" href="#openstackclient.common.clientmanager.ClientManager.PLUGIN_INTERFACE_VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.clientmanager.ClientManager.auth_ref">
+<code class="descname">auth_ref</code><a class="headerlink" href="#openstackclient.common.clientmanager.ClientManager.auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.clientmanager.ClientManager.is_network_endpoint_enabled">
+<code class="descname">is_network_endpoint_enabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.clientmanager.ClientManager.is_network_endpoint_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the network endpoint is enabled</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.clientmanager.ClientManager.setup_auth">
+<code class="descname">setup_auth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.clientmanager.ClientManager.setup_auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set up authentication</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="openstackclient.common.clientmanager.build_plugin_option_parser">
+<code class="descclassname">openstackclient.common.clientmanager.</code><code class="descname">build_plugin_option_parser</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.clientmanager.build_plugin_option_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add plugin options to the parser</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openstackclient.common.clientmanager.get_plugin_modules">
+<code class="descclassname">openstackclient.common.clientmanager.</code><code class="descname">get_plugin_modules</code><span class="sig-paren">(</span><em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.clientmanager.get_plugin_modules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find plugin entry points</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.command">
+<span id="openstackclient-common-command-module"></span><h2>openstackclient.common.command module<a class="headerlink" href="#module-openstackclient.common.command" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.common.commandmanager">
+<span id="openstackclient-common-commandmanager-module"></span><h2>openstackclient.common.commandmanager module<a class="headerlink" href="#module-openstackclient.common.commandmanager" title="Permalink to this headline">¶</a></h2>
+<p>Modify cliff.CommandManager</p>
+<dl class="class">
+<dt id="openstackclient.common.commandmanager.CommandManager">
+<em class="property">class </em><code class="descclassname">openstackclient.common.commandmanager.</code><code class="descname">CommandManager</code><span class="sig-paren">(</span><em>namespace</em>, <em>convert_underscores=True</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.commandmanager.CommandManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cliff.commandmanager.CommandManager</span></code></p>
+<p>Add additional functionality to cliff.CommandManager</p>
+<p>Load additional command groups after initialization
+Add _command_group() methods</p>
+<dl class="method">
+<dt id="openstackclient.common.commandmanager.CommandManager.add_command_group">
+<code class="descname">add_command_group</code><span class="sig-paren">(</span><em>group=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.commandmanager.CommandManager.add_command_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds another group of command entrypoints</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.commandmanager.CommandManager.get_command_groups">
+<code class="descname">get_command_groups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.commandmanager.CommandManager.get_command_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the loaded command groups</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.commandmanager.CommandManager.get_command_names">
+<code class="descname">get_command_names</code><span class="sig-paren">(</span><em>group=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.commandmanager.CommandManager.get_command_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of commands loaded for the specified group</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.commandmanager.CommandManager.load_commands">
+<code class="descname">load_commands</code><span class="sig-paren">(</span><em>namespace</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.commandmanager.CommandManager.load_commands" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.configuration">
+<span id="openstackclient-common-configuration-module"></span><h2>openstackclient.common.configuration module<a class="headerlink" href="#module-openstackclient.common.configuration" title="Permalink to this headline">¶</a></h2>
+<p>Configuration action implementations</p>
+<dl class="class">
+<dt id="openstackclient.common.configuration.ShowConfiguration">
+<em class="property">class </em><code class="descclassname">openstackclient.common.configuration.</code><code class="descname">ShowConfiguration</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.configuration.ShowConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.common.configuration.ShowConfiguration.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.configuration.ShowConfiguration.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.configuration.ShowConfiguration.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x668f5d0&gt;</em><a class="headerlink" href="#openstackclient.common.configuration.ShowConfiguration.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.configuration.ShowConfiguration.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.configuration.ShowConfiguration.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.exceptions">
+<span id="openstackclient-common-exceptions-module"></span><h2>openstackclient.common.exceptions module<a class="headerlink" href="#module-openstackclient.common.exceptions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.common.extension">
+<span id="openstackclient-common-extension-module"></span><h2>openstackclient.common.extension module<a class="headerlink" href="#module-openstackclient.common.extension" title="Permalink to this headline">¶</a></h2>
+<p>Extension action implementations</p>
+<dl class="class">
+<dt id="openstackclient.common.extension.ListExtension">
+<em class="property">class </em><code class="descclassname">openstackclient.common.extension.</code><code class="descname">ListExtension</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.extension.ListExtension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.common.extension.ListExtension.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.extension.ListExtension.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.extension.ListExtension.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x60afe50&gt;</em><a class="headerlink" href="#openstackclient.common.extension.ListExtension.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.extension.ListExtension.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.extension.ListExtension.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.common.extension.ShowExtension">
+<em class="property">class </em><code class="descclassname">openstackclient.common.extension.</code><code class="descname">ShowExtension</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.extension.ShowExtension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.common.extension.ShowExtension.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.extension.ShowExtension.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.extension.ShowExtension.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x60af5d0&gt;</em><a class="headerlink" href="#openstackclient.common.extension.ShowExtension.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.extension.ShowExtension.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.extension.ShowExtension.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.limits">
+<span id="openstackclient-common-limits-module"></span><h2>openstackclient.common.limits module<a class="headerlink" href="#module-openstackclient.common.limits" title="Permalink to this headline">¶</a></h2>
+<p>Limits Action Implementation</p>
+<dl class="class">
+<dt id="openstackclient.common.limits.ShowLimits">
+<em class="property">class </em><code class="descclassname">openstackclient.common.limits.</code><code class="descname">ShowLimits</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.limits.ShowLimits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.common.limits.ShowLimits.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.limits.ShowLimits.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.limits.ShowLimits.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x561bbd0&gt;</em><a class="headerlink" href="#openstackclient.common.limits.ShowLimits.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.limits.ShowLimits.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.limits.ShowLimits.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.logs">
+<span id="openstackclient-common-logs-module"></span><h2>openstackclient.common.logs module<a class="headerlink" href="#module-openstackclient.common.logs" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.common.module">
+<span id="openstackclient-common-module-module"></span><h2>openstackclient.common.module module<a class="headerlink" href="#module-openstackclient.common.module" title="Permalink to this headline">¶</a></h2>
+<p>Module action implementation</p>
+<dl class="class">
+<dt id="openstackclient.common.module.ListCommand">
+<em class="property">class </em><code class="descclassname">openstackclient.common.module.</code><code class="descname">ListCommand</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.module.ListCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.common.module.ListCommand.auth_required">
+<code class="descname">auth_required</code><em class="property"> = False</em><a class="headerlink" href="#openstackclient.common.module.ListCommand.auth_required" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.module.ListCommand.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.module.ListCommand.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.module.ListCommand.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5f1c210&gt;</em><a class="headerlink" href="#openstackclient.common.module.ListCommand.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.module.ListCommand.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.module.ListCommand.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.common.module.ListModule">
+<em class="property">class </em><code class="descclassname">openstackclient.common.module.</code><code class="descname">ListModule</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.module.ListModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.common.module.ListModule.auth_required">
+<code class="descname">auth_required</code><em class="property"> = False</em><a class="headerlink" href="#openstackclient.common.module.ListModule.auth_required" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.module.ListModule.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.module.ListModule.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.module.ListModule.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5f1cdd0&gt;</em><a class="headerlink" href="#openstackclient.common.module.ListModule.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.module.ListModule.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.module.ListModule.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.parseractions">
+<span id="openstackclient-common-parseractions-module"></span><h2>openstackclient.common.parseractions module<a class="headerlink" href="#module-openstackclient.common.parseractions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.common.project_purge">
+<span id="openstackclient-common-project-purge-module"></span><h2>openstackclient.common.project_purge module<a class="headerlink" href="#module-openstackclient.common.project_purge" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openstackclient.common.project_purge.ProjectPurge">
+<em class="property">class </em><code class="descclassname">openstackclient.common.project_purge.</code><code class="descname">ProjectPurge</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.project_purge.ProjectPurge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.common.project_purge.ProjectPurge.delete_objects">
+<code class="descname">delete_objects</code><span class="sig-paren">(</span><em>func_delete</em>, <em>data</em>, <em>resource</em>, <em>dry_run</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.project_purge.ProjectPurge.delete_objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.project_purge.ProjectPurge.delete_one_volume_backup">
+<code class="descname">delete_one_volume_backup</code><span class="sig-paren">(</span><em>backup_id</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.project_purge.ProjectPurge.delete_one_volume_backup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.project_purge.ProjectPurge.delete_one_volume_snapshot">
+<code class="descname">delete_one_volume_snapshot</code><span class="sig-paren">(</span><em>snapshot_id</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.project_purge.ProjectPurge.delete_one_volume_snapshot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.project_purge.ProjectPurge.delete_resources">
+<code class="descname">delete_resources</code><span class="sig-paren">(</span><em>dry_run</em>, <em>project_id</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.project_purge.ProjectPurge.delete_resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.project_purge.ProjectPurge.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.project_purge.ProjectPurge.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.project_purge.ProjectPurge.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x60afd50&gt;</em><a class="headerlink" href="#openstackclient.common.project_purge.ProjectPurge.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.project_purge.ProjectPurge.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.project_purge.ProjectPurge.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.quota">
+<span id="openstackclient-common-quota-module"></span><h2>openstackclient.common.quota module<a class="headerlink" href="#module-openstackclient.common.quota" title="Permalink to this headline">¶</a></h2>
+<p>Quota action implementations</p>
+<dl class="class">
+<dt id="openstackclient.common.quota.ListQuota">
+<em class="property">class </em><code class="descclassname">openstackclient.common.quota.</code><code class="descname">ListQuota</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.ListQuota" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.common.quota.ListQuota.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.ListQuota.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.quota.ListQuota.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5d84450&gt;</em><a class="headerlink" href="#openstackclient.common.quota.ListQuota.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.quota.ListQuota.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.ListQuota.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.common.quota.SetQuota">
+<em class="property">class </em><code class="descclassname">openstackclient.common.quota.</code><code class="descname">SetQuota</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.SetQuota" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.common.quota.SetQuota.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.SetQuota.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.quota.SetQuota.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5d84b90&gt;</em><a class="headerlink" href="#openstackclient.common.quota.SetQuota.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.quota.SetQuota.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.SetQuota.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.common.quota.ShowQuota">
+<em class="property">class </em><code class="descclassname">openstackclient.common.quota.</code><code class="descname">ShowQuota</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.ShowQuota" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.common.quota.ShowQuota.get_compute_volume_quota">
+<code class="descname">get_compute_volume_quota</code><span class="sig-paren">(</span><em>client</em>, <em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.ShowQuota.get_compute_volume_quota" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.quota.ShowQuota.get_network_quota">
+<code class="descname">get_network_quota</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.ShowQuota.get_network_quota" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.quota.ShowQuota.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.ShowQuota.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.common.quota.ShowQuota.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5d84510&gt;</em><a class="headerlink" href="#openstackclient.common.quota.ShowQuota.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.quota.ShowQuota.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.quota.ShowQuota.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.session">
+<span id="openstackclient-common-session-module"></span><h2>openstackclient.common.session module<a class="headerlink" href="#module-openstackclient.common.session" title="Permalink to this headline">¶</a></h2>
+<p>Subclass of keystoneauth1.session</p>
+<dl class="class">
+<dt id="openstackclient.common.session.TimingSession">
+<em class="property">class </em><code class="descclassname">openstackclient.common.session.</code><code class="descname">TimingSession</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.session.TimingSession" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.session.Session</span></code></p>
+<p>A Session that supports collection of timing data per Method URL</p>
+<dl class="method">
+<dt id="openstackclient.common.session.TimingSession.get_timings">
+<code class="descname">get_timings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.session.TimingSession.get_timings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.session.TimingSession.request">
+<code class="descname">request</code><span class="sig-paren">(</span><em>url</em>, <em>method</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.session.TimingSession.request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap the usual request() method with the timers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.common.session.TimingSession.reset_timings">
+<code class="descname">reset_timings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.common.session.TimingSession.reset_timings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.common.timing">
+<span id="openstackclient-common-timing-module"></span><h2>openstackclient.common.timing module<a class="headerlink" href="#module-openstackclient.common.timing" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.common.utils">
+<span id="openstackclient-common-utils-module"></span><h2>openstackclient.common.utils module<a class="headerlink" href="#module-openstackclient.common.utils" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.common">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openstackclient.common" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="openstackclient.api.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient.api package"></i></a>
+          
+          
+            <a href="openstackclient.compute.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: openstackclient.compute package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Contributor Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../developing.html">Developing with OpenStackClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-beta.html">Command Beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-options.html">Command Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-wrappers.html">Command Class Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-errors.html">Command Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-logs.html">Command Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specs/commands.html">Command Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../humaninterfaceguide.html">Human Interface Guide</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "contributor/api/openstackclient.common" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "openstackclient.common package in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

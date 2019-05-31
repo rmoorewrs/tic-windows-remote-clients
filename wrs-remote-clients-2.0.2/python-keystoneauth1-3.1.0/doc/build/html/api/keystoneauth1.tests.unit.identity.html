@@ -1,0 +1,1871 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: keystoneauth1.tests.unit.identity package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>keystoneauth1.tests.unit.identity package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="keystoneauth1.tests.unit.extras.saml2.fixtures.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneauth1.tests.unit.extras.saml2.fixtures package"></i></a>
+    
+    
+    <a href="keystoneauth1.tests.unit.loading.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.tests.unit.loading package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">keystoneauth1.tests.unit.identity package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity.test_access">keystoneauth1.tests.unit.identity.test_access module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity.test_identity_common">keystoneauth1.tests.unit.identity.test_identity_common module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity.test_identity_v2">keystoneauth1.tests.unit.identity.test_identity_v2 module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity.test_identity_v3">keystoneauth1.tests.unit.identity.test_identity_v3 module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity.test_identity_v3_federation">keystoneauth1.tests.unit.identity.test_identity_v3_federation module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity.test_identity_v3_oidc">keystoneauth1.tests.unit.identity.test_identity_v3_oidc module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity.test_password">keystoneauth1.tests.unit.identity.test_password module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity.test_token">keystoneauth1.tests.unit.identity.test_token module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity.test_tokenless_auth">keystoneauth1.tests.unit.identity.test_tokenless_auth module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity.utils">keystoneauth1.tests.unit.identity.utils module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.tests.unit.identity">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="keystoneauth1-tests-unit-identity-package">
+<h1>keystoneauth1.tests.unit.identity package<a class="headerlink" href="#keystoneauth1-tests-unit-identity-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity.test_access">
+<span id="keystoneauth1-tests-unit-identity-test-access-module"></span><h2>keystoneauth1.tests.unit.identity.test_access module<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity.test_access" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_access.</code><code class="descname">AccessInfoPluginTests</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.test_auth_ref">
+<code class="descname">test_auth_ref</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.test_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.test_auth_url">
+<code class="descname">test_auth_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.test_auth_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.test_domain_auth_properties">
+<code class="descname">test_domain_auth_properties</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.test_domain_auth_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.test_invalidate">
+<code class="descname">test_invalidate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.test_invalidate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.test_project_auth_properties">
+<code class="descname">test_project_auth_properties</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_access.AccessInfoPluginTests.test_project_auth_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity.test_identity_common">
+<span id="keystoneauth1-tests-unit-identity-test-identity-common-module"></span><h2>keystoneauth1.tests.unit.identity.test_identity_common module<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity.test_identity_common" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_common.</code><code class="descname">CatalogHackTests</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.BASE_URL">
+<code class="descname">BASE_URL</code><em class="property"> = ‘http://keystone.server:5000/’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.BASE_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.IDENTITY">
+<code class="descname">IDENTITY</code><em class="property"> = ‘identity’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.IDENTITY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.OTHER_URL">
+<code class="descname">OTHER_URL</code><em class="property"> = ‘http://other.server:5000/path’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.OTHER_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.TEST_URL">
+<code class="descname">TEST_URL</code><em class="property"> = ‘http://keystone.server:5000/v2.0’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.TEST_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.V2_URL">
+<code class="descname">V2_URL</code><em class="property"> = ‘http://keystone.server:5000/v2.0’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.V2_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.V3_URL">
+<code class="descname">V3_URL</code><em class="property"> = ‘http://keystone.server:5000/v3’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.V3_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_endpoint_override_data_runs_discovery">
+<code class="descname">test_endpoint_override_data_runs_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_endpoint_override_data_runs_discovery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_endpoint_override_skips_discovery">
+<code class="descname">test_endpoint_override_skips_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_endpoint_override_skips_discovery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_forcing_discovery">
+<code class="descname">test_forcing_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_forcing_discovery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_forcing_discovery_list_returns_url">
+<code class="descname">test_forcing_discovery_list_returns_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_forcing_discovery_list_returns_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_get_endpoint_data">
+<code class="descname">test_get_endpoint_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_get_endpoint_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_get_endpoint_data_compute">
+<code class="descname">test_get_endpoint_data_compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_get_endpoint_data_compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_getting_endpoints">
+<code class="descname">test_getting_endpoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_getting_endpoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_getting_endpoints_on_auth_interface">
+<code class="descname">test_getting_endpoints_on_auth_interface</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_getting_endpoints_on_auth_interface" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_latest_version_gets_latest_version">
+<code class="descname">test_latest_version_gets_latest_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_latest_version_gets_latest_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_returns_original_skipping_discovery">
+<code class="descname">test_returns_original_skipping_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_returns_original_skipping_discovery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_returns_original_when_discover_fails">
+<code class="descname">test_returns_original_when_discover_fails</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_returns_original_when_discover_fails" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_setting_no_discover_hack">
+<code class="descname">test_setting_no_discover_hack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_setting_no_discover_hack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_version_range">
+<code class="descname">test_version_range</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CatalogHackTests.test_version_range" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_common.</code><code class="descname">CommonIdentityTests</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.PROJECT_ID">
+<code class="descname">PROJECT_ID</code><em class="property"> = ‘6932c6694ca04a25ae31b732710f4758’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.PROJECT_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_BAREMETAL_BASE">
+<code class="descname">TEST_BAREMETAL_BASE</code><em class="property"> = ‘https://baremetal.example.com’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_BAREMETAL_BASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_BAREMETAL_INTERNAL">
+<code class="descname">TEST_BAREMETAL_INTERNAL</code><em class="property"> = ‘https://baremetal.example.com/internal’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_BAREMETAL_INTERNAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_COMPUTE_ADMIN">
+<code class="descname">TEST_COMPUTE_ADMIN</code><em class="property"> = ‘https://compute.example.com/nova/admin’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_COMPUTE_ADMIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_COMPUTE_BASE">
+<code class="descname">TEST_COMPUTE_BASE</code><em class="property"> = ‘https://compute.example.com’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_COMPUTE_BASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_COMPUTE_INTERNAL">
+<code class="descname">TEST_COMPUTE_INTERNAL</code><em class="property"> = ‘https://compute.example.com/nova/internal’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_COMPUTE_INTERNAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_COMPUTE_PUBLIC">
+<code class="descname">TEST_COMPUTE_PUBLIC</code><em class="property"> = ‘https://compute.example.com/nova/public’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_COMPUTE_PUBLIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_PASS">
+<code class="descname">TEST_PASS</code><em class="property"> = ‘871e1119e7cd4d49add50b637a1dad87’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_PASS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_ROOT_ADMIN_URL">
+<code class="descname">TEST_ROOT_ADMIN_URL</code><em class="property"> = ‘http://127.0.0.1:35357/’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_ROOT_ADMIN_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_ROOT_URL">
+<code class="descname">TEST_ROOT_URL</code><em class="property"> = ‘http://127.0.0.1:5000/’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_ROOT_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_VOLUME">
+<code class="descname">TEST_VOLUME</code><em class="property"> = &lt;keystoneauth1.tests.unit.identity.test_identity_common.FakeServiceEndpoints object at 0x3a75b10&gt;</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.TEST_VOLUME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.assertAccessInfoEqual">
+<code class="descname">assertAccessInfoEqual</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.assertAccessInfoEqual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.create_auth_plugin">
+<code class="descname">create_auth_plugin</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.create_auth_plugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an auth plugin that makes sense for the auth data.</p>
+<p>It doesn’t really matter what auth mechanism is used but it should be
+appropriate to the API version.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return fake authentication data.</p>
+<p>This should register a valid token response and ensure that the compute
+endpoints are set to TEST_COMPUTE_PUBLIC, _INTERNAL and _ADMIN.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.stub_auth_data">
+<code class="descname">stub_auth_data</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.stub_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_asking_for_auth_endpoint_ignores_checks">
+<code class="descname">test_asking_for_auth_endpoint_ignores_checks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_asking_for_auth_endpoint_ignores_checks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_check_cache_id_match">
+<code class="descname">test_check_cache_id_match</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_check_cache_id_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_check_cache_id_no_match">
+<code class="descname">test_check_cache_id_no_match</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_check_cache_id_no_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_direct_discovering">
+<code class="descname">test_direct_discovering</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_direct_discovering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_direct_discovering_with_no_data">
+<code class="descname">test_direct_discovering_with_no_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_direct_discovering_with_no_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_direct_discovering_with_relative_link">
+<code class="descname">test_direct_discovering_with_relative_link</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_direct_discovering_with_relative_link" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_direct_discovery_provided_plugin_cache">
+<code class="descname">test_direct_discovery_provided_plugin_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_direct_discovery_provided_plugin_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering">
+<code class="descname">test_discovering</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering_when_version_missing">
+<code class="descname">test_discovering_when_version_missing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering_when_version_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering_with_no_data">
+<code class="descname">test_discovering_with_no_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering_with_no_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering_with_protocol_relative">
+<code class="descname">test_discovering_with_protocol_relative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering_with_protocol_relative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering_with_relative_anchored_link">
+<code class="descname">test_discovering_with_relative_anchored_link</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering_with_relative_anchored_link" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering_with_relative_link">
+<code class="descname">test_discovering_with_relative_link</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovering_with_relative_link" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovery_uses_plugin_cache">
+<code class="descname">test_discovery_uses_plugin_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovery_uses_plugin_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovery_uses_provided_session_cache">
+<code class="descname">test_discovery_uses_provided_session_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovery_uses_provided_session_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovery_uses_session_cache">
+<code class="descname">test_discovery_uses_session_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovery_uses_session_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovery_uses_session_plugin_cache">
+<code class="descname">test_discovery_uses_session_plugin_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_discovery_uses_session_plugin_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_endpoint_data_no_version">
+<code class="descname">test_endpoint_data_no_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_endpoint_data_no_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_endpoint_data_no_version_no_discovery">
+<code class="descname">test_endpoint_data_no_version_no_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_endpoint_data_no_version_no_discovery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_endpoint_data_relative_version">
+<code class="descname">test_endpoint_data_relative_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_endpoint_data_relative_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_endpoint_data_version_url_no_discovery">
+<code class="descname">test_endpoint_data_version_url_no_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_endpoint_data_version_url_no_discovery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_endpoint_no_version">
+<code class="descname">test_endpoint_no_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_endpoint_no_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_auth_properties">
+<code class="descname">test_get_auth_properties</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_auth_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_current_versioned_data">
+<code class="descname">test_get_current_versioned_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_current_versioned_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_set_auth_state">
+<code class="descname">test_get_set_auth_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_set_auth_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_versioned_data">
+<code class="descname">test_get_versioned_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_versioned_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_versioned_data_volume_project_id">
+<code class="descname">test_get_versioned_data_volume_project_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_versioned_data_volume_project_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_versioned_data_volume_project_id_unversioned_first">
+<code class="descname">test_get_versioned_data_volume_project_id_unversioned_first</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_get_versioned_data_volume_project_id_unversioned_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_interface_list">
+<code class="descname">test_interface_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_interface_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_invalidate">
+<code class="descname">test_invalidate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_invalidate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_no_reauthenticate">
+<code class="descname">test_no_reauthenticate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_no_reauthenticate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_no_trailing_slash_on_catalog_endpoint">
+<code class="descname">test_no_trailing_slash_on_catalog_endpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_no_trailing_slash_on_catalog_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_pathless_url">
+<code class="descname">test_pathless_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_pathless_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_reauthenticate">
+<code class="descname">test_reauthenticate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_reauthenticate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_trailing_slash_on_computed_endpoint">
+<code class="descname">test_trailing_slash_on_computed_endpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.test_trailing_slash_on_computed_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.version">
+<code class="descname">version</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>The API version being tested.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.FakeServiceEndpoints">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_common.</code><code class="descname">FakeServiceEndpoints</code><span class="sig-paren">(</span><em>base_url</em>, <em>versions=None</em>, <em>project_id=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.FakeServiceEndpoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_common.</code><code class="descname">GenericAuthPluginTests</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests.ENDPOINT_FILTER">
+<code class="descname">ENDPOINT_FILTER</code><em class="property"> = {‘4923f95a3577436d8f4a29a0c76b8c51’: ‘0ec4a3e59f7645b283440fc69b93b36c’}</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests.ENDPOINT_FILTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests.test_setting_bad_connection_params">
+<code class="descname">test_setting_bad_connection_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests.test_setting_bad_connection_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests.test_setting_connection_params">
+<code class="descname">test_setting_connection_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests.test_setting_connection_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests.test_setting_headers">
+<code class="descname">test_setting_headers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericAuthPluginTests.test_setting_headers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_common.</code><code class="descname">GenericPlugin</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.plugin.BaseAuthPlugin</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.BAD_TOKEN">
+<code class="descname">BAD_TOKEN</code><em class="property"> = ‘7d70271d61f940f0bd4266f31534e444’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.BAD_TOKEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.get_connection_params">
+<code class="descname">get_connection_params</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.get_connection_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.get_headers">
+<code class="descname">get_headers</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.get_headers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.get_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.url">
+<code class="descname">url</code><span class="sig-paren">(</span><em>prefix</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.GenericPlugin.url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.V2">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_common.</code><code class="descname">V2</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.V2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests" title="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests</span></code></a>, <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.V2.create_auth_plugin">
+<code class="descname">create_auth_plugin</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.V2.create_auth_plugin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.V2.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.V2.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.V2.stub_auth">
+<code class="descname">stub_auth</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.V2.stub_auth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.V2.version">
+<code class="descname">version</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.V2.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.V3">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_common.</code><code class="descname">V3</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.V3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests" title="keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.identity.test_identity_common.CommonIdentityTests</span></code></a>, <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.V3.create_auth_plugin">
+<code class="descname">create_auth_plugin</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.V3.create_auth_plugin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.V3.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.V3.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.V3.stub_auth">
+<code class="descname">stub_auth</code><span class="sig-paren">(</span><em>subject_token=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.V3.stub_auth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_common.V3.version">
+<code class="descname">version</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_common.V3.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity.test_identity_v2">
+<span id="keystoneauth1-tests-unit-identity-test-identity-v2-module"></span><h2>keystoneauth1.tests.unit.identity.test_identity_v2 module<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity.test_identity_v2" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_v2.</code><code class="descname">V2IdentityPlugin</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_ADMIN_URL">
+<code class="descname">TEST_ADMIN_URL</code><em class="property"> = ‘http://127.0.0.1:35357/v2.0’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_ADMIN_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_PASS">
+<code class="descname">TEST_PASS</code><em class="property"> = ‘password’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_PASS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_ROOT_ADMIN_URL">
+<code class="descname">TEST_ROOT_ADMIN_URL</code><em class="property"> = ‘http://127.0.0.1:35357/’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_ROOT_ADMIN_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_ROOT_URL">
+<code class="descname">TEST_ROOT_URL</code><em class="property"> = ‘http://127.0.0.1:5000/’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_ROOT_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_SERVICE_CATALOG">
+<code class="descname">TEST_SERVICE_CATALOG</code><em class="property"> = [{‘endpoints’: [{‘adminURL’: ‘http://cdn.admin-nets.local:8774/v1.0’, ‘region’: ‘RegionOne’, ‘internalURL’: ‘http://127.0.0.1:8774/v1.0’, ‘publicURL’: ‘http://cdn.admin-nets.local:8774/v1.0/’}], ‘type’: ‘nova_compat’, ‘name’: ‘nova_compat’}, {‘endpoints’: [{‘adminURL’: ‘http://nova/novapi/admin’, ‘region’: ‘RegionOne’, ‘internalURL’: ‘http://nova/novapi/internal’, ‘publicURL’: ‘http://nova/novapi/public’}], ‘type’: ‘compute’, ‘name’: ‘nova’}, {‘endpoints’: [{‘adminURL’: ‘http://glance/glanceapi/admin’, ‘region’: ‘RegionOne’, ‘internalURL’: ‘http://glance/glanceapi/internal’, ‘publicURL’: ‘http://glance/glanceapi/public’}], ‘type’: ‘image’, ‘name’: ‘glance’}, {‘endpoints’: [{‘adminURL’: ‘http://127.0.0.1:35357/v2.0’, ‘region’: ‘RegionOne’, ‘internalURL’: ‘http://127.0.0.1:5000/v2.0’, ‘publicURL’: ‘http://127.0.0.1:5000/v2.0’}], ‘type’: ‘identity’, ‘name’: ‘keystone’}, {‘endpoints’: [{‘adminURL’: ‘http://swift/swiftapi/admin’, ‘region’: ‘RegionOne’, ‘internalURL’: ‘http://swift/swiftapi/internal’, ‘publicURL’: ‘http://swift/swiftapi/public’}], ‘type’: ‘object-store’, ‘name’: ‘swift’}]</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_SERVICE_CATALOG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_URL">
+<code class="descname">TEST_URL</code><em class="property"> = ‘http://127.0.0.1:5000/v2.0’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.TEST_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.stub_auth">
+<code class="descname">stub_auth</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.stub_auth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_authenticate_with_token">
+<code class="descname">test_authenticate_with_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_authenticate_with_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_authenticate_with_user_id_password">
+<code class="descname">test_authenticate_with_user_id_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_authenticate_with_user_id_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_authenticate_with_user_id_password_scoped">
+<code class="descname">test_authenticate_with_user_id_password_scoped</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_authenticate_with_user_id_password_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_authenticate_with_username_password">
+<code class="descname">test_authenticate_with_username_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_authenticate_with_username_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_authenticate_with_username_password_scoped">
+<code class="descname">test_authenticate_with_username_password_scoped</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_authenticate_with_username_password_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_doesnt_log_password">
+<code class="descname">test_doesnt_log_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_doesnt_log_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_endpoint_filter_without_service_type_fails">
+<code class="descname">test_endpoint_filter_without_service_type_fails</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_endpoint_filter_without_service_type_fails" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_full_url_overrides_endpoint_filter">
+<code class="descname">test_full_url_overrides_endpoint_filter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_full_url_overrides_endpoint_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_invalid_auth_response_dict">
+<code class="descname">test_invalid_auth_response_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_invalid_auth_response_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_invalid_auth_response_type">
+<code class="descname">test_invalid_auth_response_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_invalid_auth_response_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_invalidate_response">
+<code class="descname">test_invalidate_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_invalidate_response" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_password_cache_id">
+<code class="descname">test_password_cache_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_password_cache_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_password_change_auth_state">
+<code class="descname">test_password_change_auth_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_password_change_auth_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_password_with_no_user_id_or_name">
+<code class="descname">test_password_with_no_user_id_or_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_password_with_no_user_id_or_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_service_url">
+<code class="descname">test_service_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_service_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_service_url_defaults_to_public">
+<code class="descname">test_service_url_defaults_to_public</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_service_url_defaults_to_public" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_with_trust_id">
+<code class="descname">test_with_trust_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v2.V2IdentityPlugin.test_with_trust_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity.test_identity_v3">
+<span id="keystoneauth1-tests-unit-identity-test-identity-v3-module"></span><h2>keystoneauth1.tests.unit.identity.test_identity_v3 module<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity.test_identity_v3" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_v3.</code><code class="descname">V3IdentityPlugin</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_ADMIN_URL">
+<code class="descname">TEST_ADMIN_URL</code><em class="property"> = ‘http://127.0.0.1:35357/v3’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_ADMIN_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_PASS">
+<code class="descname">TEST_PASS</code><em class="property"> = ‘password’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_PASS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_ROOT_ADMIN_URL">
+<code class="descname">TEST_ROOT_ADMIN_URL</code><em class="property"> = ‘http://127.0.0.1:35357/’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_ROOT_ADMIN_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_ROOT_URL">
+<code class="descname">TEST_ROOT_URL</code><em class="property"> = ‘http://127.0.0.1:5000/’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_ROOT_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_SERVICE_CATALOG">
+<code class="descname">TEST_SERVICE_CATALOG</code><em class="property"> = [{‘endpoints’: [{‘url’: ‘http://cdn.admin-nets.local:8774/v1.0/’, ‘interface’: ‘public’, ‘region’: ‘RegionOne’}, {‘url’: ‘http://127.0.0.1:8774/v1.0’, ‘interface’: ‘internal’, ‘region’: ‘RegionOne’}, {‘url’: ‘http://cdn.admin-nets.local:8774/v1.0’, ‘interface’: ‘admin’, ‘region’: ‘RegionOne’}], ‘type’: ‘nova_compat’}, {‘endpoints’: [{‘url’: ‘http://nova/novapi/public’, ‘interface’: ‘public’, ‘region’: ‘RegionOne’}, {‘url’: ‘http://nova/novapi/internal’, ‘interface’: ‘internal’, ‘region’: ‘RegionOne’}, {‘url’: ‘http://nova/novapi/admin’, ‘interface’: ‘admin’, ‘region’: ‘RegionOne’}], ‘type’: ‘compute’, ‘name’: ‘nova’}, {‘endpoints’: [{‘url’: ‘http://glance/glanceapi/public’, ‘interface’: ‘public’, ‘region’: ‘RegionOne’}, {‘url’: ‘http://glance/glanceapi/internal’, ‘interface’: ‘internal’, ‘region’: ‘RegionOne’}, {‘url’: ‘http://glance/glanceapi/admin’, ‘interface’: ‘admin’, ‘region’: ‘RegionOne’}], ‘type’: ‘image’, ‘name’: ‘glance’}, {‘endpoints’: [{‘url’: ‘http://127.0.0.1:5000/v3’, ‘interface’: ‘public’, ‘region’: ‘RegionOne’}, {‘url’: ‘http://127.0.0.1:5000/v3’, ‘interface’: ‘internal’, ‘region’: ‘RegionOne’}, {‘url’: ‘http://127.0.0.1:35357/v3’, ‘interface’: ‘admin’, ‘region’: ‘RegionOne’}], ‘type’: ‘identity’}, {‘endpoints’: [{‘url’: ‘http://swift/swiftapi/public’, ‘interface’: ‘public’, ‘region’: ‘RegionOne’}, {‘url’: ‘http://swift/swiftapi/internal’, ‘interface’: ‘internal’, ‘region’: ‘RegionOne’}, {‘url’: ‘http://swift/swiftapi/admin’, ‘interface’: ‘admin’, ‘region’: ‘RegionOne’}], ‘type’: ‘object-store’}]</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_SERVICE_CATALOG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_SERVICE_PROVIDERS">
+<code class="descname">TEST_SERVICE_PROVIDERS</code><em class="property"> = [{‘sp_url’: ‘https://sp1.com/Shibboleth.sso/SAML2/ECP’, ‘auth_url’: ‘https://sp1.com/v3/OS-FEDERATION/identity_providers/acme/protocols/saml2/auth’, ‘id’: ‘sp1’}, {‘sp_url’: ‘https://sp2.com/Shibboleth.sso/SAML2/ECP’, ‘auth_url’: ‘https://sp2.com/v3/OS-FEDERATION/identity_providers/acme/protocols/saml2/auth’, ‘id’: ‘sp2’}]</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_SERVICE_PROVIDERS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_URL">
+<code class="descname">TEST_URL</code><em class="property"> = ‘http://127.0.0.1:5000/v3’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.TEST_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.stub_auth">
+<code class="descname">stub_auth</code><span class="sig-paren">(</span><em>subject_token=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.stub_auth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_authenticate_with_token">
+<code class="descname">test_authenticate_with_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_authenticate_with_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_authenticate_with_username_password">
+<code class="descname">test_authenticate_with_username_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_authenticate_with_username_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_authenticate_with_username_password_domain_scoped">
+<code class="descname">test_authenticate_with_username_password_domain_scoped</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_authenticate_with_username_password_domain_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_authenticate_with_username_password_project_scoped">
+<code class="descname">test_authenticate_with_username_password_project_scoped</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_authenticate_with_username_password_project_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_doesnt_log_password">
+<code class="descname">test_doesnt_log_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_doesnt_log_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_endpoint_filter_without_service_type_fails">
+<code class="descname">test_endpoint_filter_without_service_type_fails</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_endpoint_filter_without_service_type_fails" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_full_url_overrides_endpoint_filter">
+<code class="descname">test_full_url_overrides_endpoint_filter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_full_url_overrides_endpoint_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_handle_missing_service_provider">
+<code class="descname">test_handle_missing_service_provider</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_handle_missing_service_provider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_invalid_auth_response_dict">
+<code class="descname">test_invalid_auth_response_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_invalid_auth_response_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_invalid_auth_response_type">
+<code class="descname">test_invalid_auth_response_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_invalid_auth_response_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_invalidate_response">
+<code class="descname">test_invalidate_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_invalidate_response" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_password_cache_id">
+<code class="descname">test_password_cache_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_password_cache_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_password_change_auth_state">
+<code class="descname">test_password_change_auth_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_password_change_auth_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_sends_nocatalog">
+<code class="descname">test_sends_nocatalog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_sends_nocatalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_service_providers_urls">
+<code class="descname">test_service_providers_urls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_service_providers_urls" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_service_url">
+<code class="descname">test_service_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_service_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_service_url_defaults_to_public">
+<code class="descname">test_service_url_defaults_to_public</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_service_url_defaults_to_public" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_symbols">
+<code class="descname">test_symbols</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_symbols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_unscoped_request">
+<code class="descname">test_unscoped_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_unscoped_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_unscoped_with_scope_data">
+<code class="descname">test_unscoped_with_scope_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_unscoped_with_scope_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_domain_and_project_scoping">
+<code class="descname">test_with_domain_and_project_scoping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_domain_and_project_scoping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_expired">
+<code class="descname">test_with_expired</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_expired" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_multiple_mechanisms">
+<code class="descname">test_with_multiple_mechanisms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_multiple_mechanisms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_multiple_mechanisms_factory">
+<code class="descname">test_with_multiple_mechanisms_factory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_multiple_mechanisms_factory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_multiple_scopes">
+<code class="descname">test_with_multiple_scopes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_multiple_scopes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_trust_id">
+<code class="descname">test_with_trust_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3.V3IdentityPlugin.test_with_trust_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity.test_identity_v3_federation">
+<span id="keystoneauth1-tests-unit-identity-test-identity-v3-federation-module"></span><h2>keystoneauth1.tests.unit.identity.test_identity_v3_federation module<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity.test_identity_v3_federation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_v3_federation.</code><code class="descname">K2KAuthPluginTest</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.REQUEST_ECP_URL">
+<code class="descname">REQUEST_ECP_URL</code><em class="property"> = ‘http://127.0.0.1:5000/v3/auth/OS-FEDERATION/saml2/ecp’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.REQUEST_ECP_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.SERVICE_PROVIDER_DICT">
+<code class="descname">SERVICE_PROVIDER_DICT</code><em class="property"> = {‘sp_url’: ‘https://sp1.com/Shibboleth.sso/SAML2/ECP’, ‘auth_url’: ‘https://sp1.com/v3/OS-FEDERATION/identity_providers/testidp/protocols/saml2/auth’, ‘id’: ‘sp1’}</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.SERVICE_PROVIDER_DICT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.SP_AUTH_URL">
+<code class="descname">SP_AUTH_URL</code><em class="property"> = ‘https://sp1.com/v3/OS-FEDERATION/identity_providers/testidp/protocols/saml2/auth’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.SP_AUTH_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.SP_ID">
+<code class="descname">SP_ID</code><em class="property"> = ‘sp1’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.SP_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.SP_ROOT_URL">
+<code class="descname">SP_ROOT_URL</code><em class="property"> = ‘https://sp1.com/v3’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.SP_ROOT_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.SP_URL">
+<code class="descname">SP_URL</code><em class="property"> = ‘https://sp1.com/Shibboleth.sso/SAML2/ECP’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.SP_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.TEST_PASS">
+<code class="descname">TEST_PASS</code><em class="property"> = ‘password’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.TEST_PASS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.TEST_ROOT_URL">
+<code class="descname">TEST_ROOT_URL</code><em class="property"> = ‘http://127.0.0.1:5000/’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.TEST_ROOT_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.TEST_URL">
+<code class="descname">TEST_URL</code><em class="property"> = ‘http://127.0.0.1:5000/v3’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.TEST_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.get_plugin">
+<code class="descname">get_plugin</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.get_plugin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_end_to_end_with_generic_password">
+<code class="descname">test_end_to_end_with_generic_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_end_to_end_with_generic_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_end_to_end_workflow">
+<code class="descname">test_end_to_end_workflow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_end_to_end_workflow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_end_to_end_workflow_303_redirect">
+<code class="descname">test_end_to_end_workflow_303_redirect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_end_to_end_workflow_303_redirect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_fail_getting_ecp_assertion">
+<code class="descname">test_fail_getting_ecp_assertion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_fail_getting_ecp_assertion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_get_ecp_assertion_empty_response">
+<code class="descname">test_get_ecp_assertion_empty_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_get_ecp_assertion_empty_response" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_get_ecp_assertion_wrong_headers">
+<code class="descname">test_get_ecp_assertion_wrong_headers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_get_ecp_assertion_wrong_headers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_remote_url">
+<code class="descname">test_remote_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_remote_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_send_ecp_authn_response">
+<code class="descname">test_send_ecp_authn_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_send_ecp_authn_response" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_send_ecp_authn_response_303_redirect">
+<code class="descname">test_send_ecp_authn_response_303_redirect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.K2KAuthPluginTest.test_send_ecp_authn_response_303_redirect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.TesterFederationPlugin">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_v3_federation.</code><code class="descname">TesterFederationPlugin</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.TesterFederationPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.federation.FederationBaseAuth" title="keystoneauth1.identity.v3.federation.FederationBaseAuth"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.federation.FederationBaseAuth</span></code></a></p>
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.TesterFederationPlugin.get_unscoped_auth_ref">
+<code class="descname">get_unscoped_auth_ref</code><span class="sig-paren">(</span><em>sess</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.TesterFederationPlugin.get_unscoped_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_v3_federation.</code><code class="descname">V3FederatedPlugin</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.AUTH_URL">
+<code class="descname">AUTH_URL</code><em class="property"> = ‘http://keystone/v3’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.AUTH_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.get_plugin">
+<code class="descname">get_plugin</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.get_plugin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.test_federated_url">
+<code class="descname">test_federated_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.test_federated_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.test_scoped_behaviour">
+<code class="descname">test_scoped_behaviour</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.test_scoped_behaviour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.test_unscoped_behaviour">
+<code class="descname">test_unscoped_behaviour</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_federation.V3FederatedPlugin.test_unscoped_behaviour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity.test_identity_v3_oidc">
+<span id="keystoneauth1-tests-unit-identity-test-identity-v3-oidc-module"></span><h2>keystoneauth1.tests.unit.identity.test_identity_v3_oidc module<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity.test_identity_v3_oidc" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_v3_oidc.</code><code class="descname">BaseOIDCTests</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_can_pass_grant_type_but_warning_is_issued">
+<code class="descname">test_can_pass_grant_type_but_warning_is_issued</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_can_pass_grant_type_but_warning_is_issued" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_discovery_not_found">
+<code class="descname">test_discovery_not_found</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_discovery_not_found" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_grant_type_and_plugin_missmatch">
+<code class="descname">test_grant_type_and_plugin_missmatch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_grant_type_and_plugin_missmatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_invalid_discovery_document">
+<code class="descname">test_invalid_discovery_document</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_invalid_discovery_document" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_load_discovery">
+<code class="descname">test_load_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_load_discovery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_load_discovery_override_by_endpoints">
+<code class="descname">test_load_discovery_override_by_endpoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_load_discovery_override_by_endpoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_no_access_token_endpoint">
+<code class="descname">test_no_access_token_endpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_no_access_token_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_no_discovery">
+<code class="descname">test_no_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_no_discovery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_wrong_grant_type">
+<code class="descname">test_wrong_grant_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests.test_wrong_grant_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCAuthorizationGrantTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_v3_oidc.</code><code class="descname">OIDCAuthorizationGrantTests</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCAuthorizationGrantTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests" title="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests</span></code></a>, <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCAuthorizationGrantTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCAuthorizationGrantTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCAuthorizationGrantTests.test_initial_call_to_get_access_token">
+<code class="descname">test_initial_call_to_get_access_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCAuthorizationGrantTests.test_initial_call_to_get_access_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test initial call, expect JSON access token.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCClientCredentialsTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_v3_oidc.</code><code class="descname">OIDCClientCredentialsTests</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCClientCredentialsTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests" title="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests</span></code></a>, <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCClientCredentialsTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCClientCredentialsTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCClientCredentialsTests.test_end_to_end_workflow">
+<code class="descname">test_end_to_end_workflow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCClientCredentialsTests.test_end_to_end_workflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test full OpenID Connect workflow.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCClientCredentialsTests.test_initial_call_to_get_access_token">
+<code class="descname">test_initial_call_to_get_access_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCClientCredentialsTests.test_initial_call_to_get_access_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test initial call, expect JSON access token.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCClientCredentialsTests.test_second_call_to_protected_url">
+<code class="descname">test_second_call_to_protected_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCClientCredentialsTests.test_second_call_to_protected_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test subsequent call, expect Keystone token.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCPasswordTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_v3_oidc.</code><code class="descname">OIDCPasswordTests</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCPasswordTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests" title="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.identity.test_identity_v3_oidc.BaseOIDCTests</span></code></a>, <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCPasswordTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCPasswordTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCPasswordTests.test_end_to_end_workflow">
+<code class="descname">test_end_to_end_workflow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCPasswordTests.test_end_to_end_workflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test full OpenID Connect workflow.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCPasswordTests.test_initial_call_to_get_access_token">
+<code class="descname">test_initial_call_to_get_access_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCPasswordTests.test_initial_call_to_get_access_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test initial call, expect JSON access token.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCPasswordTests.test_second_call_to_protected_url">
+<code class="descname">test_second_call_to_protected_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCPasswordTests.test_second_call_to_protected_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test subsequent call, expect Keystone token.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCTokenTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_identity_v3_oidc.</code><code class="descname">OIDCTokenTests</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCTokenTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCTokenTests.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCTokenTests.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCTokenTests.test_end_to_end_workflow">
+<code class="descname">test_end_to_end_workflow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_identity_v3_oidc.OIDCTokenTests.test_end_to_end_workflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test full OpenID Connect workflow.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity.test_password">
+<span id="keystoneauth1-tests-unit-identity-test-password-module"></span><h2>keystoneauth1.tests.unit.identity.test_password module<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity.test_password" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_password.</code><code class="descname">PasswordTests</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase" title="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.PLUGIN_CLASS">
+<code class="descname">PLUGIN_CLASS</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.PLUGIN_CLASS" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Password</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.V2_PLUGIN_CLASS">
+<code class="descname">V2_PLUGIN_CLASS</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.V2_PLUGIN_CLASS" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Password</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.V3_PLUGIN_CLASS">
+<code class="descname">V3_PLUGIN_CLASS</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.V3_PLUGIN_CLASS" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Password</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.new_plugin">
+<code class="descname">new_plugin</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.new_plugin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_default_domain_id_with_v3">
+<code class="descname">test_default_domain_id_with_v3</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_default_domain_id_with_v3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_default_domain_name_with_v3">
+<code class="descname">test_default_domain_name_with_v3</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_default_domain_name_with_v3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_password_cache_id">
+<code class="descname">test_password_cache_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_password_cache_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_symbols">
+<code class="descname">test_symbols</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_symbols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_v3_disocovery_failure_v2_url">
+<code class="descname">test_v3_disocovery_failure_v2_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_v3_disocovery_failure_v2_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_v3_domain_params_v2_url">
+<code class="descname">test_v3_domain_params_v2_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_v3_domain_params_v2_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_v3_user_params_v2_url">
+<code class="descname">test_v3_user_params_v2_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_v3_user_params_v2_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_with_user_domain_params">
+<code class="descname">test_with_user_domain_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_password.PasswordTests.test_with_user_domain_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity.test_token">
+<span id="keystoneauth1-tests-unit-identity-test-token-module"></span><h2>keystoneauth1.tests.unit.identity.test_token module<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity.test_token" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_token.TokenTests">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_token.</code><code class="descname">TokenTests</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_token.TokenTests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase" title="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_token.TokenTests.PLUGIN_CLASS">
+<code class="descname">PLUGIN_CLASS</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_token.TokenTests.PLUGIN_CLASS" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Token</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_token.TokenTests.V2_PLUGIN_CLASS">
+<code class="descname">V2_PLUGIN_CLASS</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_token.TokenTests.V2_PLUGIN_CLASS" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Token</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_token.TokenTests.V3_PLUGIN_CLASS">
+<code class="descname">V3_PLUGIN_CLASS</code><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_token.TokenTests.V3_PLUGIN_CLASS" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Token</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_token.TokenTests.new_plugin">
+<code class="descname">new_plugin</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_token.TokenTests.new_plugin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_token.TokenTests.test_symbols">
+<code class="descname">test_symbols</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_token.TokenTests.test_symbols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_token.TokenTests.test_token_cache_id">
+<code class="descname">test_token_cache_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_token.TokenTests.test_token_cache_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity.test_tokenless_auth">
+<span id="keystoneauth1-tests-unit-identity-test-tokenless-auth-module"></span><h2>keystoneauth1.tests.unit.identity.test_tokenless_auth module<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity.test_tokenless_auth" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.test_tokenless_auth.</code><code class="descname">TokenlessAuthTest</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.TEST_URL">
+<code class="descname">TEST_URL</code><em class="property"> = ‘http://server/prefix’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.TEST_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>auth_url</em>, <em>domain_id=None</em>, <em>domain_name=None</em>, <em>project_id=None</em>, <em>project_name=None</em>, <em>project_domain_id=None</em>, <em>project_domain_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_domain_id_scope_header_pass">
+<code class="descname">test_domain_id_scope_header_pass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_domain_id_scope_header_pass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_domain_name_scope_header_pass">
+<code class="descname">test_domain_name_scope_header_pass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_domain_name_scope_header_pass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_no_scope_header_fail">
+<code class="descname">test_no_scope_header_fail</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_no_scope_header_fail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_project_id_scope_header_pass">
+<code class="descname">test_project_id_scope_header_pass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_project_id_scope_header_pass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_project_name_scope_only_header_fail">
+<code class="descname">test_project_name_scope_only_header_fail</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_project_name_scope_only_header_fail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_project_of_domain__name_scope_header_pass">
+<code class="descname">test_project_of_domain__name_scope_header_pass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_project_of_domain__name_scope_header_pass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_project_of_domain_id_scope_header_pass">
+<code class="descname">test_project_of_domain_id_scope_header_pass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.test_tokenless_auth.TokenlessAuthTest.test_project_of_domain_id_scope_header_pass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity.utils">
+<span id="keystoneauth1-tests-unit-identity-utils-module"></span><h2>keystoneauth1.tests.unit.identity.utils module<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase">
+<em class="property">class </em><code class="descclassname">keystoneauth1.tests.unit.identity.utils.</code><code class="descname">GenericPluginTestCase</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.tests.unit.html#keystoneauth1.tests.unit.utils.TestCase" title="keystoneauth1.tests.unit.utils.TestCase"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.tests.unit.utils.TestCase</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.PLUGIN_CLASS">
+<code class="descname">PLUGIN_CLASS</code><em class="property"> = None</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.PLUGIN_CLASS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.TEST_URL">
+<code class="descname">TEST_URL</code><em class="property"> = ‘http://keystone.host:5000/’</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.TEST_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.V2_PLUGIN_CLASS">
+<code class="descname">V2_PLUGIN_CLASS</code><em class="property"> = None</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.V2_PLUGIN_CLASS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.V3_PLUGIN_CLASS">
+<code class="descname">V3_PLUGIN_CLASS</code><em class="property"> = None</em><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.V3_PLUGIN_CLASS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.assertCreateV2">
+<code class="descname">assertCreateV2</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.assertCreateV2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.assertCreateV3">
+<code class="descname">assertCreateV3</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.assertCreateV3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.assertDiscoveryFailure">
+<code class="descname">assertDiscoveryFailure</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.assertDiscoveryFailure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.new_plugin">
+<code class="descname">new_plugin</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.new_plugin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.stub_discovery">
+<code class="descname">stub_discovery</code><span class="sig-paren">(</span><em>base_url=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.stub_discovery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_create_plugin_no_reauthenticate">
+<code class="descname">test_create_plugin_no_reauthenticate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_create_plugin_no_reauthenticate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_create_v2_if_no_domain_params">
+<code class="descname">test_create_v2_if_no_domain_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_create_v2_if_no_domain_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_create_v3_if_domain_params">
+<code class="descname">test_create_v3_if_domain_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_create_v3_if_domain_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_default_domain_id_no_v3">
+<code class="descname">test_default_domain_id_no_v3</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_default_domain_id_no_v3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_default_domain_id_with_v3">
+<code class="descname">test_default_domain_id_with_v3</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_default_domain_id_with_v3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_default_domain_name_no_v3">
+<code class="descname">test_default_domain_name_no_v3</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_default_domain_name_no_v3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_default_domain_name_with_v3">
+<code class="descname">test_default_domain_name_with_v3</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_default_domain_name_with_v3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_disc_error_for_failure">
+<code class="descname">test_disc_error_for_failure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_disc_error_for_failure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_no_urls">
+<code class="descname">test_no_urls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_no_urls" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_path_based_url_v2">
+<code class="descname">test_path_based_url_v2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_path_based_url_v2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_path_based_url_v3">
+<code class="descname">test_path_based_url_v3</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_path_based_url_v3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_unknown_discovery_version">
+<code class="descname">test_unknown_discovery_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_unknown_discovery_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_v2_params_v3_url">
+<code class="descname">test_v2_params_v3_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_v2_params_v3_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_v3_params_v2_url">
+<code class="descname">test_v3_params_v2_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_v3_params_v2_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_v3_plugin_from_failure">
+<code class="descname">test_v3_plugin_from_failure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.tests.unit.identity.utils.GenericPluginTestCase.test_v3_plugin_from_failure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.tests.unit.identity">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-keystoneauth1.tests.unit.identity" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="keystoneauth1.tests.unit.extras.saml2.fixtures.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneauth1.tests.unit.extras.saml2.fixtures package"></i></a>
+          
+          
+            <a href="keystoneauth1.tests.unit.loading.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.tests.unit.loading package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../using-sessions.html">Using Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication-plugins.html">Authentication Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin-options.html">Plugin Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extras.html">Extras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating.html">Migrating from keystoneclient</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="keystoneauth1.html">keystoneauth1 package</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">CHANGES</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "api/keystoneauth1.tests.unit.identity" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/keystoneauth/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 774691368a72297ed9bacec1afa15cfcb12ca896";
+        var bugProject = "keystoneauth";
+        var bugTitle = "keystoneauth1.tests.unit.identity package in keystoneauth1";
+    var fieldTags = "doc";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.1.0 on 2018-03-20 15:50";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,2455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Servers</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Servers</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="server_migrations.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Server_migrations"></i></a>
+    
+    
+    <a href="services.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Services"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: None</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Servers</a></li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="servers">
+<h1>Servers<a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h1>
+<p>Server interface.</p>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descclassname">novaclient.v2.servers.</code><code class="descname">NetworkInterface</code><span class="sig-paren">(</span><em>manager</em>, <em>info</em>, <em>loaded=False</em>, <em>resp=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">novaclient.base.Resource</span></code></p>
+<p>Populate and bind to a manager.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>manager</strong> – BaseManager object</li>
+<li><strong>info</strong> – dictionary representing resource attributes</li>
+<li><strong>loaded</strong> – prevent lazy-loading if set to True</li>
+<li><strong>resp</strong> – Response or list of Response objects</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt>
+<code class="descname">id</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descclassname">novaclient.v2.servers.</code><code class="descname">SecurityGroup</code><span class="sig-paren">(</span><em>manager</em>, <em>info</em>, <em>loaded=False</em>, <em>resp=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">novaclient.base.Resource</span></code></p>
+<p>Populate and bind to a manager.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>manager</strong> – BaseManager object</li>
+<li><strong>info</strong> – dictionary representing resource attributes</li>
+<li><strong>loaded</strong> – prevent lazy-loading if set to True</li>
+<li><strong>resp</strong> – Response or list of Response objects</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descclassname">novaclient.v2.servers.</code><code class="descname">Server</code><span class="sig-paren">(</span><em>manager</em>, <em>info</em>, <em>loaded=False</em>, <em>resp=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">novaclient.base.Resource</span></code></p>
+<p>Populate and bind to a manager.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>manager</strong> – BaseManager object</li>
+<li><strong>info</strong> – dictionary representing resource attributes</li>
+<li><strong>loaded</strong> – prevent lazy-loading if set to True</li>
+<li><strong>resp</strong> – Response or list of Response objects</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt>
+<code class="descname">HUMAN_ID</code><em class="property"> = True</em></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">add_fixed_ip</code><span class="sig-paren">(</span><em>network_id</em><span class="sig-paren">)</span></dt>
+<dd><p>Add an IP address on a network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>network_id</strong> – The ID of the network the IP should be on.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">add_floating_ip</code><span class="sig-paren">(</span><em>address</em>, <em>fixed_address=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Add floating IP to an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>address</strong> – The IP address or FloatingIP to add to the instance</li>
+<li><strong>fixed_address</strong> – The fixedIP address the FloatingIP is to be
+associated with (optional)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">add_security_group</code><span class="sig-paren">(</span><em>security_group</em><span class="sig-paren">)</span></dt>
+<dd><p>Add a security group to an instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>security_group</strong> – The name of security group to add</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.DictWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">add_tag</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Add single tag to an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">backup</code><span class="sig-paren">(</span><em>backup_name</em>, <em>backup_type</em>, <em>rotation</em><span class="sig-paren">)</span></dt>
+<dd><p>Backup a server instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>backup_name</strong> – Name of the backup image</li>
+<li><strong>backup_type</strong> – The backup type, like ‘daily’ or ‘weekly’</li>
+<li><strong>rotation</strong> – Int parameter representing how many backups to
+keep around.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">change_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span></dt>
+<dd><p>Update the admin password for a server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>password</strong> – string to set as the admin password on the server</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">clear_password</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Get password for a Server.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">confirm_resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Confirm that the resize worked, thus removing the original server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">create_image</code><span class="sig-paren">(</span><em>image_name</em>, <em>metadata=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Create an image based on this server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>image_name</strong> – The name to assign the newly create image.</li>
+<li><strong>metadata</strong> – Metadata to assign to the image.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Delete (i.e. shut down and delete the image) this server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">delete_all_tags</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Remove all tags from an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">delete_tag</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Remove single tag from an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">diagnostics</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Diagnostics – Retrieve server diagnostics.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">evacuate</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Evacuate an instance from failed host to specified host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>host</strong> – Name of the target host</li>
+<li><strong>password</strong> – string to set as admin password on the evacuated
+server.</li>
+<li><strong>force</strong> – forces to bypass the scheduler if host is provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">force_delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Force delete – Force delete a server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_console_output</code><span class="sig-paren">(</span><em>length=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Get text console log output from Server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>length</strong> – The number of lines you would like to retrieve (as int)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_console_url</code><span class="sig-paren">(</span><em>console_type</em><span class="sig-paren">)</span></dt>
+<dd><p>Retrieve a console of a particular protocol and console_type</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>console_type</strong> – Type of console</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_mks_console</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Get mks console for a Server.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_password</code><span class="sig-paren">(</span><em>private_key=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Get password for a Server.</p>
+<p>Returns the clear password of an instance if private_key is
+provided, returns the ciphered password otherwise.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>private_key</strong> – Path to private key file for decryption
+(optional)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_rdp_console</code><span class="sig-paren">(</span><em>console_type</em><span class="sig-paren">)</span></dt>
+<dd><p>Get rdp console for a Server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>console_type</strong> – Type of console (‘rdp-html5’)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_serial_console</code><span class="sig-paren">(</span><em>console_type</em><span class="sig-paren">)</span></dt>
+<dd><p>Get serial console for a Server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>console_type</strong> – Type of console (‘serial’)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_spice_console</code><span class="sig-paren">(</span><em>console_type</em><span class="sig-paren">)</span></dt>
+<dd><p>Get spice console for a Server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>console_type</strong> – Type of console (‘spice-html5’)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_vnc_console</code><span class="sig-paren">(</span><em>console_type</em><span class="sig-paren">)</span></dt>
+<dd><p>Get vnc console for a Server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>console_type</strong> – Type of console (‘novnc’ or ‘xvpvnc’)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">interface_attach</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Attach a network interface to an instance with an optional tag.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">interface_detach</code><span class="sig-paren">(</span><em>port_id</em><span class="sig-paren">)</span></dt>
+<dd><p>Detach a network interface from an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">interface_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>List interfaces attached to an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">list_security_group</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>List security group(s) of an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">live_migrate</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Migrates a running instance to a new machine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>host</strong> – destination host name.</li>
+<li><strong>block_migration</strong> – if True, do block_migration, the default
+value is None which is mapped to ‘auto’.</li>
+<li><strong>force</strong> – force to bypass the scheduler if host is provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">lock</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Lock – Lock the instance from certain operations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">migrate</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Migrate a server to a new host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">networks</code></dt>
+<dd><p>Generate a simplified list of addresses</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">pause</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Pause – Pause the running server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">reboot</code><span class="sig-paren">(</span><em>reboot_type=’SOFT’</em><span class="sig-paren">)</span></dt>
+<dd><p>Reboot the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reboot_type</strong> – either <code class="xref py py-data docutils literal"><span class="pre">REBOOT_SOFT</span></code> for a software-level
+reboot, or <cite>REBOOT_HARD</cite> for a virtual power cycle hard reboot.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">rebuild</code><span class="sig-paren">(</span><em>image</em>, <em>password=None</em>, <em>preserve_ephemeral=False</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Rebuild – shut down and then re-image – this server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>image</strong> – the <code class="xref py py-class docutils literal"><span class="pre">Image</span></code> (or its ID) to re-image with.</li>
+<li><strong>password</strong> – string to set as the admin password on the rebuilt
+server.</li>
+<li><strong>preserve_ephemeral</strong> – If True, request that any ephemeral device
+be preserved when rebuilding the instance. Defaults to False.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">remove_fixed_ip</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span></dt>
+<dd><p>Remove an IP address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>address</strong> – The IP address to remove.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">remove_floating_ip</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span></dt>
+<dd><p>Remove floating IP from an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>address</strong> – The IP address or FloatingIP to remove</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">remove_security_group</code><span class="sig-paren">(</span><em>security_group</em><span class="sig-paren">)</span></dt>
+<dd><p>Remove a security group from an instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">rescue</code><span class="sig-paren">(</span><em>password=None</em>, <em>image=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Rescue – Rescue the problematic server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>password</strong> – The admin password to be set in the rescue instance.</li>
+<li><strong>image</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Image</span></code> to rescue with.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">reset_network</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Reset network of an instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">reset_state</code><span class="sig-paren">(</span><em>state=’error’</em><span class="sig-paren">)</span></dt>
+<dd><p>Reset the state of an instance to active or error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">resize</code><span class="sig-paren">(</span><em>flavor</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Resize the server’s resources.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>flavor</strong> – the <code class="xref py py-class docutils literal"><span class="pre">Flavor</span></code> (or its ID) to resize to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+<p>Until a resize event is confirmed with <code class="xref py py-meth docutils literal"><span class="pre">confirm_resize()</span></code>, the old
+server will be kept around and you’ll be able to roll back to the old
+flavor quickly with <code class="xref py py-meth docutils literal"><span class="pre">revert_resize()</span></code>. All resizes are
+automatically confirmed after 24 hours.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">restore</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Restore – Restore a server in ‘soft-deleted’ state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">resume</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Resume – Resume the suspended server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">revert_resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Revert a previous resize, switching back to the old server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">scale</code><span class="sig-paren">(</span><em>resource</em>, <em>direction</em><span class="sig-paren">)</span></dt>
+<dd><p>Scale the server’s resources up or down without taking it offline.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>resource</strong> – the resource to scale.  (Currently only ‘cpu’.)</li>
+<li><strong>direction</strong> – the direction to scale.  (‘up’ or ‘down’)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">set_tags</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Set list of tags to an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">shelve</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Shelve – Shelve the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">shelve_offload</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Shelve_offload – Remove a shelved server from the compute node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Start – Start the paused server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Stop – Stop the running server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">suspend</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Suspend – Suspend the running server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">tag_list</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Get list of tags from an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">trigger_crash_dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Trigger crash dump in an instance</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">unlock</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Unlock – Remove instance lock.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">unpause</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Unpause – Unpause the paused server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">unrescue</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Unrescue – Unrescue the rescued server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">unshelve</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Unshelve – Unshelve the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Update the name and the description for this server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> – Update the server’s name.</li>
+<li><strong>description</strong> – Update the server’s description.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">Server</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descclassname">novaclient.v2.servers.</code><code class="descname">ServerManager</code><span class="sig-paren">(</span><em>api</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">novaclient.base.BootingManagerWithFind</span></code></p>
+<dl class="method">
+<dt>
+<code class="descname">add_fixed_ip</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>DEPRECATED Add an IP address on a network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to add an IP to.</li>
+<li><strong>network_id</strong> – The ID of the network the IP should be on.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">add_floating_ip</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>DEPRECATED Add a floating IP to an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to add an IP to.</li>
+<li><strong>address</strong> – The FloatingIP or string floating address to add.</li>
+<li><strong>fixed_address</strong> – The FixedIP the floatingIP should be
+associated with (optional)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">add_security_group</code><span class="sig-paren">(</span><em>server</em>, <em>security_group</em><span class="sig-paren">)</span></dt>
+<dd><p>Add a Security Group to an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – ID of the instance.</li>
+<li><strong>security_group</strong> – The name of security group to add.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.DictWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">add_tag</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Add single tag to an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">backup</code><span class="sig-paren">(</span><em>server</em>, <em>backup_name</em>, <em>backup_type</em>, <em>rotation</em><span class="sig-paren">)</span></dt>
+<dd><p>Backup a server instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to share onto.</li>
+<li><strong>backup_name</strong> – Name of the backup image</li>
+<li><strong>backup_type</strong> – The backup type, like ‘daily’ or ‘weekly’</li>
+<li><strong>rotation</strong> – Int parameter representing how many backups to
+keep around.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta if the request
+microversion is &lt; 2.45, otherwise novaclient.base.DictWithMeta.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">change_password</code><span class="sig-paren">(</span><em>server</em>, <em>password</em><span class="sig-paren">)</span></dt>
+<dd><p>Update the password for a server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) for which the admin
+password is to be changed</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">clear_password</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Clear the admin password of an instance</p>
+<p>Remove the admin password for an instance from the metadata server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) for which the admin
+password is to be cleared</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">confirm_resize</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Confirm that the resize worked, thus removing the original server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to share onto.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">create</code><span class="sig-paren">(</span><em>name</em>, <em>image</em>, <em>flavor</em>, <em>meta=None</em>, <em>files=None</em>, <em>reservation_id=None</em>, <em>min_count=None</em>, <em>max_count=None</em>, <em>security_groups=None</em>, <em>userdata=None</em>, <em>key_name=None</em>, <em>availability_zone=None</em>, <em>block_device_mapping=None</em>, <em>block_device_mapping_v2=None</em>, <em>nics=None</em>, <em>scheduler_hints=None</em>, <em>config_drive=None</em>, <em>disk_config=None</em>, <em>admin_pass=None</em>, <em>access_ip_v4=None</em>, <em>access_ip_v6=None</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Create (boot) a new server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> – Something to name the server.</li>
+<li><strong>image</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Image</span></code> to boot with.</li>
+<li><strong>flavor</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Flavor</span></code> to boot onto.</li>
+<li><strong>meta</strong> – A dict of arbitrary key/value metadata to store for this
+server. Both keys and values must be &lt;=255 characters.</li>
+<li><strong>files</strong> – A dict of files to overwrite on the server upon boot.
+Keys are file names (i.e. <code class="docutils literal"><span class="pre">/etc/passwd</span></code>) and values
+are the file contents (either as a string or as a
+file-like object). A maximum of five entries is allowed,
+and each file must be 10k or less.</li>
+<li><strong>reservation_id</strong> – a UUID for the set of servers being requested.</li>
+<li><strong>min_count</strong> – (optional extension) The minimum number of
+servers to launch.</li>
+<li><strong>max_count</strong> – (optional extension) The maximum number of
+servers to launch.</li>
+<li><strong>security_groups</strong> – A list of security group names</li>
+<li><strong>userdata</strong> – user data to pass to be exposed by the metadata
+server this can be a file type object as well or a
+string.</li>
+<li><strong>key_name</strong> – (optional extension) name of previously created
+keypair to inject into the instance.</li>
+<li><strong>availability_zone</strong> – Name of the availability zone for instance
+placement.</li>
+<li><strong>block_device_mapping</strong> – (optional extension) A dict of block
+device mappings for this server.</li>
+<li><strong>block_device_mapping_v2</strong> – (optional extension) A dict of block
+device mappings for this server.</li>
+<li><strong>nics</strong> – An ordered list of nics (dicts) to be added to this
+server, with information about connected networks,
+fixed IPs, port etc.
+Beginning in microversion 2.37 this field is required and
+also supports a single string value of ‘auto’ or ‘none’.
+The ‘auto’ value means the Compute service will
+automatically allocate a network for the project if one
+is not available. This is the same behavior as not
+passing anything for nics before microversion 2.37. The
+‘none’ value tells the Compute service to not allocate
+any networking for the server.</li>
+<li><strong>scheduler_hints</strong> – (optional extension) arbitrary key-value pairs
+specified by the client to help boot an instance</li>
+<li><strong>config_drive</strong> – (optional extension) value for config drive
+either boolean, or volume-id</li>
+<li><strong>disk_config</strong> – (optional extension) control how the disk is
+partitioned when the server is created.  possible
+values are ‘AUTO’ or ‘MANUAL’.</li>
+<li><strong>admin_pass</strong> – (optional extension) add a user supplied admin
+password.</li>
+<li><strong>access_ip_v4</strong> – (optional extension) add alternative access ip v4</li>
+<li><strong>access_ip_v6</strong> – (optional extension) add alternative access ip v6</li>
+<li><strong>description</strong> – optional description of the server (allowed since
+microversion 2.19)</li>
+<li><strong>tags</strong> – A list of arbitrary strings to be added to the
+server as tags (allowed since microversion 2.52)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">create_image</code><span class="sig-paren">(</span><em>server</em>, <em>image_name</em>, <em>metadata=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Snapshot a server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to share onto.</li>
+<li><strong>image_name</strong> – Name to give the snapshot image</li>
+<li><strong>metadata</strong> – Metadata to give newly-created image entity</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.StrWithMeta
+(The snapshot image’s UUID)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">delete</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Delete (i.e. shut down and delete the image) this server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to delete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">delete_all_tags</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Remove all tags from an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">delete_meta</code><span class="sig-paren">(</span><em>server</em>, <em>keys</em><span class="sig-paren">)</span></dt>
+<dd><p>Delete metadata from a server</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> to add metadata to</li>
+<li><strong>keys</strong> – A list of metadata keys to delete from the server</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">delete_tag</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Remove single tag from an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">diagnostics</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Retrieve server diagnostics.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) for which
+diagnostics to be returned</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">evacuate</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Evacuate a server instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to share onto.</li>
+<li><strong>host</strong> – Name of the target host.</li>
+<li><strong>password</strong> – string to set as password on the evacuated server.</li>
+<li><strong>force</strong> – forces to bypass the scheduler if host is provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">force_delete</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Force delete the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to force delete</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Get a server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – ID of the <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> to get.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">Server</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_console_output</code><span class="sig-paren">(</span><em>server</em>, <em>length=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Get text console log output from Server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) whose console output
+you would like to retrieve.</li>
+<li><strong>length</strong> – The number of tail loglines you would like to retrieve.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.StrWithMeta or
+novaclient.base.UnicodeWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_console_url</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Retrieve a console url of a server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> – server to get console url for</li>
+<li><strong>console_type</strong> – type can be novnc/xvpvnc for protocol vnc;
+spice-html5 for protocol spice; rdp-html5 for
+protocol rdp; serial for protocol serial.
+webmks for protocol mks (since version 2.8).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_mks_console</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Get a mks console for an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to get console for.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.DictWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_password</code><span class="sig-paren">(</span><em>server</em>, <em>private_key=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Get admin password of an instance</p>
+<p>Returns the admin password of an instance in the clear if private_key
+is provided, returns the ciphered password otherwise.</p>
+<p>Requires that openssl is installed and in the path</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) for which the admin
+password is to be returned</li>
+<li><strong>private_key</strong> – The private key to decrypt password
+(optional)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.StrWithMeta or
+novaclient.base.BytesWithMeta or
+novaclient.base.UnicodeWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_rdp_console</code><span class="sig-paren">(</span><em>server</em>, <em>console_type</em><span class="sig-paren">)</span></dt>
+<dd><p>Get a rdp console for an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to get console for.</li>
+<li><strong>console_type</strong> – Type of rdp console to get (‘rdp-html5’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.DictWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_serial_console</code><span class="sig-paren">(</span><em>server</em>, <em>console_type</em><span class="sig-paren">)</span></dt>
+<dd><p>Get a serial console for an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to get console for.</li>
+<li><strong>console_type</strong> – Type of serial console to get (‘serial’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.DictWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_spice_console</code><span class="sig-paren">(</span><em>server</em>, <em>console_type</em><span class="sig-paren">)</span></dt>
+<dd><p>Get a spice console for an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to get console for.</li>
+<li><strong>console_type</strong> – Type of spice console to get (‘spice-html5’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.DictWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">get_vnc_console</code><span class="sig-paren">(</span><em>server</em>, <em>console_type</em><span class="sig-paren">)</span></dt>
+<dd><p>Get a vnc console for an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to get console for.</li>
+<li><strong>console_type</strong> – Type of vnc console to get (‘novnc’ or ‘xvpvnc’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.DictWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">interface_attach</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Attach a network_interface to an instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to attach to.</li>
+<li><strong>port_id</strong> – The port to attach.
+The port_id and net_id parameters are mutually
+exclusive.</li>
+<li><strong>net_id</strong> – The ID of the network to attach.</li>
+<li><strong>fixed_ip</strong> – The fixed IP addresses. If the fixed_ip is specified,
+the net_id has to be specified at the same time.</li>
+<li><strong>tag</strong> – The tag.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">interface_detach</code><span class="sig-paren">(</span><em>server</em>, <em>port_id</em><span class="sig-paren">)</span></dt>
+<dd><p>Detach a network_interface from an instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to detach from.</li>
+<li><strong>port_id</strong> – The port to detach.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">interface_list</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>List attached network interfaces</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to query.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">ips</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Return IP Addresses associated with the server.</p>
+<p>Often a cheaper call then getting all the details for a server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) for which
+the IP adresses are to be returned</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.DictWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">list</code><span class="sig-paren">(</span><em>detailed=True</em>, <em>search_opts=None</em>, <em>marker=None</em>, <em>limit=None</em>, <em>sort_keys=None</em>, <em>sort_dirs=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Get a list of servers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>detailed</strong> – Whether to return detailed server info (optional).</li>
+<li><strong>search_opts</strong> – Search options to filter out servers which don’t
+match the search_opts (optional). The search opts format is a
+dictionary of key / value pairs that will be appended to the query
+string.  For a complete list of keys see:
+<a class="reference external" href="http://developer.openstack.org/api-ref-compute-v2.1.html#listServers">http://developer.openstack.org/api-ref-compute-v2.1.html#listServers</a></li>
+<li><strong>marker</strong> – Begin returning servers that appear later in the server
+list than that represented by this server id (optional).</li>
+<li><strong>limit</strong> – Maximum number of servers to return (optional).</li>
+<li><strong>sort_keys</strong> – List of sort keys</li>
+<li><strong>sort_dirs</strong> – List of sort directions</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of <code class="xref py py-class docutils literal"><span class="pre">Server</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<p>client.servers.list() - returns detailed list of servers</p>
+<p>client.servers.list(search_opts={‘status’: ‘ERROR’}) -
+returns list of servers in error state.</p>
+<p>client.servers.list(limit=10) - returns only 10 servers</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">list_security_group</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>List Security Group(s) of an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – ID of the instance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">live_migrate</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Migrates a running instance to a new machine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – instance id which comes from nova list.</li>
+<li><strong>host</strong> – destination host name.</li>
+<li><strong>block_migration</strong> – if True, do block_migration, can be set as
+‘auto’</li>
+<li><strong>force</strong> – forces to bypass the scheduler if host is provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">lock</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Lock the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to lock</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">migrate</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Migrate a server to a new host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">pause</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Pause the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to pause</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">reboot</code><span class="sig-paren">(</span><em>server</em>, <em>reboot_type=’SOFT’</em><span class="sig-paren">)</span></dt>
+<dd><p>Reboot a server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to share onto.</li>
+<li><strong>reboot_type</strong> – either <code class="xref py py-data docutils literal"><span class="pre">REBOOT_SOFT</span></code> for a software-level
+reboot, or <cite>REBOOT_HARD</cite> for a virtual power cycle hard reboot.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">rebuild</code><span class="sig-paren">(</span><em>server</em>, <em>image</em>, <em>password=None</em>, <em>disk_config=None</em>, <em>preserve_ephemeral=False</em>, <em>name=None</em>, <em>meta=None</em>, <em>files=None</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Rebuild – shut down and then re-image – a server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to share onto.</li>
+<li><strong>image</strong> – the <code class="xref py py-class docutils literal"><span class="pre">Image</span></code> (or its ID) to re-image with.</li>
+<li><strong>password</strong> – string to set as password on the rebuilt server.</li>
+<li><strong>disk_config</strong> – partitioning mode to use on the rebuilt server.
+Valid values are ‘AUTO’ or ‘MANUAL’</li>
+<li><strong>preserve_ephemeral</strong> – If True, request that any ephemeral device
+be preserved when rebuilding the instance. Defaults to False.</li>
+<li><strong>name</strong> – Something to name the server.</li>
+<li><strong>meta</strong> – A dict of arbitrary key/value metadata to store for this
+server. Both keys and values must be &lt;=255 characters.</li>
+<li><strong>files</strong> – A dict of files to overwrite on the server upon boot.
+Keys are file names (i.e. <code class="docutils literal"><span class="pre">/etc/passwd</span></code>) and values
+are the file contents (either as a string or as a
+file-like object). A maximum of five entries is allowed,
+and each file must be 10k or less.</li>
+<li><strong>description</strong> – optional description of the server (allowed since
+microversion 2.19)</li>
+<li><strong>userdata</strong> – optional userdata of the server (allowed since
+microversion 2.19)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">Server</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">remove_fixed_ip</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>DEPRECATED Remove an IP address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to add an IP to.</li>
+<li><strong>address</strong> – The IP address to remove.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">remove_floating_ip</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>DEPRECATED Remove a floating IP address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to remove an IP from.</li>
+<li><strong>address</strong> – The FloatingIP or string floating address to remove.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">remove_security_group</code><span class="sig-paren">(</span><em>server</em>, <em>security_group</em><span class="sig-paren">)</span></dt>
+<dd><p>Remove a Security Group to an instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – ID of the instance.</li>
+<li><strong>security_group</strong> – The name of security group to remove.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">rescue</code><span class="sig-paren">(</span><em>server</em>, <em>password=None</em>, <em>image=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Rescue the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> to rescue.</li>
+<li><strong>password</strong> – The admin password to be set in the rescue instance.</li>
+<li><strong>image</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Image</span></code> to rescue with.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">reset_network</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Reset network of an instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> for network is to be reset</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">reset_state</code><span class="sig-paren">(</span><em>server</em>, <em>state=’error’</em><span class="sig-paren">)</span></dt>
+<dd><p>Reset the state of an instance to active or error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – ID of the instance to reset the state of.</li>
+<li><strong>state</strong> – Desired state; either ‘active’ or ‘error’.
+Defaults to ‘error’.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">resize</code><span class="sig-paren">(</span><em>server</em>, <em>flavor</em>, <em>disk_config=None</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Resize a server’s resources.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to share onto.</li>
+<li><strong>flavor</strong> – the <code class="xref py py-class docutils literal"><span class="pre">Flavor</span></code> (or its ID) to resize to.</li>
+<li><strong>disk_config</strong> – partitioning mode to use on the rebuilt server.
+Valid values are ‘AUTO’ or ‘MANUAL’</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An instance of novaclient.base.TupleWithMeta</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Until a resize event is confirmed with <code class="xref py py-meth docutils literal"><span class="pre">confirm_resize()</span></code>, the old
+server will be kept around and you’ll be able to roll back to the old
+flavor quickly with <code class="xref py py-meth docutils literal"><span class="pre">revert_resize()</span></code>. All resizes are
+automatically confirmed after 24 hours.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">resource_class</code></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Server</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">restore</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Restore soft-deleted server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to restore</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">resume</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Resume the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to resume</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">revert_resize</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Revert a previous resize, switching back to the old server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to share onto.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">scale</code><span class="sig-paren">(</span><em>server</em>, <em>resource</em>, <em>direction</em><span class="sig-paren">)</span></dt>
+<dd><p>Scale a server’s resource without taking it offline.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to share onto.</li>
+<li><strong>resource</strong> – The resource to scale.  (Currently only ‘cpu’.)</li>
+<li><strong>direction</strong> – The direction in which to scale. (‘up’ or ‘down’.)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">set_meta</code><span class="sig-paren">(</span><em>server</em>, <em>metadata</em><span class="sig-paren">)</span></dt>
+<dd><p>Set a server’s metadata
+:param server: The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> to add metadata to
+:param metadata: A dict of metadata to be added to the server</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">set_meta_item</code><span class="sig-paren">(</span><em>server</em>, <em>key</em>, <em>value</em><span class="sig-paren">)</span></dt>
+<dd><p>Updates an item of server metadata
+:param server: The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> to add metadata to
+:param key: metadata key to update
+:param value: string value</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">set_tags</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Set list of tags to an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">shelve</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Shelve the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to shelve</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">shelve_offload</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Remove a shelved instance from the compute node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to shelve offload</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">start</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Start the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to start</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">stop</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Stop the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to stop</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">suspend</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Suspend the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to suspend</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">tag_list</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Get list of tags from an instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">trigger_crash_dump</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Trigger crash dump in an instance</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">unlock</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Unlock the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to unlock</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">unpause</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Unpause the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to unpause</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">unrescue</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Unrescue the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to unrescue</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">unshelve</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span></dt>
+<dd><p>Unshelve the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to unshelve</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of novaclient.base.TupleWithMeta</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>obj</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Update the name or the description for a server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> – The <code class="xref py py-class docutils literal"><span class="pre">Server</span></code> (or its ID) to update.</li>
+<li><strong>name</strong> – Update the server’s name.</li>
+<li><strong>description</strong> – Update the server’s description. If it equals to
+empty string(i.g. “”), the server description will be removed.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="server_migrations.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Server_migrations"></i></a>
+          
+          
+            <a href="services.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Services"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: None</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../user/index.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">The <code class="docutils literal"><span class="pre">novaclient</span></code> Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../deprecation-policy.html">Deprecating commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributor/index.html">Contributor Guide</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "reference/api/v2/servers" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-novaclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 34eaa6e9be751842269002c571e1d439a8ae6424";
+        var bugProject = "python-novaclient";
+        var bugTitle = "Servers in python-novaclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 9.1.1 on None";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

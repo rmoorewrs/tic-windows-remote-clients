@@ -1,0 +1,1553 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: keystoneclient.auth package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>keystoneclient.auth package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="keystoneclient.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneclient package"></i></a>
+    
+    
+    <a href="keystoneclient.auth.identity.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneclient.auth.identity package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 15:51</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">keystoneclient.auth package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.auth.base">keystoneclient.auth.base module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.auth.cli">keystoneclient.auth.cli module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.auth.conf">keystoneclient.auth.conf module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.auth.token_endpoint">keystoneclient.auth.token_endpoint module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.auth">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="keystoneclient-auth-package">
+<h1>keystoneclient.auth package<a class="headerlink" href="#keystoneclient-auth-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="keystoneclient.auth.identity.html">keystoneclient.auth.identity package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keystoneclient.auth.identity.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="keystoneclient.auth.identity.generic.html">keystoneclient.auth.identity.generic package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.generic.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.generic.html#module-keystoneclient.auth.identity.generic.base">keystoneclient.auth.identity.generic.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.generic.html#module-keystoneclient.auth.identity.generic.cli">keystoneclient.auth.identity.generic.cli module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.generic.html#module-keystoneclient.auth.identity.generic.password">keystoneclient.auth.identity.generic.password module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.generic.html#module-keystoneclient.auth.identity.generic.token">keystoneclient.auth.identity.generic.token module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.generic.html#module-keystoneclient.auth.identity.generic">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="keystoneclient.auth.identity.v3.html">keystoneclient.auth.identity.v3 package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.v3.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.v3.html#module-keystoneclient.auth.identity.v3.base">keystoneclient.auth.identity.v3.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.v3.html#module-keystoneclient.auth.identity.v3.federated">keystoneclient.auth.identity.v3.federated module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.v3.html#module-keystoneclient.auth.identity.v3.password">keystoneclient.auth.identity.v3.password module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.v3.html#module-keystoneclient.auth.identity.v3.token">keystoneclient.auth.identity.v3.token module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneclient.auth.identity.v3.html#module-keystoneclient.auth.identity.v3">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneclient.auth.identity.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneclient.auth.identity.html#module-keystoneclient.auth.identity.access">keystoneclient.auth.identity.access module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneclient.auth.identity.html#module-keystoneclient.auth.identity.base">keystoneclient.auth.identity.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneclient.auth.identity.html#module-keystoneclient.auth.identity.v2">keystoneclient.auth.identity.v2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneclient.auth.identity.html#module-keystoneclient.auth.identity">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-keystoneclient.auth.base">
+<span id="keystoneclient-auth-base-module"></span><h2>keystoneclient.auth.base module<a class="headerlink" href="#module-keystoneclient.auth.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin">
+<em class="property">class </em><code class="descclassname">keystoneclient.auth.base.</code><code class="descname">BaseAuthPlugin</code><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>The basic structure of an authentication plugin.</p>
+<dl class="method">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.get_connection_params">
+<code class="descname">get_connection_params</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.get_connection_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return any additional connection parameters required for the plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Headers that are set to authenticate a message or None for
+failure. Note that when checking this value that the empty
+dict is a valid, non-failure response.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an endpoint for the client.</p>
+<p>There are no required keyword arguments to <code class="docutils literal"><span class="pre">get_endpoint</span></code> as a plugin
+implementation should use best effort with the information available to
+determine the endpoint. However there are certain standard options that
+will be generated by the clients and should be used by plugins:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">service_type</span></code>: what sort of service is required.</li>
+<li><code class="docutils literal"><span class="pre">service_name</span></code>: the name of the service in the catalog.</li>
+<li><code class="docutils literal"><span class="pre">interface</span></code>: what visibility the endpoint should have.</li>
+<li><code class="docutils literal"><span class="pre">region_name</span></code>: the region the endpoint exists in.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The base URL that will be used to talk to the required
+service or None if not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)">string</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.get_headers">
+<code class="descname">get_headers</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.get_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch authentication headers for message.</p>
+<p>This is a more generalized replacement of the older get_token to allow
+plugins to specify different or additional authentication headers to
+the OpenStack standard ‘X-Auth-Token’ header.</p>
+<p>How the authentication headers are obtained is up to the plugin. If the
+headers are still valid they may be re-used, retrieved from cache or
+the plugin may invoke an authentication request against a server.</p>
+<p>The default implementation of get_headers calls the <cite>get_token</cite> method
+to enable older style plugins to continue functioning unchanged.
+Subclasses should feel free to completely override this function to
+provide the headers that they want.</p>
+<p>There are no required kwargs. They are passed directly to the auth
+plugin and they are implementation specific.</p>
+<p>Returning None will indicate that no token was able to be retrieved and
+that authorization was a failure. Adding no authentication data can be
+achieved by returning an empty dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Headers that are set to authenticate a message or None for
+failure. Note that when checking this value that the empty
+dict is a valid, non-failure response.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.get_options">
+<em class="property">classmethod </em><code class="descname">get_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.get_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of parameters associated with the auth plugin.</p>
+<p>This list may be used to generate CLI or config arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of Param objects describing available plugin
+parameters.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">List</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.get_project_id">
+<code class="descname">get_project_id</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.get_project_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project id that we are authenticated to.</p>
+<p>Wherever possible the project id should be inferred from the token
+however there are certain URLs and other places that require access to
+the currently authenticated project id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – A session object so the plugin can make HTTP calls.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A project identifier or None if one is not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain a token.</p>
+<p>How the token is obtained is up to the plugin. If it is still valid
+it may be re-used, retrieved from cache or invoke an authentication
+request against a server.</p>
+<p>There are no required kwargs. They are passed directly to the auth
+plugin and they are implementation specific.</p>
+<p>Returning None will indicate that no token was able to be retrieved.</p>
+<p>This function is misplaced as it should only be required for auth
+plugins that use the ‘X-Auth-Token’ header. However due to the way
+plugins evolved this method is required and often called to trigger an
+authentication request on a new plugin.</p>
+<p>When implementing a new plugin it is advised that you implement this
+method, however if you don’t require the ‘X-Auth-Token’ header override
+the <cite>get_headers</cite> method instead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – A session object so the plugin can make HTTP calls.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A token to use.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)">string</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.get_user_id">
+<code class="descname">get_user_id</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.get_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a unique user identifier of the plugin.</p>
+<p>Wherever possible the user id should be inferred from the token however
+there are certain URLs and other places that require access to the
+currently authenticated user id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – A session object so the plugin can make HTTP calls.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A user identifier or None if one is not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.invalidate">
+<code class="descname">invalidate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalidate the current authentication data.</p>
+<p>This should result in fetching a new token on next call.</p>
+<p>A plugin may be invalidated if an Unauthorized HTTP response is
+returned to indicate that the token may have been revoked or is
+otherwise now invalid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if there was something that the plugin did to
+invalidate. This means that it makes sense to try again. If
+nothing happens returns False to indicate give up.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.load_from_argparse_arguments">
+<em class="property">classmethod </em><code class="descname">load_from_argparse_arguments</code><span class="sig-paren">(</span><em>namespace</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.load_from_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a specific plugin object from an argparse result.</p>
+<p>Convert the results of a parse into the specified plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>namespace</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.6)"><em>argparse.Namespace</em></a>) – The result from CLI parsing.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An auth plugin, or None if a name is not provided.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.load_from_conf_options">
+<em class="property">classmethod </em><code class="descname">load_from_conf_options</code><span class="sig-paren">(</span><em>conf</em>, <em>group</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.load_from_conf_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the plugin from a CONF object.</p>
+<p>Convert the options already registered into a real plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>conf</strong> (<a class="reference external" href="https://docs.openstack.org/oslo.config/latest/reference/configopts.html#oslo_config.cfg.ConfigOpts" title="(in oslo.config v)"><em>oslo_config.cfg.ConfigOpts</em></a>) – A config object.</li>
+<li><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – The group name that options should be read from.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An authentication Plugin.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.load_from_options">
+<em class="property">classmethod </em><code class="descname">load_from_options</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.load_from_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a plugin from the arguments retrieved from get_options.</p>
+<p>A client can override this function to do argument validation or to
+handle differences between the registered options and what is required
+to create the plugin.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.load_from_options_getter">
+<em class="property">classmethod </em><code class="descname">load_from_options_getter</code><span class="sig-paren">(</span><em>getter</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.load_from_options_getter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a plugin from a getter function returning appropriate values.</p>
+<p>To handle cases other than the provided CONF and CLI loading you can
+specify a custom loader function that will be queried for the option
+value.</p>
+<p>The getter is a function that takes one value, an
+<a class="reference external" href="https://docs.openstack.org/oslo.config/latest/reference/opts.html#oslo_config.cfg.Opt" title="(in oslo.config v)"><code class="xref py py-class docutils literal"><span class="pre">oslo_config.cfg.Opt</span></code></a> and returns a value to load with.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>getter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.6)"><em>callable</em></a>) – A function that returns a value for the given opt.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An authentication Plugin.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.register_argparse_arguments">
+<em class="property">classmethod </em><code class="descname">register_argparse_arguments</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.register_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register the CLI options provided by a specific plugin.</p>
+<p>Given a plugin class convert it’s options into argparse arguments and
+add them to a parser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.6)"><em>argparse.ArgumentParser</em></a>) – the parser to attach argparse options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.base.BaseAuthPlugin.register_conf_options">
+<em class="property">classmethod </em><code class="descname">register_conf_options</code><span class="sig-paren">(</span><em>conf</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.BaseAuthPlugin.register_conf_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register the oslo_config options that are needed for a plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>conf</strong> (<a class="reference external" href="https://docs.openstack.org/oslo.config/latest/reference/configopts.html#oslo_config.cfg.ConfigOpts" title="(in oslo.config v)"><em>oslo_config.cfg.ConfigOpts</em></a>) – A config object.</li>
+<li><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – The group name that options should be read from.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.base.get_available_plugin_classes">
+<code class="descclassname">keystoneclient.auth.base.</code><code class="descname">get_available_plugin_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.get_available_plugin_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve all the plugin classes available on the system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dict with plugin entrypoint name as the key and the plugin
+class as the value.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.base.get_available_plugin_names">
+<code class="descclassname">keystoneclient.auth.base.</code><code class="descname">get_available_plugin_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.get_available_plugin_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the names of all the plugins that are available on the system.</p>
+<p>This is particularly useful for help and error text to prompt a user for
+example what plugins they may specify.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of names.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#frozenset" title="(in Python v3.6)">frozenset</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.base.get_plugin_class">
+<code class="descclassname">keystoneclient.auth.base.</code><code class="descname">get_plugin_class</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.base.get_plugin_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a plugin class by its entrypoint name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the object to get.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An auth plugin class.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="keystoneclient.html#keystoneclient.exceptions.NoMatchingPlugin" title="keystoneclient.exceptions.NoMatchingPlugin"><strong>keystoneclient.exceptions.NoMatchingPlugin</strong></a> – if a plugin cannot be
+created.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.auth.cli">
+<span id="keystoneclient-auth-cli-module"></span><h2>keystoneclient.auth.cli module<a class="headerlink" href="#module-keystoneclient.auth.cli" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="keystoneclient.auth.cli.load_from_argparse_arguments">
+<code class="descclassname">keystoneclient.auth.cli.</code><code class="descname">load_from_argparse_arguments</code><span class="sig-paren">(</span><em>namespace</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.cli.load_from_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the created plugin from the completed argparse results.</p>
+<p>Loads and creates the auth plugin from the information parsed from the
+command line by argparse.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>namespace</strong> (<em>Namespace</em>) – The result from CLI parsing.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An auth plugin, or None if a name is not provided.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="keystoneclient.html#keystoneclient.exceptions.NoMatchingPlugin" title="keystoneclient.exceptions.NoMatchingPlugin"><strong>keystoneclient.exceptions.NoMatchingPlugin</strong></a> – if a plugin cannot be
+created.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.cli.register_argparse_arguments">
+<code class="descclassname">keystoneclient.auth.cli.</code><code class="descname">register_argparse_arguments</code><span class="sig-paren">(</span><em>parser</em>, <em>argv</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.cli.register_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register CLI options needed to create a plugin.</p>
+<p>The function inspects the provided arguments so that it can also register
+the options required for that specific plugin if available.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>argparse.ArgumentParser</strong> – the parser to attach argparse options to.</li>
+<li><strong>argv</strong> (<em>List</em>) – the arguments provided to the application.</li>
+<li><strong>default</strong> (<em>str/class</em>) – a default plugin name or a plugin object to use
+if one isn’t specified by the CLI. default: None.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The plugin class that will be loaded or None if not provided.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="keystoneclient.html#keystoneclient.exceptions.NoMatchingPlugin" title="keystoneclient.exceptions.NoMatchingPlugin"><strong>keystoneclient.exceptions.NoMatchingPlugin</strong></a> – if a plugin cannot be
+created.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.auth.conf">
+<span id="keystoneclient-auth-conf-module"></span><h2>keystoneclient.auth.conf module<a class="headerlink" href="#module-keystoneclient.auth.conf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="keystoneclient.auth.conf.get_common_conf_options">
+<code class="descclassname">keystoneclient.auth.conf.</code><code class="descname">get_common_conf_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.conf.get_common_conf_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the oslo_config options common for all auth plugins.</p>
+<p>These may be useful without being registered for config file generation
+or to manipulate the options before registering them yourself.</p>
+<dl class="docutils">
+<dt>The options that are set are:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">auth_plugin:</th><td class="field-body">The name of the plugin to load.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">auth_section:</th><td class="field-body">The config file section to load options from.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of oslo_config options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.conf.get_plugin_options">
+<code class="descclassname">keystoneclient.auth.conf.</code><code class="descname">get_plugin_options</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.conf.get_plugin_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the oslo_config options for a specific plugin.</p>
+<p>This will be the list of config options that is registered and loaded by
+the specified plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of oslo_config options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.conf.load_from_conf_options">
+<code class="descclassname">keystoneclient.auth.conf.</code><code class="descname">load_from_conf_options</code><span class="sig-paren">(</span><em>conf</em>, <em>group</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.conf.load_from_conf_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a plugin from an oslo_config CONF object.</p>
+<p>Each plugin will register their own required options and so there is no
+standard list and the plugin should be consulted.</p>
+<p>The base options should have been registered with register_conf_options
+before this function is called.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>conf</strong> (<a class="reference external" href="https://docs.openstack.org/oslo.config/latest/reference/configopts.html#oslo_config.cfg.ConfigOpts" title="(in oslo.config v)"><em>oslo_config.cfg.ConfigOpts</em></a>) – A conf object.</li>
+<li><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – The group name that options should be read from.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An authentication Plugin or None if a name is not provided</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="keystoneclient.html#keystoneclient.exceptions.NoMatchingPlugin" title="keystoneclient.exceptions.NoMatchingPlugin"><strong>keystoneclient.exceptions.NoMatchingPlugin</strong></a> – if a plugin cannot be
+created.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.conf.register_conf_options">
+<code class="descclassname">keystoneclient.auth.conf.</code><code class="descname">register_conf_options</code><span class="sig-paren">(</span><em>conf</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.conf.register_conf_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register the oslo_config options that are needed for a plugin.</p>
+<p>This only registers the basic options shared by all plugins. Options that
+are specific to a plugin are loaded just before they are read.</p>
+<p>The defined options are:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>auth_plugin: the name of the auth plugin that will be used for</dt>
+<dd><p class="first last">authentication.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>auth_section: the group from which further auth plugin options should be</dt>
+<dd><p class="first last">taken. If section is not provided then the auth plugin options will be
+taken from the same group as provided in the parameters.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>conf</strong> (<a class="reference external" href="https://docs.openstack.org/oslo.config/latest/reference/configopts.html#oslo_config.cfg.ConfigOpts" title="(in oslo.config v)"><em>oslo_config.cfg.ConfigOpts</em></a>) – config object to register with.</li>
+<li><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – The ini group to register options in.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.auth.token_endpoint">
+<span id="keystoneclient-auth-token-endpoint-module"></span><h2>keystoneclient.auth.token_endpoint module<a class="headerlink" href="#module-keystoneclient.auth.token_endpoint" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.auth.token_endpoint.Token">
+<em class="property">class </em><code class="descclassname">keystoneclient.auth.token_endpoint.</code><code class="descname">Token</code><span class="sig-paren">(</span><em>endpoint</em>, <em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.token_endpoint.Token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneclient.auth.base.BaseAuthPlugin" title="keystoneclient.auth.base.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.base.BaseAuthPlugin</span></code></a></p>
+<p>A provider that will always use the given token and endpoint.</p>
+<p>This is really only useful for testing and in certain CLI cases where you
+have a known endpoint and admin token that you want to use.</p>
+<dl class="method">
+<dt id="keystoneclient.auth.token_endpoint.Token.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.token_endpoint.Token.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the supplied endpoint.</p>
+<p>Using this plugin the same endpoint is returned regardless of the
+parameters passed to the plugin.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.token_endpoint.Token.get_options">
+<em class="property">classmethod </em><code class="descname">get_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.token_endpoint.Token.get_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.token_endpoint.Token.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.token_endpoint.Token.get_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.auth">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-keystoneclient.auth" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.auth.BaseAuthPlugin">
+<em class="property">class </em><code class="descclassname">keystoneclient.auth.</code><code class="descname">BaseAuthPlugin</code><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>The basic structure of an authentication plugin.</p>
+<dl class="method">
+<dt id="keystoneclient.auth.BaseAuthPlugin.get_connection_params">
+<code class="descname">get_connection_params</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.get_connection_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return any additional connection parameters required for the plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Headers that are set to authenticate a message or None for
+failure. Note that when checking this value that the empty
+dict is a valid, non-failure response.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.BaseAuthPlugin.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an endpoint for the client.</p>
+<p>There are no required keyword arguments to <code class="docutils literal"><span class="pre">get_endpoint</span></code> as a plugin
+implementation should use best effort with the information available to
+determine the endpoint. However there are certain standard options that
+will be generated by the clients and should be used by plugins:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">service_type</span></code>: what sort of service is required.</li>
+<li><code class="docutils literal"><span class="pre">service_name</span></code>: the name of the service in the catalog.</li>
+<li><code class="docutils literal"><span class="pre">interface</span></code>: what visibility the endpoint should have.</li>
+<li><code class="docutils literal"><span class="pre">region_name</span></code>: the region the endpoint exists in.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The base URL that will be used to talk to the required
+service or None if not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)">string</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.BaseAuthPlugin.get_headers">
+<code class="descname">get_headers</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.get_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch authentication headers for message.</p>
+<p>This is a more generalized replacement of the older get_token to allow
+plugins to specify different or additional authentication headers to
+the OpenStack standard ‘X-Auth-Token’ header.</p>
+<p>How the authentication headers are obtained is up to the plugin. If the
+headers are still valid they may be re-used, retrieved from cache or
+the plugin may invoke an authentication request against a server.</p>
+<p>The default implementation of get_headers calls the <cite>get_token</cite> method
+to enable older style plugins to continue functioning unchanged.
+Subclasses should feel free to completely override this function to
+provide the headers that they want.</p>
+<p>There are no required kwargs. They are passed directly to the auth
+plugin and they are implementation specific.</p>
+<p>Returning None will indicate that no token was able to be retrieved and
+that authorization was a failure. Adding no authentication data can be
+achieved by returning an empty dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Headers that are set to authenticate a message or None for
+failure. Note that when checking this value that the empty
+dict is a valid, non-failure response.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.BaseAuthPlugin.get_options">
+<em class="property">classmethod </em><code class="descname">get_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.get_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of parameters associated with the auth plugin.</p>
+<p>This list may be used to generate CLI or config arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of Param objects describing available plugin
+parameters.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">List</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.BaseAuthPlugin.get_project_id">
+<code class="descname">get_project_id</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.get_project_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project id that we are authenticated to.</p>
+<p>Wherever possible the project id should be inferred from the token
+however there are certain URLs and other places that require access to
+the currently authenticated project id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – A session object so the plugin can make HTTP calls.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A project identifier or None if one is not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.BaseAuthPlugin.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain a token.</p>
+<p>How the token is obtained is up to the plugin. If it is still valid
+it may be re-used, retrieved from cache or invoke an authentication
+request against a server.</p>
+<p>There are no required kwargs. They are passed directly to the auth
+plugin and they are implementation specific.</p>
+<p>Returning None will indicate that no token was able to be retrieved.</p>
+<p>This function is misplaced as it should only be required for auth
+plugins that use the ‘X-Auth-Token’ header. However due to the way
+plugins evolved this method is required and often called to trigger an
+authentication request on a new plugin.</p>
+<p>When implementing a new plugin it is advised that you implement this
+method, however if you don’t require the ‘X-Auth-Token’ header override
+the <cite>get_headers</cite> method instead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – A session object so the plugin can make HTTP calls.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A token to use.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)">string</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.BaseAuthPlugin.get_user_id">
+<code class="descname">get_user_id</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.get_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a unique user identifier of the plugin.</p>
+<p>Wherever possible the user id should be inferred from the token however
+there are certain URLs and other places that require access to the
+currently authenticated user id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneclient.html#keystoneclient.session.Session" title="keystoneclient.session.Session"><em>keystoneclient.session.Session</em></a>) – A session object so the plugin can make HTTP calls.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A user identifier or None if one is not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.auth.BaseAuthPlugin.invalidate">
+<code class="descname">invalidate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalidate the current authentication data.</p>
+<p>This should result in fetching a new token on next call.</p>
+<p>A plugin may be invalidated if an Unauthorized HTTP response is
+returned to indicate that the token may have been revoked or is
+otherwise now invalid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if there was something that the plugin did to
+invalidate. This means that it makes sense to try again. If
+nothing happens returns False to indicate give up.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.BaseAuthPlugin.load_from_argparse_arguments">
+<em class="property">classmethod </em><code class="descname">load_from_argparse_arguments</code><span class="sig-paren">(</span><em>namespace</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.load_from_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a specific plugin object from an argparse result.</p>
+<p>Convert the results of a parse into the specified plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>namespace</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.6)"><em>argparse.Namespace</em></a>) – The result from CLI parsing.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An auth plugin, or None if a name is not provided.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.BaseAuthPlugin.load_from_conf_options">
+<em class="property">classmethod </em><code class="descname">load_from_conf_options</code><span class="sig-paren">(</span><em>conf</em>, <em>group</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.load_from_conf_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the plugin from a CONF object.</p>
+<p>Convert the options already registered into a real plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>conf</strong> (<a class="reference external" href="https://docs.openstack.org/oslo.config/latest/reference/configopts.html#oslo_config.cfg.ConfigOpts" title="(in oslo.config v)"><em>oslo_config.cfg.ConfigOpts</em></a>) – A config object.</li>
+<li><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – The group name that options should be read from.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An authentication Plugin.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.BaseAuthPlugin.load_from_options">
+<em class="property">classmethod </em><code class="descname">load_from_options</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.load_from_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a plugin from the arguments retrieved from get_options.</p>
+<p>A client can override this function to do argument validation or to
+handle differences between the registered options and what is required
+to create the plugin.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.BaseAuthPlugin.load_from_options_getter">
+<em class="property">classmethod </em><code class="descname">load_from_options_getter</code><span class="sig-paren">(</span><em>getter</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.load_from_options_getter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a plugin from a getter function returning appropriate values.</p>
+<p>To handle cases other than the provided CONF and CLI loading you can
+specify a custom loader function that will be queried for the option
+value.</p>
+<p>The getter is a function that takes one value, an
+<a class="reference external" href="https://docs.openstack.org/oslo.config/latest/reference/opts.html#oslo_config.cfg.Opt" title="(in oslo.config v)"><code class="xref py py-class docutils literal"><span class="pre">oslo_config.cfg.Opt</span></code></a> and returns a value to load with.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>getter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.6)"><em>callable</em></a>) – A function that returns a value for the given opt.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An authentication Plugin.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.BaseAuthPlugin.register_argparse_arguments">
+<em class="property">classmethod </em><code class="descname">register_argparse_arguments</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.register_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register the CLI options provided by a specific plugin.</p>
+<p>Given a plugin class convert it’s options into argparse arguments and
+add them to a parser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.6)"><em>argparse.ArgumentParser</em></a>) – the parser to attach argparse options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneclient.auth.BaseAuthPlugin.register_conf_options">
+<em class="property">classmethod </em><code class="descname">register_conf_options</code><span class="sig-paren">(</span><em>conf</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.BaseAuthPlugin.register_conf_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register the oslo_config options that are needed for a plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>conf</strong> (<a class="reference external" href="https://docs.openstack.org/oslo.config/latest/reference/configopts.html#oslo_config.cfg.ConfigOpts" title="(in oslo.config v)"><em>oslo_config.cfg.ConfigOpts</em></a>) – A config object.</li>
+<li><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – The group name that options should be read from.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.get_available_plugin_names">
+<code class="descclassname">keystoneclient.auth.</code><code class="descname">get_available_plugin_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.get_available_plugin_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the names of all the plugins that are available on the system.</p>
+<p>This is particularly useful for help and error text to prompt a user for
+example what plugins they may specify.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of names.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#frozenset" title="(in Python v3.6)">frozenset</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.get_available_plugin_classes">
+<code class="descclassname">keystoneclient.auth.</code><code class="descname">get_available_plugin_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.get_available_plugin_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve all the plugin classes available on the system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dict with plugin entrypoint name as the key and the plugin
+class as the value.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.get_plugin_class">
+<code class="descclassname">keystoneclient.auth.</code><code class="descname">get_plugin_class</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.get_plugin_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a plugin class by its entrypoint name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the object to get.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An auth plugin class.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="keystoneclient.html#keystoneclient.exceptions.NoMatchingPlugin" title="keystoneclient.exceptions.NoMatchingPlugin"><strong>keystoneclient.exceptions.NoMatchingPlugin</strong></a> – if a plugin cannot be
+created.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.load_from_argparse_arguments">
+<code class="descclassname">keystoneclient.auth.</code><code class="descname">load_from_argparse_arguments</code><span class="sig-paren">(</span><em>namespace</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.load_from_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the created plugin from the completed argparse results.</p>
+<p>Loads and creates the auth plugin from the information parsed from the
+command line by argparse.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>namespace</strong> (<em>Namespace</em>) – The result from CLI parsing.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An auth plugin, or None if a name is not provided.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="keystoneclient.html#keystoneclient.exceptions.NoMatchingPlugin" title="keystoneclient.exceptions.NoMatchingPlugin"><strong>keystoneclient.exceptions.NoMatchingPlugin</strong></a> – if a plugin cannot be
+created.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.register_argparse_arguments">
+<code class="descclassname">keystoneclient.auth.</code><code class="descname">register_argparse_arguments</code><span class="sig-paren">(</span><em>parser</em>, <em>argv</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.register_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register CLI options needed to create a plugin.</p>
+<p>The function inspects the provided arguments so that it can also register
+the options required for that specific plugin if available.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>argparse.ArgumentParser</strong> – the parser to attach argparse options to.</li>
+<li><strong>argv</strong> (<em>List</em>) – the arguments provided to the application.</li>
+<li><strong>default</strong> (<em>str/class</em>) – a default plugin name or a plugin object to use
+if one isn’t specified by the CLI. default: None.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The plugin class that will be loaded or None if not provided.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="keystoneclient.html#keystoneclient.exceptions.NoMatchingPlugin" title="keystoneclient.exceptions.NoMatchingPlugin"><strong>keystoneclient.exceptions.NoMatchingPlugin</strong></a> – if a plugin cannot be
+created.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.get_common_conf_options">
+<code class="descclassname">keystoneclient.auth.</code><code class="descname">get_common_conf_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.get_common_conf_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the oslo_config options common for all auth plugins.</p>
+<p>These may be useful without being registered for config file generation
+or to manipulate the options before registering them yourself.</p>
+<dl class="docutils">
+<dt>The options that are set are:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">auth_plugin:</th><td class="field-body">The name of the plugin to load.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">auth_section:</th><td class="field-body">The config file section to load options from.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of oslo_config options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.get_plugin_options">
+<code class="descclassname">keystoneclient.auth.</code><code class="descname">get_plugin_options</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.get_plugin_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the oslo_config options for a specific plugin.</p>
+<p>This will be the list of config options that is registered and loaded by
+the specified plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of oslo_config options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.load_from_conf_options">
+<code class="descclassname">keystoneclient.auth.</code><code class="descname">load_from_conf_options</code><span class="sig-paren">(</span><em>conf</em>, <em>group</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.load_from_conf_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a plugin from an oslo_config CONF object.</p>
+<p>Each plugin will register their own required options and so there is no
+standard list and the plugin should be consulted.</p>
+<p>The base options should have been registered with register_conf_options
+before this function is called.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>conf</strong> (<a class="reference external" href="https://docs.openstack.org/oslo.config/latest/reference/configopts.html#oslo_config.cfg.ConfigOpts" title="(in oslo.config v)"><em>oslo_config.cfg.ConfigOpts</em></a>) – A conf object.</li>
+<li><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – The group name that options should be read from.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An authentication Plugin or None if a name is not provided</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#keystoneclient.auth.BaseAuthPlugin" title="keystoneclient.auth.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.auth.BaseAuthPlugin</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="keystoneclient.html#keystoneclient.exceptions.NoMatchingPlugin" title="keystoneclient.exceptions.NoMatchingPlugin"><strong>keystoneclient.exceptions.NoMatchingPlugin</strong></a> – if a plugin cannot be
+created.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.auth.register_conf_options">
+<code class="descclassname">keystoneclient.auth.</code><code class="descname">register_conf_options</code><span class="sig-paren">(</span><em>conf</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.auth.register_conf_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register the oslo_config options that are needed for a plugin.</p>
+<p>This only registers the basic options shared by all plugins. Options that
+are specific to a plugin are loaded just before they are read.</p>
+<p>The defined options are:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>auth_plugin: the name of the auth plugin that will be used for</dt>
+<dd><p class="first last">authentication.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>auth_section: the group from which further auth plugin options should be</dt>
+<dd><p class="first last">taken. If section is not provided then the auth plugin options will be
+taken from the same group as provided in the parameters.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>conf</strong> (<a class="reference external" href="https://docs.openstack.org/oslo.config/latest/reference/configopts.html#oslo_config.cfg.ConfigOpts" title="(in oslo.config v)"><em>oslo_config.cfg.ConfigOpts</em></a>) – config object to register with.</li>
+<li><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – The ini group to register options in.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="keystoneclient.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneclient package"></i></a>
+          
+          
+            <a href="keystoneclient.auth.identity.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneclient.auth.identity package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 15:51</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../using-api-v3.html">Using the V3 Client API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using-sessions.html">Using Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using-api-v2.html">Using the V2 client API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="keystoneclient.html">keystoneclient package</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">CHANGES</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "api/keystoneclient.auth" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-keystoneclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 96e0c5b5625c7a5ad8d3ccd99a52a3fa6050f2ad";
+        var bugProject = "python-keystoneclient";
+        var bugTitle = "keystoneclient.auth package in python-keystoneclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.13.0 on 2018-03-20 15:51";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

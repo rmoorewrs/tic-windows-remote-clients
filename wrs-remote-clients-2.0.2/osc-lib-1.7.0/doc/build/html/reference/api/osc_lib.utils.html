@@ -1,0 +1,778 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: The <code class="docutils literal"><span class="pre">osc_lib.utils</span></code> Module</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>The <code class="docutils literal"><span class="pre">osc_lib.utils</span></code> Module</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="osc_lib.shell.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: The <code class="docutils literal"><span class="pre">osc_lib.shell</span></code> Module"></i></a>
+    
+    
+    <a href="osc_lib.version.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: The <code class="docutils literal"><span class="pre">osc_lib.version</span></code> Module"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 16:03</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">The <code class="docutils literal"><span class="pre">osc_lib.utils</span></code> Module</a></li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="module-osc_lib.utils">
+<span id="the-osc-lib-utils-module"></span><h1>The <a class="reference internal" href="#module-osc_lib.utils" title="osc_lib.utils"><code class="xref py py-mod docutils literal"><span class="pre">osc_lib.utils</span></code></a> Module<a class="headerlink" href="#module-osc_lib.utils" title="Permalink to this headline">¶</a></h1>
+<p>Common client utilities</p>
+<dl class="function">
+<dt id="osc_lib.utils.backward_compat_col_lister">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">backward_compat_col_lister</code><span class="sig-paren">(</span><em>column_headers</em>, <em>columns</em>, <em>column_map</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.backward_compat_col_lister" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the column headers to keep column backward compatibility.</p>
+<p>Replace the new column name of column headers by old name, so that
+the column headers can continue to support to show the old column name by
+–column/-c option with old name, like: volume list -c ‘Display Name’</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>column_headers</strong> – The column headers to be output in list command.</li>
+<li><strong>columns</strong> – The columns to be output.</li>
+<li><strong>column_map</strong> – The key of map is old column name, the value is new
+column name, like: {‘old_col’: ‘new_col’}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.backward_compat_col_showone">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">backward_compat_col_showone</code><span class="sig-paren">(</span><em>show_object</em>, <em>columns</em>, <em>column_map</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.backward_compat_col_showone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the output object to keep column backward compatibility.</p>
+<p>Replace the new column name of output object by old name, so that
+the object can continue to support to show the old column name by
+–column/-c option with old name, like: volume show -c ‘display_name’</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>show_object</strong> – The object to be output in create/show commands.</li>
+<li><strong>columns</strong> – The columns to be output.</li>
+<li><strong>column_map</strong> – The key of map is old column name, the value is new
+column name, like: {‘old_col’: ‘new_col’}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.build_kwargs_dict">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">build_kwargs_dict</code><span class="sig-paren">(</span><em>arg_name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.build_kwargs_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary containing <cite>arg_name</cite> if <cite>value</cite> is set.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.env">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">env</code><span class="sig-paren">(</span><em>*vars</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.env" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for the first defined of possibly many env vars</p>
+<p>Returns the first environment variable defined in vars, or
+returns the default defined in kwargs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.find_min_match">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">find_min_match</code><span class="sig-paren">(</span><em>items</em>, <em>sort_attr</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.find_min_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find all resources meeting the given minimum constraints</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>items</strong> – A List of objects to consider</li>
+<li><strong>sort_attr</strong> – Attribute to sort the resulting list</li>
+<li><strong>kwargs</strong> – A dict of attributes and their minimum values</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">A list of resources osrted by sort_attr that meet the minimums</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.find_resource">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">find_resource</code><span class="sig-paren">(</span><em>manager</em>, <em>name_or_id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.find_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper for the _find_* methods.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>manager</strong> – A client manager class</li>
+<li><strong>name_or_id</strong> – The resource we are trying to find</li>
+<li><strong>kwargs</strong> – To be used in calling .find()</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">The found resource</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This method will attempt to find a resource in a variety of ways.
+Primarily .get() methods will be called with <cite>name_or_id</cite> as an integer
+value, and tried again as a string value.</p>
+<p>If both fail, then a .find() is attempted, which is essentially calling
+a .list() function with a ‘name’ query parameter that is set to
+<cite>name_or_id</cite>.</p>
+<p>Lastly, if any kwargs are passed in, they will be treated as additional
+query parameters. This is particularly handy in the case of finding
+resources in a domain.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.format_dict">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">format_dict</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.format_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a formatted string of key value pairs</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> – a dict</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">a string formatted to key=’value’</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.format_dict_of_list">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">format_dict_of_list</code><span class="sig-paren">(</span><em>data</em>, <em>separator=’; ‘</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.format_dict_of_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a formatted string of key value pair</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> – a dict, key is string, value is a list of string, for example:
+{u’public’: [u‘2001:db8::8’, u‘172.24.4.6’]}</li>
+<li><strong>separator</strong> – the separator to use between key/value pair
+(default: ‘; ‘)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a string formatted to {‘key1’=[‘value1’, ‘value2’]} with separated
+by separator</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.format_list">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">format_list</code><span class="sig-paren">(</span><em>data</em>, <em>separator=’</em>, <em>’</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.format_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a formatted strings</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> – a list of strings</li>
+<li><strong>separator</strong> – the separator to use between strings (default: ‘, ‘)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">a string formatted based on separator</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.format_list_of_dicts">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">format_list_of_dicts</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.format_list_of_dicts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a formatted string of key value pairs for each dict</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> – a list of dicts</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">a string formatted to key=’value’ with dicts separated by new line</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.format_size">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">format_size</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.format_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display size of a resource in a human readable format</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<em>string</em>) – The size of the resource in bytes.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns the size in human-friendly format</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Rtype string:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>This function converts the size (provided in bytes) of a resource
+into a human-friendly format such as K, M, G, T, P, E, Z</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.get_client_class">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">get_client_class</code><span class="sig-paren">(</span><em>api_name</em>, <em>version</em>, <em>version_map</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.get_client_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the client class for the requested API version</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>api_name</strong> – the name of the API, e.g. ‘compute’, ‘image’, etc</li>
+<li><strong>version</strong> – the requested API version</li>
+<li><strong>version_map</strong> – a dict of client classes keyed by version</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">a client class for the requested API version</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.get_dict_properties">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">get_dict_properties</code><span class="sig-paren">(</span><em>item</em>, <em>fields</em>, <em>mixed_case_fields=None</em>, <em>formatters=None</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.get_dict_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple containing the item properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>item</strong> – a single dict resource</li>
+<li><strong>fields</strong> – tuple of strings with the desired field names</li>
+<li><strong>mixed_case_fields</strong> – tuple of field names to preserve case</li>
+<li><strong>formatters</strong> – dictionary mapping field names to callables
+to format the values</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.get_effective_log_level">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">get_effective_log_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.get_effective_log_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the lowest logging level considered by logging handlers</p>
+<p>Retrieve and return the smallest log level set among the root
+logger’s handlers (in case of multiple handlers).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.get_field">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">get_field</code><span class="sig-paren">(</span><em>item</em>, <em>field</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.get_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.get_item_properties">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">get_item_properties</code><span class="sig-paren">(</span><em>item</em>, <em>fields</em>, <em>mixed_case_fields=None</em>, <em>formatters=None</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.get_item_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple containing the item properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>item</strong> – a single item resource (e.g. Server, Project, etc)</li>
+<li><strong>fields</strong> – tuple of strings with the desired field names</li>
+<li><strong>mixed_case_fields</strong> – tuple of field names to preserve case</li>
+<li><strong>formatters</strong> – dictionary mapping field names to callables
+to format the values</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.get_password">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">get_password</code><span class="sig-paren">(</span><em>stdin</em>, <em>prompt=None</em>, <em>confirm=True</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.get_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.is_ascii">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">is_ascii</code><span class="sig-paren">(</span><em>string</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.is_ascii" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.read_blob_file_contents">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">read_blob_file_contents</code><span class="sig-paren">(</span><em>blob_file</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.read_blob_file_contents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.sort_items">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">sort_items</code><span class="sig-paren">(</span><em>items</em>, <em>sort_str</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.sort_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort items based on sort keys and sort directions given by sort_str.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>items</strong> – a list or generator object of items</li>
+<li><strong>sort_str</strong> – a string defining the sort rules, the format is
+‘&lt;key1&gt;:[direction1],&lt;key2&gt;:[direction2]…’, direction can be ‘asc’
+for ascending or ‘desc’ for descending, if direction is not given,
+it’s ascending by default</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">sorted items</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.wait_for_delete">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">wait_for_delete</code><span class="sig-paren">(</span><em>manager, res_id, status_field=’status’, error_status=[‘error’], exception_name=[‘NotFound’], sleep_time=5, timeout=300, callback=None</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.wait_for_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for resource deletion</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>manager</strong> – the manager from which we can get the resource</li>
+<li><strong>res_id</strong> – the resource id to watch</li>
+<li><strong>status_field</strong> – the status attribute in the returned resource object,
+this is used to check for error states while the resource is being
+deleted</li>
+<li><strong>error_status</strong> – a list of status strings for error</li>
+<li><strong>exception_name</strong> – a list of exception strings for deleted case</li>
+<li><strong>sleep_time</strong> – wait this long between checks (seconds)</li>
+<li><strong>timeout</strong> – check until this long (seconds)</li>
+<li><strong>callback</strong> – called per sleep cycle, useful to display progress; this
+function is passed a progress value during each iteration of the wait
+loop</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">True on success, False if the resource has gone to error state or
+the timeout has been reached</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="osc_lib.utils.wait_for_status">
+<code class="descclassname">osc_lib.utils.</code><code class="descname">wait_for_status</code><span class="sig-paren">(</span><em>status_f, res_id, status_field=’status’, success_status=[‘active’], error_status=[‘error’], sleep_time=5, callback=None</em><span class="sig-paren">)</span><a class="headerlink" href="#osc_lib.utils.wait_for_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for status change on a resource during a long-running operation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>status_f</strong> – a status function that takes a single id argument</li>
+<li><strong>res_id</strong> – the resource id to watch</li>
+<li><strong>status_field</strong> – the status attribute in the returned resource object</li>
+<li><strong>success_status</strong> – a list of status strings for successful completion</li>
+<li><strong>error_status</strong> – a list of status strings for error</li>
+<li><strong>sleep_time</strong> – wait this long (seconds)</li>
+<li><strong>callback</strong> – called per sleep cycle, useful to display progress</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">True on success</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="osc_lib.shell.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: The <code class="docutils literal"><span class="pre">osc_lib.shell</span></code> Module"></i></a>
+          
+          
+            <a href="osc_lib.version.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: The <code class="docutils literal"><span class="pre">osc_lib.version</span></code> Module"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 16:03</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user/index.html">Using osc-lib</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Library API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.api.api.html">The <code class="docutils literal"><span class="pre">osc_lib.api.api</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.api.auth.html">The <code class="docutils literal"><span class="pre">osc_lib.api.auth</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.api.utils.html">The <code class="docutils literal"><span class="pre">osc_lib.api.utils</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.cli.client_config.html">The <code class="docutils literal"><span class="pre">osc_lib.cli.client_config</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.cli.format_columns.html">The <code class="docutils literal"><span class="pre">osc_lib.cli.format_columns</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.cli.parseractions.html">The <code class="docutils literal"><span class="pre">osc_lib.cli.parseractions</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.clientmanager.html">The <code class="docutils literal"><span class="pre">osc_lib.clientmanager</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.command.command.html">The <code class="docutils literal"><span class="pre">osc_lib.command.command</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.command.commandmanager.html">The <code class="docutils literal"><span class="pre">osc_lib.command.commandmanager</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.command.timing.html">The <code class="docutils literal"><span class="pre">osc_lib.command.timing</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.exceptions.html">The <code class="docutils literal"><span class="pre">osc_lib.exceptions</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.i18n.html">The <code class="docutils literal"><span class="pre">osc_lib.i18n</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.logs.html">The <code class="docutils literal"><span class="pre">osc_lib.logs</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.session.html">The <code class="docutils literal"><span class="pre">osc_lib.session</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.shell.html">The <code class="docutils literal"><span class="pre">osc_lib.shell</span></code> Module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The <code class="docutils literal"><span class="pre">osc_lib.utils</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osc_lib.version.html">The <code class="docutils literal"><span class="pre">osc_lib.version</span></code> Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributor/index.html">Contributing</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "reference/api/osc_lib.utils" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/osc-lib/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: a671a5042de73bf81712c44a75c43d675dad3fe7";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "The <code class="docutils literal"><span class="pre">osc_lib.utils</span></code> Module in osc-lib";
+    var fieldTags = "osc-lib";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 1.7.0 on 2018-03-20 16:03";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,1621 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: keystoneauth1.identity.v3 package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>keystoneauth1.identity.v3 package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="keystoneauth1.identity.generic.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneauth1.identity.generic package"></i></a>
+    
+    
+    <a href="keystoneauth1.loading.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.loading package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">keystoneauth1.identity.v3 package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.identity.v3.base">keystoneauth1.identity.v3.base module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.identity.v3.federation">keystoneauth1.identity.v3.federation module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.identity.v3.k2k">keystoneauth1.identity.v3.k2k module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.identity.v3.oidc">keystoneauth1.identity.v3.oidc module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.identity.v3.password">keystoneauth1.identity.v3.password module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.identity.v3.token">keystoneauth1.identity.v3.token module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.identity.v3.tokenless_auth">keystoneauth1.identity.v3.tokenless_auth module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.identity.v3.totp">keystoneauth1.identity.v3.totp module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.identity.v3">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="keystoneauth1-identity-v3-package">
+<h1>keystoneauth1.identity.v3 package<a class="headerlink" href="#keystoneauth1-identity-v3-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-keystoneauth1.identity.v3.base">
+<span id="keystoneauth1-identity-v3-base-module"></span><h2>keystoneauth1.identity.v3.base module<a class="headerlink" href="#module-keystoneauth1.identity.v3.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.base.Auth">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.base.</code><code class="descname">Auth</code><span class="sig-paren">(</span><em>auth_url</em>, <em>auth_methods</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.base.Auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.BaseAuth" title="keystoneauth1.identity.v3.base.BaseAuth"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.BaseAuth</span></code></a></p>
+<p>Identity V3 Authentication Plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – Identity service endpoint for authentication.</li>
+<li><strong>auth_methods</strong> (<em>list</em>) – A collection of methods to authenticate with.</li>
+<li><strong>trust_id</strong> (<em>string</em>) – Trust ID for trust scoping.</li>
+<li><strong>domain_id</strong> (<em>string</em>) – Domain ID for domain scoping.</li>
+<li><strong>domain_name</strong> (<em>string</em>) – Domain name for domain scoping.</li>
+<li><strong>project_id</strong> (<em>string</em>) – Project ID for project scoping.</li>
+<li><strong>project_name</strong> (<em>string</em>) – Project name for project scoping.</li>
+<li><strong>project_domain_id</strong> (<em>string</em>) – Project’s domain ID for project.</li>
+<li><strong>project_domain_name</strong> (<em>string</em>) – Project’s domain name for project.</li>
+<li><strong>reauthenticate</strong> (<em>bool</em>) – Allow fetching a new token if the current one
+is going to expire. (optional) default True</li>
+<li><strong>include_catalog</strong> (<em>bool</em>) – Include the service catalog in the returned
+token. (optional) default True.</li>
+<li><strong>unscoped</strong> (<em>bool</em>) – Force the return of an unscoped token. This will make
+the keystone server return an unscoped token even if
+a default_project_id is set for this user.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.base.Auth.get_auth_ref">
+<code class="descname">get_auth_ref</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.base.Auth.get_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.base.Auth.get_cache_id_elements">
+<code class="descname">get_cache_id_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.base.Auth.get_cache_id_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.base.AuthMethod">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.base.</code><code class="descname">AuthMethod</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.base.AuthMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>One part of a V3 Authentication strategy.</p>
+<p>V3 Tokens allow multiple methods to be presented when authentication
+against the server. Each one of these methods is implemented by an
+AuthMethod.</p>
+<p>Note: When implementing an AuthMethod use the method_parameters
+and do not use positional arguments. Otherwise they can’t be picked up by
+the factory method and don’t work as well with AuthConstructors.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.base.AuthMethod.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>session</em>, <em>auth</em>, <em>headers</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.base.AuthMethod.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the authentication section of an auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – The communication session.</li>
+<li><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.identity.v3.base.Auth" title="keystoneauth1.identity.v3.base.Auth"><em>base.Auth</em></a>) – The auth plugin calling the method.</li>
+<li><strong>headers</strong> (<em>dict</em>) – The headers that will be sent with the auth
+request if a plugin needs to add to them.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The identifier of this plugin and a dict of authentication
+data for the auth type.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple(string, dict)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.base.AuthMethod.get_cache_id_elements">
+<code class="descname">get_cache_id_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.base.AuthMethod.get_cache_id_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the elements for this auth method that make it unique.</p>
+<p>These elements will be used as part of the
+<code class="xref py py-meth docutils literal"><span class="pre">keystoneauth1.plugin.BaseIdentityPlugin.get_cache_id()</span></code> to
+allow caching of the auth plugin.</p>
+<p>Plugins should override this if they want to allow caching of their
+state.</p>
+<p>To avoid collision or overrides the keys of the returned dictionary
+should be prefixed with the plugin identifier. For example the password
+plugin returns its username value as ‘password_username’.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.base.AuthConstructor">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.base.</code><code class="descname">AuthConstructor</code><span class="sig-paren">(</span><em>auth_url</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.base.AuthConstructor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.Auth" title="keystoneauth1.identity.v3.base.Auth"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.Auth</span></code></a></p>
+<p>Abstract base class for creating an Auth Plugin.</p>
+<p>The Auth Plugin created contains only one authentication method. This
+is generally the required usage.</p>
+<p>An AuthConstructor creates an AuthMethod based on the method’s
+arguments and the auth_method_class defined by the plugin. It then
+creates the auth plugin with only that authentication method.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.base.BaseAuth">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.base.</code><code class="descname">BaseAuth</code><span class="sig-paren">(</span><em>auth_url</em>, <em>trust_id=None</em>, <em>domain_id=None</em>, <em>domain_name=None</em>, <em>project_id=None</em>, <em>project_name=None</em>, <em>project_domain_id=None</em>, <em>project_domain_name=None</em>, <em>reauthenticate=True</em>, <em>include_catalog=True</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.base.BaseAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.identity.html#keystoneauth1.identity.base.BaseIdentityPlugin" title="keystoneauth1.identity.base.BaseIdentityPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.base.BaseIdentityPlugin</span></code></a></p>
+<p>Identity V3 Authentication Plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – Identity service endpoint for authentication.</li>
+<li><strong>trust_id</strong> (<em>string</em>) – Trust ID for trust scoping.</li>
+<li><strong>domain_id</strong> (<em>string</em>) – Domain ID for domain scoping.</li>
+<li><strong>domain_name</strong> (<em>string</em>) – Domain name for domain scoping.</li>
+<li><strong>project_id</strong> (<em>string</em>) – Project ID for project scoping.</li>
+<li><strong>project_name</strong> (<em>string</em>) – Project name for project scoping.</li>
+<li><strong>project_domain_id</strong> (<em>string</em>) – Project’s domain ID for project.</li>
+<li><strong>project_domain_name</strong> (<em>string</em>) – Project’s domain name for project.</li>
+<li><strong>reauthenticate</strong> (<em>bool</em>) – Allow fetching a new token if the current one
+is going to expire. (optional) default True</li>
+<li><strong>include_catalog</strong> (<em>bool</em>) – Include the service catalog in the returned
+token. (optional) default True.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.base.BaseAuth.get_auth_ref">
+<code class="descname">get_auth_ref</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.base.BaseAuth.get_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.base.BaseAuth.has_scope_parameters">
+<code class="descname">has_scope_parameters</code><a class="headerlink" href="#keystoneauth1.identity.v3.base.BaseAuth.has_scope_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if parameters can be used to create a scoped token.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.base.BaseAuth.token_url">
+<code class="descname">token_url</code><a class="headerlink" href="#keystoneauth1.identity.v3.base.BaseAuth.token_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>The full URL where we will send authentication data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.identity.v3.federation">
+<span id="keystoneauth1-identity-v3-federation-module"></span><h2>keystoneauth1.identity.v3.federation module<a class="headerlink" href="#module-keystoneauth1.identity.v3.federation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.federation.FederationBaseAuth">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.federation.</code><code class="descname">FederationBaseAuth</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.federation.FederationBaseAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.federation._Rescoped</span></code></p>
+<p>Federation authentication plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – URL of the Identity Service</li>
+<li><strong>identity_provider</strong> (<em>string</em>) – name of the Identity Provider the client
+will authenticate against. This parameter
+will be used to build a dynamic URL used to
+obtain unscoped OpenStack token.</li>
+<li><strong>protocol</strong> (<em>string</em>) – name of the protocol the client will authenticate
+against.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.federation.FederationBaseAuth.federated_token_url">
+<code class="descname">federated_token_url</code><a class="headerlink" href="#keystoneauth1.identity.v3.federation.FederationBaseAuth.federated_token_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Full URL where authorization data is sent.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.identity.v3.k2k">
+<span id="keystoneauth1-identity-v3-k2k-module"></span><h2>keystoneauth1.identity.v3.k2k module<a class="headerlink" href="#module-keystoneauth1.identity.v3.k2k" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.k2k.Keystone2Keystone">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.k2k.</code><code class="descname">Keystone2Keystone</code><span class="sig-paren">(</span><em>base_plugin</em>, <em>service_provider</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.k2k.Keystone2Keystone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.federation._Rescoped</span></code></p>
+<p>Plugin to execute the Keystone to Keyestone authentication flow.</p>
+<p>In this plugin, an ECP wrapped SAML assertion provided by a keystone
+Identity Provider (IdP) is used to request an OpenStack unscoped token
+from a keystone Service Provider (SP).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>base_plugin</strong> (<a class="reference internal" href="#keystoneauth1.identity.v3.base.BaseAuth" title="keystoneauth1.identity.v3.base.BaseAuth"><em>keystoneauth1.identity.v3.base.BaseAuth</em></a>) – Auth plugin already authenticated against the keystone
+IdP.</li>
+<li><strong>service_provider</strong> (<em>str</em>) – The Service Provider ID as returned by
+ServiceProviderManager.list()</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.k2k.Keystone2Keystone.HTTP_MOVED_TEMPORARILY">
+<code class="descname">HTTP_MOVED_TEMPORARILY</code><em class="property"> = 302</em><a class="headerlink" href="#keystoneauth1.identity.v3.k2k.Keystone2Keystone.HTTP_MOVED_TEMPORARILY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.k2k.Keystone2Keystone.HTTP_SEE_OTHER">
+<code class="descname">HTTP_SEE_OTHER</code><em class="property"> = 303</em><a class="headerlink" href="#keystoneauth1.identity.v3.k2k.Keystone2Keystone.HTTP_SEE_OTHER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.k2k.Keystone2Keystone.REQUEST_ECP_URL">
+<code class="descname">REQUEST_ECP_URL</code><em class="property"> = ‘/auth/OS-FEDERATION/saml2/ecp’</em><a class="headerlink" href="#keystoneauth1.identity.v3.k2k.Keystone2Keystone.REQUEST_ECP_URL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path where the ECP wrapped SAML assertion should be presented to the
+Keystone Service Provider.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.k2k.Keystone2Keystone.get_unscoped_auth_ref">
+<code class="descname">get_unscoped_auth_ref</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.k2k.Keystone2Keystone.get_unscoped_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.identity.v3.oidc">
+<span id="keystoneauth1-identity-v3-oidc-module"></span><h2>keystoneauth1.identity.v3.oidc module<a class="headerlink" href="#module-keystoneauth1.identity.v3.oidc" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.oidc.OidcAuthorizationCode">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.oidc.</code><code class="descname">OidcAuthorizationCode</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>client_id</em>, <em>client_secret</em>, <em>access_token_endpoint=None</em>, <em>discovery_endpoint=None</em>, <em>access_token_type=’access_token’</em>, <em>redirect_uri=None</em>, <em>code=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcAuthorizationCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.oidc._OidcBase</span></code></p>
+<p>Implementation for OpenID Connect Authorization Code.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.oidc.OidcAuthorizationCode.get_payload">
+<code class="descname">get_payload</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcAuthorizationCode.get_payload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an authorization grant for the “authorization_code” grant type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – a session object to send out HTTP requests.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a python dictionary containing the payload to be exchanged</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.oidc.OidcAuthorizationCode.grant_type">
+<code class="descname">grant_type</code><em class="property"> = ‘authorization_code’</em><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcAuthorizationCode.grant_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.oidc.OidcClientCredentials">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.oidc.</code><code class="descname">OidcClientCredentials</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>client_id</em>, <em>client_secret</em>, <em>access_token_endpoint=None</em>, <em>discovery_endpoint=None</em>, <em>access_token_type=’access_token’</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcClientCredentials" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.oidc._OidcBase</span></code></p>
+<p>Implementation for OpenID Connect Client Credentials.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.oidc.OidcClientCredentials.get_payload">
+<code class="descname">get_payload</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcClientCredentials.get_payload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an authorization grant for the client credentials grant type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – a session object to send out HTTP requests.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a python dictionary containing the payload to be exchanged</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.oidc.OidcClientCredentials.grant_type">
+<code class="descname">grant_type</code><em class="property"> = ‘client_credentials’</em><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcClientCredentials.grant_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.oidc.OidcPassword">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.oidc.</code><code class="descname">OidcPassword</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>client_id</em>, <em>client_secret</em>, <em>access_token_endpoint=None</em>, <em>discovery_endpoint=None</em>, <em>access_token_type=’access_token’</em>, <em>username=None</em>, <em>password=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcPassword" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.oidc._OidcBase</span></code></p>
+<p>Implementation for OpenID Connect Resource Owner Password Credential.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.oidc.OidcPassword.get_payload">
+<code class="descname">get_payload</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcPassword.get_payload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an authorization grant for the “password” grant type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – a session object to send out HTTP requests.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a python dictionary containing the payload to be exchanged</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.oidc.OidcPassword.grant_type">
+<code class="descname">grant_type</code><em class="property"> = ‘password’</em><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcPassword.grant_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.oidc.OidcAccessToken">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.oidc.</code><code class="descname">OidcAccessToken</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>access_token</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcAccessToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.oidc._OidcBase</span></code></p>
+<p>Implementation for OpenID Connect access token reuse.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.oidc.OidcAccessToken.get_payload">
+<code class="descname">get_payload</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcAccessToken.get_payload" title="Permalink to this definition">¶</a></dt>
+<dd><p>OidcAccessToken does not require a payload.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.oidc.OidcAccessToken.get_unscoped_auth_ref">
+<code class="descname">get_unscoped_auth_ref</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.oidc.OidcAccessToken.get_unscoped_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticate with OpenID Connect and get back claims.</p>
+<p>We exchange the access token upon accessing the protected Keystone
+endpoint (federated auth URL). This will trigger the OpenID Connect
+Provider to perform a user introspection and retrieve information
+(specified in the scope) about the user in the form of an OpenID
+Connect Claim. These claims will be sent to Keystone in the form of
+environment variables.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<em>keystoneclient.session.Session</em>) – a session object to send out HTTP requests.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a token data representation</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="keystoneauth1.access.html#keystoneauth1.access.AccessInfoV3" title="keystoneauth1.access.AccessInfoV3"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.access.AccessInfoV3</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.identity.v3.password">
+<span id="keystoneauth1-identity-v3-password-module"></span><h2>keystoneauth1.identity.v3.password module<a class="headerlink" href="#module-keystoneauth1.identity.v3.password" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.password.PasswordMethod">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.password.</code><code class="descname">PasswordMethod</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.password.PasswordMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthMethod" title="keystoneauth1.identity.v3.base.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthMethod</span></code></a></p>
+<p>Construct a User/Password based authentication method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>password</strong> (<em>string</em>) – Password for authentication.</li>
+<li><strong>username</strong> (<em>string</em>) – Username for authentication.</li>
+<li><strong>user_id</strong> (<em>string</em>) – User ID for authentication.</li>
+<li><strong>user_domain_id</strong> (<em>string</em>) – User’s domain ID for authentication.</li>
+<li><strong>user_domain_name</strong> (<em>string</em>) – User’s domain name for authentication.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.password.PasswordMethod.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>session</em>, <em>auth</em>, <em>headers</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.password.PasswordMethod.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.password.PasswordMethod.get_cache_id_elements">
+<code class="descname">get_cache_id_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.password.PasswordMethod.get_cache_id_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.password.Password">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.password.</code><code class="descname">Password</code><span class="sig-paren">(</span><em>auth_url</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.password.Password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthConstructor" title="keystoneauth1.identity.v3.base.AuthConstructor"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthConstructor</span></code></a></p>
+<p>A plugin for authenticating with a username and password.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – Identity service endpoint for authentication.</li>
+<li><strong>password</strong> (<em>string</em>) – Password for authentication.</li>
+<li><strong>username</strong> (<em>string</em>) – Username for authentication.</li>
+<li><strong>user_id</strong> (<em>string</em>) – User ID for authentication.</li>
+<li><strong>user_domain_id</strong> (<em>string</em>) – User’s domain ID for authentication.</li>
+<li><strong>user_domain_name</strong> (<em>string</em>) – User’s domain name for authentication.</li>
+<li><strong>trust_id</strong> (<em>string</em>) – Trust ID for trust scoping.</li>
+<li><strong>domain_id</strong> (<em>string</em>) – Domain ID for domain scoping.</li>
+<li><strong>domain_name</strong> (<em>string</em>) – Domain name for domain scoping.</li>
+<li><strong>project_id</strong> (<em>string</em>) – Project ID for project scoping.</li>
+<li><strong>project_name</strong> (<em>string</em>) – Project name for project scoping.</li>
+<li><strong>project_domain_id</strong> (<em>string</em>) – Project’s domain ID for project.</li>
+<li><strong>project_domain_name</strong> (<em>string</em>) – Project’s domain name for project.</li>
+<li><strong>reauthenticate</strong> (<em>bool</em>) – Allow fetching a new token if the current one
+is going to expire. (optional) default True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.identity.v3.token">
+<span id="keystoneauth1-identity-v3-token-module"></span><h2>keystoneauth1.identity.v3.token module<a class="headerlink" href="#module-keystoneauth1.identity.v3.token" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.token.TokenMethod">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.token.</code><code class="descname">TokenMethod</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.token.TokenMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthMethod" title="keystoneauth1.identity.v3.base.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthMethod</span></code></a></p>
+<p>Construct an Auth plugin to fetch a token from a token.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> (<em>string</em>) – Token for authentication.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.token.TokenMethod.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>session</em>, <em>auth</em>, <em>headers</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.token.TokenMethod.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.token.TokenMethod.get_cache_id_elements">
+<code class="descname">get_cache_id_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.token.TokenMethod.get_cache_id_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.token.Token">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.token.</code><code class="descname">Token</code><span class="sig-paren">(</span><em>auth_url</em>, <em>token</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.token.Token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthConstructor" title="keystoneauth1.identity.v3.base.AuthConstructor"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthConstructor</span></code></a></p>
+<p>A plugin for authenticating with an existing Token.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – Identity service endpoint for authentication.</li>
+<li><strong>token</strong> (<em>string</em>) – Token for authentication.</li>
+<li><strong>trust_id</strong> (<em>string</em>) – Trust ID for trust scoping.</li>
+<li><strong>domain_id</strong> (<em>string</em>) – Domain ID for domain scoping.</li>
+<li><strong>domain_name</strong> (<em>string</em>) – Domain name for domain scoping.</li>
+<li><strong>project_id</strong> (<em>string</em>) – Project ID for project scoping.</li>
+<li><strong>project_name</strong> (<em>string</em>) – Project name for project scoping.</li>
+<li><strong>project_domain_id</strong> (<em>string</em>) – Project’s domain ID for project.</li>
+<li><strong>project_domain_name</strong> (<em>string</em>) – Project’s domain name for project.</li>
+<li><strong>reauthenticate</strong> (<em>bool</em>) – Allow fetching a new token if the current one
+is going to expire. (optional) default True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.identity.v3.tokenless_auth">
+<span id="keystoneauth1-identity-v3-tokenless-auth-module"></span><h2>keystoneauth1.identity.v3.tokenless_auth module<a class="headerlink" href="#module-keystoneauth1.identity.v3.tokenless_auth" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.tokenless_auth.TokenlessAuth">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.tokenless_auth.</code><code class="descname">TokenlessAuth</code><span class="sig-paren">(</span><em>auth_url</em>, <em>domain_id=None</em>, <em>domain_name=None</em>, <em>project_id=None</em>, <em>project_name=None</em>, <em>project_domain_id=None</em>, <em>project_domain_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.tokenless_auth.TokenlessAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.plugin.BaseAuthPlugin</span></code></a></p>
+<p>A plugin for authenticating with Tokenless Auth.</p>
+<p>This is for Tokenless Authentication. Scoped information
+like domain name and project ID will be passed in the headers and
+token validation request will be authenticated based on
+the provided HTTPS certificate along with the scope information.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.tokenless_auth.TokenlessAuth.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>session</em>, <em>service_type=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.tokenless_auth.TokenlessAuth.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a valid endpoint for a service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – A session object that can be used for communication.</li>
+<li><strong>service_type</strong> (<em>string</em>) – The type of service to lookup the endpoint
+for. This plugin will return None (failure)
+if service_type is not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A valid endpoint URL or None if not available.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string or None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.tokenless_auth.TokenlessAuth.get_headers">
+<code class="descname">get_headers</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.tokenless_auth.TokenlessAuth.get_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch authentication headers for message.</p>
+<p>This is to override the default get_headers method to provide
+tokenless auth scope headers if token is not provided in the
+session.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Headers that are set to authenticate a message or None for
+failure. Note that when checking this value that the empty
+dict is a valid, non-failure response.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.identity.v3.totp">
+<span id="keystoneauth1-identity-v3-totp-module"></span><h2>keystoneauth1.identity.v3.totp module<a class="headerlink" href="#module-keystoneauth1.identity.v3.totp" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.totp.TOTPMethod">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.totp.</code><code class="descname">TOTPMethod</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.totp.TOTPMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthMethod" title="keystoneauth1.identity.v3.base.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthMethod</span></code></a></p>
+<p>Construct a User/Passcode based authentication method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>passcode</strong> (<em>string</em>) – TOTP passcode for authentication.</li>
+<li><strong>username</strong> (<em>string</em>) – Username for authentication.</li>
+<li><strong>user_id</strong> (<em>string</em>) – User ID for authentication.</li>
+<li><strong>user_domain_id</strong> (<em>string</em>) – User’s domain ID for authentication.</li>
+<li><strong>user_domain_name</strong> (<em>string</em>) – User’s domain name for authentication.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.totp.TOTPMethod.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>session</em>, <em>auth</em>, <em>headers</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.totp.TOTPMethod.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.totp.TOTPMethod.get_cache_id_elements">
+<code class="descname">get_cache_id_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.totp.TOTPMethod.get_cache_id_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.totp.TOTP">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.totp.</code><code class="descname">TOTP</code><span class="sig-paren">(</span><em>auth_url</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.totp.TOTP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthConstructor" title="keystoneauth1.identity.v3.base.AuthConstructor"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthConstructor</span></code></a></p>
+<p>A plugin for authenticating with a username and TOTP passcode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – Identity service endpoint for authentication.</li>
+<li><strong>passcode</strong> (<em>string</em>) – TOTP passcode for authentication.</li>
+<li><strong>username</strong> (<em>string</em>) – Username for authentication.</li>
+<li><strong>user_id</strong> (<em>string</em>) – User ID for authentication.</li>
+<li><strong>user_domain_id</strong> (<em>string</em>) – User’s domain ID for authentication.</li>
+<li><strong>user_domain_name</strong> (<em>string</em>) – User’s domain name for authentication.</li>
+<li><strong>trust_id</strong> (<em>string</em>) – Trust ID for trust scoping.</li>
+<li><strong>domain_id</strong> (<em>string</em>) – Domain ID for domain scoping.</li>
+<li><strong>domain_name</strong> (<em>string</em>) – Domain name for domain scoping.</li>
+<li><strong>project_id</strong> (<em>string</em>) – Project ID for project scoping.</li>
+<li><strong>project_name</strong> (<em>string</em>) – Project name for project scoping.</li>
+<li><strong>project_domain_id</strong> (<em>string</em>) – Project’s domain ID for project.</li>
+<li><strong>project_domain_name</strong> (<em>string</em>) – Project’s domain name for project.</li>
+<li><strong>reauthenticate</strong> (<em>bool</em>) – Allow fetching a new token if the current one
+is going to expire. (optional) default True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.identity.v3">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-keystoneauth1.identity.v3" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.Auth">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">Auth</code><span class="sig-paren">(</span><em>auth_url</em>, <em>auth_methods</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.Auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.BaseAuth" title="keystoneauth1.identity.v3.base.BaseAuth"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.BaseAuth</span></code></a></p>
+<p>Identity V3 Authentication Plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – Identity service endpoint for authentication.</li>
+<li><strong>auth_methods</strong> (<em>list</em>) – A collection of methods to authenticate with.</li>
+<li><strong>trust_id</strong> (<em>string</em>) – Trust ID for trust scoping.</li>
+<li><strong>domain_id</strong> (<em>string</em>) – Domain ID for domain scoping.</li>
+<li><strong>domain_name</strong> (<em>string</em>) – Domain name for domain scoping.</li>
+<li><strong>project_id</strong> (<em>string</em>) – Project ID for project scoping.</li>
+<li><strong>project_name</strong> (<em>string</em>) – Project name for project scoping.</li>
+<li><strong>project_domain_id</strong> (<em>string</em>) – Project’s domain ID for project.</li>
+<li><strong>project_domain_name</strong> (<em>string</em>) – Project’s domain name for project.</li>
+<li><strong>reauthenticate</strong> (<em>bool</em>) – Allow fetching a new token if the current one
+is going to expire. (optional) default True</li>
+<li><strong>include_catalog</strong> (<em>bool</em>) – Include the service catalog in the returned
+token. (optional) default True.</li>
+<li><strong>unscoped</strong> (<em>bool</em>) – Force the return of an unscoped token. This will make
+the keystone server return an unscoped token even if
+a default_project_id is set for this user.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.Auth.get_auth_ref">
+<code class="descname">get_auth_ref</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.Auth.get_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.Auth.get_cache_id_elements">
+<code class="descname">get_cache_id_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.Auth.get_cache_id_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.AuthConstructor">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">AuthConstructor</code><span class="sig-paren">(</span><em>auth_url</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.AuthConstructor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.Auth" title="keystoneauth1.identity.v3.base.Auth"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.Auth</span></code></a></p>
+<p>Abstract base class for creating an Auth Plugin.</p>
+<p>The Auth Plugin created contains only one authentication method. This
+is generally the required usage.</p>
+<p>An AuthConstructor creates an AuthMethod based on the method’s
+arguments and the auth_method_class defined by the plugin. It then
+creates the auth plugin with only that authentication method.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.AuthMethod">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">AuthMethod</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.AuthMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>One part of a V3 Authentication strategy.</p>
+<p>V3 Tokens allow multiple methods to be presented when authentication
+against the server. Each one of these methods is implemented by an
+AuthMethod.</p>
+<p>Note: When implementing an AuthMethod use the method_parameters
+and do not use positional arguments. Otherwise they can’t be picked up by
+the factory method and don’t work as well with AuthConstructors.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.AuthMethod.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>session</em>, <em>auth</em>, <em>headers</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.AuthMethod.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the authentication section of an auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – The communication session.</li>
+<li><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.identity.v3.base.Auth" title="keystoneauth1.identity.v3.base.Auth"><em>base.Auth</em></a>) – The auth plugin calling the method.</li>
+<li><strong>headers</strong> (<em>dict</em>) – The headers that will be sent with the auth
+request if a plugin needs to add to them.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The identifier of this plugin and a dict of authentication
+data for the auth type.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple(string, dict)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.AuthMethod.get_cache_id_elements">
+<code class="descname">get_cache_id_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.AuthMethod.get_cache_id_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the elements for this auth method that make it unique.</p>
+<p>These elements will be used as part of the
+<code class="xref py py-meth docutils literal"><span class="pre">keystoneauth1.plugin.BaseIdentityPlugin.get_cache_id()</span></code> to
+allow caching of the auth plugin.</p>
+<p>Plugins should override this if they want to allow caching of their
+state.</p>
+<p>To avoid collision or overrides the keys of the returned dictionary
+should be prefixed with the plugin identifier. For example the password
+plugin returns its username value as ‘password_username’.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.BaseAuth">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">BaseAuth</code><span class="sig-paren">(</span><em>auth_url</em>, <em>trust_id=None</em>, <em>domain_id=None</em>, <em>domain_name=None</em>, <em>project_id=None</em>, <em>project_name=None</em>, <em>project_domain_id=None</em>, <em>project_domain_name=None</em>, <em>reauthenticate=True</em>, <em>include_catalog=True</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.BaseAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.identity.html#keystoneauth1.identity.base.BaseIdentityPlugin" title="keystoneauth1.identity.base.BaseIdentityPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.base.BaseIdentityPlugin</span></code></a></p>
+<p>Identity V3 Authentication Plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – Identity service endpoint for authentication.</li>
+<li><strong>trust_id</strong> (<em>string</em>) – Trust ID for trust scoping.</li>
+<li><strong>domain_id</strong> (<em>string</em>) – Domain ID for domain scoping.</li>
+<li><strong>domain_name</strong> (<em>string</em>) – Domain name for domain scoping.</li>
+<li><strong>project_id</strong> (<em>string</em>) – Project ID for project scoping.</li>
+<li><strong>project_name</strong> (<em>string</em>) – Project name for project scoping.</li>
+<li><strong>project_domain_id</strong> (<em>string</em>) – Project’s domain ID for project.</li>
+<li><strong>project_domain_name</strong> (<em>string</em>) – Project’s domain name for project.</li>
+<li><strong>reauthenticate</strong> (<em>bool</em>) – Allow fetching a new token if the current one
+is going to expire. (optional) default True</li>
+<li><strong>include_catalog</strong> (<em>bool</em>) – Include the service catalog in the returned
+token. (optional) default True.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.BaseAuth.get_auth_ref">
+<code class="descname">get_auth_ref</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.BaseAuth.get_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.BaseAuth.has_scope_parameters">
+<code class="descname">has_scope_parameters</code><a class="headerlink" href="#keystoneauth1.identity.v3.BaseAuth.has_scope_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if parameters can be used to create a scoped token.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.BaseAuth.token_url">
+<code class="descname">token_url</code><a class="headerlink" href="#keystoneauth1.identity.v3.BaseAuth.token_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>The full URL where we will send authentication data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.FederationBaseAuth">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">FederationBaseAuth</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.FederationBaseAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.federation._Rescoped</span></code></p>
+<p>Federation authentication plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – URL of the Identity Service</li>
+<li><strong>identity_provider</strong> (<em>string</em>) – name of the Identity Provider the client
+will authenticate against. This parameter
+will be used to build a dynamic URL used to
+obtain unscoped OpenStack token.</li>
+<li><strong>protocol</strong> (<em>string</em>) – name of the protocol the client will authenticate
+against.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.FederationBaseAuth.federated_token_url">
+<code class="descname">federated_token_url</code><a class="headerlink" href="#keystoneauth1.identity.v3.FederationBaseAuth.federated_token_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Full URL where authorization data is sent.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.Keystone2Keystone">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">Keystone2Keystone</code><span class="sig-paren">(</span><em>base_plugin</em>, <em>service_provider</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.Keystone2Keystone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.federation._Rescoped</span></code></p>
+<p>Plugin to execute the Keystone to Keyestone authentication flow.</p>
+<p>In this plugin, an ECP wrapped SAML assertion provided by a keystone
+Identity Provider (IdP) is used to request an OpenStack unscoped token
+from a keystone Service Provider (SP).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>base_plugin</strong> (<a class="reference internal" href="#keystoneauth1.identity.v3.base.BaseAuth" title="keystoneauth1.identity.v3.base.BaseAuth"><em>keystoneauth1.identity.v3.base.BaseAuth</em></a>) – Auth plugin already authenticated against the keystone
+IdP.</li>
+<li><strong>service_provider</strong> (<em>str</em>) – The Service Provider ID as returned by
+ServiceProviderManager.list()</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.Keystone2Keystone.HTTP_MOVED_TEMPORARILY">
+<code class="descname">HTTP_MOVED_TEMPORARILY</code><em class="property"> = 302</em><a class="headerlink" href="#keystoneauth1.identity.v3.Keystone2Keystone.HTTP_MOVED_TEMPORARILY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.Keystone2Keystone.HTTP_SEE_OTHER">
+<code class="descname">HTTP_SEE_OTHER</code><em class="property"> = 303</em><a class="headerlink" href="#keystoneauth1.identity.v3.Keystone2Keystone.HTTP_SEE_OTHER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.Keystone2Keystone.REQUEST_ECP_URL">
+<code class="descname">REQUEST_ECP_URL</code><em class="property"> = ‘/auth/OS-FEDERATION/saml2/ecp’</em><a class="headerlink" href="#keystoneauth1.identity.v3.Keystone2Keystone.REQUEST_ECP_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.Keystone2Keystone.get_unscoped_auth_ref">
+<code class="descname">get_unscoped_auth_ref</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.Keystone2Keystone.get_unscoped_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.Password">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">Password</code><span class="sig-paren">(</span><em>auth_url</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.Password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthConstructor" title="keystoneauth1.identity.v3.base.AuthConstructor"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthConstructor</span></code></a></p>
+<p>A plugin for authenticating with a username and password.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – Identity service endpoint for authentication.</li>
+<li><strong>password</strong> (<em>string</em>) – Password for authentication.</li>
+<li><strong>username</strong> (<em>string</em>) – Username for authentication.</li>
+<li><strong>user_id</strong> (<em>string</em>) – User ID for authentication.</li>
+<li><strong>user_domain_id</strong> (<em>string</em>) – User’s domain ID for authentication.</li>
+<li><strong>user_domain_name</strong> (<em>string</em>) – User’s domain name for authentication.</li>
+<li><strong>trust_id</strong> (<em>string</em>) – Trust ID for trust scoping.</li>
+<li><strong>domain_id</strong> (<em>string</em>) – Domain ID for domain scoping.</li>
+<li><strong>domain_name</strong> (<em>string</em>) – Domain name for domain scoping.</li>
+<li><strong>project_id</strong> (<em>string</em>) – Project ID for project scoping.</li>
+<li><strong>project_name</strong> (<em>string</em>) – Project name for project scoping.</li>
+<li><strong>project_domain_id</strong> (<em>string</em>) – Project’s domain ID for project.</li>
+<li><strong>project_domain_name</strong> (<em>string</em>) – Project’s domain name for project.</li>
+<li><strong>reauthenticate</strong> (<em>bool</em>) – Allow fetching a new token if the current one
+is going to expire. (optional) default True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.PasswordMethod">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">PasswordMethod</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.PasswordMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthMethod" title="keystoneauth1.identity.v3.base.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthMethod</span></code></a></p>
+<p>Construct a User/Password based authentication method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>password</strong> (<em>string</em>) – Password for authentication.</li>
+<li><strong>username</strong> (<em>string</em>) – Username for authentication.</li>
+<li><strong>user_id</strong> (<em>string</em>) – User ID for authentication.</li>
+<li><strong>user_domain_id</strong> (<em>string</em>) – User’s domain ID for authentication.</li>
+<li><strong>user_domain_name</strong> (<em>string</em>) – User’s domain name for authentication.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.PasswordMethod.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>session</em>, <em>auth</em>, <em>headers</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.PasswordMethod.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.PasswordMethod.get_cache_id_elements">
+<code class="descname">get_cache_id_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.PasswordMethod.get_cache_id_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.Token">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">Token</code><span class="sig-paren">(</span><em>auth_url</em>, <em>token</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.Token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthConstructor" title="keystoneauth1.identity.v3.base.AuthConstructor"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthConstructor</span></code></a></p>
+<p>A plugin for authenticating with an existing Token.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – Identity service endpoint for authentication.</li>
+<li><strong>token</strong> (<em>string</em>) – Token for authentication.</li>
+<li><strong>trust_id</strong> (<em>string</em>) – Trust ID for trust scoping.</li>
+<li><strong>domain_id</strong> (<em>string</em>) – Domain ID for domain scoping.</li>
+<li><strong>domain_name</strong> (<em>string</em>) – Domain name for domain scoping.</li>
+<li><strong>project_id</strong> (<em>string</em>) – Project ID for project scoping.</li>
+<li><strong>project_name</strong> (<em>string</em>) – Project name for project scoping.</li>
+<li><strong>project_domain_id</strong> (<em>string</em>) – Project’s domain ID for project.</li>
+<li><strong>project_domain_name</strong> (<em>string</em>) – Project’s domain name for project.</li>
+<li><strong>reauthenticate</strong> (<em>bool</em>) – Allow fetching a new token if the current one
+is going to expire. (optional) default True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.TokenMethod">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">TokenMethod</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.TokenMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthMethod" title="keystoneauth1.identity.v3.base.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthMethod</span></code></a></p>
+<p>Construct an Auth plugin to fetch a token from a token.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> (<em>string</em>) – Token for authentication.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.TokenMethod.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>session</em>, <em>auth</em>, <em>headers</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.TokenMethod.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.TokenMethod.get_cache_id_elements">
+<code class="descname">get_cache_id_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.TokenMethod.get_cache_id_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.OidcAccessToken">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">OidcAccessToken</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>access_token</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.OidcAccessToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.oidc._OidcBase</span></code></p>
+<p>Implementation for OpenID Connect access token reuse.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.OidcAccessToken.get_payload">
+<code class="descname">get_payload</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.OidcAccessToken.get_payload" title="Permalink to this definition">¶</a></dt>
+<dd><p>OidcAccessToken does not require a payload.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.OidcAccessToken.get_unscoped_auth_ref">
+<code class="descname">get_unscoped_auth_ref</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.OidcAccessToken.get_unscoped_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticate with OpenID Connect and get back claims.</p>
+<p>We exchange the access token upon accessing the protected Keystone
+endpoint (federated auth URL). This will trigger the OpenID Connect
+Provider to perform a user introspection and retrieve information
+(specified in the scope) about the user in the form of an OpenID
+Connect Claim. These claims will be sent to Keystone in the form of
+environment variables.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<em>keystoneclient.session.Session</em>) – a session object to send out HTTP requests.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a token data representation</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="keystoneauth1.access.html#keystoneauth1.access.AccessInfoV3" title="keystoneauth1.access.AccessInfoV3"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.access.AccessInfoV3</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.OidcAuthorizationCode">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">OidcAuthorizationCode</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>client_id</em>, <em>client_secret</em>, <em>access_token_endpoint=None</em>, <em>discovery_endpoint=None</em>, <em>access_token_type=’access_token’</em>, <em>redirect_uri=None</em>, <em>code=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.OidcAuthorizationCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.oidc._OidcBase</span></code></p>
+<p>Implementation for OpenID Connect Authorization Code.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.OidcAuthorizationCode.get_payload">
+<code class="descname">get_payload</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.OidcAuthorizationCode.get_payload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an authorization grant for the “authorization_code” grant type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – a session object to send out HTTP requests.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a python dictionary containing the payload to be exchanged</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.OidcAuthorizationCode.grant_type">
+<code class="descname">grant_type</code><em class="property"> = ‘authorization_code’</em><a class="headerlink" href="#keystoneauth1.identity.v3.OidcAuthorizationCode.grant_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.OidcClientCredentials">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">OidcClientCredentials</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>client_id</em>, <em>client_secret</em>, <em>access_token_endpoint=None</em>, <em>discovery_endpoint=None</em>, <em>access_token_type=’access_token’</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.OidcClientCredentials" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.oidc._OidcBase</span></code></p>
+<p>Implementation for OpenID Connect Client Credentials.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.OidcClientCredentials.get_payload">
+<code class="descname">get_payload</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.OidcClientCredentials.get_payload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an authorization grant for the client credentials grant type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – a session object to send out HTTP requests.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a python dictionary containing the payload to be exchanged</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.OidcClientCredentials.grant_type">
+<code class="descname">grant_type</code><em class="property"> = ‘client_credentials’</em><a class="headerlink" href="#keystoneauth1.identity.v3.OidcClientCredentials.grant_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.OidcPassword">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">OidcPassword</code><span class="sig-paren">(</span><em>auth_url</em>, <em>identity_provider</em>, <em>protocol</em>, <em>client_id</em>, <em>client_secret</em>, <em>access_token_endpoint=None</em>, <em>discovery_endpoint=None</em>, <em>access_token_type=’access_token’</em>, <em>username=None</em>, <em>password=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.OidcPassword" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.oidc._OidcBase</span></code></p>
+<p>Implementation for OpenID Connect Resource Owner Password Credential.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.OidcPassword.get_payload">
+<code class="descname">get_payload</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.OidcPassword.get_payload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an authorization grant for the “password” grant type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – a session object to send out HTTP requests.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a python dictionary containing the payload to be exchanged</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.identity.v3.OidcPassword.grant_type">
+<code class="descname">grant_type</code><em class="property"> = ‘password’</em><a class="headerlink" href="#keystoneauth1.identity.v3.OidcPassword.grant_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.TOTPMethod">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">TOTPMethod</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.TOTPMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthMethod" title="keystoneauth1.identity.v3.base.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthMethod</span></code></a></p>
+<p>Construct a User/Passcode based authentication method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>passcode</strong> (<em>string</em>) – TOTP passcode for authentication.</li>
+<li><strong>username</strong> (<em>string</em>) – Username for authentication.</li>
+<li><strong>user_id</strong> (<em>string</em>) – User ID for authentication.</li>
+<li><strong>user_domain_id</strong> (<em>string</em>) – User’s domain ID for authentication.</li>
+<li><strong>user_domain_name</strong> (<em>string</em>) – User’s domain name for authentication.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.TOTPMethod.get_auth_data">
+<code class="descname">get_auth_data</code><span class="sig-paren">(</span><em>session</em>, <em>auth</em>, <em>headers</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.TOTPMethod.get_auth_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.TOTPMethod.get_cache_id_elements">
+<code class="descname">get_cache_id_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.TOTPMethod.get_cache_id_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.TOTP">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">TOTP</code><span class="sig-paren">(</span><em>auth_url</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.TOTP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.identity.v3.base.AuthConstructor" title="keystoneauth1.identity.v3.base.AuthConstructor"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.base.AuthConstructor</span></code></a></p>
+<p>A plugin for authenticating with a username and TOTP passcode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth_url</strong> (<em>string</em>) – Identity service endpoint for authentication.</li>
+<li><strong>passcode</strong> (<em>string</em>) – TOTP passcode for authentication.</li>
+<li><strong>username</strong> (<em>string</em>) – Username for authentication.</li>
+<li><strong>user_id</strong> (<em>string</em>) – User ID for authentication.</li>
+<li><strong>user_domain_id</strong> (<em>string</em>) – User’s domain ID for authentication.</li>
+<li><strong>user_domain_name</strong> (<em>string</em>) – User’s domain name for authentication.</li>
+<li><strong>trust_id</strong> (<em>string</em>) – Trust ID for trust scoping.</li>
+<li><strong>domain_id</strong> (<em>string</em>) – Domain ID for domain scoping.</li>
+<li><strong>domain_name</strong> (<em>string</em>) – Domain name for domain scoping.</li>
+<li><strong>project_id</strong> (<em>string</em>) – Project ID for project scoping.</li>
+<li><strong>project_name</strong> (<em>string</em>) – Project name for project scoping.</li>
+<li><strong>project_domain_id</strong> (<em>string</em>) – Project’s domain ID for project.</li>
+<li><strong>project_domain_name</strong> (<em>string</em>) – Project’s domain name for project.</li>
+<li><strong>reauthenticate</strong> (<em>bool</em>) – Allow fetching a new token if the current one
+is going to expire. (optional) default True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.identity.v3.TokenlessAuth">
+<em class="property">class </em><code class="descclassname">keystoneauth1.identity.v3.</code><code class="descname">TokenlessAuth</code><span class="sig-paren">(</span><em>auth_url</em>, <em>domain_id=None</em>, <em>domain_name=None</em>, <em>project_id=None</em>, <em>project_name=None</em>, <em>project_domain_id=None</em>, <em>project_domain_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.TokenlessAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.plugin.BaseAuthPlugin</span></code></a></p>
+<p>A plugin for authenticating with Tokenless Auth.</p>
+<p>This is for Tokenless Authentication. Scoped information
+like domain name and project ID will be passed in the headers and
+token validation request will be authenticated based on
+the provided HTTPS certificate along with the scope information.</p>
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.TokenlessAuth.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>session</em>, <em>service_type=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.TokenlessAuth.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a valid endpoint for a service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – A session object that can be used for communication.</li>
+<li><strong>service_type</strong> (<em>string</em>) – The type of service to lookup the endpoint
+for. This plugin will return None (failure)
+if service_type is not provided.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A valid endpoint URL or None if not available.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string or None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.identity.v3.TokenlessAuth.get_headers">
+<code class="descname">get_headers</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.identity.v3.TokenlessAuth.get_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch authentication headers for message.</p>
+<p>This is to override the default get_headers method to provide
+tokenless auth scope headers if token is not provided in the
+session.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="keystoneauth1.html#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Headers that are set to authenticate a message or None for
+failure. Note that when checking this value that the empty
+dict is a valid, non-failure response.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="keystoneauth1.identity.generic.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneauth1.identity.generic package"></i></a>
+          
+          
+            <a href="keystoneauth1.loading.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.loading package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../using-sessions.html">Using Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication-plugins.html">Authentication Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin-options.html">Plugin Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extras.html">Extras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating.html">Migrating from keystoneclient</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="keystoneauth1.html">keystoneauth1 package</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">CHANGES</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "api/keystoneauth1.identity.v3" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/keystoneauth/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 774691368a72297ed9bacec1afa15cfcb12ca896";
+        var bugProject = "keystoneauth";
+        var bugTitle = "keystoneauth1.identity.v3 package in keystoneauth1";
+    var fieldTags = "doc";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.1.0 on 2018-03-20 15:50";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

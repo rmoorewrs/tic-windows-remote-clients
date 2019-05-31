@@ -1,0 +1,767 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Human Interface Guide</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Human Interface Guide</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="plugins.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Plugins"></i></a>
+    
+    
+    <a href="api/modules.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Modules"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Human Interface Guide</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#personas">Personas</a><ul>
+<li><a class="reference internal" href="#alice-the-admin">Alice the admin</a></li>
+<li><a class="reference internal" href="#darren-the-deployer">Darren the deployer</a></li>
+<li><a class="reference internal" href="#emile-the-end-user">Emile the end-user</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#principles">Principles</a><ul>
+<li><a class="reference internal" href="#consistency">Consistency</a><ul>
+<li><a class="reference internal" href="#example-review-criteria">Example Review Criteria</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simplicity">Simplicity</a><ul>
+<li><a class="reference internal" href="#id1">Example Review Criteria</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#user-centered-design">User-Centered Design</a><ul>
+<li><a class="reference internal" href="#id2">Example Review Criteria</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#transparency">Transparency</a><ul>
+<li><a class="reference internal" href="#id3">Example Review Criteria</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#architecture">Architecture</a><ul>
+<li><a class="reference internal" href="#command-structure">Command Structure</a><ul>
+<li><a class="reference internal" href="#global-options">Global Options</a><ul>
+<li><a class="reference internal" href="#help">–help</a></li>
+<li><a class="reference internal" href="#version">–version</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#command-object-s-and-action">Command Object(s) and Action</a></li>
+<li><a class="reference internal" href="#command-arguments-and-options">Command Arguments and Options</a><ul>
+<li><a class="reference internal" href="#option-forms">Option Forms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#command-output">Command Output</a></li>
+<li><a class="reference internal" href="#help-commands">Help Commands</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#authentication">Authentication</a></li>
+<li><a class="reference internal" href="#machine-output-format">Machine Output Format</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="human-interface-guide">
+<span id="hig"></span><h1>Human Interface Guide<a class="headerlink" href="#human-interface-guide" title="Permalink to this headline">¶</a></h1>
+<p><em>Note: This page covers the OpenStackClient CLI only but looks familiar
+because it was derived from the Horizon HIG.</em></p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>What is a HIG?
+The Human Interface Guidelines document was created for OpenStack developers
+in order to direct the creation of new OpenStackClient command interfaces.</p>
+</div>
+<div class="section" id="personas">
+<h2>Personas<a class="headerlink" href="#personas" title="Permalink to this headline">¶</a></h2>
+<p>Personas are archetypal users of the system. Keep these types of users in
+mind when designing the interface.</p>
+<div class="section" id="alice-the-admin">
+<h3>Alice the admin<a class="headerlink" href="#alice-the-admin" title="Permalink to this headline">¶</a></h3>
+<p>Alice is an administrator who is responsible for maintaining the OpenStack
+cloud installation. She has many years of experience with Linux systems
+administration.</p>
+</div>
+<div class="section" id="darren-the-deployer">
+<h3>Darren the deployer<a class="headerlink" href="#darren-the-deployer" title="Permalink to this headline">¶</a></h3>
+<p>Darren is responsible for doing the initial OpenStack deployment on the
+host machines.</p>
+</div>
+<div class="section" id="emile-the-end-user">
+<h3>Emile the end-user<a class="headerlink" href="#emile-the-end-user" title="Permalink to this headline">¶</a></h3>
+<p>Emile uses the cloud to do software development inside of the virtual
+machines. She uses the command-line tools because she finds it quicker
+than using the dashboard.</p>
+</div>
+</div>
+<div class="section" id="principles">
+<h2>Principles<a class="headerlink" href="#principles" title="Permalink to this headline">¶</a></h2>
+<p>The principles established in this section define the high-level priorities
+to be used when designing and evaluating interactions for the OpenStack
+command line interface. Principles are broad in scope and can be considered
+the philosophical foundation for the OpenStack experience; while they may
+not describe the tactical implementation of design, they should be used
+when deciding between multiple courses of design.</p>
+<p>A significant theme for designing for the OpenStack experience concerns
+focusing on common uses of the system rather than adding complexity to support
+functionality that is rarely used.</p>
+<div class="section" id="consistency">
+<h3>Consistency<a class="headerlink" href="#consistency" title="Permalink to this headline">¶</a></h3>
+<p>Consistency between OpenStack experiences will ensure that the command line
+interface feels like a single experience instead of a jumble of disparate
+products. Fractured experiences only serve to undermine user expectations
+about how they should interact with the system, creating an unreliable user
+experience. To avoid this, each interaction and visual representation within
+the system must be used uniformly and predictably. The architecture and elements
+detailed in this document will provide a strong foundation for establishing a
+consistent experience.</p>
+<div class="section" id="example-review-criteria">
+<h4>Example Review Criteria<a class="headerlink" href="#example-review-criteria" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Do the command actions adhere to a consistent application of actions?</li>
+<li>Has a new type of command subject or output been introduced?</li>
+<li>Does the design use command elements (options and arguments) as defined?
+(See Core Elements.)</li>
+<li>Can any newly proposed command elements (actions or subjects) be accomplished
+with existing elements?</li>
+<li>Does the design adhere to the structural model of the core experience?
+(See Core Architecture.)</li>
+<li>Are any data objects displayed or manipulated in a way contradictory to how
+they are handled elsewhere in the core experience?</li>
+</ul>
+</div>
+</div>
+<div class="section" id="simplicity">
+<h3>Simplicity<a class="headerlink" href="#simplicity" title="Permalink to this headline">¶</a></h3>
+<p>To best support new users and create straight forward interactions, designs
+should be as simple as possible. When crafting new commands, designs should
+minimize the amount of noise present in output: large amounts of
+nonessential data, overabundance of possible actions and so on. Designs should
+focus on the intent of the command, requiring only the necessary components
+and either removing superfluous elements or making
+them accessible through optional arguments. An example of this principle occurs
+in OpenStack’s use of tables: only the most often used columns are shown by
+default. Further data may be accessed through the output control options,
+allowing users to specify the types of data that they find useful in their
+day-to-day work.</p>
+<div class="section" id="id1">
+<h4>Example Review Criteria<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Can options be used to combine otherwise similar commands?</li>
+<li>How many of the displayed elements are relevant to the majority of users?</li>
+<li>If multiple actions are required for the user to complete a task, is each
+step required or can the process be more efficient?</li>
+</ul>
+</div>
+</div>
+<div class="section" id="user-centered-design">
+<h3>User-Centered Design<a class="headerlink" href="#user-centered-design" title="Permalink to this headline">¶</a></h3>
+<p>Commands should be design based on how a user will interact with the system
+and not how the system’s backend is organized. While database structures and
+APIs may define what is possible, they often do not define good user
+experience; consider user goals and the way in which users will want to
+interact with their data, then design for these work flows and mold the
+interface to the user, not the user to the interface.</p>
+<p>Commands should be discoverable via the interface itself.</p>
+<p>To determine a list of available commands, use the <code class="code docutils literal"><span class="pre">-h</span></code> or
+<code class="code docutils literal"><span class="pre">--help</span></code> options:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ openstack --help
+</pre></div>
+</div>
+<p>For help with an individual command, use the <code class="code docutils literal"><span class="pre">help</span></code> command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ openstack <span class="nb">help</span> server create
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h4>Example Review Criteria<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>How quickly can a user figure out how to accomplish a given task?</li>
+<li>Has content been grouped and ordered according to usage relationships?</li>
+<li>Do work flows support user goals or add complexity?</li>
+</ul>
+</div>
+</div>
+<div class="section" id="transparency">
+<h3>Transparency<a class="headerlink" href="#transparency" title="Permalink to this headline">¶</a></h3>
+<p>Make sure users understand the current state of their infrastructure and
+interactions. For example, users should be able to access information about
+the state of each machine/virtual machine easily, without having to actively
+seek out this information. Whenever the user initiates an action, make sure
+a confirmation is displayed[1] to show that an input has been received. Upon
+completion of a process, make sure the user is informed. Ensure that the user
+never questions the state of their environment.</p>
+<p>[1] This goes against the common UNIX philosophy of only reporting error
+conditions and output that is specifically requested.</p>
+<div class="section" id="id3">
+<h4>Example Review Criteria<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Does the user receive feedback when initiating a process?</li>
+<li>When a process is completed?</li>
+<li>Does the user have quick access to the state of their infrastructure?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="command-structure">
+<h3>Command Structure<a class="headerlink" href="#command-structure" title="Permalink to this headline">¶</a></h3>
+<p>OpenStackClient has a consistent and predictable format for all of its commands.</p>
+<ul class="simple">
+<li>The top level command name is <code class="code docutils literal"><span class="pre">openstack</span></code></li>
+<li>Sub-commands take the form:</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>openstack <span class="o">[</span>&lt;global-options&gt;<span class="o">]</span> &lt;object-1&gt; &lt;action&gt; <span class="o">[</span>&lt;object-2&gt;<span class="o">]</span> <span class="o">[</span>&lt;command-arguments&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<p>Subcommands shall have three distinct parts to its commands (in order that they appear):</p>
+<ul class="simple">
+<li>global options</li>
+<li>command object(s) and action</li>
+<li>command options and arguments</li>
+</ul>
+<p>Output formats:</p>
+<ul class="simple">
+<li>user-friendly tables with headers, etc</li>
+<li>machine-parsable delimited</li>
+</ul>
+<div class="section" id="global-options">
+<h4>Global Options<a class="headerlink" href="#global-options" title="Permalink to this headline">¶</a></h4>
+<p>Global options are global in the sense that they apply to every command
+invocation regardless of action to be performed.  They include authentication
+credentials and API version selection.  Most global options have a corresponding
+environment variable that may also be used to set the value.  If both are present,
+the command-line option takes priority.  The environment variable names are derived
+from the option name by dropping the leading dashes (‘–’), converting each embedded
+dash (‘-‘) to an underscore (‘_’), and converting to upper case.</p>
+<ul class="simple">
+<li>Global options shall always have a long option name, certain common options may
+also have short names.  Short names should be reserved for global options to limit
+the potential for duplication and multiple meanings between commands given the
+limited set of available short names.</li>
+<li>All long options names shall begin with two dashes (‘–’) and use a single dash
+(‘-‘) internally between words (<code class="code docutils literal"><span class="pre">--like-this</span></code>).  Underscores (‘_’) shall not
+be used in option names.</li>
+<li>Authentication options conform to the common CLI authentication guidelines in
+<a class="reference internal" href="../cli/authentication.html#authentication"><span class="std std-ref">Authentication</span></a>.</li>
+</ul>
+<p>For example, <code class="code docutils literal"><span class="pre">--os-username</span></code> can be set from the environment via
+<code class="code docutils literal"><span class="pre">OS_USERNAME</span></code>.</p>
+<div class="section" id="help">
+<h5>–help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h5>
+<p>The standard <code class="code docutils literal"><span class="pre">--help</span></code> global option displays the documentation for invoking
+the program and a list of the available commands on standard output.  All other
+options and commands are ignored when this is present.  The traditional short
+form help option (<code class="code docutils literal"><span class="pre">-h</span></code>) is also available.</p>
+</div>
+<div class="section" id="version">
+<h5>–version<a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h5>
+<p>The standard <code class="code docutils literal"><span class="pre">--version</span></code> option displays the name and version on standard
+output.  All other options and commands are ignored when this is present.</p>
+</div>
+</div>
+<div class="section" id="command-object-s-and-action">
+<h4>Command Object(s) and Action<a class="headerlink" href="#command-object-s-and-action" title="Permalink to this headline">¶</a></h4>
+<p>Commands consist of an object described by one or more words followed by an action.  Commands that require two objects have the primary object ahead of the action and the secondary object after the action. Any positional arguments identifying the objects shall appear in the same order as the objects.  In badly formed English it is expressed as “(Take) object1 (and perform) action (using) object2 (to it).”</p>
+<blockquote>
+<div>&lt;object-1&gt; &lt;action&gt; [&lt;object-2&gt;]</div></blockquote>
+<p>Examples:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">group</span> <span class="pre">add</span> <span class="pre">user</span> <span class="pre">&lt;group&gt;</span> <span class="pre">&lt;user&gt;</span></code></li>
+<li><code class="code docutils literal"><span class="pre">volume</span> <span class="pre">type</span> <span class="pre">list</span></code>   # Note that <code class="code docutils literal"><span class="pre">volume</span> <span class="pre">type</span></code> is a two-word
+single object</li>
+</ul>
+<p>The <code class="code docutils literal"><span class="pre">help</span></code> command is unique as it appears in front of a normal command
+and displays the help text for that command rather than execute it.</p>
+<p>Object names are always specified in command in their singular form.  This is
+contrary to natural language use.</p>
+</div>
+<div class="section" id="command-arguments-and-options">
+<h4>Command Arguments and Options<a class="headerlink" href="#command-arguments-and-options" title="Permalink to this headline">¶</a></h4>
+<p>Each command may have its own set of options distinct from the global options.
+They follow the same style as the global options and always appear between
+the command and any positional arguments the command requires.</p>
+<p>Command options shall only have long names.  The small range of available
+short names makes it hard for a single short option name to have a consistent
+meaning across multiple commands.</p>
+<div class="section" id="option-forms">
+<h5>Option Forms<a class="headerlink" href="#option-forms" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><strong>boolean</strong>: boolean options shall use a form of <code class="code docutils literal"><span class="pre">--&lt;true&gt;|--&lt;false&gt;</span></code>
+(preferred) or <code class="code docutils literal"><span class="pre">--&lt;option&gt;|--no-&lt;option&gt;</span></code>.  For example, the
+<code class="code docutils literal"><span class="pre">enabled</span></code> state of a project is set with <code class="code docutils literal"><span class="pre">--enable|--disable</span></code>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="command-output">
+<h3>Command Output<a class="headerlink" href="#command-output" title="Permalink to this headline">¶</a></h3>
+<p>The default command output is pretty-printed using the Python
+<code class="code docutils literal"><span class="pre">prettytable</span></code> module.</p>
+<p>Machine-parsable output format may be specified with the <code class="code docutils literal"><span class="pre">--format</span></code>
+option to <code class="code docutils literal"><span class="pre">list</span></code> and <code class="code docutils literal"><span class="pre">show</span></code> commands.  <code class="code docutils literal"><span class="pre">list</span></code> commands
+have an option (<code class="code docutils literal"><span class="pre">--format</span> <span class="pre">csv</span></code>) for CSV output and <code class="code docutils literal"><span class="pre">show</span></code> commands
+have an option (<code class="code docutils literal"><span class="pre">--format</span> <span class="pre">shell</span></code>) for the shell variable assignment
+syntax of <code class="code docutils literal"><span class="pre">var=&quot;value&quot;</span></code>.  In both cases, all data fields are quoted with <cite>“</cite></p>
+</div>
+<div class="section" id="help-commands">
+<h3>Help Commands<a class="headerlink" href="#help-commands" title="Permalink to this headline">¶</a></h3>
+<p>The help system is considered separately due to its special status
+among the commands.  Rather than performing tasks against a system, it
+provides information about the commands available to perform those
+tasks.  The format of the <code class="code docutils literal"><span class="pre">help</span></code> command therefore varies from the
+form for other commands in that the <code class="code docutils literal"><span class="pre">help</span></code> command appears in front
+of the first object in the command.</p>
+<p>The options <code class="code docutils literal"><span class="pre">--help</span></code> and <code class="code docutils literal"><span class="pre">-h</span></code> display the global options and a
+list of the supported commands.  Note that the commands shown depend on the API
+versions that are in effect; i.e. if <code class="code docutils literal"><span class="pre">--os-identity-api-version=3</span></code> is
+present Identity API v3 commands are shown.</p>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>The following examples depict common command and output formats expected to be produces by the OpenStack client.</p>
+<div class="section" id="authentication">
+<h3>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h3>
+<p>Using global options:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ openstack --os-tenant-name ExampleCo --os-username demo --os-password secret --os-auth-url http://localhost:5000:/v2.0 server show appweb01
++------------------------+-----------------------------------------------------+
+<span class="p">|</span>        Property        <span class="p">|</span>                Value                                <span class="p">|</span>
++------------------------+-----------------------------------------------------+
+<span class="p">|</span> OS-DCF:diskConfig      <span class="p">|</span> MANUAL                                              <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:power_state <span class="p">|</span> <span class="m">1</span>                                                   <span class="p">|</span>
+<span class="p">|</span> flavor                 <span class="p">|</span> m1.small                                            <span class="p">|</span>
+<span class="p">|</span> id                     <span class="p">|</span> dcbc2185-ba17-4f81-95a9-c3fae9b2b042                <span class="p">|</span>
+<span class="p">|</span> image                  <span class="p">|</span> Ubuntu <span class="m">12</span>.04 <span class="o">(</span>754c231e-ade2-458c-9f91-c8df107ff7ef<span class="o">)</span> <span class="p">|</span>
+<span class="p">|</span> keyname                <span class="p">|</span> demo-key                                            <span class="p">|</span>
+<span class="p">|</span> name                   <span class="p">|</span> appweb01                                            <span class="p">|</span>
+<span class="p">|</span> private_address        <span class="p">|</span> <span class="m">10</span>.4.128.13                                         <span class="p">|</span>
+<span class="p">|</span> status                 <span class="p">|</span> ACTIVE                                              <span class="p">|</span>
+<span class="p">|</span> user                   <span class="p">|</span> demo                                                <span class="p">|</span>
++------------------------+-----------------------------------------------------+
+</pre></div>
+</div>
+<p>Using environment variables:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">OS_TENANT_NAME</span><span class="o">=</span>ExampleCo
+$ <span class="nb">export</span> <span class="nv">OS_USERNAME</span><span class="o">=</span>demo
+$ <span class="nb">export</span> <span class="nv">OS_PASSWORD</span><span class="o">=</span>secret
+$ <span class="nb">export</span> <span class="nv">OS_AUTH_URL</span><span class="o">=</span>http://localhost:5000:/v2.0
+$ openstack server show appweb01
++------------------------+-----------------------------------------------------+
+<span class="p">|</span>        Property        <span class="p">|</span>                Value                                <span class="p">|</span>
++------------------------+-----------------------------------------------------+
+<span class="p">|</span> OS-DCF:diskConfig      <span class="p">|</span> MANUAL                                              <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:power_state <span class="p">|</span> <span class="m">1</span>                                                   <span class="p">|</span>
+<span class="p">|</span> flavor                 <span class="p">|</span> m1.small                                            <span class="p">|</span>
+<span class="p">|</span> id                     <span class="p">|</span> dcbc2185-ba17-4f81-95a9-c3fae9b2b042                <span class="p">|</span>
+<span class="p">|</span> image                  <span class="p">|</span> Ubuntu <span class="m">12</span>.04 <span class="o">(</span>754c231e-ade2-458c-9f91-c8df107ff7ef<span class="o">)</span> <span class="p">|</span>
+<span class="p">|</span> keyname                <span class="p">|</span> demo-key                                            <span class="p">|</span>
+<span class="p">|</span> name                   <span class="p">|</span> appweb01                                            <span class="p">|</span>
+<span class="p">|</span> private_address        <span class="p">|</span> <span class="m">10</span>.4.128.13                                         <span class="p">|</span>
+<span class="p">|</span> status                 <span class="p">|</span> ACTIVE                                              <span class="p">|</span>
+<span class="p">|</span> user                   <span class="p">|</span> demo                                                <span class="p">|</span>
++------------------------+-----------------------------------------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="machine-output-format">
+<h3>Machine Output Format<a class="headerlink" href="#machine-output-format" title="Permalink to this headline">¶</a></h3>
+<p>Using the csv output format with a list command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ openstack server list --format csv
+<span class="s2">&quot;ID&quot;</span>,<span class="s2">&quot;Name&quot;</span>,<span class="s2">&quot;Status&quot;</span>,<span class="s2">&quot;Private_Address&quot;</span>
+<span class="s2">&quot;ead97d84-6988-47fc-9637-3564fc36bc4b&quot;</span>,<span class="s2">&quot;appweb01&quot;</span>,<span class="s2">&quot;ACTIVE&quot;</span>,<span class="s2">&quot;10.4.128.13&quot;</span>
+</pre></div>
+</div>
+<p>Using the show command options of  shell output format and adding a prefix of
+<code class="code docutils literal"><span class="pre">my_</span></code> to avoid collisions with existing environment variables:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ openstack server show --format shell --prefix my_ appweb01
+my_OS-DCF:diskConfig<span class="o">=</span><span class="s2">&quot;MANUAL&quot;</span>
+my_OS-EXT-STS:power_state<span class="o">=</span><span class="s2">&quot;1&quot;</span>
+<span class="nv">my_flavor</span><span class="o">=</span><span class="s2">&quot;m1.small&quot;</span>
+<span class="nv">my_id</span><span class="o">=</span><span class="s2">&quot;dcbc2185-ba17-4f81-95a9-c3fae9b2b042&quot;</span>
+<span class="nv">my_image</span><span class="o">=</span><span class="s2">&quot;Ubuntu 12.04 (754c231e-ade2-458c-9f91-c8df107ff7ef)&quot;</span>
+<span class="nv">my_keyname</span><span class="o">=</span><span class="s2">&quot;demo-key&quot;</span>
+<span class="nv">my_name</span><span class="o">=</span><span class="s2">&quot;appweb01&quot;</span>
+<span class="nv">my_private_address</span><span class="o">=</span><span class="s2">&quot;10.4.128.13&quot;</span>
+<span class="nv">my_status</span><span class="o">=</span><span class="s2">&quot;ACTIVE&quot;</span>
+<span class="nv">my_user</span><span class="o">=</span><span class="s2">&quot;demo&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="plugins.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Plugins"></i></a>
+          
+          
+            <a href="api/modules.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Modules"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributor Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="developing.html">Developing with OpenStackClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-beta.html">Command Beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-options.html">Command Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-wrappers.html">Command Class Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-errors.html">Command Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-logs.html">Command Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specs/commands.html">Command Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html">Plugins</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Human Interface Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/modules.html">Modules</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "contributor/humaninterfaceguide" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "Human Interface Guide in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

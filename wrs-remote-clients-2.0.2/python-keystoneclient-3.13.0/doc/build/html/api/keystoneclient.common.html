@@ -1,0 +1,606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: keystoneclient.common package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>keystoneclient.common package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="keystoneclient.auth.identity.v3.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneclient.auth.identity.v3 package"></i></a>
+    
+    
+    <a href="keystoneclient.contrib.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneclient.contrib package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 15:51</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">keystoneclient.common package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.common.cms">keystoneclient.common.cms module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.common">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="keystoneclient-common-package">
+<h1>keystoneclient.common package<a class="headerlink" href="#keystoneclient-common-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-keystoneclient.common.cms">
+<span id="keystoneclient-common-cms-module"></span><h2>keystoneclient.common.cms module<a class="headerlink" href="#module-keystoneclient.common.cms" title="Permalink to this headline">¶</a></h2>
+<p>Certificate signing functions.</p>
+<p>Call set_subprocess() with the subprocess module. Either Python’s
+subprocess or eventlet.green.subprocess can be used.</p>
+<p>If set_subprocess() is not called, this module will pick Python’s subprocess
+or eventlet.green.subprocess based on if os module is patched by eventlet.</p>
+<dl class="class">
+<dt id="keystoneclient.common.cms.OpensslCmsExitStatus">
+<em class="property">class </em><code class="descclassname">keystoneclient.common.cms.</code><code class="descname">OpensslCmsExitStatus</code><a class="headerlink" href="#keystoneclient.common.cms.OpensslCmsExitStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneclient.common.cms.OpensslCmsExitStatus.COMMAND_OPTIONS_PARSING_ERROR">
+<code class="descname">COMMAND_OPTIONS_PARSING_ERROR</code><em class="property"> = 1</em><a class="headerlink" href="#keystoneclient.common.cms.OpensslCmsExitStatus.COMMAND_OPTIONS_PARSING_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.common.cms.OpensslCmsExitStatus.CREATE_CMS_READ_MIME_ERROR">
+<code class="descname">CREATE_CMS_READ_MIME_ERROR</code><em class="property"> = 3</em><a class="headerlink" href="#keystoneclient.common.cms.OpensslCmsExitStatus.CREATE_CMS_READ_MIME_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.common.cms.OpensslCmsExitStatus.INPUT_FILE_READ_ERROR">
+<code class="descname">INPUT_FILE_READ_ERROR</code><em class="property"> = 2</em><a class="headerlink" href="#keystoneclient.common.cms.OpensslCmsExitStatus.INPUT_FILE_READ_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.common.cms.OpensslCmsExitStatus.SUCCESS">
+<code class="descname">SUCCESS</code><em class="property"> = 0</em><a class="headerlink" href="#keystoneclient.common.cms.OpensslCmsExitStatus.SUCCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.cms_hash_token">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">cms_hash_token</code><span class="sig-paren">(</span><em>token_id</em>, <em>mode=’md5’</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.cms_hash_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash PKI tokens.</p>
+<dl class="docutils">
+<dt>return: for asn1 or pkiz tokens, returns the hash of the passed in token</dt>
+<dd>otherwise, returns what it was passed in.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.cms_sign_data">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">cms_sign_data</code><span class="sig-paren">(</span><em>data_to_sign</em>, <em>signing_cert_file_name</em>, <em>signing_key_file_name</em>, <em>outform=’PEM’</em>, <em>message_digest=’sha256’</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.cms_sign_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use OpenSSL to sign a document.</p>
+<p>Produces a Base64 encoding of a DER formatted CMS Document
+<a class="reference external" href="http://en.wikipedia.org/wiki/Cryptographic_Message_Syntax">http://en.wikipedia.org/wiki/Cryptographic_Message_Syntax</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data_to_sign</strong> – data to sign</li>
+<li><strong>signing_cert_file_name</strong> – path to the X509 certificate containing
+the public key associated with the private key used to sign the data</li>
+<li><strong>signing_key_file_name</strong> – path to the private key used to sign
+the data</li>
+<li><strong>outform</strong> – Format for the signed document PKIZ_CMS_FORM or
+PKI_ASN1_FORM</li>
+<li><strong>message_digest</strong> – Digest algorithm to use when signing or resigning</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.cms_sign_text">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">cms_sign_text</code><span class="sig-paren">(</span><em>data_to_sign</em>, <em>signing_cert_file_name</em>, <em>signing_key_file_name</em>, <em>message_digest=’sha256’</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.cms_sign_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.cms_sign_token">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">cms_sign_token</code><span class="sig-paren">(</span><em>text</em>, <em>signing_cert_file_name</em>, <em>signing_key_file_name</em>, <em>message_digest=’sha256’</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.cms_sign_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.cms_to_token">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">cms_to_token</code><span class="sig-paren">(</span><em>cms_text</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.cms_to_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a CMS-signed token in PEM format to a custom URL-safe format.</p>
+<p>The conversion consists of replacing ‘/’ char in the PEM-formatted token
+with the ‘-‘ char and doing other such textual replacements to make the
+result marshallable via HTTP. The return value can thus be used as the
+value of a HTTP header such as “X-Auth-Token”.</p>
+<p>This ad-hoc conversion is an unfortunate oversight since the returned
+value now does not conform to any of the standard variants of base64
+encoding. It would have been better to use base64url encoding (either on
+the PEM formatted text or, perhaps even better, on the inner CMS-signed
+binary value without any PEM formatting). In any case, the same conversion
+is done in reverse in the other direction (for token verification), so
+there are no correctness issues here. Note that the non-standard encoding
+of the token will be preserved so as to not break backward compatibility.</p>
+<p>The conversion issue is detailed by the code author in a blog post at
+<a class="reference external" href="http://adam.younglogic.com/2014/02/compressed-tokens/">http://adam.younglogic.com/2014/02/compressed-tokens/</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.cms_verify">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">cms_verify</code><span class="sig-paren">(</span><em>formatted</em>, <em>signing_cert_file_name</em>, <em>ca_file_name</em>, <em>inform=’PEM’</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.cms_verify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify the signature of the contents IAW CMS syntax.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.CalledProcessError" title="(in Python v3.6)"><strong>subprocess.CalledProcessError</strong></a> – </li>
+<li><a class="reference internal" href="keystoneclient.html#keystoneclient.exceptions.CertificateConfigError" title="keystoneclient.exceptions.CertificateConfigError"><strong>keystoneclient.exceptions.CertificateConfigError</strong></a> – if certificate
+is not configured
+properly.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.is_ans1_token">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">is_ans1_token</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.is_ans1_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated.</p>
+<p>This function is deprecated as of the 1.7.0 release in favor of
+<a class="reference internal" href="#keystoneclient.common.cms.is_asn1_token" title="keystoneclient.common.cms.is_asn1_token"><code class="xref py py-func docutils literal"><span class="pre">is_asn1_token()</span></code></a> and may be removed in the 2.0.0 release.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.is_asn1_token">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">is_asn1_token</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.is_asn1_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if a token appears to be PKI-based.</p>
+<p>thx to ayoung for sorting this out.</p>
+<p>base64 decoded hex representation of MII is 3082:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="s1">&#39;MII=&#39;</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="s1">&#39;3082&#39;</span>
+</pre></div>
+</div>
+<p>re: <a class="reference external" href="http://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf">http://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pg4</span><span class="p">:</span>  <span class="n">For</span> <span class="n">tags</span> <span class="kn">from</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">30</span> <span class="n">the</span> <span class="n">first</span> <span class="n">octet</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">identfier</span>
+<span class="n">pg10</span><span class="p">:</span> <span class="n">Hex</span> <span class="mi">30</span> <span class="n">means</span> <span class="n">sequence</span><span class="p">,</span> <span class="n">followed</span> <span class="n">by</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="n">that</span> <span class="n">sequence</span><span class="o">.</span>
+<span class="n">pg5</span><span class="p">:</span>  <span class="n">Second</span> <span class="n">octet</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">length</span> <span class="n">octet</span>
+      <span class="n">first</span> <span class="n">bit</span> <span class="n">indicates</span> <span class="n">short</span> <span class="ow">or</span> <span class="n">long</span> <span class="n">form</span><span class="p">,</span> <span class="nb">next</span> <span class="mi">7</span> <span class="n">bits</span> <span class="n">encode</span> <span class="n">the</span>
+      <span class="n">number</span> <span class="n">of</span> <span class="n">subsequent</span> <span class="n">octets</span> <span class="n">that</span> <span class="n">make</span> <span class="n">up</span> <span class="n">the</span> <span class="n">content</span> <span class="n">length</span> <span class="n">octets</span>
+      <span class="k">as</span> <span class="n">an</span> <span class="n">unsigned</span> <span class="n">binary</span> <span class="nb">int</span>
+
+      <span class="mi">82</span> <span class="o">=</span> <span class="mi">10000010</span> <span class="p">(</span><span class="n">first</span> <span class="n">bit</span> <span class="n">indicates</span> <span class="n">long</span> <span class="n">form</span><span class="p">)</span>
+      <span class="mi">0000010</span> <span class="o">=</span> <span class="mi">2</span> <span class="n">octets</span> <span class="n">of</span> <span class="n">content</span> <span class="n">length</span>
+      <span class="n">so</span> <span class="n">read</span> <span class="n">the</span> <span class="nb">next</span> <span class="mi">2</span> <span class="n">octets</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="n">content</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>In the case of a very large content length there could be a requirement to
+have more than 2 octets to designate the content length, therefore
+requiring us to check for MIM, MIQ, etc.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">a2b_hex</span><span class="p">(</span><span class="s1">&#39;3083&#39;</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="s1">&#39;MIM=&#39;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">a2b_hex</span><span class="p">(</span><span class="s1">&#39;3084&#39;</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s1">&#39;MIQ=&#39;</span>
+<span class="n">Checking</span> <span class="k">for</span> <span class="n">MI</span> <span class="n">would</span> <span class="n">become</span> <span class="n">invalid</span> <span class="n">at</span> <span class="mi">16</span> <span class="n">octets</span> <span class="n">of</span> <span class="n">content</span> <span class="n">length</span>
+<span class="mi">10010000</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">a2b_hex</span><span class="p">(</span><span class="s1">&#39;3090&#39;</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="s1">&#39;MJA=&#39;</span>
+<span class="n">Checking</span> <span class="k">for</span> <span class="n">just</span> <span class="n">M</span> <span class="ow">is</span> <span class="n">insufficient</span>
+</pre></div>
+</div>
+<p>But we will only check for MII:
+Max length of the content using 2 octets is 3FFF or 16383.</p>
+<p>It’s not practical to support a token of this length or greater in http
+therefore, we will check for MII only and ignore the case of larger tokens</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.is_pkiz">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">is_pkiz</code><span class="sig-paren">(</span><em>token_text</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.is_pkiz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if a token is PKIZ.</p>
+<p>Checks if the string has the prefix that indicates it is a
+Crypto Message Syntax, Z compressed token.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.pkiz_sign">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">pkiz_sign</code><span class="sig-paren">(</span><em>text</em>, <em>signing_cert_file_name</em>, <em>signing_key_file_name</em>, <em>compression_level=6</em>, <em>message_digest=’sha256’</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.pkiz_sign" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.pkiz_uncompress">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">pkiz_uncompress</code><span class="sig-paren">(</span><em>signed_text</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.pkiz_uncompress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.pkiz_verify">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">pkiz_verify</code><span class="sig-paren">(</span><em>signed_text</em>, <em>signing_cert_file_name</em>, <em>ca_file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.pkiz_verify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.set_subprocess">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">set_subprocess</code><span class="sig-paren">(</span><em>_subprocess=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.set_subprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set subprocess module to use.</p>
+<p>The subprocess could be eventlet.green.subprocess if using eventlet,
+or Python’s subprocess otherwise.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.token_to_cms">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">token_to_cms</code><span class="sig-paren">(</span><em>signed_text</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.token_to_cms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a custom formatted token to a PEM-formatted token.</p>
+<p>See documentation for cms_to_token() for details on the custom formatting.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneclient.common.cms.verify_token">
+<code class="descclassname">keystoneclient.common.cms.</code><code class="descname">verify_token</code><span class="sig-paren">(</span><em>token</em>, <em>signing_cert_file_name</em>, <em>ca_file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.common.cms.verify_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.common">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-keystoneclient.common" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="keystoneclient.auth.identity.v3.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneclient.auth.identity.v3 package"></i></a>
+          
+          
+            <a href="keystoneclient.contrib.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneclient.contrib package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 15:51</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../using-api-v3.html">Using the V3 Client API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using-sessions.html">Using Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using-api-v2.html">Using the V2 client API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="keystoneclient.html">keystoneclient package</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">CHANGES</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "api/keystoneclient.common" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-keystoneclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 96e0c5b5625c7a5ad8d3ccd99a52a3fa6050f2ad";
+        var bugProject = "python-keystoneclient";
+        var bugTitle = "keystoneclient.common package in python-keystoneclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.13.0 on 2018-03-20 15:51";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

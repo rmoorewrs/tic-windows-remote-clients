@@ -1,0 +1,704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Command Structure</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Command Structure</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="command-objects/volume-type.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: volume type"></i></a>
+    
+    
+    <a href="plugin-commands.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Plugin Commands"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Command Structure</a><ul>
+<li><a class="reference internal" href="#global-options">Global Options</a></li>
+<li><a class="reference internal" href="#command-object-s-and-action">Command Object(s) and Action</a></li>
+<li><a class="reference internal" href="#command-arguments-and-options">Command Arguments and Options</a></li>
+<li><a class="reference internal" href="#objects">Objects</a></li>
+<li><a class="reference internal" href="#plugin-objects">Plugin Objects</a></li>
+<li><a class="reference internal" href="#actions">Actions</a></li>
+<li><a class="reference internal" href="#implementation">Implementation</a></li>
+<li><a class="reference internal" href="#command-entry-points">Command Entry Points</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="command-structure">
+<span id="id1"></span><h1>Command Structure<a class="headerlink" href="#command-structure" title="Permalink to this headline">¶</a></h1>
+<p>OpenStackClient has a consistent and predictable format for all of its commands.</p>
+<p>Commands take the form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="p">[</span><span class="o">&lt;</span><span class="k">global</span><span class="o">-</span><span class="n">options</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">action</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">-</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">command</span><span class="o">-</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All long options names begin with two dashes (<code class="docutils literal"><span class="pre">--</span></code>) and use a single dash
+(<code class="docutils literal"><span class="pre">-</span></code>) internally between words (<code class="docutils literal"><span class="pre">--like-this</span></code>).  Underscores (<code class="docutils literal"><span class="pre">_</span></code>) are
+not used in option names.</p>
+</div>
+<div class="section" id="global-options">
+<h2>Global Options<a class="headerlink" href="#global-options" title="Permalink to this headline">¶</a></h2>
+<p>Global options are global in the sense that they apply to every command
+invocation regardless of action to be performed. They include authentication
+credentials and API version selection. Most global options have a corresponding
+environment variable that may also be used to set the value. If both are
+present, the command-line option takes priority. The environment variable
+names are derived from the option name by dropping the leading dashes (<code class="docutils literal"><span class="pre">--</span></code>),
+converting each embedded dash (<code class="docutils literal"><span class="pre">-</span></code>) to an underscore (<code class="docutils literal"><span class="pre">_</span></code>), and converting
+to upper case.</p>
+<p>For example, the default value of <code class="docutils literal"><span class="pre">--os-username</span></code> can be set by defining
+the environment variable <code class="docutils literal"><span class="pre">OS_USERNAME</span></code>.</p>
+</div>
+<div class="section" id="command-object-s-and-action">
+<h2>Command Object(s) and Action<a class="headerlink" href="#command-object-s-and-action" title="Permalink to this headline">¶</a></h2>
+<p>Commands consist of an object described by one or more words followed by
+an action.  Commands that require two objects have the primary object ahead
+of the action and the secondary object after the action. Any positional
+arguments identifying the objects shall appear in the same order as the
+objects.  In badly formed English it is expressed as “(Take) object1
+(and perform) action (using) object2 (to it).”</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">object</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">action</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">-</span><span class="mi">2</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Examples:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ group add user &lt;group&gt; &lt;user&gt;
+
+$ volume <span class="nb">type</span> list   <span class="c1"># &#39;volume type&#39; is a two-word single object</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="command-arguments-and-options">
+<h2>Command Arguments and Options<a class="headerlink" href="#command-arguments-and-options" title="Permalink to this headline">¶</a></h2>
+<p>Each command may have its own set of options distinct from the global options.
+They follow the same style as the global options and always appear between
+the command and any positional arguments the command requires.</p>
+</div>
+<div class="section" id="objects">
+<h2>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h2>
+<p>The objects consist of one or more words to compose a unique name.
+Occasionally when multiple APIs have a common name with common
+overlapping purposes there will be options to select which object to use, or
+the API resources will be merged, as in the <code class="docutils literal"><span class="pre">quota</span></code> object that has options
+referring to both Compute and Volume quotas.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">access</span> <span class="pre">token</span></code>: (<strong>Identity</strong>) long-lived OAuth-based token</li>
+<li><code class="docutils literal"><span class="pre">address</span> <span class="pre">scope</span></code>: (<strong>Network</strong>) a scope of IPv4 or IPv6 addresses</li>
+<li><code class="docutils literal"><span class="pre">aggregate</span></code>: (<strong>Compute</strong>) a grouping of compute hosts</li>
+<li><code class="docutils literal"><span class="pre">availability</span> <span class="pre">zone</span></code>: (<strong>Compute</strong>, <strong>Network</strong>, <strong>Volume</strong>) a logical partition of hosts or block storage or network services</li>
+<li><code class="docutils literal"><span class="pre">catalog</span></code>: (<strong>Identity</strong>) service catalog</li>
+<li><code class="docutils literal"><span class="pre">command</span></code>: (<strong>Internal</strong>) installed commands in the OSC process</li>
+<li><code class="docutils literal"><span class="pre">compute</span> <span class="pre">agent</span></code>: (<strong>Compute</strong>) a cloud Compute agent available to a hypervisor</li>
+<li><code class="docutils literal"><span class="pre">compute</span> <span class="pre">service</span></code>: (<strong>Compute</strong>) a cloud Compute process running on a host</li>
+<li><code class="docutils literal"><span class="pre">configuration</span></code>: (<strong>Internal</strong>) OpenStack client configuration</li>
+<li><code class="docutils literal"><span class="pre">consistency</span> <span class="pre">group</span></code>: (<strong>Volume</strong>) a consistency group of volumes</li>
+<li><code class="docutils literal"><span class="pre">consistency</span> <span class="pre">group</span> <span class="pre">snapshot</span></code>: (<strong>Volume</strong>) a point-in-time copy of a consistency group</li>
+<li><code class="docutils literal"><span class="pre">console</span> <span class="pre">log</span></code>: (<strong>Compute</strong>) server console text dump</li>
+<li><code class="docutils literal"><span class="pre">console</span> <span class="pre">url</span></code>: (<strong>Compute</strong>) server remote console URL</li>
+<li><code class="docutils literal"><span class="pre">consumer</span></code>: (<strong>Identity</strong>) OAuth-based delegatee</li>
+<li><code class="docutils literal"><span class="pre">container</span></code>: (<strong>Object Storage</strong>) a grouping of objects</li>
+<li><code class="docutils literal"><span class="pre">credential</span></code>: (<strong>Identity</strong>) specific to identity providers</li>
+<li><code class="docutils literal"><span class="pre">domain</span></code>: (<strong>Identity</strong>) a grouping of projects</li>
+<li><code class="docutils literal"><span class="pre">ec2</span> <span class="pre">credentials</span></code>: (<strong>Identity</strong>) AWS EC2-compatible credentials</li>
+<li><code class="docutils literal"><span class="pre">endpoint</span></code>: (<strong>Identity</strong>) the base URL used to contact a specific service</li>
+<li><code class="docutils literal"><span class="pre">extension</span></code>: (<strong>Compute</strong>, <strong>Identity</strong>, <strong>Network</strong>, <strong>Volume</strong>) OpenStack server API extensions</li>
+<li><code class="docutils literal"><span class="pre">federation</span> <span class="pre">protocol</span></code>: (<strong>Identity</strong>) the underlying protocol used while federating identities</li>
+<li><code class="docutils literal"><span class="pre">flavor</span></code>: (<strong>Compute</strong>) predefined server configurations: ram, root disk and so on</li>
+<li><code class="docutils literal"><span class="pre">fixed</span> <span class="pre">ip</span></code>: (<strong>Compute</strong>, <strong>Network</strong>) - an internal IP address assigned to a server</li>
+<li><code class="docutils literal"><span class="pre">floating</span> <span class="pre">ip</span></code>: (<strong>Compute</strong>, <strong>Network</strong>) - a public IP address that can be mapped to a server</li>
+<li><code class="docutils literal"><span class="pre">floating</span> <span class="pre">ip</span> <span class="pre">pool</span></code>: (<strong>Compute</strong>, <strong>Network</strong>) - a pool of public IP addresses</li>
+<li><code class="docutils literal"><span class="pre">group</span></code>: (<strong>Identity</strong>) a grouping of users</li>
+<li><code class="docutils literal"><span class="pre">host</span></code>: (<strong>Compute</strong>) - the physical computer running compute services</li>
+<li><code class="docutils literal"><span class="pre">hypervisor</span></code>: (<strong>Compute</strong>) the virtual machine manager</li>
+<li><code class="docutils literal"><span class="pre">hypervisor</span> <span class="pre">stats</span></code>: (<strong>Compute</strong>) hypervisor statistics over all compute nodes</li>
+<li><code class="docutils literal"><span class="pre">identity</span> <span class="pre">provider</span></code>: (<strong>Identity</strong>) a source of users and authentication</li>
+<li><code class="docutils literal"><span class="pre">image</span></code>: (<strong>Image</strong>) a disk image</li>
+<li><code class="docutils literal"><span class="pre">ip</span> <span class="pre">availability</span></code>: (<strong>Network</strong>) - details of IP usage of a network</li>
+<li><code class="docutils literal"><span class="pre">ip</span> <span class="pre">fixed</span></code>: (<strong>Compute</strong>, <strong>Network</strong>) - an internal IP address assigned to a server</li>
+<li><code class="docutils literal"><span class="pre">ip</span> <span class="pre">floating</span></code>: (<strong>Compute</strong>, <strong>Network</strong>) - a public IP address that can be mapped to a server</li>
+<li><code class="docutils literal"><span class="pre">ip</span> <span class="pre">floating</span> <span class="pre">pool</span></code>: (<strong>Compute</strong>, <strong>Network</strong>) - a pool of public IP addresses</li>
+<li><code class="docutils literal"><span class="pre">keypair</span></code>: (<strong>Compute</strong>) an SSH public key</li>
+<li><code class="docutils literal"><span class="pre">limits</span></code>: (<strong>Compute</strong>, <strong>Volume</strong>) resource usage limits</li>
+<li><code class="docutils literal"><span class="pre">mapping</span></code>: (<strong>Identity</strong>) a definition to translate identity provider attributes to Identity concepts</li>
+<li><code class="docutils literal"><span class="pre">module</span></code>: (<strong>Internal</strong>) - installed Python modules in the OSC process</li>
+<li><code class="docutils literal"><span class="pre">network</span></code>: (<strong>Compute</strong>, <strong>Network</strong>) - a virtual network for connecting servers and other resources</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">agent</span></code>: (<strong>Network</strong>) - A network agent is an agent that handles various tasks used to implement virtual networks</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">auto</span> <span class="pre">allocated</span> <span class="pre">topology</span></code>: (<strong>Network</strong>) - an auto-allocated topology for a project</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">flavor</span></code>: (<strong>Network</strong>) - allows the user to choose the type of service by a set of advertised service capabilities (e.g., LOADBALANCER, FWAAS, L3, VPN, etc) rather than by a provider type or named vendor</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">flavor</span> <span class="pre">profile</span></code>: (<strong>Network</strong>) - predefined neutron service configurations: driver</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">meter</span></code>: (<strong>Network</strong>) - allow traffic metering in a network</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">meter</span> <span class="pre">rule</span></code>: (<strong>Network</strong>) - rules for network traffic metering</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">rbac</span></code>: (<strong>Network</strong>) - an RBAC policy for network resources</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">qos</span> <span class="pre">rule</span></code>: (<strong>Network</strong>) - a QoS rule for network resources</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">qos</span> <span class="pre">policy</span></code>: (<strong>Network</strong>) - a QoS policy for network resources</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">qos</span> <span class="pre">rule</span> <span class="pre">type</span></code>: (<strong>Network</strong>) - list of QoS available rule types</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">segment</span></code>: (<strong>Network</strong>) - a segment of a virtual network</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">service</span> <span class="pre">provider</span></code>: (<strong>Network</strong>) - a driver providing a network service</li>
+<li><code class="docutils literal"><span class="pre">object</span></code>: (<strong>Object Storage</strong>) a single file in the Object Storage</li>
+<li><code class="docutils literal"><span class="pre">object</span> <span class="pre">store</span> <span class="pre">account</span></code>: (<strong>Object Storage</strong>) owns a group of Object Storage resources</li>
+<li><code class="docutils literal"><span class="pre">policy</span></code>: (<strong>Identity</strong>) determines authorization</li>
+<li><code class="docutils literal"><span class="pre">port</span></code>: (<strong>Network</strong>) - a virtual port for connecting servers and other resources to a network</li>
+<li><code class="docutils literal"><span class="pre">project</span></code>: (<strong>Identity</strong>) owns a group of resources</li>
+<li><code class="docutils literal"><span class="pre">quota</span></code>: (<strong>Compute</strong>, <strong>Volume</strong>) resource usage restrictions</li>
+<li><code class="docutils literal"><span class="pre">region</span></code>: (<strong>Identity</strong>) a subset of an OpenStack deployment</li>
+<li><code class="docutils literal"><span class="pre">request</span> <span class="pre">token</span></code>: (<strong>Identity</strong>) temporary OAuth-based token</li>
+<li><code class="docutils literal"><span class="pre">role</span></code>: (<strong>Identity</strong>) a policy object used to determine authorization</li>
+<li><code class="docutils literal"><span class="pre">role</span> <span class="pre">assignment</span></code>: (<strong>Identity</strong>) a relationship between roles, users or groups, and domains or projects</li>
+<li><code class="docutils literal"><span class="pre">router</span></code>: (<strong>Network</strong>) - a virtual router</li>
+<li><code class="docutils literal"><span class="pre">security</span> <span class="pre">group</span></code>: (<strong>Compute</strong>, <strong>Network</strong>) - groups of network access rules</li>
+<li><code class="docutils literal"><span class="pre">security</span> <span class="pre">group</span> <span class="pre">rule</span></code>: (<strong>Compute</strong>, <strong>Network</strong>) - the individual rules that define protocol/IP/port access</li>
+<li><code class="docutils literal"><span class="pre">server</span></code>: (<strong>Compute</strong>) virtual machine instance</li>
+<li><code class="docutils literal"><span class="pre">server</span> <span class="pre">backup</span></code>: (<strong>Compute</strong>) backup server disk image by using snapshot method</li>
+<li><code class="docutils literal"><span class="pre">server</span> <span class="pre">dump</span></code>: (<strong>Compute</strong>) a dump file of a server created by features like kdump</li>
+<li><code class="docutils literal"><span class="pre">server</span> <span class="pre">event</span></code>: (<strong>Compute</strong>) events of a server</li>
+<li><code class="docutils literal"><span class="pre">server</span> <span class="pre">group</span></code>: (<strong>Compute</strong>) a grouping of servers</li>
+<li><code class="docutils literal"><span class="pre">server</span> <span class="pre">image</span></code>: (<strong>Compute</strong>) saved server disk image</li>
+<li><code class="docutils literal"><span class="pre">service</span></code>: (<strong>Identity</strong>) a cloud service</li>
+<li><code class="docutils literal"><span class="pre">service</span> <span class="pre">provider</span></code>: (<strong>Identity</strong>) a resource that consumes assertions from an <code class="docutils literal"><span class="pre">identity</span> <span class="pre">provider</span></code></li>
+<li><code class="docutils literal"><span class="pre">subnet</span></code>: (<strong>Network</strong>) - a contiguous range of IP addresses assigned to a network</li>
+<li><code class="docutils literal"><span class="pre">subnet</span> <span class="pre">pool</span></code>: (<strong>Network</strong>) - a pool of subnets</li>
+<li><code class="docutils literal"><span class="pre">token</span></code>: (<strong>Identity</strong>) a bearer token managed by Identity service</li>
+<li><code class="docutils literal"><span class="pre">trust</span></code>: (<strong>Identity</strong>) project-specific role delegation between users, with optional impersonation</li>
+<li><code class="docutils literal"><span class="pre">usage</span></code>: (<strong>Compute</strong>) display host resources being consumed</li>
+<li><code class="docutils literal"><span class="pre">user</span></code>: (<strong>Identity</strong>) individual cloud resources users</li>
+<li><code class="docutils literal"><span class="pre">user</span> <span class="pre">role</span></code>: (<strong>Identity</strong>) roles assigned to a user</li>
+<li><code class="docutils literal"><span class="pre">volume</span></code>: (<strong>Volume</strong>) block volumes</li>
+<li><code class="docutils literal"><span class="pre">volume</span> <span class="pre">backup</span></code>: (<strong>Volume</strong>) backup for volumes</li>
+<li><code class="docutils literal"><span class="pre">volume</span> <span class="pre">host</span></code>: (<strong>Volume</strong>) the physical computer for volumes</li>
+<li><code class="docutils literal"><span class="pre">volume</span> <span class="pre">qos</span></code>: (<strong>Volume</strong>) quality-of-service (QoS) specification for volumes</li>
+<li><code class="docutils literal"><span class="pre">volume</span> <span class="pre">snapshot</span></code>: (<strong>Volume</strong>) a point-in-time copy of a volume</li>
+<li><code class="docutils literal"><span class="pre">volume</span> <span class="pre">type</span></code>: (<strong>Volume</strong>) deployment-specific types of volumes available</li>
+<li><code class="docutils literal"><span class="pre">volume</span> <span class="pre">service</span></code>: (<strong>Volume</strong>) services to manage block storage operations</li>
+<li><code class="docutils literal"><span class="pre">volume</span> <span class="pre">transfer</span> <span class="pre">request</span></code>: (<strong>Volume</strong>) volume owner transfer request</li>
+</ul>
+</div>
+<div class="section" id="plugin-objects">
+<h2>Plugin Objects<a class="headerlink" href="#plugin-objects" title="Permalink to this headline">¶</a></h2>
+<p>The following are known <cite>Objects</cite> used by OpenStack
+<a class="reference internal" href="../contributor/plugins.html#plugins"><span class="std std-ref">Plugins</span></a>. These are listed here to avoid name
+conflicts when creating new plugins. For a complete list check out
+<a class="reference internal" href="plugin-commands.html#plugin-commands"><span class="std std-ref">Plugin Commands</span></a>.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">acl</span></code>: (<strong>Key Manager (Barbican)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">acl</span> <span class="pre">user</span></code>: (<strong>Key Manager (Barbican)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">action</span> <span class="pre">definition</span></code>: (<strong>Workflow Engine (Mistral)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">action</span> <span class="pre">execution</span></code>: (<strong>Workflow Engine (Mistral)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">baremetal</span></code>: (<strong>Baremetal (Ironic)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">claim</span></code>: (<strong>Messaging (Zaqar)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span> <span class="pre">action</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span> <span class="pre">event</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span> <span class="pre">members</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span> <span class="pre">node</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span> <span class="pre">policy</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span> <span class="pre">policy</span> <span class="pre">binding</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span> <span class="pre">policy</span> <span class="pre">type</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span> <span class="pre">profile</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span> <span class="pre">profile</span> <span class="pre">type</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cluster</span> <span class="pre">receiver</span></code>: (<strong>Clustering (Senlin)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">congress</span> <span class="pre">datasource</span></code>: (<strong>Policy (Congress)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">congress</span> <span class="pre">driver</span></code>: (<strong>Policy (Congress)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">congress</span> <span class="pre">policy</span></code>: (<strong>Policy (Congress)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">congress</span> <span class="pre">policy</span> <span class="pre">rule</span></code>: (<strong>Policy (Congress)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">cron</span> <span class="pre">trigger</span></code>: (<strong>Workflow Engine (Mistral)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">database</span> <span class="pre">flavor</span></code>: (<strong>Database (Trove)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">dataprocessing</span> <span class="pre">data</span> <span class="pre">source</span></code>: (<strong>Data Processing (Sahara)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">dataprocessing</span> <span class="pre">image</span></code>: (<strong>Data Processing (Sahara)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">dataprocessing</span> <span class="pre">image</span> <span class="pre">tags</span></code>: (<strong>Data Processing (Sahara)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">dataprocessing</span> <span class="pre">plugin</span></code>: (<strong>Data Processing (Sahara)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">data</span> <span class="pre">protection</span> <span class="pre">plan</span></code>: (<strong>Data Protection (Karbor)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">data</span> <span class="pre">protection</span> <span class="pre">restore</span></code>: (<strong>Data Protection (Karbor)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">data</span> <span class="pre">protection</span> <span class="pre">provider</span></code>: (<strong>Data Protection (Karbor)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">data</span> <span class="pre">protection</span> <span class="pre">protectable</span></code>: (<strong>Data Protection (Karbor)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">data</span> <span class="pre">protection</span> <span class="pre">protectable</span> <span class="pre">instance</span></code>: (<strong>Data Protection (Karbor)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">data</span> <span class="pre">protection</span> <span class="pre">trigger</span></code>: (<strong>Data Protection (Karbor)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">data</span> <span class="pre">protection</span> <span class="pre">checkpoint</span></code>: (<strong>Data Protection (Karbor)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">data</span> <span class="pre">protection</span> <span class="pre">scheduledoperation</span></code>: (<strong>Data Protection (Karbor)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">loadbalancer</span></code>: (<strong>Load Balancer (Octavia)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">loadbalancer</span> <span class="pre">healthmonitor</span></code>: (<strong>Load Balancer (Octavia)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">loadbalancer</span> <span class="pre">l7policy</span></code>: (<strong>Load Balancer (Octavia)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">loadbalancer</span> <span class="pre">l7rule</span></code>: (<strong>Load Balancer (Octavia)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">loadbalancer</span> <span class="pre">listener</span></code>: (<strong>Load Balancer (Octavia)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">loadbalancer</span> <span class="pre">member</span></code>: (<strong>Load Balancer (Octavia)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">loadbalancer</span> <span class="pre">pool</span></code>: (<strong>Load Balancer (Octavia)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">message-broker</span> <span class="pre">cluster</span></code>: (<strong>Message Broker (Cue)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">messaging</span></code>: (<strong>Messaging (Zaqar)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">messaging</span> <span class="pre">flavor</span></code>: (<strong>Messaging (Zaqar)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">subport</span></code>: (<strong>Networking (Neutron)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">network</span> <span class="pre">trunk</span></code>: (<strong>Networking (Neutron)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">orchestration</span> <span class="pre">resource</span></code>: (<strong>Orchestration (Heat)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">orchestration</span> <span class="pre">template</span></code>: (<strong>Orchestration (Heat)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">pool</span></code>: (<strong>Messaging (Zaqar)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">ptr</span> <span class="pre">record</span></code>: (<strong>DNS (Designate)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">queue</span></code>: (<strong>Messaging (Zaqar)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">recordset</span></code>: (<strong>DNS (Designate)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">search</span></code> (<strong>Search (Searchlight)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">search</span> <span class="pre">facet</span></code> (<strong>Search (Searchlight)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">search</span> <span class="pre">resource</span> <span class="pre">type</span></code> (<strong>Search (Searchlight)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">secret</span></code>: (<strong>Key Manager (Barbican)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">secret</span> <span class="pre">container</span></code>: (<strong>Key Manager (Barbican)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">secret</span> <span class="pre">order</span></code>: (<strong>Key Manager (Barbican)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">software</span> <span class="pre">config</span></code>: (<strong>Orchestration (Heat)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">software</span> <span class="pre">deployment</span></code>: (<strong>Orchestration (Heat)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">stack</span> <span class="pre">event</span></code>: (<strong>Orchestration (Heat)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">stack</span> <span class="pre">hook</span></code>: (<strong>Orchestration (Heat)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">stack</span> <span class="pre">output</span></code>: (<strong>Orchestration (Heat)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">stack</span> <span class="pre">resource</span></code>: (<strong>Orchestration (Heat)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">stack</span> <span class="pre">snapshot</span></code>: (<strong>Orchestration (Heat)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">stack</span> <span class="pre">template</span></code>: (<strong>Orchestration (Heat)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">subscription</span></code>: (<strong>Messaging (Zaqar)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">task</span> <span class="pre">execution</span></code>: (<strong>Workflow Engine (Mistral)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">tld</span></code>: (<strong>DNS (Designate)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">workbook</span></code>: (<strong>Workflow Engine (Mistral)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">workflow</span></code>: (<strong>Workflow Engine (Mistral)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">workflow</span> <span class="pre">execution</span></code>: (<strong>Workflow Engine (Mistral)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">zone</span></code>: (<strong>DNS (Designate)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">zone</span> <span class="pre">blacklist</span></code>: (<strong>DNS (Designate)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">zone</span> <span class="pre">export</span></code>: (<strong>DNS (Designate)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">zone</span> <span class="pre">import</span></code>: (<strong>DNS (Designate)</strong>)</li>
+<li><code class="docutils literal"><span class="pre">zone</span> <span class="pre">transfer</span></code>: (<strong>DNS (Designate)</strong>)</li>
+</ul>
+</div>
+<div class="section" id="actions">
+<h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
+<p>The actions used by OpenStackClient are defined below to provide a consistent
+meaning to each action. Many of them have logical opposite actions.
+Those actions with an opposite action are noted in parens if applicable.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">authorize</span></code> - authorize a token (used in OAuth)</li>
+<li><code class="docutils literal"><span class="pre">add</span></code> (<code class="docutils literal"><span class="pre">remove</span></code>) - add some object to a container object; the command
+is built in the order of <code class="docutils literal"><span class="pre">container</span> <span class="pre">add</span> <span class="pre">object</span> <span class="pre">&lt;container&gt;</span> <span class="pre">&lt;object&gt;</span></code>,
+the positional arguments appear in the same order</li>
+<li><code class="docutils literal"><span class="pre">create</span></code> (<code class="docutils literal"><span class="pre">delete</span></code>) - create a new occurrence of the specified object</li>
+<li><code class="docutils literal"><span class="pre">delete</span></code> (<code class="docutils literal"><span class="pre">create</span></code>) - delete specific occurrences of the specified objects</li>
+<li><code class="docutils literal"><span class="pre">expand</span></code> (<code class="docutils literal"><span class="pre">shrink</span></code>) - increase the capacity of a cluster</li>
+<li><code class="docutils literal"><span class="pre">failover</span></code> - failover volume host to different backend</li>
+<li><code class="docutils literal"><span class="pre">issue</span></code> (<code class="docutils literal"><span class="pre">revoke</span></code>) - issue a token</li>
+<li><code class="docutils literal"><span class="pre">list</span></code> - display summary information about multiple objects</li>
+<li><code class="docutils literal"><span class="pre">lock</span></code> (<code class="docutils literal"><span class="pre">unlock</span></code>) - lock one or more servers so that non-admin user won’t be able to execute actions</li>
+<li><code class="docutils literal"><span class="pre">migrate</span></code> - move a server or a volume to a different host; <code class="docutils literal"><span class="pre">--live</span></code> performs a
+live server migration if possible</li>
+<li><code class="docutils literal"><span class="pre">pause</span></code> (<code class="docutils literal"><span class="pre">unpause</span></code>) - stop one or more servers and leave them in memory</li>
+<li><code class="docutils literal"><span class="pre">query</span></code> - Query resources by Elasticsearch query string or json format DSL.</li>
+<li><code class="docutils literal"><span class="pre">purge</span></code> - clean resources associated with a specific project</li>
+<li><code class="docutils literal"><span class="pre">reboot</span></code> - forcibly reboot a server</li>
+<li><code class="docutils literal"><span class="pre">rebuild</span></code> - rebuild a server using (most of) the same arguments as in the original create</li>
+<li><code class="docutils literal"><span class="pre">remove</span></code> (<code class="docutils literal"><span class="pre">add</span></code>) - remove an object from a group of objects</li>
+<li><code class="docutils literal"><span class="pre">rescue</span></code> (<code class="docutils literal"><span class="pre">unrescue</span></code>) - reboot a server in a special rescue mode allowing access to the original disks</li>
+<li><code class="docutils literal"><span class="pre">resize</span></code> - change a server’s flavor or a cluster’s capacity</li>
+<li><code class="docutils literal"><span class="pre">restore</span></code> - restore a heat stack snapshot or restore a server in soft-deleted state</li>
+<li><code class="docutils literal"><span class="pre">resume</span></code> (<code class="docutils literal"><span class="pre">suspend</span></code>) - return one or more suspended servers to running state</li>
+<li><code class="docutils literal"><span class="pre">revoke</span></code> (<code class="docutils literal"><span class="pre">issue</span></code>) - revoke a token</li>
+<li><code class="docutils literal"><span class="pre">save</span></code> - download an object locally</li>
+<li><code class="docutils literal"><span class="pre">set</span></code> (<code class="docutils literal"><span class="pre">unset</span></code>) - set a property on the object, formerly called metadata</li>
+<li><code class="docutils literal"><span class="pre">shelve</span></code> (<code class="docutils literal"><span class="pre">unshelve</span></code>) - shelve one or more servers</li>
+<li><code class="docutils literal"><span class="pre">show</span></code> - display detailed information about the specific object</li>
+<li><code class="docutils literal"><span class="pre">shrink</span></code> (<code class="docutils literal"><span class="pre">expand</span></code>) - reduce the capacity of a cluster</li>
+<li><code class="docutils literal"><span class="pre">start</span></code> (<code class="docutils literal"><span class="pre">stop</span></code>) - start one or more servers</li>
+<li><code class="docutils literal"><span class="pre">stop</span></code> (<code class="docutils literal"><span class="pre">start</span></code>) - stop one or more servers</li>
+<li><code class="docutils literal"><span class="pre">suspend</span></code> (<code class="docutils literal"><span class="pre">resume</span></code>) - stop one or more servers and save to disk freeing memory</li>
+<li><code class="docutils literal"><span class="pre">unlock</span></code> (<code class="docutils literal"><span class="pre">lock</span></code>) - unlock one or more servers</li>
+<li><code class="docutils literal"><span class="pre">unpause</span></code> (<code class="docutils literal"><span class="pre">pause</span></code>) - return one or more paused servers to running state</li>
+<li><code class="docutils literal"><span class="pre">unrescue</span></code> (<code class="docutils literal"><span class="pre">rescue</span></code>) - return a server to normal boot mode</li>
+<li><code class="docutils literal"><span class="pre">unset</span></code> (<code class="docutils literal"><span class="pre">set</span></code>) - remove an attribute of the object</li>
+<li><code class="docutils literal"><span class="pre">unshelve</span></code> (<code class="docutils literal"><span class="pre">shelve</span></code>) - unshelve one or more servers</li>
+</ul>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>The command structure is designed to support seamless addition of plugin
+command modules via <code class="docutils literal"><span class="pre">setuptools</span></code> entry points.  The plugin commands must
+be subclasses of Cliff’s <code class="docutils literal"><span class="pre">command.Command</span></code> object.  See <a class="reference internal" href="../contributor/plugins.html#plugins"><span class="std std-ref">Plugins</span></a> for
+more information.</p>
+</div>
+<div class="section" id="command-entry-points">
+<h2>Command Entry Points<a class="headerlink" href="#command-entry-points" title="Permalink to this headline">¶</a></h2>
+<p>Commands are added to the client using <code class="docutils literal"><span class="pre">setuptools</span></code> entry points in <code class="docutils literal"><span class="pre">setup.cfg</span></code>.
+There is a single common group <code class="docutils literal"><span class="pre">openstack.cli</span></code> for commands that are not versioned,
+and a group for each combination of OpenStack API and version that is
+supported.  For example, to support Identity API v3 there is a group called
+<code class="docutils literal"><span class="pre">openstack.identity.v3</span></code> that contains the individual commands.  The command
+entry points have the form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">action_object</span> <span class="o">=</span> <span class="n">fully</span><span class="o">.</span><span class="n">qualified</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">vXX</span><span class="o">.</span><span class="n">object</span><span class="p">:</span><span class="n">ActionObject</span>
+</pre></div>
+</div>
+<p>For example, the <code class="docutils literal"><span class="pre">list</span> <span class="pre">user</span></code> command for the Identity API is identified in
+<code class="docutils literal"><span class="pre">setup.cfg</span></code> with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span><span class="o">.</span><span class="n">identity</span><span class="o">.</span><span class="n">v3</span> <span class="o">=</span>
+    <span class="c1"># ...</span>
+    <span class="n">list_user</span> <span class="o">=</span> <span class="n">openstackclient</span><span class="o">.</span><span class="n">identity</span><span class="o">.</span><span class="n">v3</span><span class="o">.</span><span class="n">user</span><span class="p">:</span><span class="n">ListUser</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="command-objects/volume-type.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: volume type"></i></a>
+          
+          
+            <a href="plugin-commands.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Plugin Commands"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="man/openstack.html">Manual Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-list.html">Command List</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Command Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugin-commands.html">Plugin Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decoder.html">Mapping Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backwards-incompatible.html">Backwards Incompatible Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributor/index.html">Contributor Documentation</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/commands" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "Command Structure in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,1584 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: networking sfc</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>networking sfc</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="networking-bgpvpn.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: bgpvpn"></i></a>
+    
+    
+    <a href="../../neutron.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Using neutron CLI"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-05-24 09:09</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">networking sfc</a><ul>
+<li><a class="reference internal" href="#sfc-flow-classifier-create">sfc flow classifier create</a></li>
+<li><a class="reference internal" href="#sfc-flow-classifier-delete">sfc flow classifier delete</a></li>
+<li><a class="reference internal" href="#sfc-flow-classifier-list">sfc flow classifier list</a></li>
+<li><a class="reference internal" href="#sfc-flow-classifier-set">sfc flow classifier set</a></li>
+<li><a class="reference internal" href="#sfc-flow-classifier-show">sfc flow classifier show</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-create">sfc port chain create</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-delete">sfc port chain delete</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-list">sfc port chain list</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-set">sfc port chain set</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-show">sfc port chain show</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-unset">sfc port chain unset</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-create">sfc port pair create</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-delete">sfc port pair delete</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-list">sfc port pair list</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-set">sfc port pair set</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-show">sfc port pair show</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-create">sfc port pair group create</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-delete">sfc port pair group delete</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-list">sfc port pair group list</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-set">sfc port pair group set</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-show">sfc port pair group show</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-unset">sfc port pair group unset</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="networking-sfc">
+<h1>networking sfc<a class="headerlink" href="#networking-sfc" title="Permalink to this headline">¶</a></h1>
+<p><strong>Service Function Chaining</strong> is a mechanism for overriding the basic destination based forwarding
+that is typical of IP networks. Service Function Chains consist of an ordered sequence of
+Service Functions (SFs). SFs are virtual machines (or potentially physical devices) that perform a
+network function such as firewall, content cache, packet inspection, or any other function that
+requires processing of packets in a flow from point A to point B even though the SFs are not
+literally between point A and B from a routing table perspective.</p>
+<p>Network v2</p>
+<div class="section" id="sfc-flow-classifier-create">
+<h2>sfc flow classifier create<a class="headerlink" href="#sfc-flow-classifier-create" title="Permalink to this headline">¶</a></h2>
+<p>Create a flow classifier</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc flow classifier create
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    <span class="o">[</span>--description &lt;description&gt;<span class="o">]</span>
+    <span class="o">[</span>--protocol &lt;protocol&gt;<span class="o">]</span>
+    <span class="o">[</span>--ethertype <span class="o">{</span>IPv4,IPv6<span class="o">}]</span>
+    <span class="o">[</span>--source-port &lt;min-port&gt;:&lt;max-port&gt;<span class="o">]</span>
+    <span class="o">[</span>--destination-port &lt;min-port&gt;:&lt;max-port&gt;<span class="o">]</span>
+    <span class="o">[</span>--source-ip-prefix &lt;source-ip-prefix&gt;<span class="o">]</span>
+    <span class="o">[</span>--destination-ip-prefix &lt;destination-ip-prefix&gt;<span class="o">]</span>
+    <span class="o">[</span>--logical-source-port &lt;logical-source-port&gt;<span class="o">]</span>
+    <span class="o">[</span>--logical-destination-port &lt;logical-destination-port&gt;<span class="o">]</span>
+    <span class="o">[</span>--l7-parameters L7_PARAMETERS<span class="o">]</span>
+    &lt;name&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-description">
+<code class="descname">--description</code><code class="descclassname"> &lt;description&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description for the flow classifier</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-protocol">
+<code class="descname">--protocol</code><code class="descclassname"> &lt;protocol&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP protocol name. Protocol name should be as per IANA standard.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-ethertype">
+<code class="descname">--ethertype</code><code class="descclassname"> {IPv4,IPv6}</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-ethertype" title="Permalink to this definition">¶</a></dt>
+<dd><p>L2 ethertype, default is IPv4</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-source-port">
+<code class="descname">--source-port</code><code class="descclassname"> &lt;min-port&gt;:&lt;max-port&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-source-port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Source protocol port (allowed range [1,65535]. Must be specified as a:b, where a=min-port and b=max-port) in the allowed range.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-destination-port">
+<code class="descname">--destination-port</code><code class="descclassname"> &lt;min-port&gt;:&lt;max-port&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-destination-port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destination protocol port (allowed range [1,65535]. Must be specified as a:b, where a=min-port and b=max-port) in the allowed range.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-source-ip-prefix">
+<code class="descname">--source-ip-prefix</code><code class="descclassname"> &lt;source-ip-prefix&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-source-ip-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Source IP address in CIDR notation</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-destination-ip-prefix">
+<code class="descname">--destination-ip-prefix</code><code class="descclassname"> &lt;destination-ip-prefix&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-destination-ip-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destination IP address in CIDR notation</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-logical-source-port">
+<code class="descname">--logical-source-port</code><code class="descclassname"> &lt;logical-source-port&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-logical-source-port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Neutron source port (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-logical-destination-port">
+<code class="descname">--logical-destination-port</code><code class="descclassname"> &lt;logical-destination-port&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-logical-destination-port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Neutron destination port (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-l7-parameters">
+<code class="descname">--l7-parameters</code><code class="descclassname"> &lt;L7_PARAMETERS&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-l7-parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of L7 parameters. Currently, no value is supported for this option.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-create-arg-name">
+<code class="descname">name</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-create-arg-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the flow classifier</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-flow-classifier-delete">
+<h2>sfc flow classifier delete<a class="headerlink" href="#sfc-flow-classifier-delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete a given flow classifier</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc flow classifier delete &lt;flow-classifier&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-delete-arg-flow-classifier">
+<code class="descname">flow-classifier</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-delete-arg-flow-classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flow classifier to delete (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-flow-classifier-list">
+<h2>sfc flow classifier list<a class="headerlink" href="#sfc-flow-classifier-list" title="Permalink to this headline">¶</a></h2>
+<p>List flow classifiers</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc flow classifier list
+    <span class="o">[</span>-f <span class="o">{</span>csv,json,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--quote <span class="o">{</span>all,minimal,none,nonnumeric<span class="o">}]</span>
+    <span class="o">[</span>--long<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-list-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-list-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-list-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-list-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-list-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-list-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-list-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-list-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-list-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-list-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-list-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-list-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-list-quote">
+<code class="descname">--quote</code><code class="descclassname"> &lt;QUOTE_MODE&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-list-quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>when to include quotes, defaults to nonnumeric</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-list-long">
+<code class="descname">--long</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-list-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>List additional fields in output</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-flow-classifier-set">
+<h2>sfc flow classifier set<a class="headerlink" href="#sfc-flow-classifier-set" title="Permalink to this headline">¶</a></h2>
+<p>Set flow classifier properties</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc flow classifier <span class="nb">set</span>
+    <span class="o">[</span>--name &lt;name&gt;<span class="o">]</span>
+    <span class="o">[</span>--description &lt;description&gt;<span class="o">]</span>
+    &lt;flow-classifier&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-set-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;name&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-set-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the flow classifier</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-set-description">
+<code class="descname">--description</code><code class="descclassname"> &lt;description&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-set-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description for the flow classifier</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-set-arg-flow-classifier">
+<code class="descname">flow-classifier</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-set-arg-flow-classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flow classifier to modify (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-flow-classifier-show">
+<h2>sfc flow classifier show<a class="headerlink" href="#sfc-flow-classifier-show" title="Permalink to this headline">¶</a></h2>
+<p>Display flow classifier details</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc flow classifier show
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    &lt;flow-classifier&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-show-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-show-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-show-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-show-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-show-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-show-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-show-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-show-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-show-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-show-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-show-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-show-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-show-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-show-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-flow-classifier-show-arg-flow-classifier">
+<code class="descname">flow-classifier</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-flow-classifier-show-arg-flow-classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flow classifier to display (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-chain-create">
+<h2>sfc port chain create<a class="headerlink" href="#sfc-port-chain-create" title="Permalink to this headline">¶</a></h2>
+<p>Create a port chain</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port chain create
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    <span class="o">[</span>--description &lt;description&gt;<span class="o">]</span>
+    <span class="o">[</span>--flow-classifier &lt;flow-classifier&gt;<span class="o">]</span>
+    <span class="o">[</span>--chain-parameters <span class="nv">correlation</span><span class="o">=</span>&lt;correlation-type&gt;,symmetric<span class="o">=</span>&lt;boolean&gt;<span class="o">]</span>
+    --port
+    -p
+    air-group
+    &lt;port-pair-group&gt;
+    &lt;name&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-description">
+<code class="descname">--description</code><code class="descclassname"> &lt;description&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description for the port chain</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-flow-classifier">
+<code class="descname">--flow-classifier</code><code class="descclassname"> &lt;flow-classifier&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-flow-classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add flow classifier (name or ID). This option can be repeated.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-chain-parameters">
+<code class="descname">--chain-parameters</code><code class="descclassname"> correlation=&lt;correlation-type&gt;,symmetric=&lt;boolean&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-chain-parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of chain parameters. Supports correlation=mpls and symmetric=true|false.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-port-pair-group">
+<code class="descname">--port-pair-group</code><code class="descclassname"> &lt;port-pair-group&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-port-pair-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port pair group (name or ID). This option can be repeated.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-create-arg-name">
+<code class="descname">name</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-create-arg-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the port chain</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-chain-delete">
+<h2>sfc port chain delete<a class="headerlink" href="#sfc-port-chain-delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete a given port chain</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port chain delete &lt;port-chain&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-delete-arg-port-chain">
+<code class="descname">port-chain</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-delete-arg-port-chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port chain to delete (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-chain-list">
+<h2>sfc port chain list<a class="headerlink" href="#sfc-port-chain-list" title="Permalink to this headline">¶</a></h2>
+<p>List port chains</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port chain list
+    <span class="o">[</span>-f <span class="o">{</span>csv,json,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--quote <span class="o">{</span>all,minimal,none,nonnumeric<span class="o">}]</span>
+    <span class="o">[</span>--long<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-list-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-list-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-list-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-list-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-list-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-list-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-list-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-list-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-list-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-list-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-list-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-list-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-list-quote">
+<code class="descname">--quote</code><code class="descclassname"> &lt;QUOTE_MODE&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-list-quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>when to include quotes, defaults to nonnumeric</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-list-long">
+<code class="descname">--long</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-list-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>List additional fields in output</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-chain-set">
+<h2>sfc port chain set<a class="headerlink" href="#sfc-port-chain-set" title="Permalink to this headline">¶</a></h2>
+<p>Set port chain properties</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port chain <span class="nb">set</span>
+    <span class="o">[</span>--name &lt;name&gt;<span class="o">]</span>
+    <span class="o">[</span>--description &lt;description&gt;<span class="o">]</span>
+    <span class="o">[</span>--flow-classifier &lt;flow-classifier&gt;<span class="o">]</span>
+    <span class="o">[</span>--no-flow-classifier<span class="o">]</span>
+    <span class="o">[</span>--port-pair-group &lt;port-pair-group&gt;<span class="o">]</span>
+    <span class="o">[</span>--no-port-pair-group<span class="o">]</span>
+    &lt;port-chain&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-set-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;name&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-set-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the port chain</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-set-description">
+<code class="descname">--description</code><code class="descclassname"> &lt;description&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-set-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description for the port chain</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-set-flow-classifier">
+<code class="descname">--flow-classifier</code><code class="descclassname"> &lt;flow-classifier&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-set-flow-classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add flow classifier (name or ID). This option can be repeated.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-set-no-flow-classifier">
+<code class="descname">--no-flow-classifier</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-set-no-flow-classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associate no flow classifier with the port chain</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-set-port-pair-group">
+<code class="descname">--port-pair-group</code><code class="descclassname"> &lt;port-pair-group&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-set-port-pair-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add port pair group (name or ID). This option can be repeated.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-set-no-port-pair-group">
+<code class="descname">--no-port-pair-group</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-set-no-port-pair-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove associated port pair group from the port chain.At least one –port-pair-group must be specified together.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-set-arg-port-chain">
+<code class="descname">port-chain</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-set-arg-port-chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port chain to modify (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-chain-show">
+<h2>sfc port chain show<a class="headerlink" href="#sfc-port-chain-show" title="Permalink to this headline">¶</a></h2>
+<p>Display port chain details</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port chain show
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    &lt;port-chain&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-show-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-show-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-show-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-show-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-show-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-show-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-show-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-show-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-show-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-show-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-show-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-show-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-show-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-show-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-show-arg-port-chain">
+<code class="descname">port-chain</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-show-arg-port-chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port chain to display (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-chain-unset">
+<h2>sfc port chain unset<a class="headerlink" href="#sfc-port-chain-unset" title="Permalink to this headline">¶</a></h2>
+<p>Unset port chain properties</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port chain <span class="nb">unset</span>
+    <span class="o">[</span>--flow-classifier &lt;flow-classifier&gt; <span class="p">|</span> --all-flow-classifier<span class="o">]</span>
+    <span class="o">[</span>--port-pair-group &lt;port-pair-group&gt;<span class="o">]</span>
+    &lt;port-chain&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-unset-flow-classifier">
+<code class="descname">--flow-classifier</code><code class="descclassname"> &lt;flow-classifier&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-unset-flow-classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove flow classifier(s) from the port chain (name or ID). This option can be repeated.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-unset-all-flow-classifier">
+<code class="descname">--all-flow-classifier</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-unset-all-flow-classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all flow classifiers from the port chain</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-unset-port-pair-group">
+<code class="descname">--port-pair-group</code><code class="descclassname"> &lt;port-pair-group&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-unset-port-pair-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove port pair group(s) from the port chain (name or ID). This option can be repeated.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-chain-unset-arg-port-chain">
+<code class="descname">port-chain</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-chain-unset-arg-port-chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port chain to unset (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-create">
+<h2>sfc port pair create<a class="headerlink" href="#sfc-port-pair-create" title="Permalink to this headline">¶</a></h2>
+<p>Create a port pair</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair create
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    <span class="o">[</span>--description &lt;description&gt;<span class="o">]</span>
+    <span class="o">[</span>--service-function-parameters <span class="nv">correlation</span><span class="o">=</span>&lt;correlation-type&gt;,weight<span class="o">=</span>&lt;weight&gt;<span class="o">]</span>
+    --ingress &lt;ingress&gt;
+    --egress &lt;egress&gt;
+    &lt;name&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-description">
+<code class="descname">--description</code><code class="descclassname"> &lt;description&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description for the port pair</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-service-function-parameters">
+<code class="descname">--service-function-parameters</code><code class="descclassname"> correlation=&lt;correlation-type&gt;,weight=&lt;weight&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-service-function-parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of service function parameters. Currently, correlation=(None|mpls) and weight are supported. Weight is an integer that influences the selection of a port pair within a port pair group for a flow. The higher the weight, the more flows will hash to the port pair. The default weight is 1.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-ingress">
+<code class="descname">--ingress</code><code class="descclassname"> &lt;ingress&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-ingress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingress neutron port (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-egress">
+<code class="descname">--egress</code><code class="descclassname"> &lt;egress&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-egress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Egress neutron port (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-create-arg-name">
+<code class="descname">name</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-create-arg-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the port pair</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-delete">
+<h2>sfc port pair delete<a class="headerlink" href="#sfc-port-pair-delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete a given port pair</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair delete &lt;port-pair&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-delete-arg-port-pair">
+<code class="descname">port-pair</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-delete-arg-port-pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port pair to delete (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-list">
+<h2>sfc port pair list<a class="headerlink" href="#sfc-port-pair-list" title="Permalink to this headline">¶</a></h2>
+<p>List port pairs</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair list
+    <span class="o">[</span>-f <span class="o">{</span>csv,json,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--quote <span class="o">{</span>all,minimal,none,nonnumeric<span class="o">}]</span>
+    <span class="o">[</span>--long<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-list-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-list-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-list-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-list-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-list-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-list-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-list-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-list-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-list-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-list-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-list-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-list-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-list-quote">
+<code class="descname">--quote</code><code class="descclassname"> &lt;QUOTE_MODE&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-list-quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>when to include quotes, defaults to nonnumeric</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-list-long">
+<code class="descname">--long</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-list-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>List additional fields in output</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-set">
+<h2>sfc port pair set<a class="headerlink" href="#sfc-port-pair-set" title="Permalink to this headline">¶</a></h2>
+<p>Set port pair properties</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair <span class="nb">set</span>
+    <span class="o">[</span>--name &lt;name&gt;<span class="o">]</span>
+    <span class="o">[</span>--description &lt;description&gt;<span class="o">]</span>
+    &lt;port-pair&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-set-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;name&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-set-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the port pair</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-set-description">
+<code class="descname">--description</code><code class="descclassname"> &lt;description&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-set-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description for the port pair</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-set-arg-port-pair">
+<code class="descname">port-pair</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-set-arg-port-pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port pair to modify (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-show">
+<h2>sfc port pair show<a class="headerlink" href="#sfc-port-pair-show" title="Permalink to this headline">¶</a></h2>
+<p>Display port pair details</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair show
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    &lt;port-pair&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-show-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-show-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-show-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-show-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-show-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-show-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-show-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-show-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-show-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-show-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-show-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-show-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-show-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-show-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-show-arg-port-pair">
+<code class="descname">port-pair</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-show-arg-port-pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port pair to display (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-group-create">
+<h2>sfc port pair group create<a class="headerlink" href="#sfc-port-pair-group-create" title="Permalink to this headline">¶</a></h2>
+<p>Create a port pair group</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair group create
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    <span class="o">[</span>--description &lt;description&gt;<span class="o">]</span>
+    <span class="o">[</span>--port-pair &lt;port-pair&gt;<span class="o">]</span>
+    <span class="o">[</span>--port-pair-group-parameters lb-fields<span class="o">=</span>&lt;lb-fields&gt;<span class="o">]</span>
+    &lt;name&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-description">
+<code class="descname">--description</code><code class="descclassname"> &lt;description&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description for the port pair group</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-port-pair">
+<code class="descname">--port-pair</code><code class="descclassname"> &lt;port-pair&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-port-pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port pair (name or ID). This option can be repeated.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-port-pair-group-parameters">
+<code class="descname">--port-pair-group-parameters</code><code class="descclassname"> lb-fields=&lt;lb-fields&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-port-pair-group-parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of port pair group parameters. Currently only one parameter lb-fields is supported. &lt;lb-fields&gt; is a &amp; separated list of load-balancing fields.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-create-arg-name">
+<code class="descname">name</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-create-arg-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the port pair group</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-group-delete">
+<h2>sfc port pair group delete<a class="headerlink" href="#sfc-port-pair-group-delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete a given port pair group</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair group delete &lt;port-pair-group&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-delete-arg-port-pair-group">
+<code class="descname">port-pair-group</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-delete-arg-port-pair-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port pair group to delete (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-group-list">
+<h2>sfc port pair group list<a class="headerlink" href="#sfc-port-pair-group-list" title="Permalink to this headline">¶</a></h2>
+<p>List port pair group</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair group list
+    <span class="o">[</span>-f <span class="o">{</span>csv,json,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--quote <span class="o">{</span>all,minimal,none,nonnumeric<span class="o">}]</span>
+    <span class="o">[</span>--long<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-list-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-list-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-list-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-list-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-list-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-list-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-list-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-list-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-list-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-list-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-list-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-list-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-list-quote">
+<code class="descname">--quote</code><code class="descclassname"> &lt;QUOTE_MODE&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-list-quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>when to include quotes, defaults to nonnumeric</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-list-long">
+<code class="descname">--long</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-list-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>List additional fields in output</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-group-set">
+<h2>sfc port pair group set<a class="headerlink" href="#sfc-port-pair-group-set" title="Permalink to this headline">¶</a></h2>
+<p>Set port pair group properties</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair group <span class="nb">set</span>
+    <span class="o">[</span>--name &lt;name&gt;<span class="o">]</span>
+    <span class="o">[</span>--description &lt;description&gt;<span class="o">]</span>
+    <span class="o">[</span>--port-pair &lt;port-pair&gt;<span class="o">]</span>
+    <span class="o">[</span>--no-port-pair<span class="o">]</span>
+    &lt;port-pair-group&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-set-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;name&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-set-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the port pair group</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-set-description">
+<code class="descname">--description</code><code class="descclassname"> &lt;description&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-set-description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description for the port pair group</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-set-port-pair">
+<code class="descname">--port-pair</code><code class="descclassname"> &lt;port-pair&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-set-port-pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port pair (name or ID). This option can be repeated.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-set-no-port-pair">
+<code class="descname">--no-port-pair</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-set-no-port-pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all port pair from port pair group</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-set-arg-port-pair-group">
+<code class="descname">port-pair-group</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-set-arg-port-pair-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port pair group to modify (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-group-show">
+<h2>sfc port pair group show<a class="headerlink" href="#sfc-port-pair-group-show" title="Permalink to this headline">¶</a></h2>
+<p>Display port pair group details</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair group show
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    &lt;port-pair-group&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-show-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-show-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-show-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-show-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-show-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-show-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-show-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-show-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-show-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-show-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-show-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-show-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-show-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-show-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-show-arg-port-pair-group">
+<code class="descname">port-pair-group</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-show-arg-port-pair-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port pair group to display (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sfc-port-pair-group-unset">
+<h2>sfc port pair group unset<a class="headerlink" href="#sfc-port-pair-group-unset" title="Permalink to this headline">¶</a></h2>
+<p>Unset port pairs from port pair group</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack sfc port pair group <span class="nb">unset</span>
+    <span class="o">[</span>--port-pair &lt;port-pair&gt; <span class="p">|</span> --all-port-pair<span class="o">]</span>
+    &lt;port-pair-group&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-unset-port-pair">
+<code class="descname">--port-pair</code><code class="descclassname"> &lt;port-pair&gt;</code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-unset-port-pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove port pair(s) from the port pair group (name or ID). This option can be repeated.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-unset-all-port-pair">
+<code class="descname">--all-port-pair</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-unset-all-port-pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all port pairs from the port pair group</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-sfc-port-pair-group-unset-arg-port-pair-group">
+<code class="descname">port-pair-group</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-sfc-port-pair-group-unset-arg-port-pair-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port pair group to unset (name or ID)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="networking-bgpvpn.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: bgpvpn"></i></a>
+          
+          
+            <a href="../../neutron.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Using neutron CLI"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-05-24 09:09</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Using CLI</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#openstackclient">OpenStackClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#neutron-cli">neutron CLI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">neutronclient Python API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributor/index.html">Contributor Guide</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/osc/v2/networking-sfc" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-neutronclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: a7662ab36ddabd69c3a84602d0f99a0adb3acd34";
+        var bugProject = "python-neutronclient";
+        var bugTitle = "networking sfc in python-neutronclient";
+    var fieldTags = "doc";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 6.5.0 on 2018-05-24 09:09";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

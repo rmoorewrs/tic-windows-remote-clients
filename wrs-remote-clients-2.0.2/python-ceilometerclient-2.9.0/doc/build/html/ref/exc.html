@@ -1,0 +1,317 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Exc &#8212; python-ceilometerclient 2.9.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/tweaks.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.9.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Version 2 API Reference" href="v2/index.html" />
+    <link rel="prev" title="Client" href="client.html" /> 
+  </head>
+  <body>
+  <div id="header">
+    <h1 id="logo"><a href="http://www.openstack.org/">OpenStack</a></h1>
+    <ul id="navigation">
+      
+      <li><a href="http://www.openstack.org/" title="Go to the Home page" class="link">Home</a></li>
+      <li><a href="http://www.openstack.org/projects/" title="Go to the OpenStack Projects page">Projects</a></li>
+      <li><a href="http://www.openstack.org/user-stories/" title="Go to the User Stories page" class="link">User Stories</a></li>
+      <li><a href="http://www.openstack.org/community/" title="Go to the Community page" class="link">Community</a></li>
+      <li><a href="http://www.openstack.org/blog/" title="Go to the OpenStack Blog">Blog</a></li>
+      <li><a href="http://wiki.openstack.org/" title="Go to the OpenStack Wiki">Wiki</a></li>
+      <li><a href="http://docs.openstack.org/" title="Go to OpenStack Documentation" class="current">Documentation</a></li>
+      
+    </ul>
+  </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="exc">
+<h1>Exc<a class="headerlink" href="#exc" title="Permalink to this headline">¶</a></h1>
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">BaseException</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>An error occurred.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">CommandError</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.BaseException</span></code></p>
+<p>Invalid usage of CLI.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">CommunicationError</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.BaseException</span></code></p>
+<p>Unable to communicate with server.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPBadGateway</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 502</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPBadRequest</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 400</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPConflict</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 409</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPException</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.BaseException</span></code></p>
+<p>Base exception for all HTTP-derived exceptions.</p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = ‘N/A’</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPForbidden</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 403</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPInternalServerError</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 500</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPMethodNotAllowed</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 405</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPMultipleChoices</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 300</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPNotFound</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 404</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPNotImplemented</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 501</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPOverLimit</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 413</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPServiceUnavailable</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 503</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">HTTPUnauthorized</code><span class="sig-paren">(</span><em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.HTTPException</span></code></p>
+<dl class="attribute">
+<dt>
+<code class="descname">code</code><em class="property"> = 401</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt>
+<em class="property">exception </em><code class="descclassname">ceilometerclient.exc.</code><code class="descname">InvalidEndpoint</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ceilometerclient.exc.BaseException</span></code></p>
+<p>The provided endpoint is invalid.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">ceilometerclient.exc.</code><code class="descname">from_response</code><span class="sig-paren">(</span><em>response</em>, <em>details=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Return an instance of an HTTPException based on http response.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descclassname">ceilometerclient.exc.</code><code class="descname">obj</code></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">HTTPUnauthorized</span></code></p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+<div class="sphinxsidebar">
+    <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="client.html"
+                                  title="previous chapter">Client</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="v2/index.html"
+                                  title="next chapter">Version 2 API Reference</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/ref/exc.rst.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+    </div>
+</div>
+
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="v2/index.html" title="Version 2 API Reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="client.html" title="Client"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">python-ceilometerclient 2.9.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >The <code class="docutils literal"><span class="pre">ceilometerclient</span></code> Python API</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Client Reference</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright OpenStack Foundation.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
+    </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+//Tracking docs.openstack.org/developer/<projectname> only
+//The URL is built from the project variable in conf.py
+var pageTracker = _gat._getTracker("UA-17511903-1");
+pageTracker._setCookiePath("/developer/python-ceilometerclient");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+  </body>
+</html>

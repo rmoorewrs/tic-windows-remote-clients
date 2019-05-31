@@ -1,0 +1,2745 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Mapping Guide</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Mapping Guide</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="interactive.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Interactive Mode"></i></a>
+    
+    
+    <a href="backwards-incompatible.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Backwards Incompatible Changes"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Mapping Guide</a><ul>
+<li><a class="reference internal" href="#cinder-cli"><code class="docutils literal"><span class="pre">cinder</span> <span class="pre">CLI</span></code></a></li>
+<li><a class="reference internal" href="#glance-cli"><code class="docutils literal"><span class="pre">glance</span> <span class="pre">CLI</span></code></a></li>
+<li><a class="reference internal" href="#keystone-cli"><code class="docutils literal"><span class="pre">keystone</span> <span class="pre">CLI</span></code></a></li>
+<li><a class="reference internal" href="#neutron-cli"><code class="docutils literal"><span class="pre">neutron</span> <span class="pre">CLI</span></code></a></li>
+<li><a class="reference internal" href="#nova-cli"><code class="docutils literal"><span class="pre">nova</span> <span class="pre">CLI</span></code></a></li>
+<li><a class="reference internal" href="#swift-cli"><code class="docutils literal"><span class="pre">swift</span> <span class="pre">CLI</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="mapping-guide">
+<h1>Mapping Guide<a class="headerlink" href="#mapping-guide" title="Permalink to this headline">¶</a></h1>
+<p>The following is an incomplete mapping between legacy OpenStack CLIs and
+OpenStackClient. Think of it as a magic decoder ring if you were using the
+legacy CLIs and want to transition to OpenStack CLI. Command options are only
+shown when necessary.</p>
+<div class="section" id="cinder-cli">
+<h2><code class="docutils literal"><span class="pre">cinder</span> <span class="pre">CLI</span></code><a class="headerlink" href="#cinder-cli" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Cinder CLI</th>
+<th class="head">OSC Equivalent</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>absolute-limits</td>
+<td>limits show –absolute</td>
+<td>Lists absolute limits for a user.</td>
+</tr>
+<tr class="row-odd"><td>availability-zone-list</td>
+<td>availability zone list –volume</td>
+<td>Lists all availability zones.</td>
+</tr>
+<tr class="row-even"><td>backup-create</td>
+<td>volume backup create</td>
+<td>Creates a volume backup.</td>
+</tr>
+<tr class="row-odd"><td>backup-delete</td>
+<td>volume backup delete</td>
+<td>Removes a backup.</td>
+</tr>
+<tr class="row-even"><td>backup-export</td>
+<td>volume backup export</td>
+<td>Export backup metadata record.</td>
+</tr>
+<tr class="row-odd"><td>backup-import</td>
+<td>volume backup import</td>
+<td>Import backup metadata record.</td>
+</tr>
+<tr class="row-even"><td>backup-list</td>
+<td>volume backup list</td>
+<td>Lists all backups.</td>
+</tr>
+<tr class="row-odd"><td>backup-reset-state</td>
+<td>volume backup set –state</td>
+<td>Explicitly updates the backup state.</td>
+</tr>
+<tr class="row-even"><td>backup-restore</td>
+<td>volume backup restore</td>
+<td>Restores a backup.</td>
+</tr>
+<tr class="row-odd"><td>backup-show</td>
+<td>volume backup show</td>
+<td>Show backup details.</td>
+</tr>
+<tr class="row-even"><td>cgsnapshot-create</td>
+<td>consistency group snapshot create</td>
+<td>Creates a cgsnapshot.</td>
+</tr>
+<tr class="row-odd"><td>cgsnapshot-delete</td>
+<td>consistency group snapshot delete</td>
+<td>Removes one or more cgsnapshots.</td>
+</tr>
+<tr class="row-even"><td>cgsnapshot-list</td>
+<td>consistency group snapshot list</td>
+<td>Lists all cgsnapshots.</td>
+</tr>
+<tr class="row-odd"><td>cgsnapshot-show</td>
+<td>consistency group snapshot show</td>
+<td>Shows cgsnapshot details.</td>
+</tr>
+<tr class="row-even"><td>consisgroup-create</td>
+<td>consistency group create</td>
+<td>Creates a consistency group.</td>
+</tr>
+<tr class="row-odd"><td>consisgroup-create-from-src</td>
+<td>consistency group create –consistency-group-snapshot</td>
+<td>Creates a consistency group from a cgsnapshot or a source CG</td>
+</tr>
+<tr class="row-even"><td>consisgroup-delete</td>
+<td>consistency group delete</td>
+<td>Removes one or more consistency groups.</td>
+</tr>
+<tr class="row-odd"><td>consisgroup-list</td>
+<td>consistency group list</td>
+<td>Lists all consistencygroups.</td>
+</tr>
+<tr class="row-even"><td>consisgroup-show</td>
+<td>consistency group show</td>
+<td>Shows details of a consistency group.</td>
+</tr>
+<tr class="row-odd"><td>consisgroup-update</td>
+<td>consistency group set</td>
+<td>Updates a consistencygroup.</td>
+</tr>
+<tr class="row-even"><td>create</td>
+<td>volume create</td>
+<td>Creates a volume.</td>
+</tr>
+<tr class="row-odd"><td>credentials</td>
+<td>WONTFIX</td>
+<td>Shows user credentials returned from auth.</td>
+</tr>
+<tr class="row-even"><td>delete</td>
+<td>volume delete</td>
+<td>Removes one or more volumes.</td>
+</tr>
+<tr class="row-odd"><td>encryption-type-create</td>
+<td>volume type create –encryption-provider –enc..</td>
+<td>Creates encryption type for a volume type. Admin only.</td>
+</tr>
+<tr class="row-even"><td>encryption-type-delete</td>
+<td>volume type delete</td>
+<td>Deletes encryption type for a volume type. Admin only.</td>
+</tr>
+<tr class="row-odd"><td>encryption-type-list</td>
+<td>volume type list –encryption-type</td>
+<td>Shows encryption type details for volume types. Admin only.</td>
+</tr>
+<tr class="row-even"><td>encryption-type-show</td>
+<td>volume type list –encryption-show</td>
+<td>Shows encryption type details for volume type. Admin only.</td>
+</tr>
+<tr class="row-odd"><td>encryption-type-update</td>
+<td>volume type set –encryption-provider –enc..</td>
+<td>Update encryption type information for a volume type (Admin Only).</td>
+</tr>
+<tr class="row-even"><td>endpoints</td>
+<td>catalog list</td>
+<td>Discovers endpoints registered by authentication service.</td>
+</tr>
+<tr class="row-odd"><td>extend</td>
+<td>volume set –size</td>
+<td>Attempts to extend size of an existing volume.</td>
+</tr>
+<tr class="row-even"><td>extra-specs-list</td>
+<td>volume type list –long</td>
+<td>Lists current volume types and extra specs.</td>
+</tr>
+<tr class="row-odd"><td>failover-host</td>
+<td>volume host failover</td>
+<td>Failover a replicating cinder-volume host.</td>
+</tr>
+<tr class="row-even"><td>force-delete</td>
+<td>volume delete –force</td>
+<td>Attempts force-delete of volume, regardless of state.</td>
+</tr>
+<tr class="row-odd"><td>freeze-host</td>
+<td>volume host set –disable</td>
+<td>Freeze and disable the specified cinder-volume host.</td>
+</tr>
+<tr class="row-even"><td>get-capabilities</td>
+<td>&#160;</td>
+<td>Show backend volume stats and properties. Admin only.</td>
+</tr>
+<tr class="row-odd"><td>get-pools</td>
+<td>&#160;</td>
+<td>Show pool information for backends. Admin only.</td>
+</tr>
+<tr class="row-even"><td>image-metadata</td>
+<td>volume set –image-property</td>
+<td>Sets or deletes volume image metadata.</td>
+</tr>
+<tr class="row-odd"><td>image-metadata-show</td>
+<td>volume show</td>
+<td>Shows volume image metadata.</td>
+</tr>
+<tr class="row-even"><td>list</td>
+<td>volume list</td>
+<td>Lists all volumes.</td>
+</tr>
+<tr class="row-odd"><td>manage</td>
+<td>volume create –remote-source k=v</td>
+<td>Manage an existing volume.</td>
+</tr>
+<tr class="row-even"><td>metadata</td>
+<td>volume set –property k=v / volume unset –property k</td>
+<td>Sets or deletes volume metadata.</td>
+</tr>
+<tr class="row-odd"><td>metadata-show</td>
+<td>volume show</td>
+<td>Shows volume metadata.</td>
+</tr>
+<tr class="row-even"><td>metadata-update-all</td>
+<td>volume set –property k=v</td>
+<td>Updates volume metadata.</td>
+</tr>
+<tr class="row-odd"><td>migrate</td>
+<td>volume migrate –host –force-copy –lock-volume &lt;volume&gt;</td>
+<td>Migrates volume to a new host.</td>
+</tr>
+<tr class="row-even"><td>qos-associate</td>
+<td>volume qos associate</td>
+<td>Associates qos specs with specified volume type.</td>
+</tr>
+<tr class="row-odd"><td>qos-create</td>
+<td>volume qos create</td>
+<td>Creates a qos specs.</td>
+</tr>
+<tr class="row-even"><td>qos-delete</td>
+<td>volume qos delete</td>
+<td>Deletes a specified qos specs.</td>
+</tr>
+<tr class="row-odd"><td>qos-disassociate</td>
+<td>volume qos disassociate</td>
+<td>Disassociates qos specs from specified volume type.</td>
+</tr>
+<tr class="row-even"><td>qos-disassociate-all</td>
+<td>volume qos disassociate –all</td>
+<td>Disassociates qos specs from all associations.</td>
+</tr>
+<tr class="row-odd"><td>qos-get-association</td>
+<td>volume qos show</td>
+<td>Gets all associations for specified qos specs.</td>
+</tr>
+<tr class="row-even"><td>qos-key</td>
+<td>volume qos set –property k=v / volume qos unset –property k</td>
+<td>Sets or unsets specifications for a qos spec</td>
+</tr>
+<tr class="row-odd"><td>qos-list</td>
+<td>volume qos list</td>
+<td>Lists qos specs.</td>
+</tr>
+<tr class="row-even"><td>qos-show</td>
+<td>volume qos show</td>
+<td>Shows a specified qos specs.</td>
+</tr>
+<tr class="row-odd"><td>quota-class-show</td>
+<td>quota show –class</td>
+<td>Lists quotas for a quota class.</td>
+</tr>
+<tr class="row-even"><td>quota-class-update</td>
+<td>quota set –class</td>
+<td>Updates quotas for a quota class.</td>
+</tr>
+<tr class="row-odd"><td>quota-defaults</td>
+<td>quota show –default</td>
+<td>Lists default quotas for a tenant.</td>
+</tr>
+<tr class="row-even"><td>quota-delete</td>
+<td>&#160;</td>
+<td>Delete the quotas for a tenant.</td>
+</tr>
+<tr class="row-odd"><td>quota-show</td>
+<td>quota show</td>
+<td>Lists quotas for a tenant.</td>
+</tr>
+<tr class="row-even"><td>quota-update</td>
+<td>quota set</td>
+<td>Updates quotas for a tenant.</td>
+</tr>
+<tr class="row-odd"><td>quota-usage</td>
+<td>&#160;</td>
+<td>Lists quota usage for a tenant.</td>
+</tr>
+<tr class="row-even"><td>rate-limits</td>
+<td>limits show –rate</td>
+<td>Lists rate limits for a user.</td>
+</tr>
+<tr class="row-odd"><td>readonly-mode-update</td>
+<td>volume set –read-only-mode | –read-write-mode</td>
+<td>Updates volume read-only access-mode flag.</td>
+</tr>
+<tr class="row-even"><td>rename</td>
+<td>volume set –name</td>
+<td>Renames a volume.</td>
+</tr>
+<tr class="row-odd"><td>replication-promote</td>
+<td>WONTFIX</td>
+<td>Promote a secondary volume to primary for a relationship</td>
+</tr>
+<tr class="row-even"><td>replication-reenable</td>
+<td>WONTFIX</td>
+<td>Sync the secondary volume with primary for a relationship</td>
+</tr>
+<tr class="row-odd"><td>reset-state</td>
+<td>volume set –state</td>
+<td>Explicitly updates the volume state.</td>
+</tr>
+<tr class="row-even"><td>retype</td>
+<td>volume type set –type</td>
+<td>Changes the volume type for a volume.</td>
+</tr>
+<tr class="row-odd"><td>service-disable</td>
+<td>volume service set –disable</td>
+<td>Disables the service.</td>
+</tr>
+<tr class="row-even"><td>service-enable</td>
+<td>volume service set –enable</td>
+<td>Enables the service.</td>
+</tr>
+<tr class="row-odd"><td>service-list</td>
+<td>volume service list</td>
+<td>Lists all services. Filter by host and service binary.</td>
+</tr>
+<tr class="row-even"><td>set-bootable</td>
+<td>volume set –bootable / –not-bootable</td>
+<td>Update bootable status of a volume.</td>
+</tr>
+<tr class="row-odd"><td>show</td>
+<td>volume show</td>
+<td>Shows volume details.</td>
+</tr>
+<tr class="row-even"><td>snapshot-create</td>
+<td>snapshot create</td>
+<td>Creates a snapshot.</td>
+</tr>
+<tr class="row-odd"><td>snapshot-delete</td>
+<td>snapshot delete</td>
+<td>Remove one or more snapshots.</td>
+</tr>
+<tr class="row-even"><td>snapshot-list</td>
+<td>snapshot list</td>
+<td>Lists all snapshots.</td>
+</tr>
+<tr class="row-odd"><td>snapshot-manage</td>
+<td>volume snapshot create –remote-source &lt;key=value&gt;</td>
+<td>Manage an existing snapshot.</td>
+</tr>
+<tr class="row-even"><td>snapshot-metadata</td>
+<td>snapshot set –property k=v / snapshot unset –property k</td>
+<td>Sets or deletes snapshot metadata.</td>
+</tr>
+<tr class="row-odd"><td>snapshot-metadata-show</td>
+<td>snapshot show</td>
+<td>Shows snapshot metadata.</td>
+</tr>
+<tr class="row-even"><td>snapshot-metadata-update-all</td>
+<td>snapshot set –property k=v</td>
+<td>Updates snapshot metadata.</td>
+</tr>
+<tr class="row-odd"><td>snapshot-rename</td>
+<td>snapshot set –name</td>
+<td>Renames a snapshot.</td>
+</tr>
+<tr class="row-even"><td>snapshot-reset-state</td>
+<td>snapshot set –state</td>
+<td>Explicitly updates the snapshot state.</td>
+</tr>
+<tr class="row-odd"><td>snapshot-show</td>
+<td>snapshot show</td>
+<td>Shows snapshot details.</td>
+</tr>
+<tr class="row-even"><td>snapshot-unmanage</td>
+<td>volume snapshot delete –remote</td>
+<td>Stop managing a snapshot.</td>
+</tr>
+<tr class="row-odd"><td>thaw-host</td>
+<td>volume host set –enable</td>
+<td>Thaw and enable the specified cinder-volume host.</td>
+</tr>
+<tr class="row-even"><td>transfer-accept</td>
+<td>volume transfer accept</td>
+<td>Accepts a volume transfer.</td>
+</tr>
+<tr class="row-odd"><td>transfer-create</td>
+<td>volume transfer create</td>
+<td>Creates a volume transfer.</td>
+</tr>
+<tr class="row-even"><td>transfer-delete</td>
+<td>volume transfer delete</td>
+<td>Undoes a transfer.</td>
+</tr>
+<tr class="row-odd"><td>transfer-list</td>
+<td>volume transfer list</td>
+<td>Lists all transfers.</td>
+</tr>
+<tr class="row-even"><td>transfer-show</td>
+<td>volume transfer show</td>
+<td>Show transfer details.</td>
+</tr>
+<tr class="row-odd"><td>type-access-add</td>
+<td>volume type set –project</td>
+<td>Adds volume type access for the given project.</td>
+</tr>
+<tr class="row-even"><td>type-access-list</td>
+<td>volume type show</td>
+<td>Print access information about the given volume type.</td>
+</tr>
+<tr class="row-odd"><td>type-access-remove</td>
+<td>volume type unset –project</td>
+<td>Removes volume type access for the given project.</td>
+</tr>
+<tr class="row-even"><td>type-create</td>
+<td>volume type create</td>
+<td>Creates a volume type.</td>
+</tr>
+<tr class="row-odd"><td>type-default</td>
+<td>volume type list –default</td>
+<td>List the default volume type.</td>
+</tr>
+<tr class="row-even"><td>type-delete</td>
+<td>volume type delete</td>
+<td>Deletes a specified volume type.</td>
+</tr>
+<tr class="row-odd"><td>type-key</td>
+<td>volume type set –property k=v / volume type unset –property k</td>
+<td>Sets or unsets extra_spec for a volume type.</td>
+</tr>
+<tr class="row-even"><td>type-list</td>
+<td>volume type list</td>
+<td>Lists available ‘volume types’.</td>
+</tr>
+<tr class="row-odd"><td>type-show</td>
+<td>volume type show</td>
+<td>Show volume type details.</td>
+</tr>
+<tr class="row-even"><td>type-update</td>
+<td>volume type set</td>
+<td>Updates volume type name, description, and/or is_public.</td>
+</tr>
+<tr class="row-odd"><td>unmanage</td>
+<td>volume delete –remote</td>
+<td>Stop managing a volume.</td>
+</tr>
+<tr class="row-even"><td>upload-to-image</td>
+<td>image create –volume</td>
+<td>Uploads volume to Image Service as an image.</td>
+</tr>
+<tr class="row-odd"><td>bash-completion</td>
+<td>complete</td>
+<td>Prints arguments for bash_completion.</td>
+</tr>
+<tr class="row-even"><td>help</td>
+<td>help</td>
+<td>Shows help about this program or one of its subcommands.</td>
+</tr>
+<tr class="row-odd"><td>list-extensions</td>
+<td>extension list –volume</td>
+<td>Lists all available os-api extensions.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="glance-cli">
+<h2><code class="docutils literal"><span class="pre">glance</span> <span class="pre">CLI</span></code><a class="headerlink" href="#glance-cli" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Glance CLI</th>
+<th class="head">OSC Equivalent</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>explain</td>
+<td>WONTFIX</td>
+<td>Describe a specific model.</td>
+</tr>
+<tr class="row-odd"><td>image-create</td>
+<td>image create</td>
+<td>Create a new image.</td>
+</tr>
+<tr class="row-even"><td>image-deactivate</td>
+<td>image set –deactivate</td>
+<td>Deactivate specified image.</td>
+</tr>
+<tr class="row-odd"><td>image-delete</td>
+<td>image delete</td>
+<td>Delete specified image.</td>
+</tr>
+<tr class="row-even"><td>image-download</td>
+<td>image save</td>
+<td>Download a specific image.</td>
+</tr>
+<tr class="row-odd"><td>image-list</td>
+<td>image list</td>
+<td>List images you can access.</td>
+</tr>
+<tr class="row-even"><td>image-reactivate</td>
+<td>image set –activate</td>
+<td>Reactivate specified image.</td>
+</tr>
+<tr class="row-odd"><td>image-show</td>
+<td>image show</td>
+<td>Describe a specific image.</td>
+</tr>
+<tr class="row-even"><td>image-tag-delete</td>
+<td>image set –tag &lt;tag&gt;</td>
+<td>Delete the tag associated with the given image.</td>
+</tr>
+<tr class="row-odd"><td>image-tag-update</td>
+<td>image unset –tag &lt;tag&gt;</td>
+<td>Update an image with the given tag.</td>
+</tr>
+<tr class="row-even"><td>image-update</td>
+<td>image set</td>
+<td>Update an existing image.</td>
+</tr>
+<tr class="row-odd"><td>image-upload</td>
+<td>&#160;</td>
+<td>Upload data for a specific image.</td>
+</tr>
+<tr class="row-even"><td>location-add</td>
+<td>&#160;</td>
+<td>Add a location (and related metadata) to an image.</td>
+</tr>
+<tr class="row-odd"><td>location-delete</td>
+<td>&#160;</td>
+<td>Remove locations (and related metadata) from an image.</td>
+</tr>
+<tr class="row-even"><td>location-update</td>
+<td>&#160;</td>
+<td>Update metadata of an image’s location.</td>
+</tr>
+<tr class="row-odd"><td>member-create</td>
+<td>image add project</td>
+<td>Create member for a given image.</td>
+</tr>
+<tr class="row-even"><td>member-delete</td>
+<td>image remove project</td>
+<td>Delete image member.</td>
+</tr>
+<tr class="row-odd"><td>member-list</td>
+<td>&#160;</td>
+<td>Describe sharing permissions by image.</td>
+</tr>
+<tr class="row-even"><td>member-update</td>
+<td>image set –accept –reject –status</td>
+<td>Update the status of a member for a given image.</td>
+</tr>
+<tr class="row-odd"><td>task-create</td>
+<td>&#160;</td>
+<td>Create a new task.</td>
+</tr>
+<tr class="row-even"><td>task-list</td>
+<td>&#160;</td>
+<td>List tasks you can access.</td>
+</tr>
+<tr class="row-odd"><td>task-show</td>
+<td>&#160;</td>
+<td>Describe a specific task.</td>
+</tr>
+<tr class="row-even"><td>bash-completion</td>
+<td>complete</td>
+<td>Prints arguments for bash_completion.</td>
+</tr>
+<tr class="row-odd"><td>help</td>
+<td>help</td>
+<td>Display help about this program or one of its subcommands.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="keystone-cli">
+<h2><code class="docutils literal"><span class="pre">keystone</span> <span class="pre">CLI</span></code><a class="headerlink" href="#keystone-cli" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keystone CLI</th>
+<th class="head">OSC Equivalent</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>catalog</td>
+<td>catalog show</td>
+<td>List service catalog, possibly filtered by service.</td>
+</tr>
+<tr class="row-odd"><td>ec2-credentials-create</td>
+<td>ec2 credentials create</td>
+<td>Create EC2-compatible credentials for user per tenant.</td>
+</tr>
+<tr class="row-even"><td>ec2-credentials-delete</td>
+<td>ec2 credentials delete</td>
+<td>Delete EC2-compatible credentials.</td>
+</tr>
+<tr class="row-odd"><td>ec2-credentials-get</td>
+<td>ec2 credentials show</td>
+<td>Display EC2-compatible credentials.</td>
+</tr>
+<tr class="row-even"><td>ec2-credentials-list</td>
+<td>ec2 credentials list</td>
+<td>List EC2-compatible credentials for a user.</td>
+</tr>
+<tr class="row-odd"><td>endpoint-create</td>
+<td>endpoint create</td>
+<td>Create a new endpoint associated with a service.</td>
+</tr>
+<tr class="row-even"><td>endpoint-delete</td>
+<td>endpoint delete</td>
+<td>Delete a service endpoint.</td>
+</tr>
+<tr class="row-odd"><td>endpoint-get</td>
+<td>endpoint get</td>
+<td>Find endpoint filtered by a specific attribute or service type.</td>
+</tr>
+<tr class="row-even"><td>endpoint-list</td>
+<td>endpoint list</td>
+<td>List configured service endpoints.</td>
+</tr>
+<tr class="row-odd"><td>password-update</td>
+<td>user password set</td>
+<td>Update own password.</td>
+</tr>
+<tr class="row-even"><td>role-create</td>
+<td>role create</td>
+<td>Create new role.</td>
+</tr>
+<tr class="row-odd"><td>role-delete</td>
+<td>role delete</td>
+<td>Delete role.</td>
+</tr>
+<tr class="row-even"><td>role-get</td>
+<td>role show</td>
+<td>Display role details.</td>
+</tr>
+<tr class="row-odd"><td>role-list</td>
+<td>role list</td>
+<td>List all roles.</td>
+</tr>
+<tr class="row-even"><td>service-create</td>
+<td>service create</td>
+<td>Add service to Service Catalog.</td>
+</tr>
+<tr class="row-odd"><td>service-delete</td>
+<td>service delete</td>
+<td>Delete service from Service Catalog.</td>
+</tr>
+<tr class="row-even"><td>service-get</td>
+<td>service show</td>
+<td>Display service from Service Catalog.</td>
+</tr>
+<tr class="row-odd"><td>service-list</td>
+<td>service list</td>
+<td>List all services in Service Catalog.</td>
+</tr>
+<tr class="row-even"><td>tenant-create</td>
+<td>project create</td>
+<td>Create new tenant.</td>
+</tr>
+<tr class="row-odd"><td>tenant-delete</td>
+<td>project delete</td>
+<td>Delete tenant.</td>
+</tr>
+<tr class="row-even"><td>tenant-get</td>
+<td>proejct show</td>
+<td>Display tenant details.</td>
+</tr>
+<tr class="row-odd"><td>tenant-list</td>
+<td>project list</td>
+<td>List all tenants.</td>
+</tr>
+<tr class="row-even"><td>tenant-update</td>
+<td>project set</td>
+<td>Update tenant name, description, enabled status.</td>
+</tr>
+<tr class="row-odd"><td>token-get</td>
+<td>token issue</td>
+<td>Display the current user token.</td>
+</tr>
+<tr class="row-even"><td>user-create</td>
+<td>user create</td>
+<td>Create new user.</td>
+</tr>
+<tr class="row-odd"><td>user-delete</td>
+<td>user delete</td>
+<td>Delete user.</td>
+</tr>
+<tr class="row-even"><td>user-get</td>
+<td>user show</td>
+<td>Display user details.</td>
+</tr>
+<tr class="row-odd"><td>user-list</td>
+<td>user list</td>
+<td>List users.</td>
+</tr>
+<tr class="row-even"><td>user-password-update</td>
+<td>user set –password</td>
+<td>Update user password.</td>
+</tr>
+<tr class="row-odd"><td>user-role-add</td>
+<td>role add &lt;role&gt; –user –project</td>
+<td>Add role to user.</td>
+</tr>
+<tr class="row-even"><td>user-role-list</td>
+<td>role assignment list –user –project</td>
+<td>List roles granted to a user.</td>
+</tr>
+<tr class="row-odd"><td>user-role-remove</td>
+<td>role remove &lt;role&gt; –user –project</td>
+<td>Remove role from user.</td>
+</tr>
+<tr class="row-even"><td>user-update</td>
+<td>user set</td>
+<td>Update user’s name, email, and enabled status.</td>
+</tr>
+<tr class="row-odd"><td>discover</td>
+<td>WONTFIX</td>
+<td>Discover Keystone servers, supported API versions and extensions.</td>
+</tr>
+<tr class="row-even"><td>bootstrap</td>
+<td>WONTFIX</td>
+<td>Grants a new role to a new user on a new tenant, after creating each.</td>
+</tr>
+<tr class="row-odd"><td>bash-completion</td>
+<td>complete</td>
+<td>Prints all of the commands and options to stdout.</td>
+</tr>
+<tr class="row-even"><td>help</td>
+<td>help</td>
+<td>Display help about this program or one of its subcommands.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="neutron-cli">
+<h2><code class="docutils literal"><span class="pre">neutron</span> <span class="pre">CLI</span></code><a class="headerlink" href="#neutron-cli" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Neutron CLI</th>
+<th class="head">OSC Equivalent</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>address-scope-create</td>
+<td>address scope create</td>
+<td>Create an address scope for a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>address-scope-delete</td>
+<td>address scope delete</td>
+<td>Delete an address scope.</td>
+</tr>
+<tr class="row-even"><td>address-scope-list</td>
+<td>address scope list</td>
+<td>List address scopes that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>address-scope-show</td>
+<td>address scope show</td>
+<td>Show information about an address scope.</td>
+</tr>
+<tr class="row-even"><td>address-scope-update</td>
+<td>address scope set</td>
+<td>Update an address scope.</td>
+</tr>
+<tr class="row-odd"><td>agent-delete</td>
+<td>network agent delete</td>
+<td>Delete a given agent.</td>
+</tr>
+<tr class="row-even"><td>agent-list</td>
+<td>network agent list</td>
+<td>List agents.</td>
+</tr>
+<tr class="row-odd"><td>agent-show</td>
+<td>network agent show</td>
+<td>Show information of a given agent.</td>
+</tr>
+<tr class="row-even"><td>agent-update</td>
+<td>network agent set</td>
+<td>Updates the admin status and description for a specified agent.</td>
+</tr>
+<tr class="row-odd"><td>auto-allocated-topology-delete</td>
+<td>network auto allocated topology delete</td>
+<td>Delete the auto-allocated topology of a given tenant.</td>
+</tr>
+<tr class="row-even"><td>auto-allocated-topology-show</td>
+<td>network auto allocated topology create</td>
+<td>Show the auto-allocated topology of a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>availability-zone-list</td>
+<td>availability zone list</td>
+<td>List availability zones.</td>
+</tr>
+<tr class="row-even"><td>bash-completion</td>
+<td>complete</td>
+<td>Prints all of the commands and options for bash-completion.</td>
+</tr>
+<tr class="row-odd"><td>bgp-dragent-list-hosting-speaker</td>
+<td>&#160;</td>
+<td>List Dynamic Routing agents hosting a BGP speaker.</td>
+</tr>
+<tr class="row-even"><td>bgp-dragent-speaker-add</td>
+<td>&#160;</td>
+<td>Add a BGP speaker to a Dynamic Routing agent.</td>
+</tr>
+<tr class="row-odd"><td>bgp-dragent-speaker-remove</td>
+<td>&#160;</td>
+<td>Removes a BGP speaker from a Dynamic Routing agent.</td>
+</tr>
+<tr class="row-even"><td>bgp-peer-create</td>
+<td>&#160;</td>
+<td>Create a BGP Peer.</td>
+</tr>
+<tr class="row-odd"><td>bgp-peer-delete</td>
+<td>&#160;</td>
+<td>Delete a BGP peer.</td>
+</tr>
+<tr class="row-even"><td>bgp-peer-list</td>
+<td>&#160;</td>
+<td>List BGP peers.</td>
+</tr>
+<tr class="row-odd"><td>bgp-peer-show</td>
+<td>&#160;</td>
+<td>Show information of a given BGP peer.</td>
+</tr>
+<tr class="row-even"><td>bgp-peer-update</td>
+<td>&#160;</td>
+<td>Update BGP Peer’s information.</td>
+</tr>
+<tr class="row-odd"><td>bgp-speaker-advertiseroute-list</td>
+<td>&#160;</td>
+<td>List routes advertised by a given BGP speaker.</td>
+</tr>
+<tr class="row-even"><td>bgp-speaker-create</td>
+<td>&#160;</td>
+<td>Create a BGP Speaker.</td>
+</tr>
+<tr class="row-odd"><td>bgp-speaker-delete</td>
+<td>&#160;</td>
+<td>Delete a BGP speaker.</td>
+</tr>
+<tr class="row-even"><td>bgp-speaker-list</td>
+<td>&#160;</td>
+<td>List BGP speakers.</td>
+</tr>
+<tr class="row-odd"><td>bgp-speaker-list-on-dragent</td>
+<td>&#160;</td>
+<td>List BGP speakers hosted by a Dynamic Routing agent.</td>
+</tr>
+<tr class="row-even"><td>bgp-speaker-network-add</td>
+<td>&#160;</td>
+<td>Add a network to the BGP speaker.</td>
+</tr>
+<tr class="row-odd"><td>bgp-speaker-network-remove</td>
+<td>&#160;</td>
+<td>Remove a network from the BGP speaker.</td>
+</tr>
+<tr class="row-even"><td>bgp-speaker-peer-add</td>
+<td>&#160;</td>
+<td>Add a peer to the BGP speaker.</td>
+</tr>
+<tr class="row-odd"><td>bgp-speaker-peer-remove</td>
+<td>&#160;</td>
+<td>Remove a peer from the BGP speaker.</td>
+</tr>
+<tr class="row-even"><td>bgp-speaker-show</td>
+<td>&#160;</td>
+<td>Show information of a given BGP speaker.</td>
+</tr>
+<tr class="row-odd"><td>bgp-speaker-update</td>
+<td>&#160;</td>
+<td>Update BGP Speaker’s information.</td>
+</tr>
+<tr class="row-even"><td>dhcp-agent-list-hosting-net</td>
+<td>network agent list –network</td>
+<td>List DHCP agents hosting a network.</td>
+</tr>
+<tr class="row-odd"><td>dhcp-agent-network-add</td>
+<td>network agent add network</td>
+<td>Add a network to a DHCP agent.</td>
+</tr>
+<tr class="row-even"><td>dhcp-agent-network-remove</td>
+<td>network agent remove network</td>
+<td>Remove a network from a DHCP agent.</td>
+</tr>
+<tr class="row-odd"><td>ext-list</td>
+<td>extension list</td>
+<td>List all extensions.</td>
+</tr>
+<tr class="row-even"><td>ext-show</td>
+<td>extension show</td>
+<td>Show information of a given resource.</td>
+</tr>
+<tr class="row-odd"><td>flavor-associate</td>
+<td>network flavor add profile</td>
+<td>Add a Neutron service flavor with a flavor profile.</td>
+</tr>
+<tr class="row-even"><td>flavor-create</td>
+<td>network flavor create</td>
+<td>Create a Neutron service flavor.</td>
+</tr>
+<tr class="row-odd"><td>flavor-delete</td>
+<td>network flavor delete</td>
+<td>Delete a given Neutron service flavor.</td>
+</tr>
+<tr class="row-even"><td>flavor-disassociate</td>
+<td>network flavor remove profile</td>
+<td>Remove a Neutron service flavor from a flavor profile.</td>
+</tr>
+<tr class="row-odd"><td>flavor-list</td>
+<td>network flavor list</td>
+<td>List Neutron service flavors.</td>
+</tr>
+<tr class="row-even"><td>flavor-profile-create</td>
+<td>network flavor profile create</td>
+<td>Create a Neutron service flavor profile.</td>
+</tr>
+<tr class="row-odd"><td>flavor-profile-delete</td>
+<td>network flavor profile delete</td>
+<td>Delete a given Neutron service flavor profile.</td>
+</tr>
+<tr class="row-even"><td>flavor-profile-list</td>
+<td>network flavor profile list</td>
+<td>List Neutron service flavor profiles.</td>
+</tr>
+<tr class="row-odd"><td>flavor-profile-show</td>
+<td>network flavor profile show</td>
+<td>Show information about a given Neutron service flavor profile.</td>
+</tr>
+<tr class="row-even"><td>flavor-profile-update</td>
+<td>network flavor profile set</td>
+<td>Update a given Neutron service flavor profile.</td>
+</tr>
+<tr class="row-odd"><td>flavor-show</td>
+<td>network flavor show</td>
+<td>Show information about a given Neutron service flavor.</td>
+</tr>
+<tr class="row-even"><td>flavor-update</td>
+<td>network flavor set</td>
+<td>Update a Neutron service flavor.</td>
+</tr>
+<tr class="row-odd"><td>floatingip-associate</td>
+<td>floating ip set port –fixed-ip</td>
+<td>Create a mapping between a floating IP and a fixed IP.</td>
+</tr>
+<tr class="row-even"><td>floatingip-create</td>
+<td>floating ip create</td>
+<td>Create a floating IP for a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>floatingip-delete</td>
+<td>floating ip delete</td>
+<td>Delete a given floating IP.</td>
+</tr>
+<tr class="row-even"><td>floatingip-disassociate</td>
+<td>floating ip unset port</td>
+<td>Remove a mapping from a floating IP to a fixed IP.</td>
+</tr>
+<tr class="row-odd"><td>floatingip-list</td>
+<td>floating ip list</td>
+<td>List floating IPs that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>floatingip-show</td>
+<td>floating ip show</td>
+<td>Show information of a given floating IP.</td>
+</tr>
+<tr class="row-odd"><td>help</td>
+<td>help</td>
+<td>print detailed help for another command</td>
+</tr>
+<tr class="row-even"><td>ipsec-site-connection-create</td>
+<td>&#160;</td>
+<td>Create an IPsec site connection.</td>
+</tr>
+<tr class="row-odd"><td>ipsec-site-connection-delete</td>
+<td>&#160;</td>
+<td>Delete a given IPsec site connection.</td>
+</tr>
+<tr class="row-even"><td>ipsec-site-connection-list</td>
+<td>&#160;</td>
+<td>List IPsec site connections that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>ipsec-site-connection-show</td>
+<td>&#160;</td>
+<td>Show information of a given IPsec site connection.</td>
+</tr>
+<tr class="row-even"><td>ipsec-site-connection-update</td>
+<td>&#160;</td>
+<td>Update a given IPsec site connection.</td>
+</tr>
+<tr class="row-odd"><td>l3-agent-list-hosting-router</td>
+<td>network agent list –routers</td>
+<td>List L3 agents hosting a router.</td>
+</tr>
+<tr class="row-even"><td>l3-agent-router-add</td>
+<td>network agent add router –agent-type l3</td>
+<td>Add a router to a L3 agent.</td>
+</tr>
+<tr class="row-odd"><td>l3-agent-router-remove</td>
+<td>network agent remove router –agent-type l3</td>
+<td>Remove a router from a L3 agent.</td>
+</tr>
+<tr class="row-even"><td>lb-agent-hosting-pool</td>
+<td>&#160;</td>
+<td>Get loadbalancer agent hosting a pool.</td>
+</tr>
+<tr class="row-odd"><td>lb-healthmonitor-associate</td>
+<td>&#160;</td>
+<td>Create a mapping between a health monitor and a pool.</td>
+</tr>
+<tr class="row-even"><td>lb-healthmonitor-create</td>
+<td>&#160;</td>
+<td>Create a health monitor.</td>
+</tr>
+<tr class="row-odd"><td>lb-healthmonitor-delete</td>
+<td>&#160;</td>
+<td>Delete a given health monitor.</td>
+</tr>
+<tr class="row-even"><td>lb-healthmonitor-disassociate</td>
+<td>&#160;</td>
+<td>Remove a mapping from a health monitor to a pool.</td>
+</tr>
+<tr class="row-odd"><td>lb-healthmonitor-list</td>
+<td>&#160;</td>
+<td>List health monitors that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>lb-healthmonitor-show</td>
+<td>&#160;</td>
+<td>Show information of a given health monitor.</td>
+</tr>
+<tr class="row-odd"><td>lb-healthmonitor-update</td>
+<td>&#160;</td>
+<td>Update a given health monitor.</td>
+</tr>
+<tr class="row-even"><td>lb-member-create</td>
+<td>&#160;</td>
+<td>Create a member.</td>
+</tr>
+<tr class="row-odd"><td>lb-member-delete</td>
+<td>&#160;</td>
+<td>Delete a given member.</td>
+</tr>
+<tr class="row-even"><td>lb-member-list</td>
+<td>&#160;</td>
+<td>List members that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>lb-member-show</td>
+<td>&#160;</td>
+<td>Show information of a given member.</td>
+</tr>
+<tr class="row-even"><td>lb-member-update</td>
+<td>&#160;</td>
+<td>Update a given member.</td>
+</tr>
+<tr class="row-odd"><td>lb-pool-create</td>
+<td>&#160;</td>
+<td>Create a pool.</td>
+</tr>
+<tr class="row-even"><td>lb-pool-delete</td>
+<td>&#160;</td>
+<td>Delete a given pool.</td>
+</tr>
+<tr class="row-odd"><td>lb-pool-list</td>
+<td>&#160;</td>
+<td>List pools that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>lb-pool-list-on-agent</td>
+<td>&#160;</td>
+<td>List the pools on a loadbalancer agent.</td>
+</tr>
+<tr class="row-odd"><td>lb-pool-show</td>
+<td>&#160;</td>
+<td>Show information of a given pool.</td>
+</tr>
+<tr class="row-even"><td>lb-pool-stats</td>
+<td>&#160;</td>
+<td>Retrieve stats for a given pool.</td>
+</tr>
+<tr class="row-odd"><td>lb-pool-update</td>
+<td>&#160;</td>
+<td>Update a given pool.</td>
+</tr>
+<tr class="row-even"><td>lb-vip-create</td>
+<td>&#160;</td>
+<td>Create a vip.</td>
+</tr>
+<tr class="row-odd"><td>lb-vip-delete</td>
+<td>&#160;</td>
+<td>Delete a given vip.</td>
+</tr>
+<tr class="row-even"><td>lb-vip-list</td>
+<td>&#160;</td>
+<td>List vips that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>lb-vip-show</td>
+<td>&#160;</td>
+<td>Show information of a given vip.</td>
+</tr>
+<tr class="row-even"><td>lb-vip-update</td>
+<td>&#160;</td>
+<td>Update a given vip.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-agent-hosting-loadbalancer</td>
+<td>&#160;</td>
+<td>Get lbaas v2 agent hosting a loadbalancer.</td>
+</tr>
+<tr class="row-even"><td>lbaas-healthmonitor-create</td>
+<td>&#160;</td>
+<td>LBaaS v2 Create a healthmonitor.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-healthmonitor-delete</td>
+<td>&#160;</td>
+<td>LBaaS v2 Delete a given healthmonitor.</td>
+</tr>
+<tr class="row-even"><td>lbaas-healthmonitor-list</td>
+<td>&#160;</td>
+<td>LBaaS v2 List healthmonitors that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-healthmonitor-show</td>
+<td>&#160;</td>
+<td>LBaaS v2 Show information of a given healthmonitor.</td>
+</tr>
+<tr class="row-even"><td>lbaas-healthmonitor-update</td>
+<td>&#160;</td>
+<td>LBaaS v2 Update a given healthmonitor.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-l7policy-create</td>
+<td>&#160;</td>
+<td>LBaaS v2 Create L7 policy.</td>
+</tr>
+<tr class="row-even"><td>lbaas-l7policy-delete</td>
+<td>&#160;</td>
+<td>LBaaS v2 Delete a given L7 policy.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-l7policy-list</td>
+<td>&#160;</td>
+<td>LBaaS v2 List L7 policies that belong to a given listener.</td>
+</tr>
+<tr class="row-even"><td>lbaas-l7policy-show</td>
+<td>&#160;</td>
+<td>LBaaS v2 Show information of a given L7 policy.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-l7policy-update</td>
+<td>&#160;</td>
+<td>LBaaS v2 Update a given L7 policy.</td>
+</tr>
+<tr class="row-even"><td>lbaas-l7rule-create</td>
+<td>&#160;</td>
+<td>LBaaS v2 Create L7 rule.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-l7rule-delete</td>
+<td>&#160;</td>
+<td>LBaaS v2 Delete a given L7 rule.</td>
+</tr>
+<tr class="row-even"><td>lbaas-l7rule-list</td>
+<td>&#160;</td>
+<td>LBaaS v2 List L7 rules that belong to a given L7 policy.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-l7rule-show</td>
+<td>&#160;</td>
+<td>LBaaS v2 Show information of a given rule.</td>
+</tr>
+<tr class="row-even"><td>lbaas-l7rule-update</td>
+<td>&#160;</td>
+<td>LBaaS v2 Update a given L7 rule.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-listener-create</td>
+<td>&#160;</td>
+<td>LBaaS v2 Create a listener.</td>
+</tr>
+<tr class="row-even"><td>lbaas-listener-delete</td>
+<td>&#160;</td>
+<td>LBaaS v2 Delete a given listener.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-listener-list</td>
+<td>&#160;</td>
+<td>LBaaS v2 List listeners that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>lbaas-listener-show</td>
+<td>&#160;</td>
+<td>LBaaS v2 Show information of a given listener.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-listener-update</td>
+<td>&#160;</td>
+<td>LBaaS v2 Update a given listener.</td>
+</tr>
+<tr class="row-even"><td>lbaas-loadbalancer-create</td>
+<td>&#160;</td>
+<td>LBaaS v2 Create a loadbalancer.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-loadbalancer-delete</td>
+<td>&#160;</td>
+<td>LBaaS v2 Delete a given loadbalancer.</td>
+</tr>
+<tr class="row-even"><td>lbaas-loadbalancer-list</td>
+<td>&#160;</td>
+<td>LBaaS v2 List loadbalancers that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-loadbalancer-list-on-agent</td>
+<td>&#160;</td>
+<td>List the loadbalancers on a loadbalancer v2 agent.</td>
+</tr>
+<tr class="row-even"><td>lbaas-loadbalancer-show</td>
+<td>&#160;</td>
+<td>LBaaS v2 Show information of a given loadbalancer.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-loadbalancer-stats</td>
+<td>&#160;</td>
+<td>Retrieve stats for a given loadbalancer.</td>
+</tr>
+<tr class="row-even"><td>lbaas-loadbalancer-status</td>
+<td>&#160;</td>
+<td>Retrieve status for a given loadbalancer.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-loadbalancer-update</td>
+<td>&#160;</td>
+<td>LBaaS v2 Update a given loadbalancer.</td>
+</tr>
+<tr class="row-even"><td>lbaas-member-create</td>
+<td>&#160;</td>
+<td>LBaaS v2 Create a member.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-member-delete</td>
+<td>&#160;</td>
+<td>LBaaS v2 Delete a given member.</td>
+</tr>
+<tr class="row-even"><td>lbaas-member-list</td>
+<td>&#160;</td>
+<td>LBaaS v2 List members that belong to a given pool.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-member-show</td>
+<td>&#160;</td>
+<td>LBaaS v2 Show information of a given member.</td>
+</tr>
+<tr class="row-even"><td>lbaas-member-update</td>
+<td>&#160;</td>
+<td>LBaaS v2 Update a given member.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-pool-create</td>
+<td>&#160;</td>
+<td>LBaaS v2 Create a pool.</td>
+</tr>
+<tr class="row-even"><td>lbaas-pool-delete</td>
+<td>&#160;</td>
+<td>LBaaS v2 Delete a given pool.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-pool-list</td>
+<td>&#160;</td>
+<td>LBaaS v2 List pools that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>lbaas-pool-show</td>
+<td>&#160;</td>
+<td>LBaaS v2 Show information of a given pool.</td>
+</tr>
+<tr class="row-odd"><td>lbaas-pool-update</td>
+<td>&#160;</td>
+<td>LBaaS v2 Update a given pool.</td>
+</tr>
+<tr class="row-even"><td>meter-label-create</td>
+<td>network meter create</td>
+<td>Create a metering label for a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>meter-label-delete</td>
+<td>network meter delete</td>
+<td>Delete a given metering label.</td>
+</tr>
+<tr class="row-even"><td>meter-label-list</td>
+<td>network meter list</td>
+<td>List metering labels that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>meter-label-rule-create</td>
+<td>network meter rule create</td>
+<td>Create a metering label rule for a given label.</td>
+</tr>
+<tr class="row-even"><td>meter-label-rule-delete</td>
+<td>network meter rule delete</td>
+<td>Delete a given metering label.</td>
+</tr>
+<tr class="row-odd"><td>meter-label-rule-list</td>
+<td>network meter rule list</td>
+<td>List metering labels that belong to a given label.</td>
+</tr>
+<tr class="row-even"><td>meter-label-rule-show</td>
+<td>network meter rule show</td>
+<td>Show information of a given metering label rule.</td>
+</tr>
+<tr class="row-odd"><td>meter-label-show</td>
+<td>network meter show</td>
+<td>Show information of a given metering label.</td>
+</tr>
+<tr class="row-even"><td>net-create</td>
+<td>network create</td>
+<td>Create a network for a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>net-delete</td>
+<td>network delete</td>
+<td>Delete a given network.</td>
+</tr>
+<tr class="row-even"><td>net-external-list</td>
+<td>network list –external</td>
+<td>List external networks that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>net-ip-availability-list</td>
+<td>ip availability list</td>
+<td>List IP usage of networks</td>
+</tr>
+<tr class="row-even"><td>net-ip-availability-show</td>
+<td>ip availability show</td>
+<td>Show IP usage of specific network</td>
+</tr>
+<tr class="row-odd"><td>net-list</td>
+<td>network list</td>
+<td>List networks that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>net-list-on-dhcp-agent</td>
+<td>network list –agent</td>
+<td>List the networks on a DHCP agent.</td>
+</tr>
+<tr class="row-odd"><td>net-show</td>
+<td>network show</td>
+<td>Show information of a given network.</td>
+</tr>
+<tr class="row-even"><td>net-update</td>
+<td>network set</td>
+<td>Update network’s information.</td>
+</tr>
+<tr class="row-odd"><td>port-create</td>
+<td>port create</td>
+<td>Create a port for a given tenant.</td>
+</tr>
+<tr class="row-even"><td>port-delete</td>
+<td>port delete</td>
+<td>Delete a given port.</td>
+</tr>
+<tr class="row-odd"><td>port-list</td>
+<td>port list</td>
+<td>List ports that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>port-show</td>
+<td>port show</td>
+<td>Show information of a given port.</td>
+</tr>
+<tr class="row-odd"><td>port-update</td>
+<td>port set/port unset</td>
+<td>Update port’s information.</td>
+</tr>
+<tr class="row-even"><td>purge</td>
+<td>&#160;</td>
+<td>Delete all resources that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>qos-available-rule-types</td>
+<td>network qos rule type list</td>
+<td>List available qos rule types.</td>
+</tr>
+<tr class="row-even"><td>qos-bandwidth-limit-rule-create</td>
+<td>network qos rule create –type bandwidth-limit</td>
+<td>Create a qos bandwidth limit rule.</td>
+</tr>
+<tr class="row-odd"><td>qos-bandwidth-limit-rule-delete</td>
+<td>network qos rule delete –type bandwidth-limit</td>
+<td>Delete a given qos bandwidth limit rule.</td>
+</tr>
+<tr class="row-even"><td>qos-bandwidth-limit-rule-list</td>
+<td>network qos rule list –type bandwidth-limit</td>
+<td>List all qos bandwidth limit rules belonging to the specified policy.</td>
+</tr>
+<tr class="row-odd"><td>qos-bandwidth-limit-rule-show</td>
+<td>network qos rule show –type bandwidth-limit</td>
+<td>Show information about the given qos bandwidth limit rule.</td>
+</tr>
+<tr class="row-even"><td>qos-bandwidth-limit-rule-update</td>
+<td>network qos rule update –type bandwidth-limit</td>
+<td>Update the given qos bandwidth limit rule.</td>
+</tr>
+<tr class="row-odd"><td>qos-dscp-marking-rule-create</td>
+<td>network qos rule create –type dscp-marking</td>
+<td>Create a QoS DSCP marking rule.</td>
+</tr>
+<tr class="row-even"><td>qos-dscp-marking-rule-delete</td>
+<td>network qos rule delete –type dscp-marking</td>
+<td>Delete a given qos dscp marking rule.</td>
+</tr>
+<tr class="row-odd"><td>qos-dscp-marking-rule-list</td>
+<td>network qos rule list –type dscp-marking</td>
+<td>List all QoS DSCP marking rules belonging to the specified policy.</td>
+</tr>
+<tr class="row-even"><td>qos-dscp-marking-rule-show</td>
+<td>network qos rule show –type dscp-marking</td>
+<td>Show information about the given qos dscp marking rule.</td>
+</tr>
+<tr class="row-odd"><td>qos-dscp-marking-rule-update</td>
+<td>network qos rule update –type dscp-marking</td>
+<td>Update the given QoS DSCP marking rule.</td>
+</tr>
+<tr class="row-even"><td>qos-minimum-bandwidth-rule-create</td>
+<td>network qos rule create –type minimum-bandwidth</td>
+<td>Create a qos minimum bandwidth rule.</td>
+</tr>
+<tr class="row-odd"><td>qos-minimum-bandwidth-rule-delete</td>
+<td>network qos rule delete –type minimum-bandwidth</td>
+<td>Delete a given qos minimum bandwidth rule.</td>
+</tr>
+<tr class="row-even"><td>qos-minimum-bandwidth-rule-list</td>
+<td>network qos rule list –type minimum-bandwidth</td>
+<td>List all qos minimum bandwidth rules belonging to the specified policy.</td>
+</tr>
+<tr class="row-odd"><td>qos-minimum-bandwidth-rule-show</td>
+<td>network qos rule show –type minimum-bandwidth</td>
+<td>Show information about the given qos minimum bandwidth rule.</td>
+</tr>
+<tr class="row-even"><td>qos-minimum-bandwidth-rule-update</td>
+<td>network qos rule update –type minimum-bandwidth</td>
+<td>Update the given qos minimum bandwidth rule.</td>
+</tr>
+<tr class="row-odd"><td>qos-policy-create</td>
+<td>network qos policy create</td>
+<td>Create a qos policy.</td>
+</tr>
+<tr class="row-even"><td>qos-policy-delete</td>
+<td>network qos policy delete</td>
+<td>Delete a given qos policy.</td>
+</tr>
+<tr class="row-odd"><td>qos-policy-list</td>
+<td>network qos policy list</td>
+<td>List QoS policies that belong to a given tenant connection.</td>
+</tr>
+<tr class="row-even"><td>qos-policy-show</td>
+<td>network qos policy show</td>
+<td>Show information of a given qos policy.</td>
+</tr>
+<tr class="row-odd"><td>qos-policy-update</td>
+<td>network qos policy set</td>
+<td>Update a given qos policy.</td>
+</tr>
+<tr class="row-even"><td>quota-default-show</td>
+<td>quota show –default</td>
+<td>Show default quotas for a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>quota-delete</td>
+<td>&#160;</td>
+<td>Delete defined quotas of a given tenant.</td>
+</tr>
+<tr class="row-even"><td>quota-list</td>
+<td>quota list</td>
+<td>List quotas of all tenants who have non-default quota values.</td>
+</tr>
+<tr class="row-odd"><td>quota-show</td>
+<td>quota show</td>
+<td>Show quotas for a given tenant.</td>
+</tr>
+<tr class="row-even"><td>quota-update</td>
+<td>quota set</td>
+<td>Define tenant’s quotas not to use defaults.</td>
+</tr>
+<tr class="row-odd"><td>rbac-create</td>
+<td>network rbac create</td>
+<td>Create a RBAC policy for a given tenant.</td>
+</tr>
+<tr class="row-even"><td>rbac-delete</td>
+<td>network rbac delete</td>
+<td>Delete a RBAC policy.</td>
+</tr>
+<tr class="row-odd"><td>rbac-list</td>
+<td>network rbac list</td>
+<td>List RBAC policies that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>rbac-show</td>
+<td>network rbac show</td>
+<td>Show information of a given RBAC policy.</td>
+</tr>
+<tr class="row-odd"><td>rbac-update</td>
+<td>network rbac set</td>
+<td>Update RBAC policy for given tenant.</td>
+</tr>
+<tr class="row-even"><td>router-create</td>
+<td>router create</td>
+<td>Create a router for a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>router-delete</td>
+<td>router delete</td>
+<td>Delete a given router.</td>
+</tr>
+<tr class="row-even"><td>router-gateway-clear</td>
+<td>router unset</td>
+<td>Remove an external network gateway from a router.</td>
+</tr>
+<tr class="row-odd"><td>router-gateway-set</td>
+<td>router set</td>
+<td>Set the external network gateway for a router.</td>
+</tr>
+<tr class="row-even"><td>router-interface-add</td>
+<td>router add subnet / router add port</td>
+<td>Add an internal network interface to a router.</td>
+</tr>
+<tr class="row-odd"><td>router-interface-delete</td>
+<td>router remove subnet / router remove port</td>
+<td>Remove an internal network interface from a router.</td>
+</tr>
+<tr class="row-even"><td>router-list</td>
+<td>router list</td>
+<td>List routers that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>router-list-on-l3-agent</td>
+<td>router list –agents</td>
+<td>List the routers on a L3 agent.</td>
+</tr>
+<tr class="row-even"><td>router-port-list</td>
+<td>port list –router</td>
+<td>List ports that belong to a given tenant, with specified router.</td>
+</tr>
+<tr class="row-odd"><td>router-show</td>
+<td>router show</td>
+<td>Show information of a given router.</td>
+</tr>
+<tr class="row-even"><td>router-update</td>
+<td>router set</td>
+<td>Update router’s information.</td>
+</tr>
+<tr class="row-odd"><td>security-group-create</td>
+<td>security group create</td>
+<td>Create a security group.</td>
+</tr>
+<tr class="row-even"><td>security-group-delete</td>
+<td>security group delete</td>
+<td>Delete a given security group.</td>
+</tr>
+<tr class="row-odd"><td>security-group-list</td>
+<td>security group list</td>
+<td>List security groups that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>security-group-rule-create</td>
+<td>security group rule create</td>
+<td>Create a security group rule.</td>
+</tr>
+<tr class="row-odd"><td>security-group-rule-delete</td>
+<td>security group rule delete</td>
+<td>Delete a given security group rule.</td>
+</tr>
+<tr class="row-even"><td>security-group-rule-list</td>
+<td>security group rule list</td>
+<td>List security group rules that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>security-group-rule-show</td>
+<td>security group rule show</td>
+<td>Show information of a given security group rule.</td>
+</tr>
+<tr class="row-even"><td>security-group-show</td>
+<td>security group show</td>
+<td>Show information of a given security group.</td>
+</tr>
+<tr class="row-odd"><td>security-group-update</td>
+<td>security group set</td>
+<td>Update a given security group.</td>
+</tr>
+<tr class="row-even"><td>service-provider-list</td>
+<td>network service provider list</td>
+<td>List service providers.</td>
+</tr>
+<tr class="row-odd"><td>subnet-create</td>
+<td>subnet create</td>
+<td>Create a subnet for a given tenant.</td>
+</tr>
+<tr class="row-even"><td>subnet-delete</td>
+<td>subnet delete</td>
+<td>Delete a given subnet.</td>
+</tr>
+<tr class="row-odd"><td>subnet-list</td>
+<td>subnet list</td>
+<td>List subnets that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>subnet-show</td>
+<td>subnet show</td>
+<td>Show information of a given subnet.</td>
+</tr>
+<tr class="row-odd"><td>subnet-update</td>
+<td>subnet set / subnet unset</td>
+<td>Update subnet’s information.</td>
+</tr>
+<tr class="row-even"><td>subnetpool-create</td>
+<td>subnet pool create</td>
+<td>Create a subnetpool for a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>subnetpool-delete</td>
+<td>subnet pool delete</td>
+<td>Delete a given subnetpool.</td>
+</tr>
+<tr class="row-even"><td>subnetpool-list</td>
+<td>subnet pool list</td>
+<td>List subnetpools that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>subnetpool-show</td>
+<td>subnet pool show</td>
+<td>Show information of a given subnetpool.</td>
+</tr>
+<tr class="row-even"><td>subnetpool-update</td>
+<td>subnet pool set / subnet pool unset</td>
+<td>Update subnetpool’s information.</td>
+</tr>
+<tr class="row-odd"><td>tag-add</td>
+<td>network set –tag</td>
+<td>Add a tag into the resource.</td>
+</tr>
+<tr class="row-even"><td>tag-remove</td>
+<td>network unset –tag</td>
+<td>Remove a tag on the resource.</td>
+</tr>
+<tr class="row-odd"><td>tag-replace</td>
+<td>&#160;</td>
+<td>Replace all tags on the resource.</td>
+</tr>
+<tr class="row-even"><td>tap-flow-create</td>
+<td>tapflow create</td>
+<td>Create a tap flow</td>
+</tr>
+<tr class="row-odd"><td>tap-flow-delete</td>
+<td>tapflow delete</td>
+<td>Delete a tap flow</td>
+</tr>
+<tr class="row-even"><td>tap-flow-list</td>
+<td>tapflow list</td>
+<td>List all tap flows</td>
+</tr>
+<tr class="row-odd"><td>tap-flow-show</td>
+<td>tapflow show</td>
+<td>Show details of the tap flow</td>
+</tr>
+<tr class="row-even"><td>tap-service-create</td>
+<td>tapservice create</td>
+<td>Create a tap service</td>
+</tr>
+<tr class="row-odd"><td>tap-service-delete</td>
+<td>tapservice delete</td>
+<td>Delete a tap service</td>
+</tr>
+<tr class="row-even"><td>tap-service-list</td>
+<td>tapservice list</td>
+<td>List all tap services</td>
+</tr>
+<tr class="row-odd"><td>tap-service-show</td>
+<td>tapservice show</td>
+<td>Show details of the tap service</td>
+</tr>
+<tr class="row-even"><td>vpn-endpoint-group-create</td>
+<td>&#160;</td>
+<td>Create a VPN endpoint group.</td>
+</tr>
+<tr class="row-odd"><td>vpn-endpoint-group-delete</td>
+<td>&#160;</td>
+<td>Delete a given VPN endpoint group.</td>
+</tr>
+<tr class="row-even"><td>vpn-endpoint-group-list</td>
+<td>&#160;</td>
+<td>List VPN endpoint groups that belong to a given tenant.</td>
+</tr>
+<tr class="row-odd"><td>vpn-endpoint-group-show</td>
+<td>&#160;</td>
+<td>Show a specific VPN endpoint group.</td>
+</tr>
+<tr class="row-even"><td>vpn-endpoint-group-update</td>
+<td>&#160;</td>
+<td>Update a given VPN endpoint group.</td>
+</tr>
+<tr class="row-odd"><td>vpn-ikepolicy-create</td>
+<td>&#160;</td>
+<td>Create an IKE policy.</td>
+</tr>
+<tr class="row-even"><td>vpn-ikepolicy-delete</td>
+<td>&#160;</td>
+<td>Delete a given IKE policy.</td>
+</tr>
+<tr class="row-odd"><td>vpn-ikepolicy-list</td>
+<td>&#160;</td>
+<td>List IKE policies that belong to a tenant.</td>
+</tr>
+<tr class="row-even"><td>vpn-ikepolicy-show</td>
+<td>&#160;</td>
+<td>Show information of a given IKE policy.</td>
+</tr>
+<tr class="row-odd"><td>vpn-ikepolicy-update</td>
+<td>&#160;</td>
+<td>Update a given IKE policy.</td>
+</tr>
+<tr class="row-even"><td>vpn-ipsecpolicy-create</td>
+<td>&#160;</td>
+<td>Create an IPsec policy.</td>
+</tr>
+<tr class="row-odd"><td>vpn-ipsecpolicy-delete</td>
+<td>&#160;</td>
+<td>Delete a given IPsec policy.</td>
+</tr>
+<tr class="row-even"><td>vpn-ipsecpolicy-list</td>
+<td>&#160;</td>
+<td>List IPsec policies that belong to a given tenant connection.</td>
+</tr>
+<tr class="row-odd"><td>vpn-ipsecpolicy-show</td>
+<td>&#160;</td>
+<td>Show information of a given IPsec policy.</td>
+</tr>
+<tr class="row-even"><td>vpn-ipsecpolicy-update</td>
+<td>&#160;</td>
+<td>Update a given IPsec policy.</td>
+</tr>
+<tr class="row-odd"><td>vpn-service-create</td>
+<td>&#160;</td>
+<td>Create a VPN service.</td>
+</tr>
+<tr class="row-even"><td>vpn-service-delete</td>
+<td>&#160;</td>
+<td>Delete a given VPN service.</td>
+</tr>
+<tr class="row-odd"><td>vpn-service-list</td>
+<td>&#160;</td>
+<td>List VPN service configurations that belong to a given tenant.</td>
+</tr>
+<tr class="row-even"><td>vpn-service-show</td>
+<td>&#160;</td>
+<td>Show information of a given VPN service.</td>
+</tr>
+<tr class="row-odd"><td>vpn-service-update</td>
+<td>&#160;</td>
+<td>Update a given VPN service.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="nova-cli">
+<h2><code class="docutils literal"><span class="pre">nova</span> <span class="pre">CLI</span></code><a class="headerlink" href="#nova-cli" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Nova CLI</th>
+<th class="head">OSC Equivalent</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>add-fixed-ip</td>
+<td>server add fixed ip</td>
+<td>Add new IP address on a network to server.</td>
+</tr>
+<tr class="row-odd"><td>add-secgroup</td>
+<td>server add security group</td>
+<td>Add a Security Group to a server.</td>
+</tr>
+<tr class="row-even"><td>agent-create</td>
+<td>compute agent create</td>
+<td>Create new agent build.</td>
+</tr>
+<tr class="row-odd"><td>agent-delete</td>
+<td>compute agent delete</td>
+<td>Delete existing agent build.</td>
+</tr>
+<tr class="row-even"><td>agent-list</td>
+<td>compute agent list</td>
+<td>List all builds.</td>
+</tr>
+<tr class="row-odd"><td>agent-modify</td>
+<td>compute agent set</td>
+<td>Modify existing agent build.</td>
+</tr>
+<tr class="row-even"><td>aggregate-add-host</td>
+<td>aggregate add host</td>
+<td>Add the host to the specified aggregate.</td>
+</tr>
+<tr class="row-odd"><td>aggregate-create</td>
+<td>aggregate create</td>
+<td>Create a new aggregate with the specified details.</td>
+</tr>
+<tr class="row-even"><td>aggregate-delete</td>
+<td>aggregate delete</td>
+<td>Delete the aggregate.</td>
+</tr>
+<tr class="row-odd"><td>aggregate-list</td>
+<td>aggregate list</td>
+<td>Print a list of all aggregates.</td>
+</tr>
+<tr class="row-even"><td>aggregate-remove-host</td>
+<td>aggregate remove host</td>
+<td>Remove the specified host from the specified aggregate.</td>
+</tr>
+<tr class="row-odd"><td>aggregate-set-metadata</td>
+<td>aggregate set / unset</td>
+<td>Update the metadata associated with the aggregate.</td>
+</tr>
+<tr class="row-even"><td>aggregate-show</td>
+<td>aggregate show</td>
+<td>Show details of the specified aggregate.</td>
+</tr>
+<tr class="row-odd"><td>aggregate-update</td>
+<td>aggregate set / unset</td>
+<td>Update the aggregate’s name and optionally availability zone.</td>
+</tr>
+<tr class="row-even"><td>availability-zone-list</td>
+<td>availability zone list</td>
+<td>List all the availability zones.</td>
+</tr>
+<tr class="row-odd"><td>backup</td>
+<td>server backup create</td>
+<td>Backup a server by creating a ‘backup’ type snapshot.</td>
+</tr>
+<tr class="row-even"><td>boot</td>
+<td>server create</td>
+<td>Boot a new server.</td>
+</tr>
+<tr class="row-odd"><td>cell-capacities</td>
+<td>&#160;</td>
+<td>Get cell capacities for all cells or a given cell.</td>
+</tr>
+<tr class="row-even"><td>cell-show</td>
+<td>&#160;</td>
+<td>Show details of a given cell.</td>
+</tr>
+<tr class="row-odd"><td>clear-password</td>
+<td>server set –root-password</td>
+<td>Clear the admin password for a server from the metadata server.</td>
+</tr>
+<tr class="row-even"><td>cloudpipe-configure</td>
+<td>WONTFIX</td>
+<td>Update the VPN IP/port of a cloudpipe instance.</td>
+</tr>
+<tr class="row-odd"><td>cloudpipe-create</td>
+<td>WONTFIX</td>
+<td>Create a cloudpipe instance for the given project.</td>
+</tr>
+<tr class="row-even"><td>cloudpipe-list</td>
+<td>WONTFIX</td>
+<td>Print a list of all cloudpipe instances.</td>
+</tr>
+<tr class="row-odd"><td>console-log</td>
+<td>console log show</td>
+<td>Get console log output of a server.</td>
+</tr>
+<tr class="row-even"><td>delete</td>
+<td>server delete</td>
+<td>Immediately shut down and delete specified server(s).</td>
+</tr>
+<tr class="row-odd"><td>diagnostics</td>
+<td>openstack server show –diagnostics</td>
+<td>Retrieve server diagnostics.</td>
+</tr>
+<tr class="row-even"><td>evacuate</td>
+<td>&#160;</td>
+<td>Evacuate server from failed host.</td>
+</tr>
+<tr class="row-odd"><td>flavor-access-add</td>
+<td>&#160;</td>
+<td>Add flavor access for the given tenant.</td>
+</tr>
+<tr class="row-even"><td>flavor-access-list</td>
+<td>&#160;</td>
+<td>Print access information about the given flavor.</td>
+</tr>
+<tr class="row-odd"><td>flavor-access-remove</td>
+<td>&#160;</td>
+<td>Remove flavor access for the given tenant.</td>
+</tr>
+<tr class="row-even"><td>flavor-create</td>
+<td>flavor create</td>
+<td>Create a new flavor.</td>
+</tr>
+<tr class="row-odd"><td>flavor-delete</td>
+<td>flavor delete</td>
+<td>Delete a specific flavor</td>
+</tr>
+<tr class="row-even"><td>flavor-key</td>
+<td>flavor set / unset</td>
+<td>Set or unset extra_spec for a flavor.</td>
+</tr>
+<tr class="row-odd"><td>flavor-list</td>
+<td>flavor list</td>
+<td>Print a list of available ‘flavors’</td>
+</tr>
+<tr class="row-even"><td>flavor-show</td>
+<td>flavor show</td>
+<td>Show details about the given flavor.</td>
+</tr>
+<tr class="row-odd"><td>floating-ip-associate</td>
+<td>server add floating ip</td>
+<td>Associate a floating IP address to a server.</td>
+</tr>
+<tr class="row-even"><td>floating-ip-disassociate</td>
+<td>server remove floating ip</td>
+<td>Disassociate a floating IP address from a server.</td>
+</tr>
+<tr class="row-odd"><td>force-delete</td>
+<td>server delete</td>
+<td>Force delete a server.</td>
+</tr>
+<tr class="row-even"><td>get-mks-console</td>
+<td>console url show –mks</td>
+<td>Get an MKS console to a server.</td>
+</tr>
+<tr class="row-odd"><td>get-password</td>
+<td>WONTFIX</td>
+<td>Get the admin password for a server.</td>
+</tr>
+<tr class="row-even"><td>get-rdp-console</td>
+<td>console url show –rdp</td>
+<td>Get a rdp console to a server.</td>
+</tr>
+<tr class="row-odd"><td>get-serial-console</td>
+<td>console url show –serial</td>
+<td>Get a serial console to a server.</td>
+</tr>
+<tr class="row-even"><td>get-spice-console</td>
+<td>console url show –spice</td>
+<td>Get a spice console to a server.</td>
+</tr>
+<tr class="row-odd"><td>get-vnc-console</td>
+<td>console url show –novnc | –xvpvnc</td>
+<td>Get a vnc console to a server.</td>
+</tr>
+<tr class="row-even"><td>host-action</td>
+<td>&#160;</td>
+<td>Perform a power action on a host.</td>
+</tr>
+<tr class="row-odd"><td>host-describe</td>
+<td>host show</td>
+<td>Describe a specific host.</td>
+</tr>
+<tr class="row-even"><td>host-evacuate</td>
+<td>&#160;</td>
+<td>Evacuate all instances from failed host.</td>
+</tr>
+<tr class="row-odd"><td>host-evacuate-live</td>
+<td>&#160;</td>
+<td>Live migrate all instances of the specified host to other available hosts.</td>
+</tr>
+<tr class="row-even"><td>host-list</td>
+<td>host list</td>
+<td>List all hosts by service.</td>
+</tr>
+<tr class="row-odd"><td>host-meta</td>
+<td>&#160;</td>
+<td>Set or Delete metadata on all instances of a host.</td>
+</tr>
+<tr class="row-even"><td>host-servers-migrate</td>
+<td>&#160;</td>
+<td>Cold migrate all instances off the specified host to other available hosts.</td>
+</tr>
+<tr class="row-odd"><td>host-update</td>
+<td>host set</td>
+<td>Update host settings.</td>
+</tr>
+<tr class="row-even"><td>hypervisor-list</td>
+<td>hypervisor list</td>
+<td>List hypervisors.</td>
+</tr>
+<tr class="row-odd"><td>hypervisor-servers</td>
+<td>&#160;</td>
+<td>List servers belonging to specific hypervisors.</td>
+</tr>
+<tr class="row-even"><td>hypervisor-show</td>
+<td>hypervisor show</td>
+<td>Display the details of the specified hypervisor.</td>
+</tr>
+<tr class="row-odd"><td>hypervisor-stats</td>
+<td>hypervisor stats show</td>
+<td>Get hypervisor statistics over all compute nodes.</td>
+</tr>
+<tr class="row-even"><td>hypervisor-uptime</td>
+<td>&#160;</td>
+<td>Display the uptime of the specified hypervisor.</td>
+</tr>
+<tr class="row-odd"><td>image-create</td>
+<td>server image create</td>
+<td>Create a new image by taking a snapshot of a running server.</td>
+</tr>
+<tr class="row-even"><td>instance-action</td>
+<td>&#160;</td>
+<td>Show an action.</td>
+</tr>
+<tr class="row-odd"><td>instance-action-list</td>
+<td>&#160;</td>
+<td>List actions on a server.</td>
+</tr>
+<tr class="row-even"><td>interface-attach</td>
+<td>&#160;</td>
+<td>Attach a network interface to a server.</td>
+</tr>
+<tr class="row-odd"><td>interface-detach</td>
+<td>&#160;</td>
+<td>Detach a network interface from a server.</td>
+</tr>
+<tr class="row-even"><td>interface-list</td>
+<td>&#160;</td>
+<td>List interfaces attached to a server.</td>
+</tr>
+<tr class="row-odd"><td>keypair-add</td>
+<td>keypair create</td>
+<td>Create a new key pair for use with servers.</td>
+</tr>
+<tr class="row-even"><td>keypair-delete</td>
+<td>keypair delete</td>
+<td>Delete keypair given by its name.</td>
+</tr>
+<tr class="row-odd"><td>keypair-list</td>
+<td>keypair list</td>
+<td>Print a list of keypairs for a user</td>
+</tr>
+<tr class="row-even"><td>keypair-show</td>
+<td>keypair show</td>
+<td>Show details about the given keypair.</td>
+</tr>
+<tr class="row-odd"><td>limits</td>
+<td>limits show</td>
+<td>Print rate and absolute limits.</td>
+</tr>
+<tr class="row-even"><td>list</td>
+<td>server list</td>
+<td>List active servers.</td>
+</tr>
+<tr class="row-odd"><td>list-extensions</td>
+<td>extension list</td>
+<td>List all the os-api extensions that are available.</td>
+</tr>
+<tr class="row-even"><td>list-secgroup</td>
+<td>security group list</td>
+<td>List Security Group(s) of a server.</td>
+</tr>
+<tr class="row-odd"><td>live-migration</td>
+<td>&#160;</td>
+<td>Migrate running server to a new machine.</td>
+</tr>
+<tr class="row-even"><td>live-migration-abort</td>
+<td>&#160;</td>
+<td>Abort an on-going live migration.</td>
+</tr>
+<tr class="row-odd"><td>live-migration-force-comp</td>
+<td>&#160;</td>
+<td>Force on-going live migration to complete.</td>
+</tr>
+<tr class="row-even"><td>lock</td>
+<td>server lock</td>
+<td>Lock a server.</td>
+</tr>
+<tr class="row-odd"><td>meta</td>
+<td>server set –property / unset</td>
+<td>Set or delete metadata on a server.</td>
+</tr>
+<tr class="row-even"><td>migrate</td>
+<td>server migrate</td>
+<td>Migrate a server. The new host will be selected by the scheduler.</td>
+</tr>
+<tr class="row-odd"><td>migration-list</td>
+<td>&#160;</td>
+<td>Print a list of migrations.</td>
+</tr>
+<tr class="row-even"><td>pause</td>
+<td>server pause</td>
+<td>Pause a server.</td>
+</tr>
+<tr class="row-odd"><td>quota-class-show</td>
+<td>&#160;</td>
+<td>List the quotas for a quota class.</td>
+</tr>
+<tr class="row-even"><td>quota-class-update</td>
+<td>quota set –class</td>
+<td>Update the quotas for a quota class.</td>
+</tr>
+<tr class="row-odd"><td>quota-defaults</td>
+<td>quota list</td>
+<td>List the default quotas for a tenant.</td>
+</tr>
+<tr class="row-even"><td>quota-delete</td>
+<td>quota set</td>
+<td>Delete quota for a tenant/user so their quota will Revert back to default.</td>
+</tr>
+<tr class="row-odd"><td>quota-show</td>
+<td>quota show</td>
+<td>List the quotas for a tenant/user.</td>
+</tr>
+<tr class="row-even"><td>quota-update</td>
+<td>quota set</td>
+<td>Update the quotas for a tenant/user.</td>
+</tr>
+<tr class="row-odd"><td>reboot</td>
+<td>server reboot</td>
+<td>Reboot a server.</td>
+</tr>
+<tr class="row-even"><td>rebuild</td>
+<td>server rebuild</td>
+<td>Shutdown, re-image, and re-boot a server.</td>
+</tr>
+<tr class="row-odd"><td>refresh-network</td>
+<td>WONTFIX</td>
+<td>Refresh server network information.</td>
+</tr>
+<tr class="row-even"><td>remove-fixed-ip</td>
+<td>server remove fixed ip</td>
+<td>Remove an IP address from a server.</td>
+</tr>
+<tr class="row-odd"><td>remove-secgroup</td>
+<td>server remove security group</td>
+<td>Remove a Security Group from a server.</td>
+</tr>
+<tr class="row-even"><td>rescue</td>
+<td>server rescue</td>
+<td>Reboots a server into rescue mode.</td>
+</tr>
+<tr class="row-odd"><td>reset-network</td>
+<td>WONTFIX</td>
+<td>Reset network of a server.</td>
+</tr>
+<tr class="row-even"><td>reset-state</td>
+<td>server set –state</td>
+<td>Reset the state of a server.</td>
+</tr>
+<tr class="row-odd"><td>resize</td>
+<td>server resize</td>
+<td>Resize a server.</td>
+</tr>
+<tr class="row-even"><td>resize-confirm</td>
+<td>server resize –confirm</td>
+<td>Confirm a previous resize.</td>
+</tr>
+<tr class="row-odd"><td>resize-revert</td>
+<td>server resize –revert</td>
+<td>Revert a previous resize.</td>
+</tr>
+<tr class="row-even"><td>restore</td>
+<td>server restore</td>
+<td>Restore a soft-deleted server.</td>
+</tr>
+<tr class="row-odd"><td>resume</td>
+<td>server resume</td>
+<td>Resume a server.</td>
+</tr>
+<tr class="row-even"><td>server-group-create</td>
+<td>server group create</td>
+<td>Create a new server group with the specified details.</td>
+</tr>
+<tr class="row-odd"><td>server-group-delete</td>
+<td>server group delete</td>
+<td>Delete specific server group(s).</td>
+</tr>
+<tr class="row-even"><td>server-group-get</td>
+<td>server group show</td>
+<td>Get a specific server group.</td>
+</tr>
+<tr class="row-odd"><td>server-group-list</td>
+<td>server group list</td>
+<td>Print a list of all server groups.</td>
+</tr>
+<tr class="row-even"><td>server-migration-list</td>
+<td>&#160;</td>
+<td>Get the migrations list of specified server.</td>
+</tr>
+<tr class="row-odd"><td>server-migration-show</td>
+<td>&#160;</td>
+<td>Get the migration of specified server.</td>
+</tr>
+<tr class="row-even"><td>server-tag-add</td>
+<td>&#160;</td>
+<td>Add one or more tags to a server.</td>
+</tr>
+<tr class="row-odd"><td>server-tag-delete</td>
+<td>&#160;</td>
+<td>Delete one or more tags from a server.</td>
+</tr>
+<tr class="row-even"><td>server-tag-delete-all</td>
+<td>&#160;</td>
+<td>Delete all tags from a server.</td>
+</tr>
+<tr class="row-odd"><td>server-tag-list</td>
+<td>&#160;</td>
+<td>Get list of tags from a server.</td>
+</tr>
+<tr class="row-even"><td>server-tag-set</td>
+<td>&#160;</td>
+<td>Set list of tags to a server.</td>
+</tr>
+<tr class="row-odd"><td>service-delete</td>
+<td>compute service delete</td>
+<td>Delete the service.</td>
+</tr>
+<tr class="row-even"><td>service-disable</td>
+<td>compute service set –disable</td>
+<td>Disable the service.</td>
+</tr>
+<tr class="row-odd"><td>service-enable</td>
+<td>compute service set –enable</td>
+<td>Enable the service.</td>
+</tr>
+<tr class="row-even"><td>service-force-down</td>
+<td>compute service set –force</td>
+<td>Force service to down.</td>
+</tr>
+<tr class="row-odd"><td>service-list</td>
+<td>compute service list</td>
+<td>Show a list of all running services.</td>
+</tr>
+<tr class="row-even"><td>set-password</td>
+<td>server set –root-password</td>
+<td>Change the admin password for a server.</td>
+</tr>
+<tr class="row-odd"><td>shelve</td>
+<td>server shelve</td>
+<td>Shelve a server.</td>
+</tr>
+<tr class="row-even"><td>shelve-offload</td>
+<td>&#160;</td>
+<td>Remove a shelved server from the compute node.</td>
+</tr>
+<tr class="row-odd"><td>show</td>
+<td>server show</td>
+<td>Show details about the given server.</td>
+</tr>
+<tr class="row-even"><td>ssh</td>
+<td>server ssh</td>
+<td>SSH into a server.</td>
+</tr>
+<tr class="row-odd"><td>start</td>
+<td>server start</td>
+<td>Start the server(s).</td>
+</tr>
+<tr class="row-even"><td>stop</td>
+<td>server stop</td>
+<td>Stop the server(s).</td>
+</tr>
+<tr class="row-odd"><td>suspend</td>
+<td>server suspend</td>
+<td>Suspend a server.</td>
+</tr>
+<tr class="row-even"><td>trigger-crash-dump</td>
+<td>server dump create</td>
+<td>Trigger crash dump in an instance.</td>
+</tr>
+<tr class="row-odd"><td>unlock</td>
+<td>server unlock</td>
+<td>Unlock a server.</td>
+</tr>
+<tr class="row-even"><td>unpause</td>
+<td>server unpause</td>
+<td>Unpause a server.</td>
+</tr>
+<tr class="row-odd"><td>unrescue</td>
+<td>server unrescue</td>
+<td>Restart the server from normal boot disk again.</td>
+</tr>
+<tr class="row-even"><td>unshelve</td>
+<td>server unshelve</td>
+<td>Unshelve a server.</td>
+</tr>
+<tr class="row-odd"><td>update</td>
+<td>server set / unset</td>
+<td>Update the name or the description for a server.</td>
+</tr>
+<tr class="row-even"><td>usage</td>
+<td>usage show</td>
+<td>Show usage data for a single tenant.</td>
+</tr>
+<tr class="row-odd"><td>usage-list</td>
+<td>usage list</td>
+<td>List usage data for all tenants.</td>
+</tr>
+<tr class="row-even"><td>version-list</td>
+<td>&#160;</td>
+<td>List all API versions.</td>
+</tr>
+<tr class="row-odd"><td>virtual-interface-list</td>
+<td>&#160;</td>
+<td>Show virtual interface info about the given server.</td>
+</tr>
+<tr class="row-even"><td>volume-attach</td>
+<td>server add volume</td>
+<td>Attach a volume to a server.</td>
+</tr>
+<tr class="row-odd"><td>volume-attachments</td>
+<td>server show</td>
+<td>List all the volumes attached to a server.</td>
+</tr>
+<tr class="row-even"><td>volume-detach</td>
+<td>server remove volume</td>
+<td>Detach a volume from a server.</td>
+</tr>
+<tr class="row-odd"><td>volume-update</td>
+<td>&#160;</td>
+<td>Update volume attachment.</td>
+</tr>
+<tr class="row-even"><td>x509-create-cert</td>
+<td>WONTFIX</td>
+<td>Create x509 cert for a user in tenant.</td>
+</tr>
+<tr class="row-odd"><td>x509-get-root-cert</td>
+<td>WONTFIX</td>
+<td>Fetch the x509 root cert.</td>
+</tr>
+<tr class="row-even"><td>bash-completion</td>
+<td>complete</td>
+<td>Prints all of the commands and options to</td>
+</tr>
+<tr class="row-odd"><td>help</td>
+<td>help</td>
+<td>Display help about this program or one of its subcommands.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="swift-cli">
+<h2><code class="docutils literal"><span class="pre">swift</span> <span class="pre">CLI</span></code><a class="headerlink" href="#swift-cli" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Swift CLI</th>
+<th class="head">OSC Equivalent</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>delete</td>
+<td>object delete / container delete</td>
+<td>Delete a container or objects within a container.</td>
+</tr>
+<tr class="row-odd"><td>download</td>
+<td>object save / container save</td>
+<td>Download objects from containers.</td>
+</tr>
+<tr class="row-even"><td>list</td>
+<td>object list / container list</td>
+<td>Lists the containers for the account or the objects for a container.</td>
+</tr>
+<tr class="row-odd"><td>post</td>
+<td>container create / object set / container set / object store account set</td>
+<td>Updates meta information for the account, container, or object.</td>
+</tr>
+<tr class="row-even"><td>copy</td>
+<td>&#160;</td>
+<td>Copies object, optionally adds meta.</td>
+</tr>
+<tr class="row-odd"><td>stat</td>
+<td>object show / container show / object store account show</td>
+<td>Displays information for the account, container, or object.</td>
+</tr>
+<tr class="row-even"><td>upload</td>
+<td>object create</td>
+<td>Uploads files or directories to the given container.</td>
+</tr>
+<tr class="row-odd"><td>capabilities</td>
+<td>&#160;</td>
+<td>List cluster capabilities.</td>
+</tr>
+<tr class="row-even"><td>tempurl</td>
+<td>&#160;</td>
+<td>Create a temporary URL.</td>
+</tr>
+<tr class="row-odd"><td>auth</td>
+<td>WONTFIX</td>
+<td>Display auth related environment variables.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="interactive.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Interactive Mode"></i></a>
+          
+          
+            <a href="backwards-incompatible.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Backwards Incompatible Changes"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="man/openstack.html">Manual Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-list.html">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Command Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugin-commands.html">Plugin Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Mode</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mapping Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backwards-incompatible.html">Backwards Incompatible Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributor/index.html">Contributor Documentation</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/decoder" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "Mapping Guide in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

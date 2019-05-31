@@ -1,0 +1,1467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: server</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>server</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="security-group-rule.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: security group rule"></i></a>
+    
+    
+    <a href="server-backup.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: server backup"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">server</a><ul>
+<li><a class="reference internal" href="#server-add-fixed-ip">server add fixed ip</a></li>
+<li><a class="reference internal" href="#server-add-floating-ip">server add floating ip</a></li>
+<li><a class="reference internal" href="#server-add-port">server add port</a></li>
+<li><a class="reference internal" href="#server-add-security-group">server add security group</a></li>
+<li><a class="reference internal" href="#server-add-volume">server add volume</a></li>
+<li><a class="reference internal" href="#server-create">server create</a></li>
+<li><a class="reference internal" href="#server-delete">server delete</a></li>
+<li><a class="reference internal" href="#server-dump-create">server dump create</a></li>
+<li><a class="reference internal" href="#server-list">server list</a></li>
+<li><a class="reference internal" href="#server-lock">server lock</a></li>
+<li><a class="reference internal" href="#server-migrate">server migrate</a></li>
+<li><a class="reference internal" href="#server-pause">server pause</a></li>
+<li><a class="reference internal" href="#server-reboot">server reboot</a></li>
+<li><a class="reference internal" href="#server-rebuild">server rebuild</a></li>
+<li><a class="reference internal" href="#server-remove-fixed-ip">server remove fixed ip</a></li>
+<li><a class="reference internal" href="#server-remove-floating-ip">server remove floating ip</a></li>
+<li><a class="reference internal" href="#server-remove-port">server remove port</a></li>
+<li><a class="reference internal" href="#server-remove-security-group">server remove security group</a></li>
+<li><a class="reference internal" href="#server-remove-volume">server remove volume</a></li>
+<li><a class="reference internal" href="#server-rescue">server rescue</a></li>
+<li><a class="reference internal" href="#server-resize">server resize</a></li>
+<li><a class="reference internal" href="#server-restore">server restore</a></li>
+<li><a class="reference internal" href="#server-resume">server resume</a></li>
+<li><a class="reference internal" href="#server-set">server set</a></li>
+<li><a class="reference internal" href="#server-shelve">server shelve</a></li>
+<li><a class="reference internal" href="#server-show">server show</a></li>
+<li><a class="reference internal" href="#server-ssh">server ssh</a></li>
+<li><a class="reference internal" href="#server-start">server start</a></li>
+<li><a class="reference internal" href="#server-stop">server stop</a></li>
+<li><a class="reference internal" href="#server-suspend">server suspend</a></li>
+<li><a class="reference internal" href="#server-unlock">server unlock</a></li>
+<li><a class="reference internal" href="#server-unpause">server unpause</a></li>
+<li><a class="reference internal" href="#server-unrescue">server unrescue</a></li>
+<li><a class="reference internal" href="#server-unset">server unset</a></li>
+<li><a class="reference internal" href="#server-unshelve">server unshelve</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="server">
+<h1>server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h1>
+<p>Compute v2</p>
+<div class="section" id="server-add-fixed-ip">
+<h2>server add fixed ip<a class="headerlink" href="#server-add-fixed-ip" title="Permalink to this headline">¶</a></h2>
+<p>Add fixed IP address to server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server add fixed ip
+    <span class="o">[</span>--fixed-ip-address &lt;ip-address&gt;<span class="o">]</span>
+    &lt;server&gt;
+    &lt;network&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-fixed-ip-fixed-ip-address">
+<code class="descname">--fixed-ip-address</code><code class="descclassname"> &lt;ip-address&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-add-fixed-ip-fixed-ip-address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requested fixed IP address</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-fixed-ip-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-add-fixed-ip-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server to receive the fixed IP address (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-fixed-ip-arg-network">
+<code class="descname">network</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-add-fixed-ip-arg-network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network to allocate the fixed IP address from (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-add-floating-ip">
+<h2>server add floating ip<a class="headerlink" href="#server-add-floating-ip" title="Permalink to this headline">¶</a></h2>
+<p>Add floating IP address to server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server add floating ip
+    <span class="o">[</span>--fixed-ip-address &lt;ip-address&gt;<span class="o">]</span>
+    &lt;server&gt;
+    &lt;ip-address&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-floating-ip-fixed-ip-address">
+<code class="descname">--fixed-ip-address</code><code class="descclassname"> &lt;ip-address&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-add-floating-ip-fixed-ip-address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixed IP address to associate with this floating IP address</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-floating-ip-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-add-floating-ip-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server to receive the floating IP address (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-floating-ip-arg-ip-address">
+<code class="descname">ip-address</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-add-floating-ip-arg-ip-address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Floating IP address to assign to server (IP only)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-add-port">
+<h2>server add port<a class="headerlink" href="#server-add-port" title="Permalink to this headline">¶</a></h2>
+<p>Add port to server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server add port &lt;server&gt; &lt;port&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-port-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-add-port-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server to add the port to (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-port-arg-port">
+<code class="descname">port</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-add-port-arg-port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port to add to the server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-add-security-group">
+<h2>server add security group<a class="headerlink" href="#server-add-security-group" title="Permalink to this headline">¶</a></h2>
+<p>Add security group to server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server add security group &lt;server&gt; &lt;group&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-security-group-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-add-security-group-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-security-group-arg-group">
+<code class="descname">group</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-add-security-group-arg-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Security group to add (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-add-volume">
+<h2>server add volume<a class="headerlink" href="#server-add-volume" title="Permalink to this headline">¶</a></h2>
+<p>Add volume to server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server add volume <span class="o">[</span>--device &lt;device&gt;<span class="o">]</span> &lt;server&gt; &lt;volume&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-volume-device">
+<code class="descname">--device</code><code class="descclassname"> &lt;device&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-add-volume-device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server internal device name for volume</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-volume-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-add-volume-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-add-volume-arg-volume">
+<code class="descname">volume</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-add-volume-arg-volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Volume to add (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-create">
+<h2>server create<a class="headerlink" href="#server-create" title="Permalink to this headline">¶</a></h2>
+<p>Create a new server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server create
+    <span class="o">(</span>--image &lt;image&gt; <span class="p">|</span> --volume &lt;volume&gt;<span class="o">)</span>
+    --flavor &lt;flavor&gt;
+    <span class="o">[</span>--security-group &lt;security-group&gt;<span class="o">]</span>
+    <span class="o">[</span>--key-name &lt;key-name&gt;<span class="o">]</span>
+    <span class="o">[</span>--property &lt;<span class="nv">key</span><span class="o">=</span>value&gt;<span class="o">]</span>
+    <span class="o">[</span>--file &lt;dest-filename<span class="o">=</span>source-filename&gt;<span class="o">]</span>
+    <span class="o">[</span>--user-data &lt;user-data&gt;<span class="o">]</span>
+    <span class="o">[</span>--availability-zone &lt;zone-name&gt;<span class="o">]</span>
+    <span class="o">[</span>--block-device-mapping &lt;dev-name<span class="o">=</span>mapping&gt;<span class="o">]</span>
+    <span class="o">[</span>--nic &lt;net-id<span class="o">=</span>net-uuid,v4-fixed-ip<span class="o">=</span>ip-addr,v6-fixed-ip<span class="o">=</span>ip-addr,port-id<span class="o">=</span>port-uuid,auto,none&gt;<span class="o">]</span>
+    <span class="o">[</span>--network &lt;network&gt;<span class="o">]</span>
+    <span class="o">[</span>--port &lt;port&gt;<span class="o">]</span>
+    <span class="o">[</span>--hint &lt;<span class="nv">key</span><span class="o">=</span>value&gt;<span class="o">]</span>
+    <span class="o">[</span>--config-drive &lt;config-drive-volume&gt;<span class="p">|</span>True<span class="o">]</span>
+    <span class="o">[</span>--min &lt;count&gt;<span class="o">]</span>
+    <span class="o">[</span>--max &lt;count&gt;<span class="o">]</span>
+    <span class="o">[</span>--wait<span class="o">]</span>
+    &lt;server-name&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-image">
+<code class="descname">--image</code><code class="descclassname"> &lt;image&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create server boot disk from this image (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-volume">
+<code class="descname">--volume</code><code class="descclassname"> &lt;volume&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create server using this volume as the boot disk (name or ID).
+This option automatically creates a block device mapping with a boot index of 0. On many hypervisors (libvirt/kvm for example) this will be device vda. Do not create a duplicate mapping using –block-device-mapping for this volume.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-flavor">
+<code class="descname">--flavor</code><code class="descclassname"> &lt;flavor&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-flavor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create server with this flavor (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-security-group">
+<code class="descname">--security-group</code><code class="descclassname"> &lt;security-group&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-security-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Security group to assign to this server (name or ID) (repeat option to set multiple groups)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-key-name">
+<code class="descname">--key-name</code><code class="descclassname"> &lt;key-name&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-key-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keypair to inject into this server (optional extension)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-property">
+<code class="descname">--property</code><code class="descclassname"> &lt;key=value&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a property on this server (repeat option to set multiple values)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-file">
+<code class="descname">--file</code><code class="descclassname"> &lt;dest-filename=source-filename&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-file" title="Permalink to this definition">¶</a></dt>
+<dd><p>File to inject into image before boot (repeat option to set multiple files)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-user-data">
+<code class="descname">--user-data</code><code class="descclassname"> &lt;user-data&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-user-data" title="Permalink to this definition">¶</a></dt>
+<dd><p>User data file to serve from the metadata server</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-availability-zone">
+<code class="descname">--availability-zone</code><code class="descclassname"> &lt;zone-name&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-availability-zone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select an availability zone for the server</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-block-device-mapping">
+<code class="descname">--block-device-mapping</code><code class="descclassname"> &lt;dev-name=mapping&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-block-device-mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a block device on the server.
+Block device mapping in the format
+&lt;dev-name&gt;=&lt;id&gt;:&lt;type&gt;:&lt;size(GB)&gt;:&lt;delete-on-terminate&gt;
+&lt;dev-name&gt;: block device name, like: vdb, xvdc (required)
+&lt;id&gt;: UUID of the volume or snapshot (required)
+&lt;type&gt;: volume or snapshot; default: volume (optional)
+&lt;size(GB)&gt;: volume size if create from snapshot (optional)
+&lt;delete-on-terminate&gt;: true or false; default: false (optional)
+(optional extension)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-nic">
+<code class="descname">--nic</code><code class="descclassname"> &lt;net-id=net-uuid,v4-fixed-ip=ip-addr,v6-fixed-ip=ip-addr,port-id=port-uuid,auto,none&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-nic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a NIC on the server. Specify option multiple times to create multiple NICs. Either net-id or port-id must be provided, but not both. net-id: attach NIC to network with this UUID, port-id: attach NIC to port with this UUID, v4-fixed-ip: IPv4 fixed address for NIC (optional), v6-fixed-ip: IPv6 fixed address for NIC (optional), none: (v2.37+) no network is attached, auto: (v2.37+) the compute service will automatically allocate a network. Specifying a –nic of auto or none cannot be used with any other –nic value.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-network">
+<code class="descname">--network</code><code class="descclassname"> &lt;network&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a NIC on the server and connect it to network. Specify option multiple times to create multiple NICs. This is a wrapper for the ‘–nic net-id=&lt;network&gt;’ parameter that provides simple syntax for the standard use case of connecting a new server to a given network. For more advanced use cases, refer to the ‘–nic’ parameter.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-port">
+<code class="descname">--port</code><code class="descclassname"> &lt;port&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a NIC on the server and connect it to port. Specify option multiple times to create multiple NICs. This is a wrapper for the ‘–nic port-id=&lt;pord&gt;’ parameter that provides simple syntax for the standard use case of connecting a new server to a given port. For more advanced use cases, refer to the ‘–nic’ parameter.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-hint">
+<code class="descname">--hint</code><code class="descclassname"> &lt;key=value&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-hint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hints for the scheduler (optional extension)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-config-drive">
+<code class="descname">--config-drive</code><code class="descclassname"> &lt;config-drive-volume&gt;|True</code><a class="headerlink" href="#cmdoption-openstack-server-create-config-drive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use specified volume as the config drive, or ‘True’ to use an ephemeral drive</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-min">
+<code class="descname">--min</code><code class="descclassname"> &lt;count&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum number of servers to launch (default=1)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-max">
+<code class="descname">--max</code><code class="descclassname"> &lt;count&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-create-max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum number of servers to launch (default=1)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-wait">
+<code class="descname">--wait</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-create-wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for build to complete</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-create-arg-server-name">
+<code class="descname">server-name</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-create-arg-server-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>New server name</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-delete">
+<h2>server delete<a class="headerlink" href="#server-delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete server(s)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server delete <span class="o">[</span>--wait<span class="o">]</span> &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-delete-wait">
+<code class="descname">--wait</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-delete-wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for delete to complete</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-delete-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-delete-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to delete (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-dump-create">
+<h2>server dump create<a class="headerlink" href="#server-dump-create" title="Permalink to this headline">¶</a></h2>
+<p>Create a dump file in server(s)</p>
+<p>Trigger crash dump in server(s) with features like kdump in Linux.
+It will create a dump file in the server(s) dumping the server(s)’
+memory, and also crash the server(s). OSC sees the dump file
+(server dump) as a kind of resource.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server dump create &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-dump-create-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-dump-create-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to create dump file (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-list">
+<h2>server list<a class="headerlink" href="#server-list" title="Permalink to this headline">¶</a></h2>
+<p>List servers</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server list
+    <span class="o">[</span>--quote <span class="o">{</span>all,minimal,none,nonnumeric<span class="o">}]</span>
+    <span class="o">[</span>--reservation-id &lt;reservation-id&gt;<span class="o">]</span>
+    <span class="o">[</span>--ip &lt;ip-address-regex&gt;<span class="o">]</span>
+    <span class="o">[</span>--ip6 &lt;ip-address-regex&gt;<span class="o">]</span>
+    <span class="o">[</span>--name &lt;name-regex&gt;<span class="o">]</span>
+    <span class="o">[</span>--instance-name &lt;server-name&gt;<span class="o">]</span>
+    <span class="o">[</span>--status &lt;status&gt;<span class="o">]</span>
+    <span class="o">[</span>--flavor &lt;flavor&gt;<span class="o">]</span>
+    <span class="o">[</span>--image &lt;image&gt;<span class="o">]</span>
+    <span class="o">[</span>--host &lt;hostname&gt;<span class="o">]</span>
+    <span class="o">[</span>--all-projects<span class="o">]</span>
+    <span class="o">[</span>--project &lt;project&gt;<span class="o">]</span>
+    <span class="o">[</span>--project-domain &lt;project-domain&gt;<span class="o">]</span>
+    <span class="o">[</span>--user &lt;user&gt;<span class="o">]</span>
+    <span class="o">[</span>--user-domain &lt;user-domain&gt;<span class="o">]</span>
+    <span class="o">[</span>--long<span class="o">]</span>
+    <span class="o">[</span>-n<span class="o">]</span>
+    <span class="o">[</span>--marker &lt;server&gt;<span class="o">]</span>
+    <span class="o">[</span>--limit &lt;num-servers&gt;<span class="o">]</span>
+    <span class="o">[</span>--deleted<span class="o">]</span>
+    <span class="o">[</span>--changes-since &lt;changes-since&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-quote">
+<code class="descname">--quote</code><code class="descclassname"> &lt;QUOTE_MODE&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>when to include quotes, defaults to nonnumeric</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-reservation-id">
+<code class="descname">--reservation-id</code><code class="descclassname"> &lt;reservation-id&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-reservation-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only return instances that match the reservation</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-ip">
+<code class="descname">--ip</code><code class="descclassname"> &lt;ip-address-regex&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regular expression to match IP addresses</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-ip6">
+<code class="descname">--ip6</code><code class="descclassname"> &lt;ip-address-regex&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-ip6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regular expression to match IPv6 addresses</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;name-regex&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regular expression to match names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-instance-name">
+<code class="descname">--instance-name</code><code class="descclassname"> &lt;server-name&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-instance-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regular expression to match instance name (admin only)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-status">
+<code class="descname">--status</code><code class="descclassname"> &lt;status&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search by server status</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-flavor">
+<code class="descname">--flavor</code><code class="descclassname"> &lt;flavor&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-flavor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search by flavor (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-image">
+<code class="descname">--image</code><code class="descclassname"> &lt;image&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search by image (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-host">
+<code class="descname">--host</code><code class="descclassname"> &lt;hostname&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search by hostname</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-all-projects">
+<code class="descname">--all-projects</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-list-all-projects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Include all projects (admin only)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search by project (admin only) (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-project-domain">
+<code class="descname">--project-domain</code><code class="descclassname"> &lt;project-domain&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-project-domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain the project belongs to (name or ID). This can be used in case collisions between project names exist.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-user">
+<code class="descname">--user</code><code class="descclassname"> &lt;user&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search by user (admin only) (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-user-domain">
+<code class="descname">--user-domain</code><code class="descclassname"> &lt;user-domain&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-user-domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain the user belongs to (name or ID). This can be used in case collisions between user names exist.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-long">
+<code class="descname">--long</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-list-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>List additional fields in output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-n">
+<code class="descname">-n</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-name-lookup</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-list-n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Skip flavor and image name lookup.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-marker">
+<code class="descname">--marker</code><code class="descclassname"> &lt;server&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-marker" title="Permalink to this definition">¶</a></dt>
+<dd><p>The last server of the previous page. Display list of servers after marker. Display all servers if not specified. (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-limit">
+<code class="descname">--limit</code><code class="descclassname"> &lt;num-servers&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum number of servers to display. If limit equals -1, all servers will be displayed. If limit is greater than ‘osapi_max_limit’ option of Nova API, ‘osapi_max_limit’ will be used instead.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-deleted">
+<code class="descname">--deleted</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-list-deleted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only display deleted servers (Admin only).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-list-changes-since">
+<code class="descname">--changes-since</code><code class="descclassname"> &lt;changes-since&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-list-changes-since" title="Permalink to this definition">¶</a></dt>
+<dd><p>List only servers changed after a certain point of time. The provided time should be an ISO 8061 formatted time. ex 2016-03-04T06:27:59Z .</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-lock">
+<h2>server lock<a class="headerlink" href="#server-lock" title="Permalink to this headline">¶</a></h2>
+<p>Lock server(s). A non-admin user will not be able to execute actions</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server lock &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-lock-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-lock-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to lock (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-migrate">
+<h2>server migrate<a class="headerlink" href="#server-migrate" title="Permalink to this headline">¶</a></h2>
+<p>Migrate server to different host</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server migrate
+    <span class="o">[</span>--live &lt;hostname&gt;<span class="o">]</span>
+    <span class="o">[</span>--shared-migration <span class="p">|</span> --block-migration<span class="o">]</span>
+    <span class="o">[</span>--disk-overcommit <span class="p">|</span> --no-disk-overcommit<span class="o">]</span>
+    <span class="o">[</span>--wait<span class="o">]</span>
+    &lt;server&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-migrate-live">
+<code class="descname">--live</code><code class="descclassname"> &lt;hostname&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-migrate-live" title="Permalink to this definition">¶</a></dt>
+<dd><p>Target hostname</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-migrate-shared-migration">
+<code class="descname">--shared-migration</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-migrate-shared-migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a shared live migration (default)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-migrate-block-migration">
+<code class="descname">--block-migration</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-migrate-block-migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a block live migration</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-migrate-disk-overcommit">
+<code class="descname">--disk-overcommit</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-migrate-disk-overcommit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow disk over-commit on the destination host</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-migrate-no-disk-overcommit">
+<code class="descname">--no-disk-overcommit</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-migrate-no-disk-overcommit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not over-commit disk on the destination host (default)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-migrate-wait">
+<code class="descname">--wait</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-migrate-wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for migrate to complete</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-migrate-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-migrate-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-pause">
+<h2>server pause<a class="headerlink" href="#server-pause" title="Permalink to this headline">¶</a></h2>
+<p>Pause server(s)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server pause &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-pause-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-pause-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to pause (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-reboot">
+<h2>server reboot<a class="headerlink" href="#server-reboot" title="Permalink to this headline">¶</a></h2>
+<p>Perform a hard or soft server reboot</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server reboot <span class="o">[</span>--hard <span class="p">|</span> --soft<span class="o">]</span> <span class="o">[</span>--wait<span class="o">]</span> &lt;server&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-reboot-hard">
+<code class="descname">--hard</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-reboot-hard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a hard reboot</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-reboot-soft">
+<code class="descname">--soft</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-reboot-soft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a soft reboot</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-reboot-wait">
+<code class="descname">--wait</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-reboot-wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for reboot to complete</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-reboot-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-reboot-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-rebuild">
+<h2>server rebuild<a class="headerlink" href="#server-rebuild" title="Permalink to this headline">¶</a></h2>
+<p>Rebuild server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server rebuild
+    <span class="o">[</span>--image &lt;image&gt;<span class="o">]</span>
+    <span class="o">[</span>--password &lt;password&gt;<span class="o">]</span>
+    <span class="o">[</span>--wait<span class="o">]</span>
+    &lt;server&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-rebuild-image">
+<code class="descname">--image</code><code class="descclassname"> &lt;image&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-rebuild-image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recreate server from the specified image (name or ID). Defaults to the currently used one.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-rebuild-password">
+<code class="descname">--password</code><code class="descclassname"> &lt;password&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-rebuild-password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the password on the rebuilt instance</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-rebuild-wait">
+<code class="descname">--wait</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-rebuild-wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for rebuild to complete</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-rebuild-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-rebuild-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-remove-fixed-ip">
+<h2>server remove fixed ip<a class="headerlink" href="#server-remove-fixed-ip" title="Permalink to this headline">¶</a></h2>
+<p>Remove fixed IP address from server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server remove fixed ip &lt;server&gt; &lt;ip-address&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-remove-fixed-ip-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-remove-fixed-ip-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server to remove the fixed IP address from (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-remove-fixed-ip-arg-ip-address">
+<code class="descname">ip-address</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-remove-fixed-ip-arg-ip-address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixed IP address to remove from the server (IP only)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-remove-floating-ip">
+<h2>server remove floating ip<a class="headerlink" href="#server-remove-floating-ip" title="Permalink to this headline">¶</a></h2>
+<p>Remove floating IP address from server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server remove floating ip &lt;server&gt; &lt;ip-address&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-remove-floating-ip-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-remove-floating-ip-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server to remove the floating IP address from (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-remove-floating-ip-arg-ip-address">
+<code class="descname">ip-address</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-remove-floating-ip-arg-ip-address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Floating IP address to remove from server (IP only)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-remove-port">
+<h2>server remove port<a class="headerlink" href="#server-remove-port" title="Permalink to this headline">¶</a></h2>
+<p>Remove port from server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server remove port &lt;server&gt; &lt;port&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-remove-port-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-remove-port-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server to remove the port from (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-remove-port-arg-port">
+<code class="descname">port</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-remove-port-arg-port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Port to remove from the server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-remove-security-group">
+<h2>server remove security group<a class="headerlink" href="#server-remove-security-group" title="Permalink to this headline">¶</a></h2>
+<p>Remove security group from server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server remove security group &lt;server&gt; &lt;group&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-remove-security-group-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-remove-security-group-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name or ID of server to use</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-remove-security-group-arg-group">
+<code class="descname">group</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-remove-security-group-arg-group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name or ID of security group to remove from server</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-remove-volume">
+<h2>server remove volume<a class="headerlink" href="#server-remove-volume" title="Permalink to this headline">¶</a></h2>
+<p>Remove volume from server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server remove volume &lt;server&gt; &lt;volume&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-remove-volume-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-remove-volume-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-remove-volume-arg-volume">
+<code class="descname">volume</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-remove-volume-arg-volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Volume to remove (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-rescue">
+<h2>server rescue<a class="headerlink" href="#server-rescue" title="Permalink to this headline">¶</a></h2>
+<p>Put server in rescue mode</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server rescue &lt;server&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-rescue-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-rescue-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-resize">
+<h2>server resize<a class="headerlink" href="#server-resize" title="Permalink to this headline">¶</a></h2>
+<p>Scale server to a new flavor.</p>
+<p>A resize operation is implemented by creating a new server and copying the
+contents of the original disk into a new one. It is also a two-step process for
+the user: the first is to perform the resize, the second is to either confirm
+(verify) success and release the old server, or to declare a revert to release
+the new server and restart the old one.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server resize
+    <span class="o">[</span>--flavor &lt;flavor&gt; <span class="p">|</span> --confirm <span class="p">|</span> --revert<span class="o">]</span>
+    <span class="o">[</span>--wait<span class="o">]</span>
+    &lt;server&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-resize-flavor">
+<code class="descname">--flavor</code><code class="descclassname"> &lt;flavor&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-resize-flavor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize server to specified flavor</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-resize-confirm">
+<code class="descname">--confirm</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-resize-confirm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Confirm server resize is complete</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-resize-revert">
+<code class="descname">--revert</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-resize-revert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore server state before resize</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-resize-wait">
+<code class="descname">--wait</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-resize-wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for resize to complete</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-resize-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-resize-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-restore">
+<h2>server restore<a class="headerlink" href="#server-restore" title="Permalink to this headline">¶</a></h2>
+<p>Restore server(s)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server restore &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-restore-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-restore-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to restore (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-resume">
+<h2>server resume<a class="headerlink" href="#server-resume" title="Permalink to this headline">¶</a></h2>
+<p>Resume server(s)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server resume &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-resume-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-resume-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to resume (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-set">
+<h2>server set<a class="headerlink" href="#server-set" title="Permalink to this headline">¶</a></h2>
+<p>Set server properties</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server <span class="nb">set</span>
+    <span class="o">[</span>--name &lt;new-name&gt;<span class="o">]</span>
+    <span class="o">[</span>--root-password<span class="o">]</span>
+    <span class="o">[</span>--property &lt;<span class="nv">key</span><span class="o">=</span>value&gt;<span class="o">]</span>
+    <span class="o">[</span>--state &lt;state&gt;<span class="o">]</span>
+    &lt;server&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-set-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;new-name&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-set-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>New server name</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-set-root-password">
+<code class="descname">--root-password</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-set-root-password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set new root password (interactive only)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-set-property">
+<code class="descname">--property</code><code class="descclassname"> &lt;key=value&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-set-property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property to add/change for this server (repeat option to set multiple properties)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-set-state">
+<code class="descname">--state</code><code class="descclassname"> &lt;state&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-set-state" title="Permalink to this definition">¶</a></dt>
+<dd><p>New server state (valid value: active, error)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-set-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-set-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-shelve">
+<h2>server shelve<a class="headerlink" href="#server-shelve" title="Permalink to this headline">¶</a></h2>
+<p>Shelve server(s)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server shelve &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-shelve-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-shelve-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to shelve (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-show">
+<h2>server show<a class="headerlink" href="#server-show" title="Permalink to this headline">¶</a></h2>
+<p>Show server details</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server show <span class="o">[</span>--diagnostics<span class="o">]</span> &lt;server&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-show-diagnostics">
+<code class="descname">--diagnostics</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-show-diagnostics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display server diagnostics information</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-show-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-show-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-ssh">
+<h2>server ssh<a class="headerlink" href="#server-ssh" title="Permalink to this headline">¶</a></h2>
+<p>SSH to server</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server ssh
+    <span class="o">[</span>--login &lt;login-name&gt;<span class="o">]</span>
+    <span class="o">[</span>--port &lt;port&gt;<span class="o">]</span>
+    <span class="o">[</span>--identity &lt;keyfile&gt;<span class="o">]</span>
+    <span class="o">[</span>--option &lt;config-options&gt;<span class="o">]</span>
+    <span class="o">[</span>-4 <span class="p">|</span> -6<span class="o">]</span>
+    <span class="o">[</span>--public <span class="p">|</span> --private <span class="p">|</span> --address-type &lt;address-type&gt;<span class="o">]</span>
+    &lt;server&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-ssh-login">
+<code class="descname">--login</code><code class="descclassname"> &lt;login-name&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-ssh-login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Login name (ssh -l option)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-ssh-port">
+<code class="descname">--port</code><code class="descclassname"> &lt;port&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-ssh-port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destination port (ssh -p option)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-ssh-identity">
+<code class="descname">--identity</code><code class="descclassname"> &lt;keyfile&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-ssh-identity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Private key file (ssh -i option)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-ssh-option">
+<code class="descname">--option</code><code class="descclassname"> &lt;config-options&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-ssh-option" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options in ssh_config(5) format (ssh -o option)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-ssh-4">
+<code class="descname">-4</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-ssh-4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use only IPv4 addresses</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-ssh-6">
+<code class="descname">-6</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-ssh-6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use only IPv6 addresses</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-ssh-public">
+<code class="descname">--public</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-ssh-public" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use public IP address</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-ssh-private">
+<code class="descname">--private</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-ssh-private" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use private IP address</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-ssh-address-type">
+<code class="descname">--address-type</code><code class="descclassname"> &lt;address-type&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-ssh-address-type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use other IP address (public, private, etc)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-ssh-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-ssh-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-start">
+<h2>server start<a class="headerlink" href="#server-start" title="Permalink to this headline">¶</a></h2>
+<p>Start server(s).</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server start &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-start-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-start-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to start (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-stop">
+<h2>server stop<a class="headerlink" href="#server-stop" title="Permalink to this headline">¶</a></h2>
+<p>Stop server(s).</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server stop &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-stop-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-stop-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to stop (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-suspend">
+<h2>server suspend<a class="headerlink" href="#server-suspend" title="Permalink to this headline">¶</a></h2>
+<p>Suspend server(s)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server <span class="nb">suspend</span> &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-suspend-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-suspend-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to suspend (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-unlock">
+<h2>server unlock<a class="headerlink" href="#server-unlock" title="Permalink to this headline">¶</a></h2>
+<p>Unlock server(s)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server unlock &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-unlock-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-unlock-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to unlock (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-unpause">
+<h2>server unpause<a class="headerlink" href="#server-unpause" title="Permalink to this headline">¶</a></h2>
+<p>Unpause server(s)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server unpause &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-unpause-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-unpause-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to unpause (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-unrescue">
+<h2>server unrescue<a class="headerlink" href="#server-unrescue" title="Permalink to this headline">¶</a></h2>
+<p>Restore server from rescue mode</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server unrescue &lt;server&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-unrescue-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-unrescue-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-unset">
+<h2>server unset<a class="headerlink" href="#server-unset" title="Permalink to this headline">¶</a></h2>
+<p>Unset server properties</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server <span class="nb">unset</span> <span class="o">[</span>--property &lt;key&gt;<span class="o">]</span> &lt;server&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-unset-property">
+<code class="descname">--property</code><code class="descclassname"> &lt;key&gt;</code><a class="headerlink" href="#cmdoption-openstack-server-unset-property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Property key to remove from server (repeat option to remove multiple values)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-server-unset-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-unset-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="server-unshelve">
+<h2>server unshelve<a class="headerlink" href="#server-unshelve" title="Permalink to this headline">¶</a></h2>
+<p>Unshelve server(s)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack server unshelve &lt;server&gt; <span class="o">[</span>&lt;server&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-server-unshelve-arg-server">
+<code class="descname">server</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-server-unshelve-arg-server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Server(s) to unshelve (name or ID)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="security-group-rule.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: security group rule"></i></a>
+          
+          
+            <a href="server-backup.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: server backup"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../man/openstack.html">Manual Page</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../command-list.html">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands.html">Command Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin-commands.html">Plugin Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interactive.html">Interactive Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decoder.html">Mapping Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backwards-incompatible.html">Backwards Incompatible Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributor/index.html">Contributor Documentation</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/command-objects/server" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "server in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

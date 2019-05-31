@@ -1,0 +1,1320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: bgpvpn</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>bgpvpn</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="network-trunk.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: network trunk"></i></a>
+    
+    
+    <a href="networking-sfc.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: networking sfc"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-05-24 09:09</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">bgpvpn</a><ul>
+<li><a class="reference internal" href="#bgpvpn-create">bgpvpn create</a></li>
+<li><a class="reference internal" href="#bgpvpn-delete">bgpvpn delete</a></li>
+<li><a class="reference internal" href="#bgpvpn-list">bgpvpn list</a></li>
+<li><a class="reference internal" href="#bgpvpn-set">bgpvpn set</a></li>
+<li><a class="reference internal" href="#bgpvpn-show">bgpvpn show</a></li>
+<li><a class="reference internal" href="#bgpvpn-unset">bgpvpn unset</a></li>
+<li><a class="reference internal" href="#bgpvpn-network-association-create">bgpvpn network association create</a></li>
+<li><a class="reference internal" href="#bgpvpn-network-association-delete">bgpvpn network association delete</a></li>
+<li><a class="reference internal" href="#bgpvpn-network-association-list">bgpvpn network association list</a></li>
+<li><a class="reference internal" href="#bgpvpn-network-association-show">bgpvpn network association show</a></li>
+<li><a class="reference internal" href="#bgpvpn-router-association-create">bgpvpn router association create</a></li>
+<li><a class="reference internal" href="#bgpvpn-router-association-delete">bgpvpn router association delete</a></li>
+<li><a class="reference internal" href="#bgpvpn-router-association-list">bgpvpn router association list</a></li>
+<li><a class="reference internal" href="#bgpvpn-router-association-show">bgpvpn router association show</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="bgpvpn">
+<h1>bgpvpn<a class="headerlink" href="#bgpvpn" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>bgpvpn</strong> resource contains a set of parameters to define a BGP-based VPN.
+BGP-based IP VPNs networks are widely used in the industry especially for
+enterprises. The networking BGP VPN project aims at supporting inter-connection
+between L3VPNs and Neutron resources, i.e. Networks, Routers and Ports.</p>
+<p>Network v2</p>
+<div class="section" id="bgpvpn-create">
+<h2>bgpvpn create<a class="headerlink" href="#bgpvpn-create" title="Permalink to this headline">¶</a></h2>
+<p>Create BGP VPN resource</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn create
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    <span class="o">[</span>--project &lt;project&gt;<span class="o">]</span>
+    <span class="o">[</span>--project-domain &lt;project-domain&gt;<span class="o">]</span>
+    <span class="o">[</span>--name &lt;name&gt;<span class="o">]</span>
+    <span class="o">[</span>--route-target &lt;route-target&gt;<span class="o">]</span>
+    <span class="o">[</span>--import-target &lt;import-target&gt;<span class="o">]</span>
+    <span class="o">[</span>--export-target &lt;export-target&gt;<span class="o">]</span>
+    <span class="o">[</span>--route-distinguisher &lt;route-distinguisher&gt;<span class="o">]</span>
+    <span class="o">[</span>--type <span class="o">{</span>l2,l3<span class="o">}]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Owner’s project (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-project-domain">
+<code class="descname">--project-domain</code><code class="descclassname"> &lt;project-domain&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-project-domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain the project belongs to (name or ID). This can be used in case collisions between project names exist.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;name&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the BGP VPN</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-route-target">
+<code class="descname">--route-target</code><code class="descclassname"> &lt;route-target&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-route-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Route Target to import/export list (repeat option for multiple Route Targets)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-import-target">
+<code class="descname">--import-target</code><code class="descclassname"> &lt;import-target&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-import-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Route Target to import list (repeat option for multiple Route Targets)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-export-target">
+<code class="descname">--export-target</code><code class="descclassname"> &lt;export-target&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-export-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Route Target to export list (repeat option for multiple Route Targets)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-route-distinguisher">
+<code class="descname">--route-distinguisher</code><code class="descclassname"> &lt;route-distinguisher&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-route-distinguisher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Route Distinguisher to the list of Route Distinguishers from which a Route Distinguishers will be picked from to advertise a VPN route (repeat option for multiple Route Distinguishers)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-create-type">
+<code class="descname">--type</code><code class="descclassname"> &lt;TYPE&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-create-type" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN type selection between IP VPN (l3) and Ethernet VPN (l2) (default: l3)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-delete">
+<h2>bgpvpn delete<a class="headerlink" href="#bgpvpn-delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete BGP VPN resource(s)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn delete &lt;bgpvpn&gt; <span class="o">[</span>&lt;bgpvpn&gt; ...<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-delete-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-delete-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN(s) to delete (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-list">
+<h2>bgpvpn list<a class="headerlink" href="#bgpvpn-list" title="Permalink to this headline">¶</a></h2>
+<p>List BGP VPN resources</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn list
+    <span class="o">[</span>-f <span class="o">{</span>csv,json,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--quote <span class="o">{</span>all,minimal,none,nonnumeric<span class="o">}]</span>
+    <span class="o">[</span>--project &lt;project&gt;<span class="o">]</span>
+    <span class="o">[</span>--project-domain &lt;project-domain&gt;<span class="o">]</span>
+    <span class="o">[</span>--long<span class="o">]</span>
+    <span class="o">[</span>--property &lt;<span class="nv">key</span><span class="o">=</span>value&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-quote">
+<code class="descname">--quote</code><code class="descclassname"> &lt;QUOTE_MODE&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>when to include quotes, defaults to nonnumeric</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Owner’s project (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-project-domain">
+<code class="descname">--project-domain</code><code class="descclassname"> &lt;project-domain&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-project-domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain the project belongs to (name or ID). This can be used in case collisions between project names exist.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-long">
+<code class="descname">--long</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>List additional fields in output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-list-property">
+<code class="descname">--property</code><code class="descclassname"> &lt;key=value&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-list-property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter property to apply on returned BGP VPNs (repeat to filter on multiple properties)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-set">
+<h2>bgpvpn set<a class="headerlink" href="#bgpvpn-set" title="Permalink to this headline">¶</a></h2>
+<p>Set BGP VPN properties</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn <span class="nb">set</span>
+    <span class="o">[</span>--name &lt;name&gt;<span class="o">]</span>
+    <span class="o">[</span>--route-target &lt;route-target&gt;<span class="o">]</span>
+    <span class="o">[</span>--no-route-target<span class="o">]</span>
+    <span class="o">[</span>--import-target &lt;import-target&gt;<span class="o">]</span>
+    <span class="o">[</span>--no-import-target<span class="o">]</span>
+    <span class="o">[</span>--export-target &lt;export-target&gt;<span class="o">]</span>
+    <span class="o">[</span>--no-export-target<span class="o">]</span>
+    <span class="o">[</span>--route-distinguisher &lt;route-distinguisher&gt;<span class="o">]</span>
+    <span class="o">[</span>--no-route-distinguisher<span class="o">]</span>
+    &lt;bgpvpn&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-set-name">
+<code class="descname">--name</code><code class="descclassname"> &lt;name&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-set-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the BGP VPN</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-set-route-target">
+<code class="descname">--route-target</code><code class="descclassname"> &lt;route-target&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-set-route-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Route Target to import/export list (repeat option for multiple Route Targets)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-set-no-route-target">
+<code class="descname">--no-route-target</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-set-no-route-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Empty route target list</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-set-import-target">
+<code class="descname">--import-target</code><code class="descclassname"> &lt;import-target&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-set-import-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Route Target to import list (repeat option for multiple Route Targets)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-set-no-import-target">
+<code class="descname">--no-import-target</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-set-no-import-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Empty import route target list</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-set-export-target">
+<code class="descname">--export-target</code><code class="descclassname"> &lt;export-target&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-set-export-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Route Target to export list (repeat option for multiple Route Targets)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-set-no-export-target">
+<code class="descname">--no-export-target</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-set-no-export-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Empty export route target list</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-set-route-distinguisher">
+<code class="descname">--route-distinguisher</code><code class="descclassname"> &lt;route-distinguisher&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-set-route-distinguisher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Route Distinguisher to the list of Route Distinguishers from which a Route Distinguishers will be picked from to advertise a VPN route (repeat option for multiple Route Distinguishers)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-set-no-route-distinguisher">
+<code class="descname">--no-route-distinguisher</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-set-no-route-distinguisher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Empty route distinguisher list</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-set-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-set-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN to update (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-show">
+<h2>bgpvpn show<a class="headerlink" href="#bgpvpn-show" title="Permalink to this headline">¶</a></h2>
+<p>Show information of a given BGP VPN</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn show
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    &lt;bgpvpn&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-show-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-show-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-show-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-show-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-show-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-show-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-show-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-show-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-show-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-show-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-show-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-show-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-show-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-show-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-show-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-show-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN to display (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-unset">
+<h2>bgpvpn unset<a class="headerlink" href="#bgpvpn-unset" title="Permalink to this headline">¶</a></h2>
+<p>Unset BGP VPN properties</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn <span class="nb">unset</span>
+    <span class="o">[</span>--route-target &lt;route-target&gt;<span class="o">]</span>
+    <span class="o">[</span>--all-route-target<span class="o">]</span>
+    <span class="o">[</span>--import-target &lt;import-target&gt;<span class="o">]</span>
+    <span class="o">[</span>--all-import-target<span class="o">]</span>
+    <span class="o">[</span>--export-target &lt;export-target&gt;<span class="o">]</span>
+    <span class="o">[</span>--all-export-target<span class="o">]</span>
+    <span class="o">[</span>--route-distinguisher &lt;route-distinguisher&gt;<span class="o">]</span>
+    <span class="o">[</span>--all-route-distinguisher<span class="o">]</span>
+    &lt;bgpvpn&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-unset-route-target">
+<code class="descname">--route-target</code><code class="descclassname"> &lt;route-target&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-unset-route-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove Route Target from import/export list (repeat option for multiple Route Targets)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-unset-all-route-target">
+<code class="descname">--all-route-target</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-unset-all-route-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Empty route target list</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-unset-import-target">
+<code class="descname">--import-target</code><code class="descclassname"> &lt;import-target&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-unset-import-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove Route Target from import list (repeat option for multiple Route Targets)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-unset-all-import-target">
+<code class="descname">--all-import-target</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-unset-all-import-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Empty import route target list</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-unset-export-target">
+<code class="descname">--export-target</code><code class="descclassname"> &lt;export-target&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-unset-export-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove Route Target from export list (repeat option for multiple Route Targets)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-unset-all-export-target">
+<code class="descname">--all-export-target</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-unset-all-export-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Empty export route target list</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-unset-route-distinguisher">
+<code class="descname">--route-distinguisher</code><code class="descclassname"> &lt;route-distinguisher&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-unset-route-distinguisher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove Route Distinguisher from the list of Route Distinguishers from which a Route Distinguishers will be picked from to advertise a VPN route (repeat option for multiple Route Distinguishers)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-unset-all-route-distinguisher">
+<code class="descname">--all-route-distinguisher</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-unset-all-route-distinguisher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Empty route distinguisher list</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-unset-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-unset-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN to update (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-network-association-create">
+<h2>bgpvpn network association create<a class="headerlink" href="#bgpvpn-network-association-create" title="Permalink to this headline">¶</a></h2>
+<p>Create a BGP VPN network association</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn network association create
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    <span class="o">[</span>--project &lt;project&gt;<span class="o">]</span>
+    <span class="o">[</span>--project-domain &lt;project-domain&gt;<span class="o">]</span>
+    &lt;bgpvpn&gt;
+    &lt;network&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Owner’s project (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-project-domain">
+<code class="descname">--project-domain</code><code class="descclassname"> &lt;project-domain&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-project-domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain the project belongs to (name or ID). This can be used in case collisions between project names exist.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN to apply the network association (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-create-arg-network">
+<code class="descname">network</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-create-arg-network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network to associate the BGP VPN (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-network-association-delete">
+<h2>bgpvpn network association delete<a class="headerlink" href="#bgpvpn-network-association-delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete a BGP VPN network association(s) for a given BGP VPN</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn network association delete
+    &lt;network
+    association
+    ID&gt;
+    <span class="o">[</span>&lt;network association ID&gt; ...<span class="o">]</span>
+    &lt;bgpvpn&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-delete-arg-network">
+<code class="descname">network</code><code class="descclassname"> association ID</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-delete-arg-network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network association ID(s) to remove</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-delete-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-delete-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN the association belongs to (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-network-association-list">
+<h2>bgpvpn network association list<a class="headerlink" href="#bgpvpn-network-association-list" title="Permalink to this headline">¶</a></h2>
+<p>List BGP VPN network associations for a given BGP VPN</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn network association list
+    <span class="o">[</span>-f <span class="o">{</span>csv,json,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--quote <span class="o">{</span>all,minimal,none,nonnumeric<span class="o">}]</span>
+    <span class="o">[</span>--long<span class="o">]</span>
+    &lt;bgpvpn&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-list-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-list-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-list-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-list-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-list-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-list-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-list-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-list-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-list-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-list-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-list-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-list-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-list-quote">
+<code class="descname">--quote</code><code class="descclassname"> &lt;QUOTE_MODE&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-list-quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>when to include quotes, defaults to nonnumeric</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-list-long">
+<code class="descname">--long</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-list-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>List additional fields in output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-list-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-list-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN listed associations belong to (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-network-association-show">
+<h2>bgpvpn network association show<a class="headerlink" href="#bgpvpn-network-association-show" title="Permalink to this headline">¶</a></h2>
+<p>Show information of a given BGP VPN network association</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn network association show
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    &lt;network
+    association
+    ID&gt;
+    &lt;bgpvpn&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-show-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-show-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-show-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-show-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-show-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-show-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-show-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-show-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-show-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-show-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-show-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-show-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-show-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-show-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-show-arg-network">
+<code class="descname">network</code><code class="descclassname"> association ID</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-show-arg-network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network association ID to look up</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-network-association-show-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-network-association-show-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN the association belongs to (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-router-association-create">
+<h2>bgpvpn router association create<a class="headerlink" href="#bgpvpn-router-association-create" title="Permalink to this headline">¶</a></h2>
+<p>Create a BGP VPN router association</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn router association create
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    <span class="o">[</span>--project &lt;project&gt;<span class="o">]</span>
+    <span class="o">[</span>--project-domain &lt;project-domain&gt;<span class="o">]</span>
+    &lt;bgpvpn&gt;
+    &lt;router&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Owner’s project (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-project-domain">
+<code class="descname">--project-domain</code><code class="descclassname"> &lt;project-domain&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-project-domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain the project belongs to (name or ID). This can be used in case collisions between project names exist.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN to apply the router association (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-create-arg-router">
+<code class="descname">router</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-create-arg-router" title="Permalink to this definition">¶</a></dt>
+<dd><p>Router to associate the BGP VPN (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-router-association-delete">
+<h2>bgpvpn router association delete<a class="headerlink" href="#bgpvpn-router-association-delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete a BGP VPN router association(s) for a given BGP VPN</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn router association delete
+    &lt;router
+    association
+    ID&gt;
+    <span class="o">[</span>&lt;router association ID&gt; ...<span class="o">]</span>
+    &lt;bgpvpn&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-delete-arg-router">
+<code class="descname">router</code><code class="descclassname"> association ID</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-delete-arg-router" title="Permalink to this definition">¶</a></dt>
+<dd><p>Router association ID(s) to remove</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-delete-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-delete-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN the association belongs to (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-router-association-list">
+<h2>bgpvpn router association list<a class="headerlink" href="#bgpvpn-router-association-list" title="Permalink to this headline">¶</a></h2>
+<p>List BGP VPN router associations for a given BGP VPN</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn router association list
+    <span class="o">[</span>-f <span class="o">{</span>csv,json,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--quote <span class="o">{</span>all,minimal,none,nonnumeric<span class="o">}]</span>
+    <span class="o">[</span>--long<span class="o">]</span>
+    &lt;bgpvpn&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-list-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-list-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-list-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-list-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-list-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-list-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-list-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-list-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-list-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-list-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-list-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-list-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-list-quote">
+<code class="descname">--quote</code><code class="descclassname"> &lt;QUOTE_MODE&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-list-quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>when to include quotes, defaults to nonnumeric</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-list-long">
+<code class="descname">--long</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-list-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>List additional fields in output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-list-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-list-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN listed associations belong to (name or ID)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bgpvpn-router-association-show">
+<h2>bgpvpn router association show<a class="headerlink" href="#bgpvpn-router-association-show" title="Permalink to this headline">¶</a></h2>
+<p>Show information of a given BGP VPN router association</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>openstack bgpvpn router association show
+    <span class="o">[</span>-f <span class="o">{</span>json,shell,table,value,yaml<span class="o">}]</span>
+    <span class="o">[</span>-c COLUMN<span class="o">]</span>
+    <span class="o">[</span>--max-width &lt;integer&gt;<span class="o">]</span>
+    <span class="o">[</span>--fit-width<span class="o">]</span>
+    <span class="o">[</span>--print-empty<span class="o">]</span>
+    <span class="o">[</span>--noindent<span class="o">]</span>
+    <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+    &lt;router
+    association
+    ID&gt;
+    &lt;bgpvpn&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-show-f">
+<code class="descname">-f</code><code class="descclassname"> &lt;FORMATTER&gt;</code><code class="descclassname">, </code><code class="descname">--format</code><code class="descclassname"> &lt;FORMATTER&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-show-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>the output format, defaults to table</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-show-c">
+<code class="descname">-c</code><code class="descclassname"> COLUMN</code><code class="descclassname">, </code><code class="descname">--column</code><code class="descclassname"> COLUMN</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-show-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>specify the column(s) to include, can be repeated</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-show-max-width">
+<code class="descname">--max-width</code><code class="descclassname"> &lt;integer&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-show-max-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum display width, &lt;1 to disable. You can also use the CLIFF_MAX_TERM_WIDTH environment variable, but the parameter takes precedence.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-show-fit-width">
+<code class="descname">--fit-width</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-show-fit-width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the table to the display width. Implied if –max-width greater than 0. Set the environment variable CLIFF_FIT_WIDTH=1 to always enable</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-show-print-empty">
+<code class="descname">--print-empty</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-show-print-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print empty table if there is no data to show.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-show-noindent">
+<code class="descname">--noindent</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-show-noindent" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether to disable indenting the JSON</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-show-prefix">
+<code class="descname">--prefix</code><code class="descclassname"> &lt;PREFIX&gt;</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-show-prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a prefix to all variable names</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-show-arg-router">
+<code class="descname">router</code><code class="descclassname"> association ID</code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-show-arg-router" title="Permalink to this definition">¶</a></dt>
+<dd><p>Router association ID to look up</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-openstack-bgpvpn-router-association-show-arg-bgpvpn">
+<code class="descname">bgpvpn</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-openstack-bgpvpn-router-association-show-arg-bgpvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>BGP VPN the association belongs to (name or ID)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="network-trunk.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: network trunk"></i></a>
+          
+          
+            <a href="networking-sfc.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: networking sfc"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-05-24 09:09</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Using CLI</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#openstackclient">OpenStackClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#neutron-cli">neutron CLI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">neutronclient Python API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributor/index.html">Contributor Guide</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/osc/v2/networking-bgpvpn" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-neutronclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: a7662ab36ddabd69c3a84602d0f99a0adb3acd34";
+        var bugProject = "python-neutronclient";
+        var bugTitle = "bgpvpn in python-neutronclient";
+    var fieldTags = "doc";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 6.5.0 on 2018-05-24 09:09";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

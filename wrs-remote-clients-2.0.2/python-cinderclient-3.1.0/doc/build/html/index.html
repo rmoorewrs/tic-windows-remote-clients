@@ -1,0 +1,640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Python API</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Python API</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    
+    <a href="user/cinder.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: <strong class="program">cinder</strong> CLI man page"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 16:03</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="#">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Python API</a></li>
+<li><a class="reference internal" href="#user-guides">User Guides</a></li>
+<li><a class="reference internal" href="#command-line-reference">Command-Line Reference</a></li>
+<li><a class="reference internal" href="#developer-guides">Developer Guides</a></li>
+<li><a class="reference internal" href="#release-notes">Release Notes</a><ul>
+<li><a class="reference internal" href="#id2">1.4.0</a></li>
+<li><a class="reference internal" href="#id3">1.3.1</a></li>
+<li><a class="reference internal" href="#id4">1.3.0</a></li>
+<li><a class="reference internal" href="#id5">1.2.2</a></li>
+<li><a class="reference internal" href="#id6">1.2.1</a></li>
+<li><a class="reference internal" href="#id7">1.2.0</a></li>
+<li><a class="reference internal" href="#id8">1.1.1</a></li>
+<li><a class="reference internal" href="#id9">1.1.0</a></li>
+<li><a class="reference internal" href="#id10">1.0.9</a></li>
+<li><a class="reference internal" href="#id14">1.0.8</a></li>
+<li><a class="reference internal" href="#id27">1.0.7</a></li>
+<li><a class="reference internal" href="#id34">1.0.6</a></li>
+<li><a class="reference internal" href="#id49">1.0.5</a></li>
+<li><a class="reference internal" href="#id59">1.0.4</a></li>
+<li><a class="reference internal" href="#id65">1.0.3</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="python-api">
+<h1>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h1>
+<p>In order to use the python api directly, you must first obtain an auth token and identify which endpoint you wish to speak to. Once you have done so, you can use the API like so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; from cinderclient import client
+&gt;&gt;&gt; cinder = client.Client(&#39;1&#39;, $OS_USER_NAME, $OS_PASSWORD, $OS_TENANT_NAME, $OS_AUTH_URL)
+&gt;&gt;&gt; cinder.volumes.list()
+[]
+&gt;&gt;&gt; myvol = cinder.volumes.create(display_name=&quot;test-vol&quot;, size=1)
+&gt;&gt;&gt; myvol.id
+ce06d0a8-5c1b-4e2c-81d2-39eca6bbfb70
+&gt;&gt;&gt; cinder.volumes.list()
+[&lt;Volume: ce06d0a8-5c1b-4e2c-81d2-39eca6bbfb70&gt;]
+&gt;&gt;&gt;myvol.delete
+</pre></div>
+</div>
+<p>Alternatively, you can create a client instance using the keystoneauth session API:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keystoneauth1</span> <span class="k">import</span> <span class="n">loading</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keystoneauth1</span> <span class="k">import</span> <span class="n">session</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cinderclient</span> <span class="k">import</span> <span class="n">client</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loader</span> <span class="o">=</span> <span class="n">loading</span><span class="o">.</span><span class="n">get_plugin_loader</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_from_options</span><span class="p">(</span><span class="n">auth_url</span><span class="o">=</span><span class="n">AUTH_URL</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="n">username</span><span class="o">=</span><span class="n">USERNAME</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="n">password</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">,</span>
+<span class="gp">... </span>                                <span class="n">project_id</span><span class="o">=</span><span class="n">PROJECT_ID</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cinder</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">VERSION</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">sess</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cinder</span><span class="o">.</span><span class="n">volumes</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="user-guides">
+<h1>User Guides<a class="headerlink" href="#user-guides" title="Permalink to this headline">¶</a></h1>
+<p>In order to use the CLI, you must provide your OpenStack username, password, tenant, and auth endpoint. Use the corresponding configuration options (<code class="docutils literal"><span class="pre">--os-username</span></code>, <code class="docutils literal"><span class="pre">--os-password</span></code>, <code class="docutils literal"><span class="pre">--os-tenant-id</span></code>, and <code class="docutils literal"><span class="pre">--os-auth-url</span></code>) or set them in environment variables:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OS_USERNAME</span><span class="o">=</span><span class="n">user</span>
+<span class="n">export</span> <span class="n">OS_PASSWORD</span><span class="o">=</span><span class="k">pass</span>
+<span class="n">export</span> <span class="n">OS_TENANT_ID</span><span class="o">=</span><span class="n">b363706f891f48019483f8bd6503c54b</span>
+<span class="n">export</span> <span class="n">OS_AUTH_URL</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">auth</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Once you’ve configured your authentication parameters, you can run <code class="docutils literal"><span class="pre">cinder</span> <span class="pre">help</span></code> to see a complete listing of available commands.</p>
+<p>See also <a class="reference internal" href="cli/index.html"><span class="doc">cinder CLI man page</span></a> for detailed documentation.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user/cinder.html"><strong class="program">cinder</strong> CLI man page</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user/cinder.html#synopsis">SYNOPSIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/cinder.html#description">DESCRIPTION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/cinder.html#options">OPTIONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/cinder.html#bugs">BUGS</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="command-line-reference">
+<h1>Command-Line Reference<a class="headerlink" href="#command-line-reference" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="developer-guides">
+<h1>Developer Guides<a class="headerlink" href="#developer-guides" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributor/functional_tests.html">CINDERCLIENT Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributor/functional_tests.html#functional-tests">Functional Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributor/unit_tests.html">CINDERCLIENT Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributor/unit_tests.html#unit-tests">Unit Tests</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="release-notes">
+<h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<p>All python-cinderclient release notes can now be found on the <a class="reference external" href="https://docs.openstack.org/releasenotes/python-cinderclient/">release notes</a> page.</p>
+<p>The following are kept for historical purposes.</p>
+<div class="section" id="id2">
+<h2>1.4.0<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Improved error reporting on reaching quota.</li>
+<li>Volume status management for volume migration.</li>
+<li>Added command to fetch specified backend capabilities.</li>
+<li>Added commands for modifying image metadata.</li>
+<li>Support for non-disruptive backup.</li>
+<li>Support for cloning consistency groups.</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>1.3.1<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Fixed usage of the –debug option.</li>
+<li>Documentation and API example improvements.</li>
+<li>Set max volume size limit for the tenant.</li>
+<li>Added encryption-type-update to cinderclient.</li>
+<li>Added volume multi attach support.</li>
+<li>Support host-attach of volumes.</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>1.3.0<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Revert version discovery support due to this breaking deployments using
+proxies. We will revisit this once the Kilo config option ‘public_endpoint’
+has been available longer to allow these deployments to work again with
+version discovery available from the Cinder client.</li>
+<li>Add volume multi-attach support.</li>
+<li>Add encryption-type-update to update volume encryption types.</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>1.2.2<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>IMPORTANT: version discovery breaks deployments using proxies and has been
+reverted in v1.3.0 . Do not use this version.</li>
+<li>Update requirements to resolve conflicts with other OpenStack projects</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>1.2.1<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>IMPORTANT: version discovery breaks deployments using proxies and has been
+reverted in v1.3.0 . Do not use this version.</li>
+<li>Remove warnings about Keystone unable to contact endpoint for discovery.</li>
+<li>backup-create subcommand allows specifying –incremental to do an incremental
+backup.</li>
+<li>Modify consistency groups using the consisgroup-update subcommand. Change the
+name, description, add volumes, or remove volumes.</li>
+<li>Create consistency group from consistency group snapshot using the
+consisgroup-create-from-src subcommand.</li>
+<li>–force no longer needs a boolean to be specified.</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>1.2.0<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>IMPORTANT: version discovery breaks deployments using proxies and has been
+reverted in v1.3.0 . Do not use this version.</li>
+<li>Add metadata during snapshot create.</li>
+<li>Add TTY password entry when no password is environment vars or –os-password.</li>
+<li>Ability to set backup quota in quota-update subcommand.</li>
+<li>Force the client to use a particular Cinder API endpoint with –bypass-url.</li>
+<li>Create a volume from an image by image name.</li>
+<li>New type-default subcommand will display the default volume type.</li>
+<li>New type-update subcommand allows updating a volume type’s description.</li>
+<li>type-list subcommand displays volume type description.</li>
+<li>type-create subcommand allows setting the description.</li>
+<li>Show pools to a backend when doing a service-list subcommand.</li>
+<li>List and update consistency group quotas.</li>
+<li>Create volume types that are non-public and have particular project access.</li>
+<li>-d is available as a shorter option to –debug.</li>
+<li>transfer-list subcommand has an option for –all-tenants.</li>
+<li>–sort option available instead of –sort-key and –sort-dir. E.q. –sort
+&lt;key&gt;[:&lt;direction&gt;].</li>
+<li>Volume type name can now be updated via subcommand type-update.</li>
+<li>bash completion gives subcommands when using ‘cinder help’.</li>
+<li>Version discovery is now available. You no longer need a volumev2 service
+type in your keystone catalog.</li>
+<li>Filter by tenant in list subcommand.</li>
+</ul>
+<p>** Python 2.4 support removed.
+** –sort-key and –sort-dir are deprecated. Use –sort instead.
+** A dash will be displayed of None when there is no data to display under</p>
+<blockquote>
+<div>a column.</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h2>1.1.1<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id9">
+<h2>1.1.0<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add support for ConsistencyGroups</li>
+<li>Use Adapter from keystoneclient</li>
+<li>Add support for Replication feature</li>
+<li>Add pagination for Volume List</li>
+</ul>
+<p>** Note Connection refused –&gt; Connection error commit: c9e7818f3f90ce761ad8ccd09181c705880a4266
+** Note Mask Passwords in log output commit: 80582f2b860b2dadef7ae07bdbd8395bf03848b1</p>
+</div>
+<div class="section" id="id10">
+<h2>1.0.9<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id14">
+<h2>1.0.8<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add support for reset-state on multiple volumes or snapshots at once</li>
+<li>Add volume retype command</li>
+</ul>
+</div>
+<div class="section" id="id27">
+<h2>1.0.7<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add support for read-only volumes</li>
+<li>Add support for setting snapshot metadata</li>
+<li>Deprecate volume-id arg to backup restore in favor of –volume</li>
+<li>Add quota-usage command</li>
+<li>Fix exception deprecation warning message</li>
+<li>Report error when no args supplied to rename cmd</li>
+</ul>
+</div>
+<div class="section" id="id34">
+<h2>1.0.6<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add support for multiple endpoints</li>
+<li>Add response info for backup command</li>
+<li>Add metadata option to cinder list command</li>
+<li>Add timeout parameter for requests</li>
+<li>Add update action for snapshot metadata</li>
+<li>Add encryption metadata support</li>
+<li>Add volume migrate support</li>
+<li>Add support for QoS specs</li>
+</ul>
+</div>
+<div class="section" id="id49">
+<h2>1.0.5<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add CLI man page</li>
+<li>Add Availability Zone list command</li>
+<li>Add support for scheduler-hints</li>
+<li>Add support to extend volumes</li>
+<li>Add support to reset state on volumes and snapshots</li>
+<li>Add snapshot support for quota class</li>
+</ul>
+</div>
+<div class="section" id="id59">
+<h2>1.0.4<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added support for backup-service commands</li>
+</ul>
+</div>
+<div class="section" id="id65">
+<h2>1.0.3<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added support for V2 Cinder API</li>
+<li>Corrected upload-volume-to-image help messaging</li>
+<li>Align handling of metadata args for all methods</li>
+<li>Update OSLO version</li>
+<li>Correct parsing of volume metadata</li>
+<li>Enable force delete of volumes and snapshots in error state</li>
+<li>Implement clone volume API call</li>
+<li>Add list-extensions call to cinderclient</li>
+<li>Add bootable column to list output</li>
+<li>Add retries to cinderclient operations</li>
+<li>Add Type/Extra-Specs support</li>
+<li>Add volume and snapshot rename commands</li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+          
+            <a href="user/cinder.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: <strong class="program">cinder</strong> CLI man page"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 16:03</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="#" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="user/cinder.html"><strong class="program">cinder</strong> CLI man page</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributor/functional_tests.html">CINDERCLIENT Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributor/unit_tests.html">CINDERCLIENT Tests</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "index" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-cinderclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 26127c61e25e072e9e1f57cd66b440c473389cf2";
+        var bugProject = "cinderclient";
+        var bugTitle = "Python API in python-cinderclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.1.0 on 2018-03-20 16:03";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

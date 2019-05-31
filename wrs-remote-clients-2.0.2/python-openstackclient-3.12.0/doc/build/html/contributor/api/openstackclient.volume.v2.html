@@ -1,0 +1,1854 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: openstackclient.volume.v2 package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>openstackclient.volume.v2 package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="openstackclient.volume.v1.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient.volume.v1 package"></i></a>
+    
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">openstackclient.volume.v2 package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.backup">openstackclient.volume.v2.backup module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.consistency_group">openstackclient.volume.v2.consistency_group module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.consistency_group_snapshot">openstackclient.volume.v2.consistency_group_snapshot module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.qos_specs">openstackclient.volume.v2.qos_specs module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.service">openstackclient.volume.v2.service module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.snapshot">openstackclient.volume.v2.snapshot module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.volume">openstackclient.volume.v2.volume module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.volume_host">openstackclient.volume.v2.volume_host module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.volume_snapshot">openstackclient.volume.v2.volume_snapshot module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.volume_transfer_request">openstackclient.volume.v2.volume_transfer_request module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2.volume_type">openstackclient.volume.v2.volume_type module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.volume.v2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="openstackclient-volume-v2-package">
+<h1>openstackclient.volume.v2 package<a class="headerlink" href="#openstackclient-volume-v2-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.volume.v2.backup">
+<span id="openstackclient-volume-v2-backup-module"></span><h2>openstackclient.volume.v2.backup module<a class="headerlink" href="#module-openstackclient.volume.v2.backup" title="Permalink to this headline">¶</a></h2>
+<p>Volume v2 Backup action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.CreateBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">CreateBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.CreateBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#openstackclient.volume.v2.backup.CreateVolumeBackup" title="openstackclient.volume.v2.backup.CreateVolumeBackup"><code class="xref py py-class docutils literal"><span class="pre">openstackclient.volume.v2.backup.CreateVolumeBackup</span></code></a></p>
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.CreateBackup.deprecated">
+<code class="descname">deprecated</code><em class="property"> = True</em><a class="headerlink" href="#openstackclient.volume.v2.backup.CreateBackup.deprecated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.CreateBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7753c50&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.CreateBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.CreateBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.CreateBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.CreateVolumeBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">CreateVolumeBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.CreateVolumeBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.CreateVolumeBackup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.CreateVolumeBackup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.CreateVolumeBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa681ed0&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.CreateVolumeBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.CreateVolumeBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.CreateVolumeBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.DeleteBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">DeleteBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.DeleteBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#openstackclient.volume.v2.backup.DeleteVolumeBackup" title="openstackclient.volume.v2.backup.DeleteVolumeBackup"><code class="xref py py-class docutils literal"><span class="pre">openstackclient.volume.v2.backup.DeleteVolumeBackup</span></code></a></p>
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.DeleteBackup.deprecated">
+<code class="descname">deprecated</code><em class="property"> = True</em><a class="headerlink" href="#openstackclient.volume.v2.backup.DeleteBackup.deprecated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.DeleteBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7753c50&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.DeleteBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.DeleteBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.DeleteBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.DeleteVolumeBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">DeleteVolumeBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.DeleteVolumeBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.DeleteVolumeBackup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.DeleteVolumeBackup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.DeleteVolumeBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xbc8ea90&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.DeleteVolumeBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.DeleteVolumeBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.DeleteVolumeBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.ListBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">ListBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.ListBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#openstackclient.volume.v2.backup.ListVolumeBackup" title="openstackclient.volume.v2.backup.ListVolumeBackup"><code class="xref py py-class docutils literal"><span class="pre">openstackclient.volume.v2.backup.ListVolumeBackup</span></code></a></p>
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.ListBackup.deprecated">
+<code class="descname">deprecated</code><em class="property"> = True</em><a class="headerlink" href="#openstackclient.volume.v2.backup.ListBackup.deprecated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.ListBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7753c50&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.ListBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.ListBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.ListBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.ListVolumeBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">ListVolumeBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.ListVolumeBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.ListVolumeBackup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.ListVolumeBackup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.ListVolumeBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xbc8e650&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.ListVolumeBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.ListVolumeBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.ListVolumeBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.RestoreBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">RestoreBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.RestoreBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#openstackclient.volume.v2.backup.RestoreVolumeBackup" title="openstackclient.volume.v2.backup.RestoreVolumeBackup"><code class="xref py py-class docutils literal"><span class="pre">openstackclient.volume.v2.backup.RestoreVolumeBackup</span></code></a></p>
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.RestoreBackup.deprecated">
+<code class="descname">deprecated</code><em class="property"> = True</em><a class="headerlink" href="#openstackclient.volume.v2.backup.RestoreBackup.deprecated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.RestoreBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7753c50&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.RestoreBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.RestoreBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.RestoreBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.RestoreVolumeBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">RestoreVolumeBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.RestoreVolumeBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.RestoreVolumeBackup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.RestoreVolumeBackup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.RestoreVolumeBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xbc8e450&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.RestoreVolumeBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.RestoreVolumeBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.RestoreVolumeBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.SetVolumeBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">SetVolumeBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.SetVolumeBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.SetVolumeBackup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.SetVolumeBackup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.SetVolumeBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xbc8e310&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.SetVolumeBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.SetVolumeBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.SetVolumeBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.ShowBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">ShowBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.ShowBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#openstackclient.volume.v2.backup.ShowVolumeBackup" title="openstackclient.volume.v2.backup.ShowVolumeBackup"><code class="xref py py-class docutils literal"><span class="pre">openstackclient.volume.v2.backup.ShowVolumeBackup</span></code></a></p>
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.ShowBackup.deprecated">
+<code class="descname">deprecated</code><em class="property"> = True</em><a class="headerlink" href="#openstackclient.volume.v2.backup.ShowBackup.deprecated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.ShowBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7753c50&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.ShowBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.ShowBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.ShowBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.backup.ShowVolumeBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.backup.</code><code class="descname">ShowVolumeBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.ShowVolumeBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.ShowVolumeBackup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.ShowVolumeBackup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.backup.ShowVolumeBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc18c7d0&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.backup.ShowVolumeBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.backup.ShowVolumeBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.backup.ShowVolumeBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2.consistency_group">
+<span id="openstackclient-volume-v2-consistency-group-module"></span><h2>openstackclient.volume.v2.consistency_group module<a class="headerlink" href="#module-openstackclient.volume.v2.consistency_group" title="Permalink to this headline">¶</a></h2>
+<p>Volume v2 consistency group action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group.AddVolumeToConsistencyGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group.</code><code class="descname">AddVolumeToConsistencyGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.AddVolumeToConsistencyGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.AddVolumeToConsistencyGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.AddVolumeToConsistencyGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group.AddVolumeToConsistencyGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x668fed0&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.AddVolumeToConsistencyGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.AddVolumeToConsistencyGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.AddVolumeToConsistencyGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group.CreateConsistencyGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group.</code><code class="descname">CreateConsistencyGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.CreateConsistencyGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.CreateConsistencyGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.CreateConsistencyGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group.CreateConsistencyGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5fdc710&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.CreateConsistencyGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.CreateConsistencyGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.CreateConsistencyGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group.DeleteConsistencyGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group.</code><code class="descname">DeleteConsistencyGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.DeleteConsistencyGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.DeleteConsistencyGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.DeleteConsistencyGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group.DeleteConsistencyGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5fdc510&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.DeleteConsistencyGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.DeleteConsistencyGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.DeleteConsistencyGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group.ListConsistencyGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group.</code><code class="descname">ListConsistencyGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.ListConsistencyGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.ListConsistencyGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.ListConsistencyGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group.ListConsistencyGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5fdc090&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.ListConsistencyGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.ListConsistencyGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.ListConsistencyGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group.RemoveVolumeFromConsistencyGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group.</code><code class="descname">RemoveVolumeFromConsistencyGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.RemoveVolumeFromConsistencyGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.RemoveVolumeFromConsistencyGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.RemoveVolumeFromConsistencyGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group.RemoveVolumeFromConsistencyGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5fdc150&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.RemoveVolumeFromConsistencyGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.RemoveVolumeFromConsistencyGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.RemoveVolumeFromConsistencyGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group.SetConsistencyGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group.</code><code class="descname">SetConsistencyGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.SetConsistencyGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.SetConsistencyGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.SetConsistencyGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group.SetConsistencyGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5fdc990&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.SetConsistencyGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.SetConsistencyGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.SetConsistencyGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group.ShowConsistencyGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group.</code><code class="descname">ShowConsistencyGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.ShowConsistencyGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.ShowConsistencyGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.ShowConsistencyGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group.ShowConsistencyGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5fdce90&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.ShowConsistencyGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group.ShowConsistencyGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group.ShowConsistencyGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2.consistency_group_snapshot">
+<span id="openstackclient-volume-v2-consistency-group-snapshot-module"></span><h2>openstackclient.volume.v2.consistency_group_snapshot module<a class="headerlink" href="#module-openstackclient.volume.v2.consistency_group_snapshot" title="Permalink to this headline">¶</a></h2>
+<p>Volume v2 consistency group snapshot action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.CreateConsistencyGroupSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group_snapshot.</code><code class="descname">CreateConsistencyGroupSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.CreateConsistencyGroupSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.CreateConsistencyGroupSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.CreateConsistencyGroupSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.CreateConsistencyGroupSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa542c10&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.CreateConsistencyGroupSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.CreateConsistencyGroupSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.CreateConsistencyGroupSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.DeleteConsistencyGroupSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group_snapshot.</code><code class="descname">DeleteConsistencyGroupSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.DeleteConsistencyGroupSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.DeleteConsistencyGroupSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.DeleteConsistencyGroupSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.DeleteConsistencyGroupSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa542950&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.DeleteConsistencyGroupSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.DeleteConsistencyGroupSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.DeleteConsistencyGroupSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.ListConsistencyGroupSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group_snapshot.</code><code class="descname">ListConsistencyGroupSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.ListConsistencyGroupSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.ListConsistencyGroupSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.ListConsistencyGroupSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.ListConsistencyGroupSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa5424d0&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.ListConsistencyGroupSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.ListConsistencyGroupSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.ListConsistencyGroupSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.ShowConsistencyGroupSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.consistency_group_snapshot.</code><code class="descname">ShowConsistencyGroupSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.ShowConsistencyGroupSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.ShowConsistencyGroupSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.ShowConsistencyGroupSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.ShowConsistencyGroupSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa5425d0&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.ShowConsistencyGroupSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.consistency_group_snapshot.ShowConsistencyGroupSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.consistency_group_snapshot.ShowConsistencyGroupSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2.qos_specs">
+<span id="openstackclient-volume-v2-qos-specs-module"></span><h2>openstackclient.volume.v2.qos_specs module<a class="headerlink" href="#module-openstackclient.volume.v2.qos_specs" title="Permalink to this headline">¶</a></h2>
+<p>Volume v2 QoS action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.qos_specs.AssociateQos">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.qos_specs.</code><code class="descname">AssociateQos</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.AssociateQos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.AssociateQos.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.AssociateQos.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.qos_specs.AssociateQos.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc44b250&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.AssociateQos.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.AssociateQos.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.AssociateQos.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.qos_specs.CreateQos">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.qos_specs.</code><code class="descname">CreateQos</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.CreateQos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.CreateQos.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.CreateQos.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.qos_specs.CreateQos.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc44b310&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.CreateQos.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.CreateQos.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.CreateQos.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.qos_specs.DeleteQos">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.qos_specs.</code><code class="descname">DeleteQos</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.DeleteQos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.DeleteQos.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.DeleteQos.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.qos_specs.DeleteQos.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc44b490&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.DeleteQos.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.DeleteQos.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.DeleteQos.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.qos_specs.DisassociateQos">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.qos_specs.</code><code class="descname">DisassociateQos</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.DisassociateQos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.DisassociateQos.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.DisassociateQos.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.qos_specs.DisassociateQos.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc44b690&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.DisassociateQos.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.DisassociateQos.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.DisassociateQos.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.qos_specs.ListQos">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.qos_specs.</code><code class="descname">ListQos</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.ListQos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.qos_specs.ListQos.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc44b890&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.ListQos.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.ListQos.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.ListQos.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.qos_specs.SetQos">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.qos_specs.</code><code class="descname">SetQos</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.SetQos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.SetQos.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.SetQos.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.qos_specs.SetQos.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc44ba90&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.SetQos.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.SetQos.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.SetQos.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.qos_specs.ShowQos">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.qos_specs.</code><code class="descname">ShowQos</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.ShowQos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.ShowQos.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.ShowQos.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.qos_specs.ShowQos.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc44bc90&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.ShowQos.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.ShowQos.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.ShowQos.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.qos_specs.UnsetQos">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.qos_specs.</code><code class="descname">UnsetQos</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.UnsetQos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.UnsetQos.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.UnsetQos.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.qos_specs.UnsetQos.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc44be90&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.UnsetQos.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.qos_specs.UnsetQos.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.qos_specs.UnsetQos.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2.service">
+<span id="openstackclient-volume-v2-service-module"></span><h2>openstackclient.volume.v2.service module<a class="headerlink" href="#module-openstackclient.volume.v2.service" title="Permalink to this headline">¶</a></h2>
+<p>Service action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.service.ListService">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.service.</code><code class="descname">ListService</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.service.ListService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.service.ListService.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.service.ListService.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.service.ListService.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xbbeb8d0&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.service.ListService.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.service.ListService.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.service.ListService.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.service.SetService">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.service.</code><code class="descname">SetService</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.service.SetService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.service.SetService.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.service.SetService.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.service.SetService.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xbbeb710&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.service.SetService.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.service.SetService.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.service.SetService.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2.snapshot">
+<span id="openstackclient-volume-v2-snapshot-module"></span><h2>openstackclient.volume.v2.snapshot module<a class="headerlink" href="#module-openstackclient.volume.v2.snapshot" title="Permalink to this headline">¶</a></h2>
+<p>Volume v2 snapshot action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.snapshot.CreateSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.snapshot.</code><code class="descname">CreateSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.CreateSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.CreateSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.CreateSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.snapshot.CreateSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa0e4590&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.snapshot.CreateSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.CreateSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.CreateSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.snapshot.DeleteSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.snapshot.</code><code class="descname">DeleteSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.DeleteSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.DeleteSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.DeleteSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.snapshot.DeleteSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa0e4390&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.snapshot.DeleteSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.DeleteSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.DeleteSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.snapshot.ListSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.snapshot.</code><code class="descname">ListSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.ListSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.ListSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.ListSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.snapshot.ListSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa0e4990&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.snapshot.ListSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.ListSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.ListSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.snapshot.SetSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.snapshot.</code><code class="descname">SetSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.SetSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.SetSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.SetSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.snapshot.SetSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa0e4510&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.snapshot.SetSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.SetSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.SetSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.snapshot.ShowSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.snapshot.</code><code class="descname">ShowSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.ShowSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.ShowSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.ShowSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.snapshot.ShowSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa0e4b50&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.snapshot.ShowSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.ShowSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.ShowSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.snapshot.UnsetSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.snapshot.</code><code class="descname">UnsetSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.UnsetSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.UnsetSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.UnsetSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.snapshot.UnsetSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa0e46d0&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.snapshot.UnsetSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.snapshot.UnsetSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.snapshot.UnsetSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2.volume">
+<span id="openstackclient-volume-v2-volume-module"></span><h2>openstackclient.volume.v2.volume module<a class="headerlink" href="#module-openstackclient.volume.v2.volume" title="Permalink to this headline">¶</a></h2>
+<p>Volume V2 Volume action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume.CreateVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume.</code><code class="descname">CreateVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.CreateVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.CreateVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.CreateVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume.CreateVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x86b33d0&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume.CreateVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.CreateVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.CreateVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume.DeleteVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume.</code><code class="descname">DeleteVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.DeleteVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.DeleteVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.DeleteVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume.DeleteVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x86b3250&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume.DeleteVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.DeleteVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.DeleteVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume.ExportVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume.</code><code class="descname">ExportVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ExportVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.ExportVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ExportVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume.ExportVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xafaa150&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume.ExportVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.ExportVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ExportVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume.ImportVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume.</code><code class="descname">ImportVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ImportVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.ImportVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ImportVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume.ImportVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xaef3490&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume.ImportVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.ImportVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ImportVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume.ListVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume.</code><code class="descname">ListVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ListVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.ListVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ListVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume.ListVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x86b3d90&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume.ListVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.ListVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ListVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume.MigrateVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume.</code><code class="descname">MigrateVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.MigrateVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.MigrateVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.MigrateVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume.MigrateVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x86b3690&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume.MigrateVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.MigrateVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.MigrateVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume.SetVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume.</code><code class="descname">SetVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.SetVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.SetVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.SetVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume.SetVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xafaa550&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume.SetVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.SetVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.SetVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume.ShowVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume.</code><code class="descname">ShowVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ShowVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.ShowVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ShowVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume.ShowVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xafaa610&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume.ShowVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.ShowVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.ShowVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume.UnsetVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume.</code><code class="descname">UnsetVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.UnsetVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.UnsetVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.UnsetVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume.UnsetVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xafaaf50&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume.UnsetVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume.UnsetVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume.UnsetVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2.volume_host">
+<span id="openstackclient-volume-v2-volume-host-module"></span><h2>openstackclient.volume.v2.volume_host module<a class="headerlink" href="#module-openstackclient.volume.v2.volume_host" title="Permalink to this headline">¶</a></h2>
+<p>Volume v2 host action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_host.FailoverVolumeHost">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_host.</code><code class="descname">FailoverVolumeHost</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_host.FailoverVolumeHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_host.FailoverVolumeHost.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_host.FailoverVolumeHost.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_host.FailoverVolumeHost.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc6d7090&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_host.FailoverVolumeHost.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_host.FailoverVolumeHost.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_host.FailoverVolumeHost.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_host.SetVolumeHost">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_host.</code><code class="descname">SetVolumeHost</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_host.SetVolumeHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_host.SetVolumeHost.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_host.SetVolumeHost.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_host.SetVolumeHost.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc6d71d0&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_host.SetVolumeHost.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_host.SetVolumeHost.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_host.SetVolumeHost.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2.volume_snapshot">
+<span id="openstackclient-volume-v2-volume-snapshot-module"></span><h2>openstackclient.volume.v2.volume_snapshot module<a class="headerlink" href="#module-openstackclient.volume.v2.volume_snapshot" title="Permalink to this headline">¶</a></h2>
+<p>Volume v2 snapshot action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_snapshot.CreateVolumeSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_snapshot.</code><code class="descname">CreateVolumeSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.CreateVolumeSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.CreateVolumeSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.CreateVolumeSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_snapshot.CreateVolumeSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc702250&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.CreateVolumeSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.CreateVolumeSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.CreateVolumeSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_snapshot.DeleteVolumeSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_snapshot.</code><code class="descname">DeleteVolumeSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.DeleteVolumeSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.DeleteVolumeSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.DeleteVolumeSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_snapshot.DeleteVolumeSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc702450&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.DeleteVolumeSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.DeleteVolumeSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.DeleteVolumeSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_snapshot.ExportVolumeSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_snapshot.</code><code class="descname">ExportVolumeSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ExportVolumeSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.ExportVolumeSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ExportVolumeSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_snapshot.ExportVolumeSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc702950&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ExportVolumeSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.ExportVolumeSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ExportVolumeSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_snapshot.ListVolumeSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_snapshot.</code><code class="descname">ListVolumeSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ListVolumeSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.ListVolumeSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ListVolumeSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_snapshot.ListVolumeSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc702790&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ListVolumeSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.ListVolumeSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ListVolumeSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_snapshot.SetVolumeSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_snapshot.</code><code class="descname">SetVolumeSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.SetVolumeSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.SetVolumeSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.SetVolumeSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_snapshot.SetVolumeSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc702190&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.SetVolumeSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.SetVolumeSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.SetVolumeSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_snapshot.ShowVolumeSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_snapshot.</code><code class="descname">ShowVolumeSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ShowVolumeSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.ShowVolumeSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ShowVolumeSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_snapshot.ShowVolumeSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc702710&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ShowVolumeSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.ShowVolumeSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.ShowVolumeSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_snapshot.UnsetVolumeSnapshot">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_snapshot.</code><code class="descname">UnsetVolumeSnapshot</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.UnsetVolumeSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.UnsetVolumeSnapshot.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.UnsetVolumeSnapshot.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_snapshot.UnsetVolumeSnapshot.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xc702110&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.UnsetVolumeSnapshot.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_snapshot.UnsetVolumeSnapshot.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_snapshot.UnsetVolumeSnapshot.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2.volume_transfer_request">
+<span id="openstackclient-volume-v2-volume-transfer-request-module"></span><h2>openstackclient.volume.v2.volume_transfer_request module<a class="headerlink" href="#module-openstackclient.volume.v2.volume_transfer_request" title="Permalink to this headline">¶</a></h2>
+<p>Volume v2 transfer action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_transfer_request.AcceptTransferRequest">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_transfer_request.</code><code class="descname">AcceptTransferRequest</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.AcceptTransferRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_transfer_request.AcceptTransferRequest.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.AcceptTransferRequest.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_transfer_request.AcceptTransferRequest.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xabfd490&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.AcceptTransferRequest.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_transfer_request.AcceptTransferRequest.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.AcceptTransferRequest.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_transfer_request.CreateTransferRequest">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_transfer_request.</code><code class="descname">CreateTransferRequest</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.CreateTransferRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_transfer_request.CreateTransferRequest.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.CreateTransferRequest.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_transfer_request.CreateTransferRequest.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x9f97a10&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.CreateTransferRequest.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_transfer_request.CreateTransferRequest.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.CreateTransferRequest.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_transfer_request.DeleteTransferRequest">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_transfer_request.</code><code class="descname">DeleteTransferRequest</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.DeleteTransferRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_transfer_request.DeleteTransferRequest.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.DeleteTransferRequest.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_transfer_request.DeleteTransferRequest.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x9f97950&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.DeleteTransferRequest.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_transfer_request.DeleteTransferRequest.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.DeleteTransferRequest.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_transfer_request.ListTransferRequest">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_transfer_request.</code><code class="descname">ListTransferRequest</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.ListTransferRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_transfer_request.ListTransferRequest.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.ListTransferRequest.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_transfer_request.ListTransferRequest.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x95f1b50&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.ListTransferRequest.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_transfer_request.ListTransferRequest.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.ListTransferRequest.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_transfer_request.ShowTransferRequest">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_transfer_request.</code><code class="descname">ShowTransferRequest</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.ShowTransferRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_transfer_request.ShowTransferRequest.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.ShowTransferRequest.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_transfer_request.ShowTransferRequest.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6c60050&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.ShowTransferRequest.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_transfer_request.ShowTransferRequest.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_transfer_request.ShowTransferRequest.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2.volume_type">
+<span id="openstackclient-volume-v2-volume-type-module"></span><h2>openstackclient.volume.v2.volume_type module<a class="headerlink" href="#module-openstackclient.volume.v2.volume_type" title="Permalink to this headline">¶</a></h2>
+<p>Volume v2 Type action implementations</p>
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_type.CreateVolumeType">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_type.</code><code class="descname">CreateVolumeType</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.CreateVolumeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.CreateVolumeType.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.CreateVolumeType.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_type.CreateVolumeType.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xbeca050&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_type.CreateVolumeType.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.CreateVolumeType.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.CreateVolumeType.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_type.DeleteVolumeType">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_type.</code><code class="descname">DeleteVolumeType</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.DeleteVolumeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.DeleteVolumeType.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.DeleteVolumeType.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_type.DeleteVolumeType.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa7df290&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_type.DeleteVolumeType.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.DeleteVolumeType.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.DeleteVolumeType.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_type.ListVolumeType">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_type.</code><code class="descname">ListVolumeType</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.ListVolumeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.ListVolumeType.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.ListVolumeType.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_type.ListVolumeType.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa7df8d0&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_type.ListVolumeType.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.ListVolumeType.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.ListVolumeType.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_type.SetVolumeType">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_type.</code><code class="descname">SetVolumeType</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.SetVolumeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.SetVolumeType.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.SetVolumeType.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_type.SetVolumeType.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa7dfb10&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_type.SetVolumeType.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.SetVolumeType.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.SetVolumeType.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_type.ShowVolumeType">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_type.</code><code class="descname">ShowVolumeType</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.ShowVolumeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.ShowVolumeType.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.ShowVolumeType.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_type.ShowVolumeType.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa7df750&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_type.ShowVolumeType.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.ShowVolumeType.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.ShowVolumeType.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.volume.v2.volume_type.UnsetVolumeType">
+<em class="property">class </em><code class="descclassname">openstackclient.volume.v2.volume_type.</code><code class="descname">UnsetVolumeType</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.UnsetVolumeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.UnsetVolumeType.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.UnsetVolumeType.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.volume.v2.volume_type.UnsetVolumeType.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa7dfa10&gt;</em><a class="headerlink" href="#openstackclient.volume.v2.volume_type.UnsetVolumeType.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.volume.v2.volume_type.UnsetVolumeType.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.volume.v2.volume_type.UnsetVolumeType.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.volume.v2">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openstackclient.volume.v2" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="openstackclient.volume.v1.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient.volume.v1 package"></i></a>
+          
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Contributor Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../developing.html">Developing with OpenStackClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-beta.html">Command Beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-options.html">Command Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-wrappers.html">Command Class Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-errors.html">Command Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-logs.html">Command Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specs/commands.html">Command Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../humaninterfaceguide.html">Human Interface Guide</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "contributor/api/openstackclient.volume.v2" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "openstackclient.volume.v2 package in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

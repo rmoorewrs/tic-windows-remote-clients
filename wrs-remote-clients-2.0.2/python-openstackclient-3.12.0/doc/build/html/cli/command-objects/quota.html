@@ -1,0 +1,719 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: quota</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>quota</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="project-purge.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: project purge"></i></a>
+    
+    
+    <a href="region.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: region"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">quota</a><ul>
+<li><a class="reference internal" href="#quota-list">quota list</a></li>
+<li><a class="reference internal" href="#quota-set">quota set</a></li>
+<li><a class="reference internal" href="#quota-show">quota show</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="quota">
+<h1>quota<a class="headerlink" href="#quota" title="Permalink to this headline">¶</a></h1>
+<p>Resource quotas appear in multiple APIs, OpenStackClient presents them as a
+single object with multiple properties.</p>
+<p>Block Storage v1, v2, Compute v2, Network v2</p>
+<div class="section" id="quota-list">
+<h2>quota list<a class="headerlink" href="#quota-list" title="Permalink to this headline">¶</a></h2>
+<p>List quotas for all projects with non-default quota values</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">quota</span> <span class="nb">list</span>
+    <span class="o">--</span><span class="n">compute</span> <span class="o">|</span> <span class="o">--</span><span class="n">network</span> <span class="o">|</span> <span class="o">--</span><span class="n">volume</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-quota-list-network">
+<code class="descname">--network</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-quota-list-network" title="Permalink to this definition">¶</a></dt>
+<dd><p>List network quotas</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-list-compute">
+<code class="descname">--compute</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-quota-list-compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>List compute quotas</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-list-volume">
+<code class="descname">--volume</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-quota-list-volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>List volume quotas</p>
+</dd></dl>
+
+</div>
+<div class="section" id="quota-set">
+<h2>quota set<a class="headerlink" href="#quota-set" title="Permalink to this headline">¶</a></h2>
+<p>Set quotas for project</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">quota</span> <span class="nb">set</span>
+    <span class="c1"># Compute settings</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">cores</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">cores</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">fixed</span><span class="o">-</span><span class="n">ips</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">fixed</span><span class="o">-</span><span class="n">ips</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">floating</span><span class="o">-</span><span class="n">ips</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">floating</span><span class="o">-</span><span class="n">ips</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">injected</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">size</span> <span class="o">&lt;</span><span class="n">injected</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="nb">bytes</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">injected</span><span class="o">-</span><span class="n">files</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">injected</span><span class="o">-</span><span class="n">files</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">instances</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">instances</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">key</span><span class="o">-</span><span class="n">pairs</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">pairs</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">properties</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">properties</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">ram</span> <span class="o">&lt;</span><span class="n">ram</span><span class="o">-</span><span class="n">mb</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">groups</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">groups</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">group</span><span class="o">-</span><span class="n">members</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">group</span><span class="o">-</span><span class="n">members</span><span class="o">&gt;</span><span class="p">]</span>
+
+    <span class="c1"># Block Storage settings</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">backups</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">backups</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">backup</span><span class="o">-</span><span class="n">gigabytes</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">backup</span><span class="o">-</span><span class="n">gigabytes</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">gigabytes</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">gigabytes</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">per</span><span class="o">-</span><span class="n">volume</span><span class="o">-</span><span class="n">gigabytes</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">volume</span><span class="o">-</span><span class="n">gigabytes</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">snapshots</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">snapshots</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">volumes</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">volumes</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">volume</span><span class="o">-</span><span class="nb">type</span> <span class="o">&lt;</span><span class="n">volume</span><span class="o">-</span><span class="nb">type</span><span class="o">&gt;</span><span class="p">]</span>
+
+    <span class="c1"># Network settings</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">floating</span><span class="o">-</span><span class="n">ips</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">floatingips</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">secgroup</span><span class="o">-</span><span class="n">rules</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">security</span><span class="o">-</span><span class="n">group</span><span class="o">-</span><span class="n">rules</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">secgroups</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">security</span><span class="o">-</span><span class="n">groups</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">networks</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">networks</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">subnets</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">subnets</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">ports</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">ports</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">routers</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">routers</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">rbac</span><span class="o">-</span><span class="n">policies</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">rbac</span><span class="o">-</span><span class="n">policies</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">vips</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">vips</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">subnetpools</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">subnetpools</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">members</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">members</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">health</span><span class="o">-</span><span class="n">monitors</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">-</span><span class="n">health</span><span class="o">-</span><span class="n">monitors</span><span class="o">&gt;</span><span class="p">]</span>
+
+    <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Set quotas for class</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>openstack quota set
+    --class
+    # Compute settings
+    [--cores &lt;num-cores&gt;]
+    [--fixed-ips &lt;num-fixed-ips&gt;]
+    [--floating-ips &lt;num-floating-ips&gt;]
+    [--injected-file-size &lt;injected-file-bytes&gt;]
+    [--injected-files &lt;num-injected-files&gt;]
+    [--instances &lt;num-instances&gt;]
+    [--key-pairs &lt;num-key-pairs&gt;]
+    [--properties &lt;num-properties&gt;]
+    [--ram &lt;ram-mb&gt;]
+    [--server-groups &lt;num-server-groups&gt;]
+    [--server-group-members &lt;num-server-group-members&gt;]
+
+    # Block Storage settings
+    [--backups &lt;new-backups&gt;]
+    [--backup-gigabytes &lt;new-backup-gigabytes&gt;]
+    [--gigabytes &lt;new-gigabytes&gt;]
+    [--per-volume-gigabytes &lt;new-per-volume-gigabytes&gt;]
+    [--snapshots &lt;new-snapshots&gt;]
+    [--volumes &lt;new-volumes&gt;]
+
+    &lt;class&gt;
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-quota-set-class">
+<code class="descname">--class</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-quota-set-class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set quotas for <code class="docutils literal"><span class="pre">&lt;class&gt;</span></code></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-properties">
+<code class="descname">--properties</code><code class="descclassname"> &lt;new-properties&gt;</code><a class="headerlink" href="#cmdoption-quota-set-properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the properties quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-ram">
+<code class="descname">--ram</code><code class="descclassname"> &lt;new-ram&gt;</code><a class="headerlink" href="#cmdoption-quota-set-ram" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the ram quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-secgroup-rules">
+<code class="descname">--secgroup-rules</code><code class="descclassname"> &lt;new-secgroup-rules&gt;</code><a class="headerlink" href="#cmdoption-quota-set-secgroup-rules" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the secgroup-rules quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-instances">
+<code class="descname">--instances</code><code class="descclassname"> &lt;new-instances&gt;</code><a class="headerlink" href="#cmdoption-quota-set-instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the instances quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-key-pairs">
+<code class="descname">--key-pairs</code><code class="descclassname"> &lt;new-key-pairs&gt;</code><a class="headerlink" href="#cmdoption-quota-set-key-pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the key-pairs quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-fixed-ips">
+<code class="descname">--fixed-ips</code><code class="descclassname"> &lt;new-fixed-ips&gt;</code><a class="headerlink" href="#cmdoption-quota-set-fixed-ips" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the fixed-ips quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-secgroups">
+<code class="descname">--secgroups</code><code class="descclassname"> &lt;new-secgroups&gt;</code><a class="headerlink" href="#cmdoption-quota-set-secgroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the secgroups quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-injected-file-size">
+<code class="descname">--injected-file-size</code><code class="descclassname"> &lt;new-injected-file-size&gt;</code><a class="headerlink" href="#cmdoption-quota-set-injected-file-size" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the injected-file-size quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-server-groups">
+<code class="descname">--server-groups</code><code class="descclassname"> &lt;new-server-groups&gt;</code><a class="headerlink" href="#cmdoption-quota-set-server-groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the server-groups quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-server-group-members">
+<code class="descname">--server-group-members</code><code class="descclassname"> &lt;new-server-group-members&gt;</code><a class="headerlink" href="#cmdoption-quota-set-server-group-members" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the server-group-members quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-floating-ips">
+<code class="descname">--floating-ips</code><code class="descclassname"> &lt;new-floating-ips&gt;</code><a class="headerlink" href="#cmdoption-quota-set-floating-ips" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the floating-ips quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-injected-files">
+<code class="descname">--injected-files</code><code class="descclassname"> &lt;new-injected-files&gt;</code><a class="headerlink" href="#cmdoption-quota-set-injected-files" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the injected-files quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-cores">
+<code class="descname">--cores</code><code class="descclassname"> &lt;new-cores&gt;</code><a class="headerlink" href="#cmdoption-quota-set-cores" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the cores quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-injected-path-size">
+<code class="descname">--injected-path-size</code><code class="descclassname"> &lt;new-injected-path-size&gt;</code><a class="headerlink" href="#cmdoption-quota-set-injected-path-size" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the injected-path-size quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-backups">
+<code class="descname">--backups</code><code class="descclassname"> &lt;new-backups&gt;</code><a class="headerlink" href="#cmdoption-quota-set-backups" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the backups quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-backup-gigabytes">
+<code class="descname">--backup-gigabytes</code><code class="descclassname"> &lt;new-backup-gigabytes&gt;</code><a class="headerlink" href="#cmdoption-quota-set-backup-gigabytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the backup gigabytes quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-gigabytes">
+<code class="descname">--gigabytes</code><code class="descclassname"> &lt;new-gigabytes&gt;</code><a class="headerlink" href="#cmdoption-quota-set-gigabytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the gigabytes quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-per-volume-gigabytes">
+<code class="descname">--per-volume-gigabytes</code><code class="descclassname"> &lt;new-per-volume-gigabytes&gt;</code><a class="headerlink" href="#cmdoption-quota-set-per-volume-gigabytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the gigabytes quota of per volume</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-volumes">
+<code class="descname">--volumes</code><code class="descclassname"> &lt;new-volumes&gt;</code><a class="headerlink" href="#cmdoption-quota-set-volumes" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the volumes quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-snapshots">
+<code class="descname">--snapshots</code><code class="descclassname"> &lt;new-snapshots&gt;</code><a class="headerlink" href="#cmdoption-quota-set-snapshots" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the snapshots quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-volume-type">
+<code class="descname">--volume-type</code><code class="descclassname"> &lt;volume-type&gt;</code><a class="headerlink" href="#cmdoption-quota-set-volume-type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set quotas for a specific &lt;volume-type&gt;. The supported quotas are:
+gigabytes, snapshots, volumes.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-networks">
+<code class="descname">--networks</code><code class="descclassname"> &lt;num-networks&gt;</code><a class="headerlink" href="#cmdoption-quota-set-networks" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the networks quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-subnets">
+<code class="descname">--subnets</code><code class="descclassname"> &lt;num-subnets&gt;</code><a class="headerlink" href="#cmdoption-quota-set-subnets" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the subnets quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-ports">
+<code class="descname">--ports</code><code class="descclassname"> &lt;num-ports&gt;</code><a class="headerlink" href="#cmdoption-quota-set-ports" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the ports quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-routers">
+<code class="descname">--routers</code><code class="descclassname"> &lt;num-routers&gt;</code><a class="headerlink" href="#cmdoption-quota-set-routers" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the routers quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-rbac-policies">
+<code class="descname">--rbac-policies</code><code class="descclassname"> &lt;num-rbac-policies&gt;</code><a class="headerlink" href="#cmdoption-quota-set-rbac-policies" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the rbac-policies quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-vips">
+<code class="descname">--vips</code><code class="descclassname"> &lt;num-vips&gt;</code><a class="headerlink" href="#cmdoption-quota-set-vips" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the vips quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-subnetpools">
+<code class="descname">--subnetpools</code><code class="descclassname"> &lt;num-subnetpools&gt;</code><a class="headerlink" href="#cmdoption-quota-set-subnetpools" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the subnetpools quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-members">
+<code class="descname">--members</code><code class="descclassname"> &lt;num-members&gt;</code><a class="headerlink" href="#cmdoption-quota-set-members" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the members quota</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-quota-set-health-monitors">
+<code class="descname">--health-monitors</code><code class="descclassname"> &lt;num-health-monitors&gt;</code><a class="headerlink" href="#cmdoption-quota-set-health-monitors" title="Permalink to this definition">¶</a></dt>
+<dd><p>New value for the health-monitors quota</p>
+</dd></dl>
+
+</div>
+<div class="section" id="quota-show">
+<h2>quota show<a class="headerlink" href="#quota-show" title="Permalink to this headline">¶</a></h2>
+<p>Show quotas for project or class</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">quota</span> <span class="n">show</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">default</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-quota-show-default">
+<code class="descname">--default</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-quota-show-default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show default quotas for <a class="reference internal" href="#quota-show-project"><span class="std std-ref">&lt;project&gt;</span></a></p>
+</dd></dl>
+
+<span class="target" id="quota-show-project"></span><dl class="describe">
+<dt>
+<code class="descname">&lt;project&gt;</code></dt>
+<dd><p>Show quotas for this project (name or ID)</p>
+</dd></dl>
+
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>openstack quota show
+    --class
+    [&lt;class&gt;]
+</pre></div>
+</div>
+<dl class="option">
+<dt id="cmdoption-quota-show-class">
+<code class="descname">--class</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-quota-show-class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show quotas for <a class="reference internal" href="#quota-show-class"><span class="std std-ref">&lt;class&gt;</span></a></p>
+</dd></dl>
+
+<span class="target" id="quota-show-class"></span><dl class="describe">
+<dt>
+<code class="descname">&lt;class&gt;</code></dt>
+<dd><p>Show quotas for this class (name or ID)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="project-purge.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: project purge"></i></a>
+          
+          
+            <a href="region.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: region"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../man/openstack.html">Manual Page</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../command-list.html">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands.html">Command Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugin-commands.html">Plugin Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interactive.html">Interactive Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decoder.html">Mapping Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backwards-incompatible.html">Backwards Incompatible Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributor/index.html">Contributor Documentation</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/command-objects/quota" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "quota in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

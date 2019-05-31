@@ -1,0 +1,733 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Backwards Incompatible Changes</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Backwards Incompatible Changes</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="decoder.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Mapping Guide"></i></a>
+    
+    
+    <a href="../configuration/index.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Configuration"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Backwards Incompatible Changes</a><ul>
+<li><a class="reference internal" href="#id1">Backwards Incompatible Changes</a><ul>
+<li><a class="reference internal" href="#release-3-12">Release 3.12</a></li>
+<li><a class="reference internal" href="#release-3-10">Release 3.10</a></li>
+<li><a class="reference internal" href="#release-3-0">Release 3.0</a></li>
+<li><a class="reference internal" href="#releases-before-3-0">Releases Before 3.0</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#for-developers">For Developers</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="backwards-incompatible-changes">
+<h1>Backwards Incompatible Changes<a class="headerlink" href="#backwards-incompatible-changes" title="Permalink to this headline">¶</a></h1>
+<p>Despite our best efforts, sometimes the OpenStackClient team may introduce a
+backwards incompatible change. For user convenience we are tracking any such
+changes here (as of the 1.0.0 release).</p>
+<p>Should positional arguments for a command need to change, the OpenStackClient
+team attempts to make the transition as painless as possible. Look for
+deprecation warnings that indicate the new commands (or options) to use.</p>
+<p>Commands labeled as a beta according to <a class="reference internal" href="../contributor/command-beta.html#command-beta"><span class="std std-ref">Command Beta</span></a> are exempt
+from this backwards incompatible change handling.</p>
+<div class="section" id="id1">
+<h2>Backwards Incompatible Changes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="release-3-12">
+<h3>Release 3.12<a class="headerlink" href="#release-3-12" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Replace <code class="docutils literal"><span class="pre">Display</span> <span class="pre">Name</span></code> by <code class="docutils literal"><span class="pre">Name</span></code> in volume list.</li>
+</ol>
+<blockquote>
+<div><p>Change column name <code class="docutils literal"><span class="pre">Display</span> <span class="pre">Name</span></code> to <code class="docutils literal"><span class="pre">Name</span></code> in <code class="docutils literal"><span class="pre">volume</span> <span class="pre">list</span></code> output.
+Current <code class="docutils literal"><span class="pre">volume</span> <span class="pre">list</span> <span class="pre">--name</span></code> command uses <code class="docutils literal"><span class="pre">display_name</span></code> as search_opts
+to send to cinder API, and show the result table with <code class="docutils literal"><span class="pre">Display</span> <span class="pre">Name</span></code>
+as column title. Replace all <code class="docutils literal"><span class="pre">Display</span> <span class="pre">Name</span></code> by <code class="docutils literal"><span class="pre">Name</span></code> to be consistent
+with other list commands.</p>
+<p>Support a mapping for volume list -c <code class="docutils literal"><span class="pre">Display</span> <span class="pre">Name</span></code> (Volume v1 and v2)
+and volume create/show -c <code class="docutils literal"><span class="pre">display_name</span></code> (Volume v1) to maintain backward
+compatibility until the next major release.</p>
+<ul class="simple">
+<li>In favor of: <code class="docutils literal"><span class="pre">openstack</span> <span class="pre">volume</span> <span class="pre">list</span> <span class="pre">-c</span> <span class="pre">Name</span></code></li>
+<li>As of: 3.12.0</li>
+<li>Removed in: n/a</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1657956">https://bugs.launchpad.net/python-openstackclient/+bug/1657956</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/423081/">https://review.openstack.org/#/c/423081/</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="release-3-10">
+<h3>Release 3.10<a class="headerlink" href="#release-3-10" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>The <code class="docutils literal"><span class="pre">network</span> <span class="pre">create</span></code> command now requires the <code class="docutils literal"><span class="pre">--subnet</span></code> option when used
+with Nova-network clouds.</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>As of: 3.10</li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/460679">https://review.openstack.org/460679</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p class="first">The positional argument <code class="docutils literal"><span class="pre">&lt;snapshot-name&gt;</span></code> of the <code class="docutils literal"><span class="pre">volume</span> <span class="pre">snapshot</span> <span class="pre">create</span></code>
+command is no longer optional.</p>
+<p>Previously when the <code class="docutils literal"><span class="pre">--volume</span></code> option was
+present <code class="docutils literal"><span class="pre">&lt;snapshot-name&gt;</span></code> defaulted to the <code class="docutils literal"><span class="pre">--volume</span></code> value.  When the
+<code class="docutils literal"><span class="pre">--volume</span></code> option is not present now it defaults to the value of
+<code class="docutils literal"><span class="pre">&lt;snapshot-name&gt;</span></code>.</p>
+</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>As of: 3.10</li>
+<li>Bug: 1659894</li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/440497">https://review.openstack.org/440497</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="release-3-0">
+<h3>Release 3.0<a class="headerlink" href="#release-3-0" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Remove the <code class="docutils literal"><span class="pre">osc_password</span></code> authentication plugin.</li>
+</ol>
+<blockquote>
+<div><p>This was the ‘last-resort’ plugin default that worked around an old default
+Keystone configuration for the <code class="docutils literal"><span class="pre">admin_endpoint</span></code> and <code class="docutils literal"><span class="pre">public_endpoint</span></code>.</p>
+<ul class="simple">
+<li>In favor of: <code class="docutils literal"><span class="pre">password</span></code></li>
+<li>As of: 3.0</li>
+<li>Removed in: n/a</li>
+<li>Bug: n/a</li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/332938">https://review.openstack.org/332938</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="releases-before-3-0">
+<h3>Releases Before 3.0<a class="headerlink" href="#releases-before-3-0" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Rename command <cite>openstack project usage list</cite></li>
+</ol>
+<blockquote>
+<div><p>The <cite>project</cite> part of the command was pointless.</p>
+<ul class="simple">
+<li>In favor of: <cite>openstack usage list</cite> instead.</li>
+<li>As of: 1.0.2</li>
+<li>Removed in: TBD</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1406654">https://bugs.launchpad.net/python-openstackclient/+bug/1406654</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/147379/">https://review.openstack.org/#/c/147379/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>&lt;type&gt; should not be optional for command <cite>openstack service create</cite></li>
+</ol>
+<blockquote>
+<div><p>Previously, the command was <cite>openstack service create &lt;name&gt; –type &lt;type&gt;</cite>,
+whereas now it is: <cite>openstack service create &lt;type&gt; –name &lt;name&gt;</cite>.
+This bug also affected python-keystoneclient, and keystone.</p>
+<ul class="simple">
+<li>In favor of: making &lt;type&gt; a positional argument.</li>
+<li>As of: 1.0.2</li>
+<li>Removed in: TBD</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1404073">https://bugs.launchpad.net/python-openstackclient/+bug/1404073</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/143242/">https://review.openstack.org/#/c/143242/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Command <cite>openstack security group rule delete</cite> now requires rule id</li>
+</ol>
+<blockquote>
+<div><p>Previously, the command was <cite>openstack security group rule delete –proto
+&lt;proto&gt; [–src-ip &lt;ip-address&gt; –dst-port &lt;port-range&gt;] &lt;group&gt;</cite>,
+whereas now it is: <cite>openstack security group rule delete &lt;rule&gt;</cite>.</p>
+<ul class="simple">
+<li>In favor of: Using <cite>openstack security group rule delete &lt;rule&gt;</cite>.</li>
+<li>As of: 1.2.1</li>
+<li>Removed in: NA</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1450872">https://bugs.launchpad.net/python-openstackclient/+bug/1450872</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/179446/">https://review.openstack.org/#/c/179446/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Command <cite>openstack image create</cite> does not update already existing image</li>
+</ol>
+<blockquote>
+<div><p>Previously, the image create command updated already existing image if it had
+same name. It disabled possibility to create multiple images with same name
+and lead to potentially unwanted update of existing images by image create
+command.
+Now, update code was moved from create action to set action.</p>
+<ul class="simple">
+<li>In favor of: Create multiple images with same name (as glance does).</li>
+<li>As of: 1.5.0</li>
+<li>Removed in: NA</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1461817">https://bugs.launchpad.net/python-openstackclient/+bug/1461817</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/194654/">https://review.openstack.org/#/c/194654/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Command <cite>openstack network list –dhcp</cite> has been removed</li>
+</ol>
+<blockquote>
+<div><p>The –dhcp option to network list is not a logical use case of listing
+networks, it lists agents.  Another command should be added in the future
+to provide this functionality.  It is highly unlikely anyone uses this
+feature as we don’t support any other agent commands.  Use neutron
+dhcp-agent-list-hosting-net command instead.</p>
+<ul class="simple">
+<li>In favor of: Create network agent list command in the future</li>
+<li>As of: 1.6.0</li>
+<li>Removed in: NA</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/472613">https://bugs.launchpad.net/python-openstackclient/+bug/472613</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/194654/">https://review.openstack.org/#/c/194654/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>Plugin interface change for default API versions</li>
+</ol>
+<blockquote>
+<div><p>Previously, the default version was set in the parsed arguments,
+but this makes it impossible to tell what has been passed in at the
+command line, set in an environment variable or is just the default.
+Now, the module should have a DEFAULT_API_VERSION that contains the
+value and it will be set after command line argument, environment
+and OCC file processing.</p>
+<ul class="simple">
+<li>In favor of: DEFAULT_API_VERSION</li>
+<li>As of: 1.2.1</li>
+<li>Removed in: NA</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1453229">https://bugs.launchpad.net/python-openstackclient/+bug/1453229</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/181514/">https://review.openstack.org/#/c/181514/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="7">
+<li><cite>image set</cite> commands will no longer return the modified resource</li>
+</ol>
+<blockquote>
+<div><p>Previously, modifying an image would result in the new image being displayed
+to the user. To keep things consistent with other <cite>set</cite> commands, we will
+no longer be showing the modified resource.</p>
+<ul class="simple">
+<li>In favor of: Use <cite>set</cite> then <cite>show</cite></li>
+<li>As of: NA</li>
+<li>Removed in: NA</li>
+<li>Bug: NA</li>
+<li>Commit: NA</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li><cite>region</cite> commands no longer support <cite>url</cite></li>
+</ol>
+<blockquote>
+<div><p>The Keystone team removed support for the <cite>url</cite> attribute from the client
+and server side. Changes to the <cite>create</cite>, <cite>set</cite> and <cite>list</cite> commands for
+regions have been affected.</p>
+<ul class="simple">
+<li>In favor of: NA</li>
+<li>As of 1.9.0</li>
+<li>Removed in: NA</li>
+<li>Bug: <a class="reference external" href="https://launchpad.net/bugs/1506841">https://launchpad.net/bugs/1506841</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/236736/">https://review.openstack.org/#/c/236736/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="9">
+<li><cite>flavor set/unset</cite> commands will no longer return the modified resource</li>
+</ol>
+<blockquote>
+<div><p>Previously, modifying a flavor would result in the new flavor being displayed
+to the user. To keep things consistent with other <cite>set/unset</cite> commands, we
+will no longer be showing the modified resource.</p>
+<ul class="simple">
+<li>In favor of: Use <cite>set/unset</cite> then <cite>show</cite></li>
+<li>As of: NA</li>
+<li>Removed in: NA</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1546065">https://bugs.launchpad.net/python-openstackclient/+bug/1546065</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/280663/">https://review.openstack.org/#/c/280663/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="10">
+<li><cite>security group set</cite> commands will no longer return the modified resource</li>
+</ol>
+<blockquote>
+<div><p>Previously, modifying a security group would result in the new security group
+being displayed to the user. To keep things consistent with other <cite>set</cite>
+commands, we will no longer be showing the modified resource.</p>
+<ul class="simple">
+<li>In favor of: Use <cite>set</cite> then <cite>show</cite></li>
+<li>As of: NA</li>
+<li>Removed in: NA</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1546065">https://bugs.launchpad.net/python-openstackclient/+bug/1546065</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/281087/">https://review.openstack.org/#/c/281087/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="11">
+<li><cite>compute agent set</cite> commands will no longer return the modified resource</li>
+</ol>
+<blockquote>
+<div><p>Previously, modifying an agent would result in the new agent being displayed
+to the user. To keep things consistent with other <cite>set</cite> commands, we will
+no longer be showing the modified resource.</p>
+<ul class="simple">
+<li>In favor of: Use <cite>set</cite> then <cite>show</cite></li>
+<li>As of: NA</li>
+<li>Removed in: NA</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1546065">https://bugs.launchpad.net/python-openstackclient/+bug/1546065</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/281088/">https://review.openstack.org/#/c/281088/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="12">
+<li><cite>&lt;version&gt; &lt;url&gt; &lt;md5hash&gt;</cite> should be optional for command <cite>openstack
+compute agent set</cite></li>
+</ol>
+<blockquote>
+<div><p>Previously, the command was <cite>openstack compute agent set &lt;id&gt; &lt;version&gt; &lt;url&gt;
+&lt;md5hash&gt;</cite>, whereas now it is: <cite>openstack compute agent set &lt;id&gt; –version
+&lt;version&gt; –url &lt;url&gt; –md5hash &lt;md5hash&gt;</cite>.</p>
+<ul class="simple">
+<li>In favor of: making &lt;version&gt; &lt;url&gt; &lt;md5hash&gt; optional.</li>
+<li>As of: NA</li>
+<li>Removed in: NA</li>
+<li>Bug: NA</li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/328819/">https://review.openstack.org/#/c/328819/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="13">
+<li><cite>aggregate set</cite> commands will no longer return the modified resource</li>
+</ol>
+<blockquote>
+<div><p>Previously, modifying an aggregate would result in the new aggregate being
+displayed to the user. To keep things consistent with other <cite>set</cite> commands,
+we will no longer be showing the modified resource.</p>
+<ul class="simple">
+<li>In favor of: Use <cite>set</cite> then <cite>show</cite></li>
+<li>As of: NA</li>
+<li>Removed in: NA</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1546065">https://bugs.launchpad.net/python-openstackclient/+bug/1546065</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/281089/">https://review.openstack.org/#/c/281089/</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="14">
+<li>Output of <cite>ip floating list</cite> command has changed.</li>
+</ol>
+<blockquote>
+<div><p>When using Compute v2, the original output is:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># ip floating list</span>
+
++----+--------+------------+----------+-------------+
+<span class="p">|</span> ID <span class="p">|</span> Pool   <span class="p">|</span> IP         <span class="p">|</span> Fixed IP <span class="p">|</span> Instance ID <span class="p">|</span>
++----+--------+-----------------------+-------------+
+<span class="p">|</span>  <span class="m">1</span> <span class="p">|</span> public <span class="p">|</span> <span class="m">172</span>.24.4.1 <span class="p">|</span> None     <span class="p">|</span> None        <span class="p">|</span>
++----+--------+------------+----------+-------------+
+</pre></div>
+</div>
+<p>Now it changes to:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># ip floating list</span>
+
++----+---------------------+------------------+-----------+--------+
+<span class="p">|</span> ID <span class="p">|</span> Floating IP Address <span class="p">|</span> Fixed IP Address <span class="p">|</span> Server ID <span class="p">|</span> Pool   <span class="p">|</span>
++----+---------------------+------------------+-----------+--------+
+<span class="p">|</span>  <span class="m">1</span> <span class="p">|</span> <span class="m">172</span>.24.4.1          <span class="p">|</span> None             <span class="p">|</span> None      <span class="p">|</span> public <span class="p">|</span>
++----+---------------------+------------------+-----------+--------+
+</pre></div>
+</div>
+<p>When using Network v2, which is different from Compute v2. The output is:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># ip floating list</span>
+
++--------------------------------------+---------------------+------------------+------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Floating IP Address <span class="p">|</span> Fixed IP Address <span class="p">|</span> Port <span class="p">|</span>
++--------------------------------------+---------------------+------------------+------+
+<span class="p">|</span> 1976df86-e66a-4f96-81bd-c6ffee6407f1 <span class="p">|</span> <span class="m">172</span>.24.4.3          <span class="p">|</span> None             <span class="p">|</span> None <span class="p">|</span>
++--------------------------------------+---------------------+------------------+------+
+</pre></div>
+</div>
+<ul class="simple">
+<li>In favor of: Use <cite>ip floating list</cite> command</li>
+<li>As of: NA</li>
+<li>Removed in: NA</li>
+<li>Bug: <a class="reference external" href="https://bugs.launchpad.net/python-openstackclient/+bug/1519502">https://bugs.launchpad.net/python-openstackclient/+bug/1519502</a></li>
+<li>Commit: <a class="reference external" href="https://review.openstack.org/#/c/277720/">https://review.openstack.org/#/c/277720/</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="for-developers">
+<h2>For Developers<a class="headerlink" href="#for-developers" title="Permalink to this headline">¶</a></h2>
+<p>If introducing a backwards incompatible change, then add the tag:
+<code class="docutils literal"><span class="pre">BackwardsIncompatibleImpact</span></code> to your git commit message, and if possible,
+update this file.</p>
+<p>To review all changes that are affected, use the following query:</p>
+<p><a class="reference external" href="https://review.openstack.org/#/q/project:openstack/python-openstackclient+AND+message:BackwardsIncompatibleImpact,n,z">https://review.openstack.org/#/q/project:openstack/python-openstackclient+AND+message:BackwardsIncompatibleImpact,n,z</a></p>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="decoder.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Mapping Guide"></i></a>
+          
+          
+            <a href="../configuration/index.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Configuration"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="man/openstack.html">Manual Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-list.html">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Command Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugin-commands.html">Plugin Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decoder.html">Mapping Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Backwards Incompatible Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributor/index.html">Contributor Documentation</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/backwards-incompatible" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "Backwards Incompatible Changes in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

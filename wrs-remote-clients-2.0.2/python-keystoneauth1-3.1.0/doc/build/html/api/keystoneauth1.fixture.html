@@ -1,0 +1,1264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: keystoneauth1.fixture package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>keystoneauth1.fixture package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="keystoneauth1.extras.oauth1.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneauth1.extras.oauth1 package"></i></a>
+    
+    
+    <a href="keystoneauth1.hacking.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.hacking package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">keystoneauth1.fixture package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.fixture.discovery">keystoneauth1.fixture.discovery module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.fixture.exception">keystoneauth1.fixture.exception module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.fixture.hooks">keystoneauth1.fixture.hooks module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.fixture.keystoneauth_betamax">keystoneauth1.fixture.keystoneauth_betamax module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.fixture.serializer">keystoneauth1.fixture.serializer module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.fixture.v2">keystoneauth1.fixture.v2 module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.fixture.v3">keystoneauth1.fixture.v3 module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.fixture">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="keystoneauth1-fixture-package">
+<h1>keystoneauth1.fixture package<a class="headerlink" href="#keystoneauth1-fixture-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-keystoneauth1.fixture.discovery">
+<span id="keystoneauth1-fixture-discovery-module"></span><h2>keystoneauth1.fixture.discovery module<a class="headerlink" href="#module-keystoneauth1.fixture.discovery" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.fixture.discovery.DiscoveryList">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.discovery.</code><code class="descname">DiscoveryList</code><span class="sig-paren">(</span><em>href=None</em>, <em>v2=True</em>, <em>v3=True</em>, <em>v2_id=None</em>, <em>v3_id=None</em>, <em>v2_status=None</em>, <em>v2_updated=None</em>, <em>v2_html=True</em>, <em>v2_pdf=True</em>, <em>v3_status=None</em>, <em>v3_updated=None</em>, <em>v3_json=True</em>, <em>v3_xml=True</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.DiscoveryList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<p>A List of version elements.</p>
+<p>Creates a correctly structured list of identity service endpoints for
+use in testing with discovery.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>href</strong> (<em>string</em>) – The url that this should be based at.</li>
+<li><strong>v2</strong> (<em>bool</em>) – Add a v2 element.</li>
+<li><strong>v3</strong> (<em>bool</em>) – Add a v3 element.</li>
+<li><strong>v2_status</strong> (<em>string</em>) – The status to use for the v2 element.</li>
+<li><strong>v2_updated</strong> (<em>DateTime</em>) – The update time to use for the v2 element.</li>
+<li><strong>v2_html</strong> (<em>bool</em>) – True to add a html link to the v2 element.</li>
+<li><strong>v2_pdf</strong> (<em>bool</em>) – True to add a pdf link to the v2 element.</li>
+<li><strong>v3_status</strong> (<em>string</em>) – The status to use for the v3 element.</li>
+<li><strong>v3_updated</strong> (<em>DateTime</em>) – The update time to use for the v3 element.</li>
+<li><strong>v3_json</strong> (<em>bool</em>) – True to add a html link to the v2 element.</li>
+<li><strong>v3_xml</strong> (<em>bool</em>) – True to add a pdf link to the v2 element.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.discovery.DiscoveryList.TEST_URL">
+<code class="descname">TEST_URL</code><em class="property"> = ‘http://keystone.host:5000/’</em><a class="headerlink" href="#keystoneauth1.fixture.discovery.DiscoveryList.TEST_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.discovery.DiscoveryList.add_microversion">
+<code class="descname">add_microversion</code><span class="sig-paren">(</span><em>href</em>, <em>id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.DiscoveryList.add_microversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a microversion version to the list.</p>
+<p>The parameters are the same as MicroversionDiscovery.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.discovery.DiscoveryList.add_nova_microversion">
+<code class="descname">add_nova_microversion</code><span class="sig-paren">(</span><em>href</em>, <em>id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.DiscoveryList.add_nova_microversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a nova microversion version to the list.</p>
+<p>The parameters are the same as NovaMicroversionDiscovery.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.discovery.DiscoveryList.add_v2">
+<code class="descname">add_v2</code><span class="sig-paren">(</span><em>href</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.DiscoveryList.add_v2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a v2 version to the list.</p>
+<p>The parameters are the same as V2Discovery.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.discovery.DiscoveryList.add_v3">
+<code class="descname">add_v3</code><span class="sig-paren">(</span><em>href</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.DiscoveryList.add_v3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a v3 version to the list.</p>
+<p>The parameters are the same as V3Discovery.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.discovery.DiscoveryList.add_version">
+<code class="descname">add_version</code><span class="sig-paren">(</span><em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.DiscoveryList.add_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new version structure to the list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>version</strong> (<em>dict</em>) – A new version structure to add to the list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.discovery.DiscoveryList.versions">
+<code class="descname">versions</code><a class="headerlink" href="#keystoneauth1.fixture.discovery.DiscoveryList.versions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.fixture.discovery.V2Discovery">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.discovery.</code><code class="descname">V2Discovery</code><span class="sig-paren">(</span><em>href</em>, <em>id=None</em>, <em>html=True</em>, <em>pdf=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.V2Discovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.fixture.discovery.DiscoveryBase</span></code></p>
+<p>A Version element for a V2 identity service endpoint.</p>
+<p>Provides some default values and helper methods for creating a v2.0
+endpoint version structure. Clients should use this instead of creating
+their own structures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>href</strong> (<em>string</em>) – The url that this entry should point to.</li>
+<li><strong>id</strong> (<em>string</em>) – The version id that should be reported. (optional)
+Defaults to ‘v2.0’.</li>
+<li><strong>html</strong> (<em>bool</em>) – Add HTML describedby links to the structure.</li>
+<li><strong>pdf</strong> (<em>bool</em>) – Add PDF describedby links to the structure.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.fixture.discovery.V2Discovery.add_html_description">
+<code class="descname">add_html_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.V2Discovery.add_html_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the HTML described by links.</p>
+<p>The standard structure includes a link to a HTML document with the
+API specification. Add it to this entry.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.discovery.V2Discovery.add_pdf_description">
+<code class="descname">add_pdf_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.V2Discovery.add_pdf_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the PDF described by links.</p>
+<p>The standard structure includes a link to a PDF document with the
+API specification. Add it to this entry.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.fixture.discovery.V3Discovery">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.discovery.</code><code class="descname">V3Discovery</code><span class="sig-paren">(</span><em>href</em>, <em>id=None</em>, <em>json=True</em>, <em>xml=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.V3Discovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.fixture.discovery.DiscoveryBase</span></code></p>
+<p>A Version element for a V3 identity service endpoint.</p>
+<p>Provides some default values and helper methods for creating a v3
+endpoint version structure. Clients should use this instead of creating
+their own structures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>href</strong> – The url that this entry should point to.</li>
+<li><strong>id</strong> (<em>string</em>) – The version id that should be reported. (optional)
+Defaults to ‘v3.0’.</li>
+<li><strong>json</strong> (<em>bool</em>) – Add JSON media-type elements to the structure.</li>
+<li><strong>xml</strong> (<em>bool</em>) – Add XML media-type elements to the structure.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.fixture.discovery.V3Discovery.add_json_media_type">
+<code class="descname">add_json_media_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.V3Discovery.add_json_media_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the JSON media-type links.</p>
+<p>The standard structure includes a list of media-types that the endpoint
+supports. Add JSON to the list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.discovery.V3Discovery.add_xml_media_type">
+<code class="descname">add_xml_media_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.V3Discovery.add_xml_media_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the XML media-type links.</p>
+<p>The standard structure includes a list of media-types that the endpoint
+supports. Add XML to the list.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.fixture.discovery.VersionDiscovery">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.discovery.</code><code class="descname">VersionDiscovery</code><span class="sig-paren">(</span><em>href</em>, <em>id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.discovery.VersionDiscovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.fixture.discovery.DiscoveryBase</span></code></p>
+<p>A Version element for non-keystone services without microversions.</p>
+<p>Provides some default values and helper methods for creating a microversion
+endpoint version structure. Clients should use this instead of creating
+their own structures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>href</strong> (<em>string</em>) – The url that this entry should point to.</li>
+<li><strong>id</strong> (<em>string</em>) – The version id that should be reported.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.fixture.exception">
+<span id="keystoneauth1-fixture-exception-module"></span><h2>keystoneauth1.fixture.exception module<a class="headerlink" href="#module-keystoneauth1.fixture.exception" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="keystoneauth1.fixture.exception.FixtureValidationError">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.fixture.exception.</code><code class="descname">FixtureValidationError</code><a class="headerlink" href="#keystoneauth1.fixture.exception.FixtureValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>The token you created is not legitimate.</p>
+<p>The data contained in the token that was generated is not valid and would
+not have been returned from a keystone server. You should not do testing
+with this token.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.fixture.hooks">
+<span id="keystoneauth1-fixture-hooks-module"></span><h2>keystoneauth1.fixture.hooks module<a class="headerlink" href="#module-keystoneauth1.fixture.hooks" title="Permalink to this headline">¶</a></h2>
+<p>Custom hooks for betamax and keystoneauth.</p>
+<blockquote>
+<div>Module providing a set of hooks specially designed for
+interacting with clouds and keystone authentication.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Yolanda Robla</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="keystoneauth1.fixture.hooks.mask_fixture_values">
+<code class="descclassname">keystoneauth1.fixture.hooks.</code><code class="descname">mask_fixture_values</code><span class="sig-paren">(</span><em>nested</em>, <em>prev_key</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.hooks.mask_fixture_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.fixture.hooks.pre_record_hook">
+<code class="descclassname">keystoneauth1.fixture.hooks.</code><code class="descname">pre_record_hook</code><span class="sig-paren">(</span><em>interaction</em>, <em>cassette</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.hooks.pre_record_hook" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook to mask saved data.</p>
+<p>This hook will be triggered before saving the interaction, and
+will perform two tasks:
+- mask user, project and password in the saved data
+- set token expiration time to an inifinite time.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.fixture.keystoneauth_betamax">
+<span id="keystoneauth1-fixture-keystoneauth-betamax-module"></span><h2>keystoneauth1.fixture.keystoneauth_betamax module<a class="headerlink" href="#module-keystoneauth1.fixture.keystoneauth_betamax" title="Permalink to this headline">¶</a></h2>
+<p>A fixture to wrap the session constructor for use with Betamax.</p>
+<dl class="class">
+<dt id="keystoneauth1.fixture.keystoneauth_betamax.BetamaxFixture">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.keystoneauth_betamax.</code><code class="descname">BetamaxFixture</code><span class="sig-paren">(</span><em>cassette_name</em>, <em>cassette_library_dir=None</em>, <em>serializer=None</em>, <em>record=False</em>, <em>pre_record_hook=&lt;function pre_record_hook at 0x4d2bb90&gt;</em>, <em>serializer_name=None</em>, <em>request_matchers=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.keystoneauth_betamax.BetamaxFixture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">fixtures.fixture.Fixture</span></code></p>
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.keystoneauth_betamax.BetamaxFixture.serializer_name">
+<code class="descname">serializer_name</code><a class="headerlink" href="#keystoneauth1.fixture.keystoneauth_betamax.BetamaxFixture.serializer_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the name of the selected serializer.</p>
+<p>If a class was specified, use the name attribute to generate this,
+otherwise, use the serializer_name parameter from <code class="docutils literal"><span class="pre">__init__</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Name of the serializer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.keystoneauth_betamax.BetamaxFixture.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.keystoneauth_betamax.BetamaxFixture.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.fixture.serializer">
+<span id="keystoneauth1-fixture-serializer-module"></span><h2>keystoneauth1.fixture.serializer module<a class="headerlink" href="#module-keystoneauth1.fixture.serializer" title="Permalink to this headline">¶</a></h2>
+<p>A serializer to emit YAML but with request body in nicely formatted JSON.</p>
+<dl class="class">
+<dt id="keystoneauth1.fixture.serializer.YamlJsonSerializer">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.serializer.</code><code class="descname">YamlJsonSerializer</code><a class="headerlink" href="#keystoneauth1.fixture.serializer.YamlJsonSerializer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">betamax.serializers.base.BaseSerializer</span></code></p>
+<dl class="method">
+<dt id="keystoneauth1.fixture.serializer.YamlJsonSerializer.deserialize">
+<code class="descname">deserialize</code><span class="sig-paren">(</span><em>cassette_data</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.serializer.YamlJsonSerializer.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="keystoneauth1.fixture.serializer.YamlJsonSerializer.generate_cassette_name">
+<em class="property">static </em><code class="descname">generate_cassette_name</code><span class="sig-paren">(</span><em>cassette_library_dir</em>, <em>cassette_name</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.serializer.YamlJsonSerializer.generate_cassette_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.serializer.YamlJsonSerializer.name">
+<code class="descname">name</code><em class="property"> = ‘yamljson’</em><a class="headerlink" href="#keystoneauth1.fixture.serializer.YamlJsonSerializer.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.serializer.YamlJsonSerializer.serialize">
+<code class="descname">serialize</code><span class="sig-paren">(</span><em>cassette_data</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.serializer.YamlJsonSerializer.serialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.fixture.v2">
+<span id="keystoneauth1-fixture-v2-module"></span><h2>keystoneauth1.fixture.v2 module<a class="headerlink" href="#module-keystoneauth1.fixture.v2" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.fixture.v2.Token">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.v2.</code><code class="descname">Token</code><span class="sig-paren">(</span><em>token_id=None</em>, <em>expires=None</em>, <em>issued=None</em>, <em>tenant_id=None</em>, <em>tenant_name=None</em>, <em>user_id=None</em>, <em>user_name=None</em>, <em>trust_id=None</em>, <em>trustee_user_id=None</em>, <em>audit_id=None</em>, <em>audit_chain_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v2.Token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<p>A V2 Keystone token that can be used for testing.</p>
+<p>This object is designed to allow clients to generate a correct V2 token for
+use in there test code. It should prevent clients from having to know the
+correct token format and allow them to test the portions of token handling
+that matter to them and not copy and paste sample.</p>
+<dl class="method">
+<dt id="keystoneauth1.fixture.v2.Token.add_role">
+<code class="descname">add_role</code><span class="sig-paren">(</span><em>name=None</em>, <em>id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.add_role" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v2.Token.add_service">
+<code class="descname">add_service</code><span class="sig-paren">(</span><em>type</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.add_service" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.audit_chain_id">
+<code class="descname">audit_chain_id</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.audit_chain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.audit_id">
+<code class="descname">audit_id</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.audit_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.expires">
+<code class="descname">expires</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.expires" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.expires_str">
+<code class="descname">expires_str</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.expires_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.issued">
+<code class="descname">issued</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.issued" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.issued_str">
+<code class="descname">issued_str</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.issued_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.root">
+<code class="descname">root</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v2.Token.set_bind">
+<code class="descname">set_bind</code><span class="sig-paren">(</span><em>name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.set_bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v2.Token.set_scope">
+<code class="descname">set_scope</code><span class="sig-paren">(</span><em>id=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.set_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v2.Token.set_trust">
+<code class="descname">set_trust</code><span class="sig-paren">(</span><em>id=None</em>, <em>trustee_user_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.set_trust" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.tenant_id">
+<code class="descname">tenant_id</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.tenant_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.tenant_name">
+<code class="descname">tenant_name</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.tenant_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.token_id">
+<code class="descname">token_id</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.token_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.trust_id">
+<code class="descname">trust_id</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.trust_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.trustee_user_id">
+<code class="descname">trustee_user_id</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.trustee_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v2.Token.user_name">
+<code class="descname">user_name</code><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.user_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v2.Token.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v2.Token.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.fixture.v3">
+<span id="keystoneauth1-fixture-v3-module"></span><h2>keystoneauth1.fixture.v3 module<a class="headerlink" href="#module-keystoneauth1.fixture.v3" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.fixture.v3.Token">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.v3.</code><code class="descname">Token</code><span class="sig-paren">(</span><em>expires=None</em>, <em>issued=None</em>, <em>user_id=None</em>, <em>user_name=None</em>, <em>user_domain_id=None</em>, <em>user_domain_name=None</em>, <em>methods=None</em>, <em>project_id=None</em>, <em>project_name=None</em>, <em>project_domain_id=None</em>, <em>project_domain_name=None</em>, <em>domain_id=None</em>, <em>domain_name=None</em>, <em>trust_id=None</em>, <em>trust_impersonation=None</em>, <em>trustee_user_id=None</em>, <em>trustor_user_id=None</em>, <em>oauth_access_token_id=None</em>, <em>oauth_consumer_id=None</em>, <em>audit_id=None</em>, <em>audit_chain_id=None</em>, <em>is_admin_project=None</em>, <em>project_is_domain=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.Token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<p>A V3 Keystone token that can be used for testing.</p>
+<p>This object is designed to allow clients to generate a correct V3 token for
+use in there test code. It should prevent clients from having to know the
+correct token format and allow them to test the portions of token handling
+that matter to them and not copy and paste sample.</p>
+<dl class="method">
+<dt id="keystoneauth1.fixture.v3.Token.add_role">
+<code class="descname">add_role</code><span class="sig-paren">(</span><em>name=None</em>, <em>id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.add_role" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v3.Token.add_service">
+<code class="descname">add_service</code><span class="sig-paren">(</span><em>type</em>, <em>name=None</em>, <em>id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.add_service" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v3.Token.add_service_provider">
+<code class="descname">add_service_provider</code><span class="sig-paren">(</span><em>sp_id</em>, <em>sp_auth_url</em>, <em>sp_url</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.add_service_provider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.audit_chain_id">
+<code class="descname">audit_chain_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.audit_chain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.audit_id">
+<code class="descname">audit_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.audit_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.domain_id">
+<code class="descname">domain_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.domain_name">
+<code class="descname">domain_name</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.expires">
+<code class="descname">expires</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.expires" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.expires_str">
+<code class="descname">expires_str</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.expires_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.is_admin_project">
+<code class="descname">is_admin_project</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.is_admin_project" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.issued">
+<code class="descname">issued</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.issued" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.issued_str">
+<code class="descname">issued_str</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.issued_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.methods">
+<code class="descname">methods</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.oauth_access_token_id">
+<code class="descname">oauth_access_token_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.oauth_access_token_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.oauth_consumer_id">
+<code class="descname">oauth_consumer_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.oauth_consumer_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.project_domain_id">
+<code class="descname">project_domain_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.project_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.project_domain_name">
+<code class="descname">project_domain_name</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.project_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.project_id">
+<code class="descname">project_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.project_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.project_is_domain">
+<code class="descname">project_is_domain</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.project_is_domain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.project_name">
+<code class="descname">project_name</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.project_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.role_ids">
+<code class="descname">role_ids</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.role_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.role_names">
+<code class="descname">role_names</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.role_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.root">
+<code class="descname">root</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.root" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.service_providers">
+<code class="descname">service_providers</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.service_providers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v3.Token.set_bind">
+<code class="descname">set_bind</code><span class="sig-paren">(</span><em>name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.set_bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v3.Token.set_domain_scope">
+<code class="descname">set_domain_scope</code><span class="sig-paren">(</span><em>id=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.set_domain_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v3.Token.set_oauth">
+<code class="descname">set_oauth</code><span class="sig-paren">(</span><em>access_token_id=None</em>, <em>consumer_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.set_oauth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v3.Token.set_project_scope">
+<code class="descname">set_project_scope</code><span class="sig-paren">(</span><em>id=None</em>, <em>name=None</em>, <em>domain_id=None</em>, <em>domain_name=None</em>, <em>is_domain=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.set_project_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v3.Token.set_trust_scope">
+<code class="descname">set_trust_scope</code><span class="sig-paren">(</span><em>id=None</em>, <em>impersonation=False</em>, <em>trustee_user_id=None</em>, <em>trustor_user_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.set_trust_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.trust_id">
+<code class="descname">trust_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.trust_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.trust_impersonation">
+<code class="descname">trust_impersonation</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.trust_impersonation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.trustee_user_id">
+<code class="descname">trustee_user_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.trustee_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.trustor_user_id">
+<code class="descname">trustor_user_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.trustor_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.user_domain_id">
+<code class="descname">user_domain_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.user_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.user_domain_name">
+<code class="descname">user_domain_name</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.user_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.Token.user_name">
+<code class="descname">user_name</code><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.user_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v3.Token.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.Token.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.fixture.v3.V3FederationToken">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.v3.</code><code class="descname">V3FederationToken</code><span class="sig-paren">(</span><em>methods=None</em>, <em>identity_provider=None</em>, <em>protocol=None</em>, <em>groups=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.V3FederationToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.fixture.v3.Token" title="keystoneauth1.fixture.v3.Token"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.fixture.v3.Token</span></code></a></p>
+<p>A V3 Keystone Federation token that can be used for testing.</p>
+<p>Similar to V3Token, this object is designed to allow clients to generate
+a correct V3 federation token for use in test code.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.v3.V3FederationToken.FEDERATED_DOMAIN_ID">
+<code class="descname">FEDERATED_DOMAIN_ID</code><em class="property"> = ‘Federated’</em><a class="headerlink" href="#keystoneauth1.fixture.v3.V3FederationToken.FEDERATED_DOMAIN_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.v3.V3FederationToken.add_federation_info_to_user">
+<code class="descname">add_federation_info_to_user</code><span class="sig-paren">(</span><em>identity_provider=None</em>, <em>protocol=None</em>, <em>groups=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.v3.V3FederationToken.add_federation_info_to_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.fixture">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-keystoneauth1.fixture" title="Permalink to this headline">¶</a></h2>
+<p>Produce keystone compliant structures for use in testing.</p>
+<p>They are part of the public API because they may be relied upon to generate
+test tokens for other clients. However they should never be imported into the
+main client (keystoneauth or other). Because of this there may be dependencies
+from this module on libraries that are only available in testing.</p>
+<dl class="class">
+<dt id="keystoneauth1.fixture.DiscoveryList">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.</code><code class="descname">DiscoveryList</code><span class="sig-paren">(</span><em>href=None</em>, <em>v2=True</em>, <em>v3=True</em>, <em>v2_id=None</em>, <em>v3_id=None</em>, <em>v2_status=None</em>, <em>v2_updated=None</em>, <em>v2_html=True</em>, <em>v2_pdf=True</em>, <em>v3_status=None</em>, <em>v3_updated=None</em>, <em>v3_json=True</em>, <em>v3_xml=True</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.DiscoveryList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<p>A List of version elements.</p>
+<p>Creates a correctly structured list of identity service endpoints for
+use in testing with discovery.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>href</strong> (<em>string</em>) – The url that this should be based at.</li>
+<li><strong>v2</strong> (<em>bool</em>) – Add a v2 element.</li>
+<li><strong>v3</strong> (<em>bool</em>) – Add a v3 element.</li>
+<li><strong>v2_status</strong> (<em>string</em>) – The status to use for the v2 element.</li>
+<li><strong>v2_updated</strong> (<em>DateTime</em>) – The update time to use for the v2 element.</li>
+<li><strong>v2_html</strong> (<em>bool</em>) – True to add a html link to the v2 element.</li>
+<li><strong>v2_pdf</strong> (<em>bool</em>) – True to add a pdf link to the v2 element.</li>
+<li><strong>v3_status</strong> (<em>string</em>) – The status to use for the v3 element.</li>
+<li><strong>v3_updated</strong> (<em>DateTime</em>) – The update time to use for the v3 element.</li>
+<li><strong>v3_json</strong> (<em>bool</em>) – True to add a html link to the v2 element.</li>
+<li><strong>v3_xml</strong> (<em>bool</em>) – True to add a pdf link to the v2 element.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.DiscoveryList.TEST_URL">
+<code class="descname">TEST_URL</code><em class="property"> = ‘http://keystone.host:5000/’</em><a class="headerlink" href="#keystoneauth1.fixture.DiscoveryList.TEST_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.DiscoveryList.add_microversion">
+<code class="descname">add_microversion</code><span class="sig-paren">(</span><em>href</em>, <em>id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.DiscoveryList.add_microversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a microversion version to the list.</p>
+<p>The parameters are the same as MicroversionDiscovery.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.DiscoveryList.add_nova_microversion">
+<code class="descname">add_nova_microversion</code><span class="sig-paren">(</span><em>href</em>, <em>id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.DiscoveryList.add_nova_microversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a nova microversion version to the list.</p>
+<p>The parameters are the same as NovaMicroversionDiscovery.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.DiscoveryList.add_v2">
+<code class="descname">add_v2</code><span class="sig-paren">(</span><em>href</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.DiscoveryList.add_v2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a v2 version to the list.</p>
+<p>The parameters are the same as V2Discovery.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.DiscoveryList.add_v3">
+<code class="descname">add_v3</code><span class="sig-paren">(</span><em>href</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.DiscoveryList.add_v3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a v3 version to the list.</p>
+<p>The parameters are the same as V3Discovery.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.DiscoveryList.add_version">
+<code class="descname">add_version</code><span class="sig-paren">(</span><em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.DiscoveryList.add_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new version structure to the list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>version</strong> (<em>dict</em>) – A new version structure to add to the list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.DiscoveryList.versions">
+<code class="descname">versions</code><a class="headerlink" href="#keystoneauth1.fixture.DiscoveryList.versions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.fixture.FixtureValidationError">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.fixture.</code><code class="descname">FixtureValidationError</code><a class="headerlink" href="#keystoneauth1.fixture.FixtureValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>The token you created is not legitimate.</p>
+<p>The data contained in the token that was generated is not valid and would
+not have been returned from a keystone server. You should not do testing
+with this token.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.fixture.V2Discovery">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.</code><code class="descname">V2Discovery</code><span class="sig-paren">(</span><em>href</em>, <em>id=None</em>, <em>html=True</em>, <em>pdf=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.V2Discovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.fixture.discovery.DiscoveryBase</span></code></p>
+<p>A Version element for a V2 identity service endpoint.</p>
+<p>Provides some default values and helper methods for creating a v2.0
+endpoint version structure. Clients should use this instead of creating
+their own structures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>href</strong> (<em>string</em>) – The url that this entry should point to.</li>
+<li><strong>id</strong> (<em>string</em>) – The version id that should be reported. (optional)
+Defaults to ‘v2.0’.</li>
+<li><strong>html</strong> (<em>bool</em>) – Add HTML describedby links to the structure.</li>
+<li><strong>pdf</strong> (<em>bool</em>) – Add PDF describedby links to the structure.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.fixture.V2Discovery.add_html_description">
+<code class="descname">add_html_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.V2Discovery.add_html_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the HTML described by links.</p>
+<p>The standard structure includes a link to a HTML document with the
+API specification. Add it to this entry.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.V2Discovery.add_pdf_description">
+<code class="descname">add_pdf_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.V2Discovery.add_pdf_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the PDF described by links.</p>
+<p>The standard structure includes a link to a PDF document with the
+API specification. Add it to this entry.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.fixture.V3Discovery">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.</code><code class="descname">V3Discovery</code><span class="sig-paren">(</span><em>href</em>, <em>id=None</em>, <em>json=True</em>, <em>xml=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.V3Discovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.fixture.discovery.DiscoveryBase</span></code></p>
+<p>A Version element for a V3 identity service endpoint.</p>
+<p>Provides some default values and helper methods for creating a v3
+endpoint version structure. Clients should use this instead of creating
+their own structures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>href</strong> – The url that this entry should point to.</li>
+<li><strong>id</strong> (<em>string</em>) – The version id that should be reported. (optional)
+Defaults to ‘v3.0’.</li>
+<li><strong>json</strong> (<em>bool</em>) – Add JSON media-type elements to the structure.</li>
+<li><strong>xml</strong> (<em>bool</em>) – Add XML media-type elements to the structure.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="keystoneauth1.fixture.V3Discovery.add_json_media_type">
+<code class="descname">add_json_media_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.V3Discovery.add_json_media_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the JSON media-type links.</p>
+<p>The standard structure includes a list of media-types that the endpoint
+supports. Add JSON to the list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.V3Discovery.add_xml_media_type">
+<code class="descname">add_xml_media_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.V3Discovery.add_xml_media_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the XML media-type links.</p>
+<p>The standard structure includes a list of media-types that the endpoint
+supports. Add XML to the list.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.V2Token">
+<code class="descclassname">keystoneauth1.fixture.</code><code class="descname">V2Token</code><a class="headerlink" href="#keystoneauth1.fixture.V2Token" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Token</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.V3Token">
+<code class="descclassname">keystoneauth1.fixture.</code><code class="descname">V3Token</code><a class="headerlink" href="#keystoneauth1.fixture.V3Token" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Token</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.fixture.V3FederationToken">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.</code><code class="descname">V3FederationToken</code><span class="sig-paren">(</span><em>methods=None</em>, <em>identity_provider=None</em>, <em>protocol=None</em>, <em>groups=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.V3FederationToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.fixture.v3.Token" title="keystoneauth1.fixture.v3.Token"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.fixture.v3.Token</span></code></a></p>
+<p>A V3 Keystone Federation token that can be used for testing.</p>
+<p>Similar to V3Token, this object is designed to allow clients to generate
+a correct V3 federation token for use in test code.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.fixture.V3FederationToken.FEDERATED_DOMAIN_ID">
+<code class="descname">FEDERATED_DOMAIN_ID</code><em class="property"> = ‘Federated’</em><a class="headerlink" href="#keystoneauth1.fixture.V3FederationToken.FEDERATED_DOMAIN_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.fixture.V3FederationToken.add_federation_info_to_user">
+<code class="descname">add_federation_info_to_user</code><span class="sig-paren">(</span><em>identity_provider=None</em>, <em>protocol=None</em>, <em>groups=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.V3FederationToken.add_federation_info_to_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.fixture.VersionDiscovery">
+<em class="property">class </em><code class="descclassname">keystoneauth1.fixture.</code><code class="descname">VersionDiscovery</code><span class="sig-paren">(</span><em>href</em>, <em>id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.fixture.VersionDiscovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.fixture.discovery.DiscoveryBase</span></code></p>
+<p>A Version element for non-keystone services without microversions.</p>
+<p>Provides some default values and helper methods for creating a microversion
+endpoint version structure. Clients should use this instead of creating
+their own structures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>href</strong> (<em>string</em>) – The url that this entry should point to.</li>
+<li><strong>id</strong> (<em>string</em>) – The version id that should be reported.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="keystoneauth1.extras.oauth1.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneauth1.extras.oauth1 package"></i></a>
+          
+          
+            <a href="keystoneauth1.hacking.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.hacking package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../using-sessions.html">Using Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication-plugins.html">Authentication Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin-options.html">Plugin Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extras.html">Extras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating.html">Migrating from keystoneclient</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="keystoneauth1.html">keystoneauth1 package</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">CHANGES</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "api/keystoneauth1.fixture" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/keystoneauth/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 774691368a72297ed9bacec1afa15cfcb12ca896";
+        var bugProject = "keystoneauth";
+        var bugTitle = "keystoneauth1.fixture package in keystoneauth1";
+    var fieldTags = "doc";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.1.0 on 2018-03-20 15:50";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

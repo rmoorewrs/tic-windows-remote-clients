@@ -1,0 +1,943 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Plugin Commands</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Plugin Commands</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="commands.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Command Structure"></i></a>
+    
+    
+    <a href="authentication.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Authentication"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Plugin Commands</a><ul>
+<li><a class="reference internal" href="#aodh">aodh</a></li>
+<li><a class="reference internal" href="#barbican">barbican</a></li>
+<li><a class="reference internal" href="#congress">congress</a></li>
+<li><a class="reference internal" href="#designate">designate</a></li>
+<li><a class="reference internal" href="#gnocchi">gnocchi</a></li>
+<li><a class="reference internal" href="#heat">heat</a></li>
+<li><a class="reference internal" href="#ironic">ironic</a></li>
+<li><a class="reference internal" href="#ironic-inspector">ironic-inspector</a></li>
+<li><a class="reference internal" href="#mistral">mistral</a></li>
+<li><a class="reference internal" href="#neutron">neutron</a><ul>
+<li><a class="reference internal" href="#bgpvpn-create">bgpvpn_create</a></li>
+<li><a class="reference internal" href="#bgpvpn-delete">bgpvpn_delete</a></li>
+<li><a class="reference internal" href="#bgpvpn-list">bgpvpn_list</a></li>
+<li><a class="reference internal" href="#bgpvpn-network-association-create">bgpvpn_network_association_create</a></li>
+<li><a class="reference internal" href="#bgpvpn-network-association-delete">bgpvpn_network_association_delete</a></li>
+<li><a class="reference internal" href="#bgpvpn-network-association-list">bgpvpn_network_association_list</a></li>
+<li><a class="reference internal" href="#bgpvpn-network-association-show">bgpvpn_network_association_show</a></li>
+<li><a class="reference internal" href="#bgpvpn-router-association-create">bgpvpn_router_association_create</a></li>
+<li><a class="reference internal" href="#bgpvpn-router-association-delete">bgpvpn_router_association_delete</a></li>
+<li><a class="reference internal" href="#bgpvpn-router-association-list">bgpvpn_router_association_list</a></li>
+<li><a class="reference internal" href="#bgpvpn-router-association-show">bgpvpn_router_association_show</a></li>
+<li><a class="reference internal" href="#bgpvpn-set">bgpvpn_set</a></li>
+<li><a class="reference internal" href="#bgpvpn-show">bgpvpn_show</a></li>
+<li><a class="reference internal" href="#bgpvpn-unset">bgpvpn_unset</a></li>
+<li><a class="reference internal" href="#firewall-group-create">firewall_group_create</a></li>
+<li><a class="reference internal" href="#firewall-group-delete">firewall_group_delete</a></li>
+<li><a class="reference internal" href="#firewall-group-list">firewall_group_list</a></li>
+<li><a class="reference internal" href="#firewall-group-policy-add-rule">firewall_group_policy_add_rule</a></li>
+<li><a class="reference internal" href="#firewall-group-policy-create">firewall_group_policy_create</a></li>
+<li><a class="reference internal" href="#firewall-group-policy-delete">firewall_group_policy_delete</a></li>
+<li><a class="reference internal" href="#firewall-group-policy-list">firewall_group_policy_list</a></li>
+<li><a class="reference internal" href="#firewall-group-policy-remove-rule">firewall_group_policy_remove_rule</a></li>
+<li><a class="reference internal" href="#firewall-group-policy-set">firewall_group_policy_set</a></li>
+<li><a class="reference internal" href="#firewall-group-policy-show">firewall_group_policy_show</a></li>
+<li><a class="reference internal" href="#firewall-group-policy-unset">firewall_group_policy_unset</a></li>
+<li><a class="reference internal" href="#firewall-group-rule-create">firewall_group_rule_create</a></li>
+<li><a class="reference internal" href="#firewall-group-rule-delete">firewall_group_rule_delete</a></li>
+<li><a class="reference internal" href="#firewall-group-rule-list">firewall_group_rule_list</a></li>
+<li><a class="reference internal" href="#firewall-group-rule-set">firewall_group_rule_set</a></li>
+<li><a class="reference internal" href="#firewall-group-rule-show">firewall_group_rule_show</a></li>
+<li><a class="reference internal" href="#firewall-group-rule-unset">firewall_group_rule_unset</a></li>
+<li><a class="reference internal" href="#firewall-group-set">firewall_group_set</a></li>
+<li><a class="reference internal" href="#firewall-group-show">firewall_group_show</a></li>
+<li><a class="reference internal" href="#firewall-group-unset">firewall_group_unset</a></li>
+<li><a class="reference internal" href="#network-subport-list">network_subport_list</a></li>
+<li><a class="reference internal" href="#network-trunk-create">network_trunk_create</a></li>
+<li><a class="reference internal" href="#network-trunk-delete">network_trunk_delete</a></li>
+<li><a class="reference internal" href="#network-trunk-list">network_trunk_list</a></li>
+<li><a class="reference internal" href="#network-trunk-set">network_trunk_set</a></li>
+<li><a class="reference internal" href="#network-trunk-show">network_trunk_show</a></li>
+<li><a class="reference internal" href="#network-trunk-unset">network_trunk_unset</a></li>
+<li><a class="reference internal" href="#sfc-flow-classifier-create">sfc_flow_classifier_create</a></li>
+<li><a class="reference internal" href="#sfc-flow-classifier-delete">sfc_flow_classifier_delete</a></li>
+<li><a class="reference internal" href="#sfc-flow-classifier-list">sfc_flow_classifier_list</a></li>
+<li><a class="reference internal" href="#sfc-flow-classifier-set">sfc_flow_classifier_set</a></li>
+<li><a class="reference internal" href="#sfc-flow-classifier-show">sfc_flow_classifier_show</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-create">sfc_port_chain_create</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-delete">sfc_port_chain_delete</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-list">sfc_port_chain_list</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-set">sfc_port_chain_set</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-show">sfc_port_chain_show</a></li>
+<li><a class="reference internal" href="#sfc-port-chain-unset">sfc_port_chain_unset</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-create">sfc_port_pair_create</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-delete">sfc_port_pair_delete</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-create">sfc_port_pair_group_create</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-delete">sfc_port_pair_group_delete</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-list">sfc_port_pair_group_list</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-set">sfc_port_pair_group_set</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-show">sfc_port_pair_group_show</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-group-unset">sfc_port_pair_group_unset</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-list">sfc_port_pair_list</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-set">sfc_port_pair_set</a></li>
+<li><a class="reference internal" href="#sfc-port-pair-show">sfc_port_pair_show</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#octavia">octavia</a></li>
+<li><a class="reference internal" href="#sahara">sahara</a></li>
+<li><a class="reference internal" href="#searchlight">searchlight</a></li>
+<li><a class="reference internal" href="#senlin">senlin</a></li>
+<li><a class="reference internal" href="#trove">trove</a></li>
+<li><a class="reference internal" href="#zaqar">zaqar</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="plugin-commands">
+<span id="id1"></span><h1>Plugin Commands<a class="headerlink" href="#plugin-commands" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>neutronclient – OpenStackClient plugin for advanced Networking service.</li>
+</ul>
+<div class="section" id="aodh">
+<h2>aodh<a class="headerlink" href="#aodh" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="barbican">
+<h2>barbican<a class="headerlink" href="#barbican" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="congress">
+<h2>congress<a class="headerlink" href="#congress" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="designate">
+<h2>designate<a class="headerlink" href="#designate" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="gnocchi">
+<h2>gnocchi<a class="headerlink" href="#gnocchi" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="heat">
+<h2>heat<a class="headerlink" href="#heat" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ironic">
+<h2>ironic<a class="headerlink" href="#ironic" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ironic-inspector">
+<h2>ironic-inspector<a class="headerlink" href="#ironic-inspector" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="mistral">
+<h2>mistral<a class="headerlink" href="#mistral" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="neutron">
+<h2>neutron<a class="headerlink" href="#neutron" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bgpvpn-create">
+<h3>bgpvpn_create<a class="headerlink" href="#bgpvpn-create" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_create = neutronclient.osc.v2.networking_bgpvpn.bgpvpn:CreateBgpvpn</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-delete">
+<h3>bgpvpn_delete<a class="headerlink" href="#bgpvpn-delete" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_delete = neutronclient.osc.v2.networking_bgpvpn.bgpvpn:DeleteBgpvpn</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-list">
+<h3>bgpvpn_list<a class="headerlink" href="#bgpvpn-list" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_list = neutronclient.osc.v2.networking_bgpvpn.bgpvpn:ListBgpvpn</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-network-association-create">
+<h3>bgpvpn_network_association_create<a class="headerlink" href="#bgpvpn-network-association-create" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_network_association_create = neutronclient.osc.v2.networking_bgpvpn.network_association:CreateBgpvpnNetAssoc</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-network-association-delete">
+<h3>bgpvpn_network_association_delete<a class="headerlink" href="#bgpvpn-network-association-delete" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_network_association_delete = neutronclient.osc.v2.networking_bgpvpn.network_association:DeleteBgpvpnNetAssoc</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-network-association-list">
+<h3>bgpvpn_network_association_list<a class="headerlink" href="#bgpvpn-network-association-list" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_network_association_list = neutronclient.osc.v2.networking_bgpvpn.network_association:ListBgpvpnNetAssoc</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-network-association-show">
+<h3>bgpvpn_network_association_show<a class="headerlink" href="#bgpvpn-network-association-show" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_network_association_show = neutronclient.osc.v2.networking_bgpvpn.network_association:ShowBgpvpnNetAssoc</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-router-association-create">
+<h3>bgpvpn_router_association_create<a class="headerlink" href="#bgpvpn-router-association-create" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_router_association_create = neutronclient.osc.v2.networking_bgpvpn.router_association:CreateBgpvpnRouterAssoc</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-router-association-delete">
+<h3>bgpvpn_router_association_delete<a class="headerlink" href="#bgpvpn-router-association-delete" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_router_association_delete = neutronclient.osc.v2.networking_bgpvpn.router_association:DeleteBgpvpnRouterAssoc</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-router-association-list">
+<h3>bgpvpn_router_association_list<a class="headerlink" href="#bgpvpn-router-association-list" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_router_association_list = neutronclient.osc.v2.networking_bgpvpn.router_association:ListBgpvpnRouterAssoc</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-router-association-show">
+<h3>bgpvpn_router_association_show<a class="headerlink" href="#bgpvpn-router-association-show" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_router_association_show = neutronclient.osc.v2.networking_bgpvpn.router_association:ShowBgpvpnRouterAssoc</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-set">
+<h3>bgpvpn_set<a class="headerlink" href="#bgpvpn-set" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_set = neutronclient.osc.v2.networking_bgpvpn.bgpvpn:SetBgpvpn</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-show">
+<h3>bgpvpn_show<a class="headerlink" href="#bgpvpn-show" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_show = neutronclient.osc.v2.networking_bgpvpn.bgpvpn:ShowBgpvpn</p>
+</div>
+</div>
+<div class="section" id="bgpvpn-unset">
+<h3>bgpvpn_unset<a class="headerlink" href="#bgpvpn-unset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in bgpvpn_unset = neutronclient.osc.v2.networking_bgpvpn.bgpvpn:UnsetBgpvpn</p>
+</div>
+</div>
+<div class="section" id="firewall-group-create">
+<h3>firewall_group_create<a class="headerlink" href="#firewall-group-create" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_create = neutronclient.osc.v2.fwaas.firewallgroup:CreateFirewallGroup</p>
+</div>
+</div>
+<div class="section" id="firewall-group-delete">
+<h3>firewall_group_delete<a class="headerlink" href="#firewall-group-delete" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_delete = neutronclient.osc.v2.fwaas.firewallgroup:DeleteFirewallGroup</p>
+</div>
+</div>
+<div class="section" id="firewall-group-list">
+<h3>firewall_group_list<a class="headerlink" href="#firewall-group-list" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_list = neutronclient.osc.v2.fwaas.firewallgroup:ListFirewallGroup</p>
+</div>
+</div>
+<div class="section" id="firewall-group-policy-add-rule">
+<h3>firewall_group_policy_add_rule<a class="headerlink" href="#firewall-group-policy-add-rule" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_policy_add_rule = neutronclient.osc.v2.fwaas.firewallpolicy:FirewallPolicyInsertRule</p>
+</div>
+</div>
+<div class="section" id="firewall-group-policy-create">
+<h3>firewall_group_policy_create<a class="headerlink" href="#firewall-group-policy-create" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_policy_create = neutronclient.osc.v2.fwaas.firewallpolicy:CreateFirewallPolicy</p>
+</div>
+</div>
+<div class="section" id="firewall-group-policy-delete">
+<h3>firewall_group_policy_delete<a class="headerlink" href="#firewall-group-policy-delete" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_policy_delete = neutronclient.osc.v2.fwaas.firewallpolicy:DeleteFirewallPolicy</p>
+</div>
+</div>
+<div class="section" id="firewall-group-policy-list">
+<h3>firewall_group_policy_list<a class="headerlink" href="#firewall-group-policy-list" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_policy_list = neutronclient.osc.v2.fwaas.firewallpolicy:ListFirewallPolicy</p>
+</div>
+</div>
+<div class="section" id="firewall-group-policy-remove-rule">
+<h3>firewall_group_policy_remove_rule<a class="headerlink" href="#firewall-group-policy-remove-rule" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_policy_remove_rule = neutronclient.osc.v2.fwaas.firewallpolicy:FirewallPolicyRemoveRule</p>
+</div>
+</div>
+<div class="section" id="firewall-group-policy-set">
+<h3>firewall_group_policy_set<a class="headerlink" href="#firewall-group-policy-set" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_policy_set = neutronclient.osc.v2.fwaas.firewallpolicy:SetFirewallPolicy</p>
+</div>
+</div>
+<div class="section" id="firewall-group-policy-show">
+<h3>firewall_group_policy_show<a class="headerlink" href="#firewall-group-policy-show" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_policy_show = neutronclient.osc.v2.fwaas.firewallpolicy:ShowFirewallPolicy</p>
+</div>
+</div>
+<div class="section" id="firewall-group-policy-unset">
+<h3>firewall_group_policy_unset<a class="headerlink" href="#firewall-group-policy-unset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_policy_unset = neutronclient.osc.v2.fwaas.firewallpolicy:UnsetFirewallPolicy</p>
+</div>
+</div>
+<div class="section" id="firewall-group-rule-create">
+<h3>firewall_group_rule_create<a class="headerlink" href="#firewall-group-rule-create" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_rule_create = neutronclient.osc.v2.fwaas.firewallrule:CreateFirewallRule</p>
+</div>
+</div>
+<div class="section" id="firewall-group-rule-delete">
+<h3>firewall_group_rule_delete<a class="headerlink" href="#firewall-group-rule-delete" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_rule_delete = neutronclient.osc.v2.fwaas.firewallrule:DeleteFirewallRule</p>
+</div>
+</div>
+<div class="section" id="firewall-group-rule-list">
+<h3>firewall_group_rule_list<a class="headerlink" href="#firewall-group-rule-list" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_rule_list = neutronclient.osc.v2.fwaas.firewallrule:ListFirewallRule</p>
+</div>
+</div>
+<div class="section" id="firewall-group-rule-set">
+<h3>firewall_group_rule_set<a class="headerlink" href="#firewall-group-rule-set" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_rule_set = neutronclient.osc.v2.fwaas.firewallrule:SetFirewallRule</p>
+</div>
+</div>
+<div class="section" id="firewall-group-rule-show">
+<h3>firewall_group_rule_show<a class="headerlink" href="#firewall-group-rule-show" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_rule_show = neutronclient.osc.v2.fwaas.firewallrule:ShowFirewallRule</p>
+</div>
+</div>
+<div class="section" id="firewall-group-rule-unset">
+<h3>firewall_group_rule_unset<a class="headerlink" href="#firewall-group-rule-unset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_rule_unset = neutronclient.osc.v2.fwaas.firewallrule:UnsetFirewallRule</p>
+</div>
+</div>
+<div class="section" id="firewall-group-set">
+<h3>firewall_group_set<a class="headerlink" href="#firewall-group-set" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_set = neutronclient.osc.v2.fwaas.firewallgroup:SetFirewallGroup</p>
+</div>
+</div>
+<div class="section" id="firewall-group-show">
+<h3>firewall_group_show<a class="headerlink" href="#firewall-group-show" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_show = neutronclient.osc.v2.fwaas.firewallgroup:ShowFirewallGroup</p>
+</div>
+</div>
+<div class="section" id="firewall-group-unset">
+<h3>firewall_group_unset<a class="headerlink" href="#firewall-group-unset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in firewall_group_unset = neutronclient.osc.v2.fwaas.firewallgroup:UnsetFirewallGroup</p>
+</div>
+</div>
+<div class="section" id="network-subport-list">
+<h3>network_subport_list<a class="headerlink" href="#network-subport-list" title="Permalink to this headline">¶</a></h3>
+<p>List all subports for a given network trunk</p>
+</div>
+<div class="section" id="network-trunk-create">
+<h3>network_trunk_create<a class="headerlink" href="#network-trunk-create" title="Permalink to this headline">¶</a></h3>
+<p>Create a network trunk for a given project</p>
+</div>
+<div class="section" id="network-trunk-delete">
+<h3>network_trunk_delete<a class="headerlink" href="#network-trunk-delete" title="Permalink to this headline">¶</a></h3>
+<p>Delete a given network trunk</p>
+</div>
+<div class="section" id="network-trunk-list">
+<h3>network_trunk_list<a class="headerlink" href="#network-trunk-list" title="Permalink to this headline">¶</a></h3>
+<p>List all network trunks</p>
+</div>
+<div class="section" id="network-trunk-set">
+<h3>network_trunk_set<a class="headerlink" href="#network-trunk-set" title="Permalink to this headline">¶</a></h3>
+<p>Set network trunk properties</p>
+</div>
+<div class="section" id="network-trunk-show">
+<h3>network_trunk_show<a class="headerlink" href="#network-trunk-show" title="Permalink to this headline">¶</a></h3>
+<p>Show information of a given network trunk</p>
+</div>
+<div class="section" id="network-trunk-unset">
+<h3>network_trunk_unset<a class="headerlink" href="#network-trunk-unset" title="Permalink to this headline">¶</a></h3>
+<p>Unset subports from a given network trunk</p>
+</div>
+<div class="section" id="sfc-flow-classifier-create">
+<h3>sfc_flow_classifier_create<a class="headerlink" href="#sfc-flow-classifier-create" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_flow_classifier_create = neutronclient.osc.v2.sfc.sfc_flow_classifier:CreateSfcFlowClassifier</p>
+</div>
+</div>
+<div class="section" id="sfc-flow-classifier-delete">
+<h3>sfc_flow_classifier_delete<a class="headerlink" href="#sfc-flow-classifier-delete" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_flow_classifier_delete = neutronclient.osc.v2.sfc.sfc_flow_classifier:DeleteSfcFlowClassifier</p>
+</div>
+</div>
+<div class="section" id="sfc-flow-classifier-list">
+<h3>sfc_flow_classifier_list<a class="headerlink" href="#sfc-flow-classifier-list" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_flow_classifier_list = neutronclient.osc.v2.sfc.sfc_flow_classifier:ListSfcFlowClassifier</p>
+</div>
+</div>
+<div class="section" id="sfc-flow-classifier-set">
+<h3>sfc_flow_classifier_set<a class="headerlink" href="#sfc-flow-classifier-set" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_flow_classifier_set = neutronclient.osc.v2.sfc.sfc_flow_classifier:SetSfcFlowClassifier</p>
+</div>
+</div>
+<div class="section" id="sfc-flow-classifier-show">
+<h3>sfc_flow_classifier_show<a class="headerlink" href="#sfc-flow-classifier-show" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_flow_classifier_show = neutronclient.osc.v2.sfc.sfc_flow_classifier:ShowSfcFlowClassifier</p>
+</div>
+</div>
+<div class="section" id="sfc-port-chain-create">
+<h3>sfc_port_chain_create<a class="headerlink" href="#sfc-port-chain-create" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_chain_create = neutronclient.osc.v2.sfc.sfc_port_chain:CreateSfcPortChain</p>
+</div>
+</div>
+<div class="section" id="sfc-port-chain-delete">
+<h3>sfc_port_chain_delete<a class="headerlink" href="#sfc-port-chain-delete" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_chain_delete = neutronclient.osc.v2.sfc.sfc_port_chain:DeleteSfcPortChain</p>
+</div>
+</div>
+<div class="section" id="sfc-port-chain-list">
+<h3>sfc_port_chain_list<a class="headerlink" href="#sfc-port-chain-list" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_chain_list = neutronclient.osc.v2.sfc.sfc_port_chain:ListSfcPortChain</p>
+</div>
+</div>
+<div class="section" id="sfc-port-chain-set">
+<h3>sfc_port_chain_set<a class="headerlink" href="#sfc-port-chain-set" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_chain_set = neutronclient.osc.v2.sfc.sfc_port_chain:SetSfcPortChain</p>
+</div>
+</div>
+<div class="section" id="sfc-port-chain-show">
+<h3>sfc_port_chain_show<a class="headerlink" href="#sfc-port-chain-show" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_chain_show = neutronclient.osc.v2.sfc.sfc_port_chain:ShowSfcPortChain</p>
+</div>
+</div>
+<div class="section" id="sfc-port-chain-unset">
+<h3>sfc_port_chain_unset<a class="headerlink" href="#sfc-port-chain-unset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_chain_unset = neutronclient.osc.v2.sfc.sfc_port_chain:UnsetSfcPortChain</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-create">
+<h3>sfc_port_pair_create<a class="headerlink" href="#sfc-port-pair-create" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_create = neutronclient.osc.v2.sfc.sfc_port_pair:CreateSfcPortPair</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-delete">
+<h3>sfc_port_pair_delete<a class="headerlink" href="#sfc-port-pair-delete" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_delete = neutronclient.osc.v2.sfc.sfc_port_pair:DeleteSfcPortPair</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-group-create">
+<h3>sfc_port_pair_group_create<a class="headerlink" href="#sfc-port-pair-group-create" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_group_create = neutronclient.osc.v2.sfc.sfc_port_pair_group:CreateSfcPortPairGroup</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-group-delete">
+<h3>sfc_port_pair_group_delete<a class="headerlink" href="#sfc-port-pair-group-delete" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_group_delete = neutronclient.osc.v2.sfc.sfc_port_pair_group:DeleteSfcPortPairGroup</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-group-list">
+<h3>sfc_port_pair_group_list<a class="headerlink" href="#sfc-port-pair-group-list" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_group_list = neutronclient.osc.v2.sfc.sfc_port_pair_group:ListSfcPortPairGroup</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-group-set">
+<h3>sfc_port_pair_group_set<a class="headerlink" href="#sfc-port-pair-group-set" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_group_set = neutronclient.osc.v2.sfc.sfc_port_pair_group:SetSfcPortPairGroup</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-group-show">
+<h3>sfc_port_pair_group_show<a class="headerlink" href="#sfc-port-pair-group-show" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_group_show = neutronclient.osc.v2.sfc.sfc_port_pair_group:ShowSfcPortPairGroup</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-group-unset">
+<h3>sfc_port_pair_group_unset<a class="headerlink" href="#sfc-port-pair-group-unset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_group_unset = neutronclient.osc.v2.sfc.sfc_port_pair_group:UnsetSfcPortPairGroup</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-list">
+<h3>sfc_port_pair_list<a class="headerlink" href="#sfc-port-pair-list" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_list = neutronclient.osc.v2.sfc.sfc_port_pair:ListSfcPortPair</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-set">
+<h3>sfc_port_pair_set<a class="headerlink" href="#sfc-port-pair-set" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_set = neutronclient.osc.v2.sfc.sfc_port_pair:SetSfcPortPair</p>
+</div>
+</div>
+<div class="section" id="sfc-port-pair-show">
+<h3>sfc_port_pair_show<a class="headerlink" href="#sfc-port-pair-show" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">No documentation found in sfc_port_pair_show = neutronclient.osc.v2.sfc.sfc_port_pair:ShowSfcPortPair</p>
+</div>
+</div>
+</div>
+<div class="section" id="octavia">
+<h2>octavia<a class="headerlink" href="#octavia" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="sahara">
+<h2>sahara<a class="headerlink" href="#sahara" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="searchlight">
+<h2>searchlight<a class="headerlink" href="#searchlight" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="senlin">
+<h2>senlin<a class="headerlink" href="#senlin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="trove">
+<h2>trove<a class="headerlink" href="#trove" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="zaqar">
+<h2>zaqar<a class="headerlink" href="#zaqar" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="commands.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Command Structure"></i></a>
+          
+          
+            <a href="authentication.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Authentication"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="man/openstack.html">Manual Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-list.html">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Command Structure</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Plugin Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decoder.html">Mapping Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backwards-incompatible.html">Backwards Incompatible Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributor/index.html">Contributor Documentation</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/plugin-commands" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "Plugin Commands in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,1181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: openstackclient.identity.v2_0 package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>openstackclient.identity.v2_0 package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="openstackclient.identity.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient.identity package"></i></a>
+    
+    
+    <a href="openstackclient.identity.v3.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: openstackclient.identity.v3 package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">openstackclient.identity.v2_0 package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-openstackclient.identity.v2_0.catalog">openstackclient.identity.v2_0.catalog module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.identity.v2_0.ec2creds">openstackclient.identity.v2_0.ec2creds module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.identity.v2_0.endpoint">openstackclient.identity.v2_0.endpoint module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.identity.v2_0.project">openstackclient.identity.v2_0.project module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.identity.v2_0.role">openstackclient.identity.v2_0.role module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.identity.v2_0.role_assignment">openstackclient.identity.v2_0.role_assignment module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.identity.v2_0.service">openstackclient.identity.v2_0.service module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.identity.v2_0.token">openstackclient.identity.v2_0.token module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.identity.v2_0.user">openstackclient.identity.v2_0.user module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.identity.v2_0">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="openstackclient-identity-v2-0-package">
+<h1>openstackclient.identity.v2_0 package<a class="headerlink" href="#openstackclient-identity-v2-0-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.identity.v2_0.catalog">
+<span id="openstackclient-identity-v2-0-catalog-module"></span><h2>openstackclient.identity.v2_0.catalog module<a class="headerlink" href="#module-openstackclient.identity.v2_0.catalog" title="Permalink to this headline">¶</a></h2>
+<p>Identity v2 Service Catalog action implementations</p>
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.catalog.ListCatalog">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.catalog.</code><code class="descname">ListCatalog</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.catalog.ListCatalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.catalog.ListCatalog.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x701ab10&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.catalog.ListCatalog.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.catalog.ListCatalog.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.catalog.ListCatalog.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.catalog.ShowCatalog">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.catalog.</code><code class="descname">ShowCatalog</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.catalog.ShowCatalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.catalog.ShowCatalog.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.catalog.ShowCatalog.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.catalog.ShowCatalog.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x701a650&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.catalog.ShowCatalog.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.catalog.ShowCatalog.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.catalog.ShowCatalog.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.identity.v2_0.ec2creds">
+<span id="openstackclient-identity-v2-0-ec2creds-module"></span><h2>openstackclient.identity.v2_0.ec2creds module<a class="headerlink" href="#module-openstackclient.identity.v2_0.ec2creds" title="Permalink to this headline">¶</a></h2>
+<p>Identity v2 EC2 Credentials action implementations</p>
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.ec2creds.CreateEC2Creds">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.ec2creds.</code><code class="descname">CreateEC2Creds</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.CreateEC2Creds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.ec2creds.CreateEC2Creds.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.CreateEC2Creds.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.ec2creds.CreateEC2Creds.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8ec3450&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.CreateEC2Creds.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.ec2creds.CreateEC2Creds.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.CreateEC2Creds.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.ec2creds.DeleteEC2Creds">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.ec2creds.</code><code class="descname">DeleteEC2Creds</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.DeleteEC2Creds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.ec2creds.DeleteEC2Creds.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.DeleteEC2Creds.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.ec2creds.DeleteEC2Creds.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8ec39d0&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.DeleteEC2Creds.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.ec2creds.DeleteEC2Creds.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.DeleteEC2Creds.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.ec2creds.ListEC2Creds">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.ec2creds.</code><code class="descname">ListEC2Creds</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.ListEC2Creds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.ec2creds.ListEC2Creds.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.ListEC2Creds.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.ec2creds.ListEC2Creds.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8ec3a90&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.ListEC2Creds.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.ec2creds.ListEC2Creds.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.ListEC2Creds.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.ec2creds.ShowEC2Creds">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.ec2creds.</code><code class="descname">ShowEC2Creds</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.ShowEC2Creds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.ec2creds.ShowEC2Creds.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.ShowEC2Creds.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.ec2creds.ShowEC2Creds.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8ec3ed0&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.ShowEC2Creds.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.ec2creds.ShowEC2Creds.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.ec2creds.ShowEC2Creds.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.identity.v2_0.endpoint">
+<span id="openstackclient-identity-v2-0-endpoint-module"></span><h2>openstackclient.identity.v2_0.endpoint module<a class="headerlink" href="#module-openstackclient.identity.v2_0.endpoint" title="Permalink to this headline">¶</a></h2>
+<p>Endpoint action implementations</p>
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.endpoint.CreateEndpoint">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.endpoint.</code><code class="descname">CreateEndpoint</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.CreateEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.endpoint.CreateEndpoint.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.CreateEndpoint.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.endpoint.CreateEndpoint.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6deca10&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.CreateEndpoint.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.endpoint.CreateEndpoint.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.CreateEndpoint.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.endpoint.DeleteEndpoint">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.endpoint.</code><code class="descname">DeleteEndpoint</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.DeleteEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.endpoint.DeleteEndpoint.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.DeleteEndpoint.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.endpoint.DeleteEndpoint.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6dec810&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.DeleteEndpoint.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.endpoint.DeleteEndpoint.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.DeleteEndpoint.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.endpoint.ListEndpoint">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.endpoint.</code><code class="descname">ListEndpoint</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.ListEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.endpoint.ListEndpoint.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.ListEndpoint.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.endpoint.ListEndpoint.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5e17990&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.ListEndpoint.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.endpoint.ListEndpoint.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.ListEndpoint.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.endpoint.ShowEndpoint">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.endpoint.</code><code class="descname">ShowEndpoint</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.ShowEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.endpoint.ShowEndpoint.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.ShowEndpoint.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.endpoint.ShowEndpoint.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5e17490&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.ShowEndpoint.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.endpoint.ShowEndpoint.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.endpoint.ShowEndpoint.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.identity.v2_0.project">
+<span id="openstackclient-identity-v2-0-project-module"></span><h2>openstackclient.identity.v2_0.project module<a class="headerlink" href="#module-openstackclient.identity.v2_0.project" title="Permalink to this headline">¶</a></h2>
+<p>Identity v2 Project action implementations</p>
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.project.CreateProject">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.project.</code><code class="descname">CreateProject</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.CreateProject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.CreateProject.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.CreateProject.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.project.CreateProject.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x774b350&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.project.CreateProject.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.CreateProject.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.CreateProject.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.project.DeleteProject">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.project.</code><code class="descname">DeleteProject</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.DeleteProject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.DeleteProject.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.DeleteProject.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.project.DeleteProject.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6692850&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.project.DeleteProject.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.DeleteProject.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.DeleteProject.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.project.ListProject">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.project.</code><code class="descname">ListProject</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.ListProject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.ListProject.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.ListProject.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.project.ListProject.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6692190&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.project.ListProject.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.ListProject.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.ListProject.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.project.SetProject">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.project.</code><code class="descname">SetProject</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.SetProject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.SetProject.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.SetProject.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.project.SetProject.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6692a90&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.project.SetProject.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.SetProject.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.SetProject.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.project.ShowProject">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.project.</code><code class="descname">ShowProject</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.ShowProject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.ShowProject.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.ShowProject.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.project.ShowProject.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x66923d0&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.project.ShowProject.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.ShowProject.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.ShowProject.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.project.UnsetProject">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.project.</code><code class="descname">UnsetProject</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.UnsetProject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.UnsetProject.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.UnsetProject.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.project.UnsetProject.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6692a50&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.project.UnsetProject.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.project.UnsetProject.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.project.UnsetProject.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.identity.v2_0.role">
+<span id="openstackclient-identity-v2-0-role-module"></span><h2>openstackclient.identity.v2_0.role module<a class="headerlink" href="#module-openstackclient.identity.v2_0.role" title="Permalink to this headline">¶</a></h2>
+<p>Identity v2 Role action implementations</p>
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.role.AddRole">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.role.</code><code class="descname">AddRole</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.AddRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.AddRole.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.AddRole.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.role.AddRole.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8191610&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.role.AddRole.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.AddRole.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.AddRole.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.role.CreateRole">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.role.</code><code class="descname">CreateRole</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.CreateRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.CreateRole.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.CreateRole.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.role.CreateRole.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8191750&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.role.CreateRole.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.CreateRole.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.CreateRole.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.role.DeleteRole">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.role.</code><code class="descname">DeleteRole</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.DeleteRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.DeleteRole.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.DeleteRole.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.role.DeleteRole.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8191890&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.role.DeleteRole.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.DeleteRole.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.DeleteRole.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.role.ListRole">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.role.</code><code class="descname">ListRole</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.ListRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.ListRole.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.ListRole.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.role.ListRole.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8191990&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.role.ListRole.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.ListRole.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.ListRole.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.role.ListUserRole">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.role.</code><code class="descname">ListUserRole</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.ListUserRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.ListUserRole.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.ListUserRole.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.role.ListUserRole.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8191b10&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.role.ListUserRole.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.ListUserRole.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.ListUserRole.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.role.RemoveRole">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.role.</code><code class="descname">RemoveRole</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.RemoveRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.RemoveRole.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.RemoveRole.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.role.RemoveRole.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8191d10&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.role.RemoveRole.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.RemoveRole.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.RemoveRole.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.role.ShowRole">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.role.</code><code class="descname">ShowRole</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.ShowRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.ShowRole.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.ShowRole.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.role.ShowRole.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8191f10&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.role.ShowRole.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role.ShowRole.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role.ShowRole.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.identity.v2_0.role_assignment">
+<span id="openstackclient-identity-v2-0-role-assignment-module"></span><h2>openstackclient.identity.v2_0.role_assignment module<a class="headerlink" href="#module-openstackclient.identity.v2_0.role_assignment" title="Permalink to this headline">¶</a></h2>
+<p>Identity v2 Assignment action implementations</p>
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.role_assignment.ListRoleAssignment">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.role_assignment.</code><code class="descname">ListRoleAssignment</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role_assignment.ListRoleAssignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role_assignment.ListRoleAssignment.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role_assignment.ListRoleAssignment.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.role_assignment.ListRoleAssignment.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8f1c650&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.role_assignment.ListRoleAssignment.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.role_assignment.ListRoleAssignment.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.role_assignment.ListRoleAssignment.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.identity.v2_0.service">
+<span id="openstackclient-identity-v2-0-service-module"></span><h2>openstackclient.identity.v2_0.service module<a class="headerlink" href="#module-openstackclient.identity.v2_0.service" title="Permalink to this headline">¶</a></h2>
+<p>Service action implementations</p>
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.service.CreateService">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.service.</code><code class="descname">CreateService</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.CreateService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.service.CreateService.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.CreateService.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.service.CreateService.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8f1cc50&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.service.CreateService.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.service.CreateService.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.CreateService.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.service.DeleteService">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.service.</code><code class="descname">DeleteService</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.DeleteService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.service.DeleteService.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.DeleteService.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.service.DeleteService.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8f1cd90&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.service.DeleteService.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.service.DeleteService.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.DeleteService.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.service.ListService">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.service.</code><code class="descname">ListService</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.ListService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.service.ListService.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.ListService.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.service.ListService.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8f1cdd0&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.service.ListService.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.service.ListService.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.ListService.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.service.ShowService">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.service.</code><code class="descname">ShowService</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.ShowService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.service.ShowService.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.ShowService.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.service.ShowService.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8f1c110&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.service.ShowService.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.service.ShowService.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.service.ShowService.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.identity.v2_0.token">
+<span id="openstackclient-identity-v2-0-token-module"></span><h2>openstackclient.identity.v2_0.token module<a class="headerlink" href="#module-openstackclient.identity.v2_0.token" title="Permalink to this headline">¶</a></h2>
+<p>Identity v2 Token action implementations</p>
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.token.IssueToken">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.token.</code><code class="descname">IssueToken</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.token.IssueToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.token.IssueToken.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.token.IssueToken.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.token.IssueToken.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x959e7d0&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.token.IssueToken.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.token.IssueToken.required_scope">
+<code class="descname">required_scope</code><em class="property"> = False</em><a class="headerlink" href="#openstackclient.identity.v2_0.token.IssueToken.required_scope" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.token.IssueToken.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.token.IssueToken.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.token.RevokeToken">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.token.</code><code class="descname">RevokeToken</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.token.RevokeToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.token.RevokeToken.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.token.RevokeToken.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.token.RevokeToken.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x95c7350&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.token.RevokeToken.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.token.RevokeToken.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.token.RevokeToken.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.identity.v2_0.user">
+<span id="openstackclient-identity-v2-0-user-module"></span><h2>openstackclient.identity.v2_0.user module<a class="headerlink" href="#module-openstackclient.identity.v2_0.user" title="Permalink to this headline">¶</a></h2>
+<p>Identity v2.0 User action implementations</p>
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.user.CreateUser">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.user.</code><code class="descname">CreateUser</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.CreateUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.user.CreateUser.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.CreateUser.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.user.CreateUser.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8e658d0&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.user.CreateUser.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.user.CreateUser.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.CreateUser.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.user.DeleteUser">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.user.</code><code class="descname">DeleteUser</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.DeleteUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.user.DeleteUser.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.DeleteUser.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.user.DeleteUser.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8e694d0&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.user.DeleteUser.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.user.DeleteUser.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.DeleteUser.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.user.ListUser">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.user.</code><code class="descname">ListUser</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.ListUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.user.ListUser.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.ListUser.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.user.ListUser.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8e69710&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.user.ListUser.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.user.ListUser.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.ListUser.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.user.SetUser">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.user.</code><code class="descname">SetUser</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.SetUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.user.SetUser.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.SetUser.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.user.SetUser.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8e69dd0&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.user.SetUser.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.user.SetUser.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.SetUser.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.identity.v2_0.user.ShowUser">
+<em class="property">class </em><code class="descclassname">openstackclient.identity.v2_0.user.</code><code class="descname">ShowUser</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.ShowUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.user.ShowUser.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.ShowUser.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.identity.v2_0.user.ShowUser.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8eefd50&gt;</em><a class="headerlink" href="#openstackclient.identity.v2_0.user.ShowUser.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.identity.v2_0.user.ShowUser.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.identity.v2_0.user.ShowUser.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.identity.v2_0">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openstackclient.identity.v2_0" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="openstackclient.identity.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient.identity package"></i></a>
+          
+          
+            <a href="openstackclient.identity.v3.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: openstackclient.identity.v3 package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Contributor Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../developing.html">Developing with OpenStackClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-beta.html">Command Beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-options.html">Command Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-wrappers.html">Command Class Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-errors.html">Command Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-logs.html">Command Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specs/commands.html">Command Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../humaninterfaceguide.html">Human Interface Guide</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "contributor/api/openstackclient.identity.v2_0" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "openstackclient.identity.v2_0 package in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

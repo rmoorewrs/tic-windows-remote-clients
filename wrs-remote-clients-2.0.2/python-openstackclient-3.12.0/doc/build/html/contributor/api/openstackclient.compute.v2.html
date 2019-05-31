@@ -1,0 +1,2351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: openstackclient.compute.v2 package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>openstackclient.compute.v2 package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="openstackclient.compute.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient.compute package"></i></a>
+    
+    
+    <a href="openstackclient.identity.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: openstackclient.identity package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">openstackclient.compute.v2 package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.agent">openstackclient.compute.v2.agent module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.aggregate">openstackclient.compute.v2.aggregate module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.console">openstackclient.compute.v2.console module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.fixedip">openstackclient.compute.v2.fixedip module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.flavor">openstackclient.compute.v2.flavor module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.floatingip">openstackclient.compute.v2.floatingip module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.host">openstackclient.compute.v2.host module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.hypervisor">openstackclient.compute.v2.hypervisor module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.hypervisor_stats">openstackclient.compute.v2.hypervisor_stats module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.keypair">openstackclient.compute.v2.keypair module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.server">openstackclient.compute.v2.server module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.server_backup">openstackclient.compute.v2.server_backup module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.server_event">openstackclient.compute.v2.server_event module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.server_group">openstackclient.compute.v2.server_group module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.server_image">openstackclient.compute.v2.server_image module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.service">openstackclient.compute.v2.service module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.usage">openstackclient.compute.v2.usage module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.wrs_pci">openstackclient.compute.v2.wrs_pci module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2.wrs_providernets">openstackclient.compute.v2.wrs_providernets module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.compute.v2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="openstackclient-compute-v2-package">
+<h1>openstackclient.compute.v2 package<a class="headerlink" href="#openstackclient-compute-v2-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.compute.v2.agent">
+<span id="openstackclient-compute-v2-agent-module"></span><h2>openstackclient.compute.v2.agent module<a class="headerlink" href="#module-openstackclient.compute.v2.agent" title="Permalink to this headline">¶</a></h2>
+<p>Agent action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.agent.CreateAgent">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.agent.</code><code class="descname">CreateAgent</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.CreateAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.agent.CreateAgent.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.CreateAgent.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.agent.CreateAgent.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5f14390&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.agent.CreateAgent.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.agent.CreateAgent.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.CreateAgent.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.agent.DeleteAgent">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.agent.</code><code class="descname">DeleteAgent</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.DeleteAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.agent.DeleteAgent.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.DeleteAgent.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.agent.DeleteAgent.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5f14a10&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.agent.DeleteAgent.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.agent.DeleteAgent.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.DeleteAgent.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.agent.ListAgent">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.agent.</code><code class="descname">ListAgent</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.ListAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.agent.ListAgent.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.ListAgent.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.agent.ListAgent.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5f14710&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.agent.ListAgent.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.agent.ListAgent.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.ListAgent.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.agent.SetAgent">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.agent.</code><code class="descname">SetAgent</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.SetAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.agent.SetAgent.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.SetAgent.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.agent.SetAgent.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5f14350&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.agent.SetAgent.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.agent.SetAgent.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.agent.SetAgent.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.aggregate">
+<span id="openstackclient-compute-v2-aggregate-module"></span><h2>openstackclient.compute.v2.aggregate module<a class="headerlink" href="#module-openstackclient.compute.v2.aggregate" title="Permalink to this headline">¶</a></h2>
+<p>Compute v2 Aggregate action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.aggregate.AddAggregateHost">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.aggregate.</code><code class="descname">AddAggregateHost</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.AddAggregateHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.AddAggregateHost.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.AddAggregateHost.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.aggregate.AddAggregateHost.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6dec590&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.aggregate.AddAggregateHost.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.AddAggregateHost.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.AddAggregateHost.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.aggregate.CreateAggregate">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.aggregate.</code><code class="descname">CreateAggregate</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.CreateAggregate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.CreateAggregate.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.CreateAggregate.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.aggregate.CreateAggregate.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6dec6d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.aggregate.CreateAggregate.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.CreateAggregate.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.CreateAggregate.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.aggregate.DeleteAggregate">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.aggregate.</code><code class="descname">DeleteAggregate</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.DeleteAggregate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.DeleteAggregate.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.DeleteAggregate.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.aggregate.DeleteAggregate.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x584bed0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.aggregate.DeleteAggregate.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.DeleteAggregate.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.DeleteAggregate.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.aggregate.ListAggregate">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.aggregate.</code><code class="descname">ListAggregate</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.ListAggregate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.ListAggregate.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.ListAggregate.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.aggregate.ListAggregate.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x584bc50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.aggregate.ListAggregate.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.ListAggregate.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.ListAggregate.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.aggregate.RemoveAggregateHost">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.aggregate.</code><code class="descname">RemoveAggregateHost</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.RemoveAggregateHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.RemoveAggregateHost.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.RemoveAggregateHost.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.aggregate.RemoveAggregateHost.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x584b290&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.aggregate.RemoveAggregateHost.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.RemoveAggregateHost.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.RemoveAggregateHost.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.aggregate.SetAggregate">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.aggregate.</code><code class="descname">SetAggregate</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.SetAggregate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.SetAggregate.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.SetAggregate.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.aggregate.SetAggregate.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5e17610&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.aggregate.SetAggregate.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.SetAggregate.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.SetAggregate.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.aggregate.ShowAggregate">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.aggregate.</code><code class="descname">ShowAggregate</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.ShowAggregate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.ShowAggregate.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.ShowAggregate.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.aggregate.ShowAggregate.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5e17c10&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.aggregate.ShowAggregate.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.ShowAggregate.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.ShowAggregate.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.aggregate.UnsetAggregate">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.aggregate.</code><code class="descname">UnsetAggregate</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.UnsetAggregate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.UnsetAggregate.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.UnsetAggregate.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.aggregate.UnsetAggregate.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x58eea90&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.aggregate.UnsetAggregate.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.aggregate.UnsetAggregate.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.aggregate.UnsetAggregate.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.console">
+<span id="openstackclient-compute-v2-console-module"></span><h2>openstackclient.compute.v2.console module<a class="headerlink" href="#module-openstackclient.compute.v2.console" title="Permalink to this headline">¶</a></h2>
+<p>Compute v2 Console action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.console.ShowConsoleLog">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.console.</code><code class="descname">ShowConsoleLog</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.console.ShowConsoleLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.console.ShowConsoleLog.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.console.ShowConsoleLog.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.console.ShowConsoleLog.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x76a1a50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.console.ShowConsoleLog.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.console.ShowConsoleLog.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.console.ShowConsoleLog.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.console.ShowConsoleURL">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.console.</code><code class="descname">ShowConsoleURL</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.console.ShowConsoleURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.console.ShowConsoleURL.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.console.ShowConsoleURL.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.console.ShowConsoleURL.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x76a1b90&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.console.ShowConsoleURL.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.console.ShowConsoleURL.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.console.ShowConsoleURL.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.fixedip">
+<span id="openstackclient-compute-v2-fixedip-module"></span><h2>openstackclient.compute.v2.fixedip module<a class="headerlink" href="#module-openstackclient.compute.v2.fixedip" title="Permalink to this headline">¶</a></h2>
+<p>Fixed IP action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.fixedip.AddFixedIP">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.fixedip.</code><code class="descname">AddFixedIP</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.fixedip.AddFixedIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.fixedip.AddFixedIP.deprecated">
+<code class="descname">deprecated</code><em class="property"> = True</em><a class="headerlink" href="#openstackclient.compute.v2.fixedip.AddFixedIP.deprecated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.fixedip.AddFixedIP.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.fixedip.AddFixedIP.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.fixedip.AddFixedIP.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7753c50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.fixedip.AddFixedIP.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.fixedip.AddFixedIP.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.fixedip.AddFixedIP.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.fixedip.RemoveFixedIP">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.fixedip.</code><code class="descname">RemoveFixedIP</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.fixedip.RemoveFixedIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.fixedip.RemoveFixedIP.deprecated">
+<code class="descname">deprecated</code><em class="property"> = True</em><a class="headerlink" href="#openstackclient.compute.v2.fixedip.RemoveFixedIP.deprecated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.fixedip.RemoveFixedIP.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.fixedip.RemoveFixedIP.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.fixedip.RemoveFixedIP.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7753c50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.fixedip.RemoveFixedIP.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.fixedip.RemoveFixedIP.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.fixedip.RemoveFixedIP.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.flavor">
+<span id="openstackclient-compute-v2-flavor-module"></span><h2>openstackclient.compute.v2.flavor module<a class="headerlink" href="#module-openstackclient.compute.v2.flavor" title="Permalink to this headline">¶</a></h2>
+<p>Flavor action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.flavor.CreateFlavor">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.flavor.</code><code class="descname">CreateFlavor</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.CreateFlavor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.CreateFlavor.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.CreateFlavor.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.flavor.CreateFlavor.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7753310&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.flavor.CreateFlavor.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.CreateFlavor.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.CreateFlavor.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.flavor.DeleteFlavor">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.flavor.</code><code class="descname">DeleteFlavor</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.DeleteFlavor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.DeleteFlavor.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.DeleteFlavor.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.flavor.DeleteFlavor.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x774f310&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.flavor.DeleteFlavor.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.DeleteFlavor.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.DeleteFlavor.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.flavor.ListFlavor">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.flavor.</code><code class="descname">ListFlavor</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.ListFlavor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.ListFlavor.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.ListFlavor.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.flavor.ListFlavor.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x774fdd0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.flavor.ListFlavor.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.ListFlavor.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.ListFlavor.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.flavor.SetFlavor">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.flavor.</code><code class="descname">SetFlavor</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.SetFlavor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.SetFlavor.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.SetFlavor.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.flavor.SetFlavor.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x774f090&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.flavor.SetFlavor.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.SetFlavor.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.SetFlavor.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.flavor.ShowFlavor">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.flavor.</code><code class="descname">ShowFlavor</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.ShowFlavor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.ShowFlavor.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.ShowFlavor.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.flavor.ShowFlavor.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7860110&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.flavor.ShowFlavor.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.ShowFlavor.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.ShowFlavor.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.flavor.UnsetFlavor">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.flavor.</code><code class="descname">UnsetFlavor</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.UnsetFlavor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.UnsetFlavor.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.UnsetFlavor.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.flavor.UnsetFlavor.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7860150&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.flavor.UnsetFlavor.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.flavor.UnsetFlavor.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.flavor.UnsetFlavor.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.floatingip">
+<span id="openstackclient-compute-v2-floatingip-module"></span><h2>openstackclient.compute.v2.floatingip module<a class="headerlink" href="#module-openstackclient.compute.v2.floatingip" title="Permalink to this headline">¶</a></h2>
+<p>Floating IP action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.floatingip.AddFloatingIP">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.floatingip.</code><code class="descname">AddFloatingIP</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.floatingip.AddFloatingIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.floatingip.AddFloatingIP.deprecated">
+<code class="descname">deprecated</code><em class="property"> = True</em><a class="headerlink" href="#openstackclient.compute.v2.floatingip.AddFloatingIP.deprecated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.floatingip.AddFloatingIP.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.floatingip.AddFloatingIP.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.floatingip.AddFloatingIP.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7753c50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.floatingip.AddFloatingIP.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.floatingip.AddFloatingIP.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.floatingip.AddFloatingIP.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.floatingip.RemoveFloatingIP">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.floatingip.</code><code class="descname">RemoveFloatingIP</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.floatingip.RemoveFloatingIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.floatingip.RemoveFloatingIP.deprecated">
+<code class="descname">deprecated</code><em class="property"> = True</em><a class="headerlink" href="#openstackclient.compute.v2.floatingip.RemoveFloatingIP.deprecated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.floatingip.RemoveFloatingIP.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.floatingip.RemoveFloatingIP.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.floatingip.RemoveFloatingIP.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x7753c50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.floatingip.RemoveFloatingIP.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.floatingip.RemoveFloatingIP.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.floatingip.RemoveFloatingIP.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.host">
+<span id="openstackclient-compute-v2-host-module"></span><h2>openstackclient.compute.v2.host module<a class="headerlink" href="#module-openstackclient.compute.v2.host" title="Permalink to this headline">¶</a></h2>
+<p>Host action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.host.ListHost">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.host.</code><code class="descname">ListHost</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.host.ListHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.host.ListHost.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.host.ListHost.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.host.ListHost.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x68466d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.host.ListHost.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.host.ListHost.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.host.ListHost.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.host.SetHost">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.host.</code><code class="descname">SetHost</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.host.SetHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.host.SetHost.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.host.SetHost.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.host.SetHost.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6846cd0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.host.SetHost.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.host.SetHost.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.host.SetHost.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.host.ShowHost">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.host.</code><code class="descname">ShowHost</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.host.ShowHost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.host.ShowHost.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.host.ShowHost.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.host.ShowHost.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6846790&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.host.ShowHost.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.host.ShowHost.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.host.ShowHost.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.hypervisor">
+<span id="openstackclient-compute-v2-hypervisor-module"></span><h2>openstackclient.compute.v2.hypervisor module<a class="headerlink" href="#module-openstackclient.compute.v2.hypervisor" title="Permalink to this headline">¶</a></h2>
+<p>Hypervisor action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.hypervisor.ListHypervisor">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.hypervisor.</code><code class="descname">ListHypervisor</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.hypervisor.ListHypervisor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.hypervisor.ListHypervisor.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.hypervisor.ListHypervisor.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.hypervisor.ListHypervisor.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5faf110&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.hypervisor.ListHypervisor.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.hypervisor.ListHypervisor.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.hypervisor.ListHypervisor.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.hypervisor.ShowHypervisor">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.hypervisor.</code><code class="descname">ShowHypervisor</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.hypervisor.ShowHypervisor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.hypervisor.ShowHypervisor.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.hypervisor.ShowHypervisor.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.hypervisor.ShowHypervisor.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5faf350&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.hypervisor.ShowHypervisor.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.hypervisor.ShowHypervisor.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.hypervisor.ShowHypervisor.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.hypervisor_stats">
+<span id="openstackclient-compute-v2-hypervisor-stats-module"></span><h2>openstackclient.compute.v2.hypervisor_stats module<a class="headerlink" href="#module-openstackclient.compute.v2.hypervisor_stats" title="Permalink to this headline">¶</a></h2>
+<p>Hypervisor Stats action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.hypervisor_stats.ShowHypervisorStats">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.hypervisor_stats.</code><code class="descname">ShowHypervisorStats</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.hypervisor_stats.ShowHypervisorStats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.hypervisor_stats.ShowHypervisorStats.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6bdbfd0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.hypervisor_stats.ShowHypervisorStats.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.hypervisor_stats.ShowHypervisorStats.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.hypervisor_stats.ShowHypervisorStats.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.keypair">
+<span id="openstackclient-compute-v2-keypair-module"></span><h2>openstackclient.compute.v2.keypair module<a class="headerlink" href="#module-openstackclient.compute.v2.keypair" title="Permalink to this headline">¶</a></h2>
+<p>Keypair action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.keypair.CreateKeypair">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.keypair.</code><code class="descname">CreateKeypair</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.CreateKeypair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.keypair.CreateKeypair.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.CreateKeypair.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.keypair.CreateKeypair.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5f09290&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.keypair.CreateKeypair.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.keypair.CreateKeypair.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.CreateKeypair.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.keypair.DeleteKeypair">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.keypair.</code><code class="descname">DeleteKeypair</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.DeleteKeypair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.keypair.DeleteKeypair.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.DeleteKeypair.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.keypair.DeleteKeypair.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5f09990&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.keypair.DeleteKeypair.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.keypair.DeleteKeypair.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.DeleteKeypair.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.keypair.ListKeypair">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.keypair.</code><code class="descname">ListKeypair</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.ListKeypair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.keypair.ListKeypair.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5f09210&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.keypair.ListKeypair.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.keypair.ListKeypair.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.ListKeypair.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.keypair.ShowKeypair">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.keypair.</code><code class="descname">ShowKeypair</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.ShowKeypair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.keypair.ShowKeypair.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.ShowKeypair.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.keypair.ShowKeypair.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x5f09690&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.keypair.ShowKeypair.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.keypair.ShowKeypair.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.keypair.ShowKeypair.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.server">
+<span id="openstackclient-compute-v2-server-module"></span><h2>openstackclient.compute.v2.server module<a class="headerlink" href="#module-openstackclient.compute.v2.server" title="Permalink to this headline">¶</a></h2>
+<p>Compute v2 Server action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.AddFixedIP">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">AddFixedIP</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddFixedIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.AddFixedIP.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddFixedIP.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.AddFixedIP.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655c0d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.AddFixedIP.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.AddFixedIP.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddFixedIP.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.AddFloatingIP">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">AddFloatingIP</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddFloatingIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.AddFloatingIP.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddFloatingIP.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.AddFloatingIP.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655c1d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.AddFloatingIP.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.AddFloatingIP.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddFloatingIP.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.AddPort">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">AddPort</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddPort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.AddPort.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddPort.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.AddPort.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655c2d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.AddPort.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.AddPort.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddPort.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.AddServerSecurityGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">AddServerSecurityGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddServerSecurityGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.AddServerSecurityGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddServerSecurityGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.AddServerSecurityGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655c3d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.AddServerSecurityGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.AddServerSecurityGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddServerSecurityGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.AddServerVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">AddServerVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddServerVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.AddServerVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddServerVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.AddServerVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655c4d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.AddServerVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.AddServerVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.AddServerVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.CreateServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">CreateServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.CreateServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.CreateServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.CreateServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.CreateServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655c5d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.CreateServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.CreateServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.CreateServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.CreateServerDump">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">CreateServerDump</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.CreateServerDump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<p>Create a dump file in server(s)</p>
+<p>Trigger crash dump in server(s) with features like kdump in Linux.
+It will create a dump file in the server(s) dumping the server(s)’
+memory, and also crash the server(s). OSC sees the dump file
+(server dump) as a kind of resource.</p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.CreateServerDump.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.CreateServerDump.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.CreateServerDump.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655c6d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.CreateServerDump.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.CreateServerDump.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.CreateServerDump.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.DeleteServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">DeleteServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.DeleteServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.DeleteServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.DeleteServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.DeleteServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655c7d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.DeleteServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.DeleteServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.DeleteServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.ListServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">ListServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ListServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ListServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ListServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.ListServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655c8d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.ListServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ListServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ListServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.LockServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">LockServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.LockServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.LockServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.LockServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.LockServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655c9d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.LockServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.LockServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.LockServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.MigrateServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">MigrateServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.MigrateServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.MigrateServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.MigrateServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.MigrateServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655cb90&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.MigrateServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.MigrateServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.MigrateServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.PauseServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">PauseServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.PauseServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.PauseServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.PauseServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.PauseServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655cdd0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.PauseServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.PauseServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.PauseServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.RebootServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">RebootServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RebootServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RebootServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RebootServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.RebootServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x655cfd0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.RebootServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RebootServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RebootServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.RebuildServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">RebuildServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RebuildServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RebuildServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RebuildServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.RebuildServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6565250&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.RebuildServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RebuildServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RebuildServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.RemoveFixedIP">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">RemoveFixedIP</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveFixedIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RemoveFixedIP.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveFixedIP.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.RemoveFixedIP.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6565450&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveFixedIP.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RemoveFixedIP.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveFixedIP.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.RemoveFloatingIP">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">RemoveFloatingIP</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveFloatingIP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RemoveFloatingIP.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveFloatingIP.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.RemoveFloatingIP.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6565650&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveFloatingIP.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RemoveFloatingIP.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveFloatingIP.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.RemovePort">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">RemovePort</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemovePort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RemovePort.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemovePort.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.RemovePort.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6565850&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.RemovePort.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RemovePort.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemovePort.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.RemoveServerSecurityGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">RemoveServerSecurityGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveServerSecurityGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RemoveServerSecurityGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveServerSecurityGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.RemoveServerSecurityGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6565a50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveServerSecurityGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RemoveServerSecurityGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveServerSecurityGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.RemoveServerVolume">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">RemoveServerVolume</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveServerVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RemoveServerVolume.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveServerVolume.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.RemoveServerVolume.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6565c50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveServerVolume.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RemoveServerVolume.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RemoveServerVolume.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.RescueServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">RescueServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RescueServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RescueServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RescueServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.RescueServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6565e50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.RescueServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RescueServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RescueServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.ResizeServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">ResizeServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ResizeServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ResizeServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ResizeServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.ResizeServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x656b090&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.ResizeServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ResizeServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ResizeServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.RestoreServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">RestoreServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RestoreServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RestoreServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RestoreServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.RestoreServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x656b290&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.RestoreServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.RestoreServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.RestoreServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.ResumeServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">ResumeServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ResumeServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ResumeServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ResumeServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.ResumeServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x656b490&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.ResumeServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ResumeServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ResumeServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.ScaleServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">ScaleServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ScaleServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ScaleServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ScaleServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.ScaleServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x656b690&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.ScaleServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ScaleServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ScaleServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.SetServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">SetServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.SetServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.SetServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.SetServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.SetServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x656b890&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.SetServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.SetServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.SetServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.ShelveServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">ShelveServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ShelveServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ShelveServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ShelveServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.ShelveServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x656ba90&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.ShelveServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ShelveServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ShelveServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.ShowServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">ShowServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ShowServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ShowServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ShowServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.ShowServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x656bc90&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.ShowServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.ShowServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.ShowServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.SshServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">SshServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.SshServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.SshServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.SshServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.SshServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x656be90&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.SshServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.SshServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.SshServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.StartServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">StartServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.StartServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.StartServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.StartServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.StartServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x65710d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.StartServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.StartServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.StartServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.StopServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">StopServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.StopServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.StopServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.StopServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.StopServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6571310&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.StopServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.StopServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.StopServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.SuspendServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">SuspendServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.SuspendServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.SuspendServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.SuspendServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.SuspendServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6571510&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.SuspendServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.SuspendServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.SuspendServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.UnlockServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">UnlockServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnlockServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.UnlockServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnlockServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.UnlockServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6571710&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.UnlockServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.UnlockServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnlockServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.UnpauseServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">UnpauseServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnpauseServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.UnpauseServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnpauseServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.UnpauseServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6571910&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.UnpauseServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.UnpauseServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnpauseServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.UnrescueServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">UnrescueServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnrescueServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.UnrescueServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnrescueServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.UnrescueServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6571b10&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.UnrescueServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.UnrescueServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnrescueServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.UnsetServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">UnsetServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnsetServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.UnsetServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnsetServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.UnsetServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6571d10&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.UnsetServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.UnsetServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnsetServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server.UnshelveServer">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server.</code><code class="descname">UnshelveServer</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnshelveServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.UnshelveServer.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnshelveServer.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server.UnshelveServer.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x6571f10&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server.UnshelveServer.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server.UnshelveServer.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server.UnshelveServer.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.server_backup">
+<span id="openstackclient-compute-v2-server-backup-module"></span><h2>openstackclient.compute.v2.server_backup module<a class="headerlink" href="#module-openstackclient.compute.v2.server_backup" title="Permalink to this headline">¶</a></h2>
+<p>Compute v2 Server action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.server_backup.CreateServerBackup">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server_backup.</code><code class="descname">CreateServerBackup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_backup.CreateServerBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_backup.CreateServerBackup.IMAGE_API_VERSIONS">
+<code class="descname">IMAGE_API_VERSIONS</code><em class="property"> = {‘1’: ‘openstackclient.image.v1.image’, ‘2’: ‘openstackclient.image.v2.image’}</em><a class="headerlink" href="#openstackclient.compute.v2.server_backup.CreateServerBackup.IMAGE_API_VERSIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_backup.CreateServerBackup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_backup.CreateServerBackup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_backup.CreateServerBackup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8b84910&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server_backup.CreateServerBackup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_backup.CreateServerBackup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_backup.CreateServerBackup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.server_event">
+<span id="openstackclient-compute-v2-server-event-module"></span><h2>openstackclient.compute.v2.server_event module<a class="headerlink" href="#module-openstackclient.compute.v2.server_event" title="Permalink to this headline">¶</a></h2>
+<p>Compute v2 Server operation event implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.server_event.ListServerEvent">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server_event.</code><code class="descname">ListServerEvent</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_event.ListServerEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_event.ListServerEvent.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_event.ListServerEvent.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_event.ListServerEvent.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8beaad0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server_event.ListServerEvent.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_event.ListServerEvent.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_event.ListServerEvent.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server_event.ShowServerEvent">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server_event.</code><code class="descname">ShowServerEvent</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_event.ShowServerEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_event.ShowServerEvent.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_event.ShowServerEvent.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_event.ShowServerEvent.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8beab90&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server_event.ShowServerEvent.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_event.ShowServerEvent.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_event.ShowServerEvent.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.server_group">
+<span id="openstackclient-compute-v2-server-group-module"></span><h2>openstackclient.compute.v2.server_group module<a class="headerlink" href="#module-openstackclient.compute.v2.server_group" title="Permalink to this headline">¶</a></h2>
+<p>Compute v2 Server Group action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.server_group.CreateServerGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server_group.</code><code class="descname">CreateServerGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.CreateServerGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_group.CreateServerGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.CreateServerGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_group.CreateServerGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8cd7e50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server_group.CreateServerGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_group.CreateServerGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.CreateServerGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server_group.DeleteServerGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server_group.</code><code class="descname">DeleteServerGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.DeleteServerGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_group.DeleteServerGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.DeleteServerGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_group.DeleteServerGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8cd71d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server_group.DeleteServerGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_group.DeleteServerGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.DeleteServerGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server_group.ListServerGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server_group.</code><code class="descname">ListServerGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.ListServerGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_group.ListServerGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.ListServerGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_group.ListServerGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8cd7910&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server_group.ListServerGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_group.ListServerGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.ListServerGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server_group.SetServerGroupMetadata">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server_group.</code><code class="descname">SetServerGroupMetadata</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.SetServerGroupMetadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_group.SetServerGroupMetadata.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.SetServerGroupMetadata.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_group.SetServerGroupMetadata.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8cd7850&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server_group.SetServerGroupMetadata.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_group.SetServerGroupMetadata.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.SetServerGroupMetadata.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.server_group.ShowServerGroup">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server_group.</code><code class="descname">ShowServerGroup</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.ShowServerGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_group.ShowServerGroup.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.ShowServerGroup.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_group.ShowServerGroup.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8cd7310&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server_group.ShowServerGroup.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_group.ShowServerGroup.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_group.ShowServerGroup.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.server_image">
+<span id="openstackclient-compute-v2-server-image-module"></span><h2>openstackclient.compute.v2.server_image module<a class="headerlink" href="#module-openstackclient.compute.v2.server_image" title="Permalink to this headline">¶</a></h2>
+<p>Compute v2 Server action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.server_image.CreateServerImage">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.server_image.</code><code class="descname">CreateServerImage</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_image.CreateServerImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_image.CreateServerImage.IMAGE_API_VERSIONS">
+<code class="descname">IMAGE_API_VERSIONS</code><em class="property"> = {‘1’: ‘openstackclient.image.v1.image’, ‘2’: ‘openstackclient.image.v2.image’}</em><a class="headerlink" href="#openstackclient.compute.v2.server_image.CreateServerImage.IMAGE_API_VERSIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_image.CreateServerImage.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_image.CreateServerImage.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.server_image.CreateServerImage.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x8ffc7d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.server_image.CreateServerImage.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.server_image.CreateServerImage.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.server_image.CreateServerImage.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.service">
+<span id="openstackclient-compute-v2-service-module"></span><h2>openstackclient.compute.v2.service module<a class="headerlink" href="#module-openstackclient.compute.v2.service" title="Permalink to this headline">¶</a></h2>
+<p>Service action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.service.DeleteService">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.service.</code><code class="descname">DeleteService</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.service.DeleteService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.service.DeleteService.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.service.DeleteService.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.service.DeleteService.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x906e550&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.service.DeleteService.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.service.DeleteService.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.service.DeleteService.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.service.ListService">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.service.</code><code class="descname">ListService</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.service.ListService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.service.ListService.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.service.ListService.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.service.ListService.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x906e610&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.service.ListService.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.service.ListService.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.service.ListService.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.service.SetService">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.service.</code><code class="descname">SetService</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.service.SetService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.service.SetService.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.service.SetService.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.service.SetService.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x906e6d0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.service.SetService.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.service.SetService.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.service.SetService.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.usage">
+<span id="openstackclient-compute-v2-usage-module"></span><h2>openstackclient.compute.v2.usage module<a class="headerlink" href="#module-openstackclient.compute.v2.usage" title="Permalink to this headline">¶</a></h2>
+<p>Usage action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.usage.ListUsage">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.usage.</code><code class="descname">ListUsage</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.usage.ListUsage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.usage.ListUsage.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.usage.ListUsage.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.usage.ListUsage.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x91e9a50&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.usage.ListUsage.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.usage.ListUsage.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.usage.ListUsage.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.usage.ShowUsage">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.usage.</code><code class="descname">ShowUsage</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.usage.ShowUsage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.usage.ShowUsage.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.usage.ShowUsage.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.usage.ShowUsage.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x91e9bd0&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.usage.ShowUsage.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.usage.ShowUsage.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.usage.ShowUsage.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.wrs_pci">
+<span id="openstackclient-compute-v2-wrs-pci-module"></span><h2>openstackclient.compute.v2.wrs_pci module<a class="headerlink" href="#module-openstackclient.compute.v2.wrs_pci" title="Permalink to this headline">¶</a></h2>
+<p>Compute v2 wrs_pci action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.wrs_pci.ListPciDevices">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.wrs_pci.</code><code class="descname">ListPciDevices</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.wrs_pci.ListPciDevices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<p>List pci device</p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.wrs_pci.ListPciDevices.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.wrs_pci.ListPciDevices.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.wrs_pci.ListPciDevices.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x91d5750&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.wrs_pci.ListPciDevices.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.wrs_pci.ListPciDevices.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.wrs_pci.ListPciDevices.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.compute.v2.wrs_pci.ShowPciDevices">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.wrs_pci.</code><code class="descname">ShowPciDevices</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.wrs_pci.ShowPciDevices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<p>Show details of a given PCI device.</p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.wrs_pci.ShowPciDevices.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.wrs_pci.ShowPciDevices.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.wrs_pci.ShowPciDevices.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x91e9f90&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.wrs_pci.ShowPciDevices.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.wrs_pci.ShowPciDevices.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.wrs_pci.ShowPciDevices.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2.wrs_providernets">
+<span id="openstackclient-compute-v2-wrs-providernets-module"></span><h2>openstackclient.compute.v2.wrs_providernets module<a class="headerlink" href="#module-openstackclient.compute.v2.wrs_providernets" title="Permalink to this headline">¶</a></h2>
+<p>Compute v2 wrs_providernet action implementations</p>
+<dl class="class">
+<dt id="openstackclient.compute.v2.wrs_providernets.ShowProvidernetPci">
+<em class="property">class </em><code class="descclassname">openstackclient.compute.v2.wrs_providernets.</code><code class="descname">ShowProvidernetPci</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.wrs_providernets.ShowProvidernetPci" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<p>Show details of a given provider network</p>
+<dl class="method">
+<dt id="openstackclient.compute.v2.wrs_providernets.ShowProvidernetPci.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.wrs_providernets.ShowProvidernetPci.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.compute.v2.wrs_providernets.ShowProvidernetPci.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0x9394850&gt;</em><a class="headerlink" href="#openstackclient.compute.v2.wrs_providernets.ShowProvidernetPci.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.compute.v2.wrs_providernets.ShowProvidernetPci.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.compute.v2.wrs_providernets.ShowProvidernetPci.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.compute.v2">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openstackclient.compute.v2" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="openstackclient.compute.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient.compute package"></i></a>
+          
+          
+            <a href="openstackclient.identity.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: openstackclient.identity package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Contributor Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../developing.html">Developing with OpenStackClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-beta.html">Command Beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-options.html">Command Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-wrappers.html">Command Class Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-errors.html">Command Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-logs.html">Command Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specs/commands.html">Command Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../humaninterfaceguide.html">Human Interface Guide</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "contributor/api/openstackclient.compute.v2" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "openstackclient.compute.v2 package in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

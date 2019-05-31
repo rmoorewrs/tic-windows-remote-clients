@@ -1,0 +1,2625 @@
+time: 2018-03-20 20:03:09.199446Z
+tags: worker-11
+test: osc_lib.tests.cli.test_format_columns.TestListColumn.test_list_column
+time: 2018-03-20 20:03:09.199968Z
+successful: osc_lib.tests.cli.test_format_columns.TestListColumn.test_list_column [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-11
+time: 2018-03-20 20:03:09.253794Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_find
+time: 2018-03-20 20:03:09.254501Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_find [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.254792Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_find_no_unique
+time: 2018-03-20 20:03:09.255550Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_find_no_unique [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.255984Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_find_not_found
+time: 2018-03-20 20:03:09.256885Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_find_not_found [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.257216Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_get_int
+time: 2018-03-20 20:03:09.257701Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_get_int [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.257965Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_get_int_string
+time: 2018-03-20 20:03:09.258727Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_get_int_string [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.258973Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_get_name_and_domain
+time: 2018-03-20 20:03:09.259573Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_get_name_and_domain [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.259929Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_get_uuid
+time: 2018-03-20 20:03:09.260592Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_get_uuid [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.260891Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_get_whatever
+time: 2018-03-20 20:03:09.261520Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_get_whatever [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.261827Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_list_forbidden
+time: 2018-03-20 20:03:09.262920Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_list_forbidden [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.263269Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_silly_resource
+time: 2018-03-20 20:03:09.264469Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_silly_resource [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.264901Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_silly_resource_no_unique_match
+time: 2018-03-20 20:03:09.266503Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_silly_resource_no_unique_match [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.266948Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_find_resource_silly_resource_not_found
+time: 2018-03-20 20:03:09.268261Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_find_resource_silly_resource_not_found [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.268699Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_format_dict
+time: 2018-03-20 20:03:09.269377Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_format_dict [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.269780Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_format_dict_of_list
+time: 2018-03-20 20:03:09.270316Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_format_dict_of_list [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.270613Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_format_dict_of_list_with_separator
+time: 2018-03-20 20:03:09.271136Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_format_dict_of_list_with_separator [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.271554Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_format_list
+time: 2018-03-20 20:03:09.272208Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_format_list [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.272623Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_format_list_of_dicts
+time: 2018-03-20 20:03:09.273353Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_format_list_of_dicts [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.273772Z
+tags: worker-6
+test: osc_lib.tests.test_utils.TestFindResource.test_format_list_separator
+time: 2018-03-20 20:03:09.274408Z
+successful: osc_lib.tests.test_utils.TestFindResource.test_format_list_separator [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.280533Z
+tags: worker-10
+test: osc_lib.tests.cli.test_parseractions.TestNonNegativeAction.test_negative_values
+time: 2018-03-20 20:03:09.281855Z
+successful: osc_lib.tests.cli.test_parseractions.TestNonNegativeAction.test_negative_values [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-10
+time: 2018-03-20 20:03:09.282200Z
+tags: worker-10
+test: osc_lib.tests.cli.test_parseractions.TestNonNegativeAction.test_positive_values
+time: 2018-03-20 20:03:09.282696Z
+successful: osc_lib.tests.cli.test_parseractions.TestNonNegativeAction.test_positive_values [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-10
+time: 2018-03-20 20:03:09.282935Z
+tags: worker-10
+test: osc_lib.tests.cli.test_parseractions.TestNonNegativeAction.test_zero_values
+time: 2018-03-20 20:03:09.283553Z
+successful: osc_lib.tests.cli.test_parseractions.TestNonNegativeAction.test_zero_values [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-10
+time: 2018-03-20 20:03:09.296942Z
+tags: worker-12
+test: osc_lib.tests.api.test_api.TestBaseAPIArgs.test_baseapi_request_session
+time: 2018-03-20 20:03:09.300534Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIArgs.test_baseapi_request_session [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-12
+time: 2018-03-20 20:03:09.300865Z
+tags: worker-12
+test: osc_lib.tests.api.test_api.TestBaseAPIArgs.test_baseapi_request_url_path
+time: 2018-03-20 20:03:09.302578Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIArgs.test_baseapi_request_url_path [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-12
+time: 2018-03-20 20:03:09.338424Z
+tags: worker-19
+test: osc_lib.tests.cli.test_parseractions.TestKeyValueAction.test_error_values
+time: 2018-03-20 20:03:09.339968Z
+successful: osc_lib.tests.cli.test_parseractions.TestKeyValueAction.test_error_values [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-19
+time: 2018-03-20 20:03:09.340294Z
+tags: worker-19
+test: osc_lib.tests.cli.test_parseractions.TestKeyValueAction.test_good_values
+time: 2018-03-20 20:03:09.340959Z
+successful: osc_lib.tests.cli.test_parseractions.TestKeyValueAction.test_good_values [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-19
+time: 2018-03-20 20:03:09.343100Z
+tags: worker-6
+test: osc_lib.tests.test_logs.TestFileFormatter.test_config
+time: 2018-03-20 20:03:09.343862Z
+successful: osc_lib.tests.test_logs.TestFileFormatter.test_config [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.344367Z
+tags: worker-6
+test: osc_lib.tests.test_logs.TestFileFormatter.test_nothing
+time: 2018-03-20 20:03:09.344754Z
+successful: osc_lib.tests.test_logs.TestFileFormatter.test_nothing [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.345169Z
+tags: worker-6
+test: osc_lib.tests.test_logs.TestFileFormatter.test_options
+time: 2018-03-20 20:03:09.345597Z
+successful: osc_lib.tests.test_logs.TestFileFormatter.test_options [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.345007Z
+tags: worker-27
+test: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_item_different_formattable_columns
+time: 2018-03-20 20:03:09.345965Z
+successful: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_item_different_formattable_columns [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.346439Z
+tags: worker-27
+test: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_item_different_length
+time: 2018-03-20 20:03:09.346932Z
+successful: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_item_different_length [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.347259Z
+tags: worker-27
+test: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_item_formattable_columns_vs_legacy_formatter
+time: 2018-03-20 20:03:09.347773Z
+successful: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_item_formattable_columns_vs_legacy_formatter [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.348163Z
+tags: worker-27
+test: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_item_with_formattable_columns
+time: 2018-03-20 20:03:09.348550Z
+successful: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_item_with_formattable_columns [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.348815Z
+tags: worker-27
+test: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_list_item
+time: 2018-03-20 20:03:09.349321Z
+successful: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_list_item [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.349642Z
+tags: worker-27
+test: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_normal_item
+time: 2018-03-20 20:03:09.349941Z
+successful: osc_lib.tests.test_utils.TestAssertItemEqual.test_assert_normal_item [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.352082Z
+tags: worker-6
+test: osc_lib.tests.test_logs.TestLogConfigurator.test_configure
+time: 2018-03-20 20:03:09.356944Z
+successful: osc_lib.tests.test_logs.TestLogConfigurator.test_configure [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.357478Z
+tags: worker-6
+test: osc_lib.tests.test_logs.TestLogConfigurator.test_init
+time: 2018-03-20 20:03:09.361502Z
+successful: osc_lib.tests.test_logs.TestLogConfigurator.test_init [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.361975Z
+tags: worker-6
+test: osc_lib.tests.test_logs.TestLogConfigurator.test_init_log_file
+time: 2018-03-20 20:03:09.366603Z
+successful: osc_lib.tests.test_logs.TestLogConfigurator.test_init_log_file [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.367092Z
+tags: worker-6
+test: osc_lib.tests.test_logs.TestLogConfigurator.test_init_no_debug
+time: 2018-03-20 20:03:09.372511Z
+successful: osc_lib.tests.test_logs.TestLogConfigurator.test_init_no_debug [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.393659Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_admin_token
+time: 2018-03-20 20:03:09.397287Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_admin_token [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.397797Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_auth_setup_once
+time: 2018-03-20 20:03:09.401888Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_auth_setup_once [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.402371Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_endpoint_disabled
+time: 2018-03-20 20:03:09.405020Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_endpoint_disabled [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.405479Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_k2k_auth_setup
+time: 2018-03-20 20:03:09.408307Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_k2k_auth_setup [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.408745Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password
+time: 2018-03-20 20:03:09.418684Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.421613Z
+tags: worker-5
+test: osc_lib.tests.test_shell.TestShellHelp.test_help_options
+time: 2018-03-20 20:03:09.421766Z
+skip: osc_lib.tests.test_shell.TestShellHelp.test_help_options [ multipart
+Content-Type: text/plain;charset=utf8
+reason
+22
+skip until bug 1444983 is resolved0
+]
+tags: -worker-5
+time: 2018-03-20 20:03:09.419589Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_client_cert
+time: 2018-03-20 20:03:09.422261Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_client_cert [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.424692Z
+tags: worker-16
+test: osc_lib.tests.test_clientmanager.TestClientCache.test_attribute_error_propagates
+time: 2018-03-20 20:03:09.425412Z
+successful: osc_lib.tests.test_clientmanager.TestClientCache.test_attribute_error_propagates [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-16
+time: 2018-03-20 20:03:09.424728Z
+tags: worker-13
+test: osc_lib.tests.cli.test_format_columns.TestDictColumn.test_dict_column
+time: 2018-03-20 20:03:09.425286Z
+successful: osc_lib.tests.cli.test_format_columns.TestDictColumn.test_dict_column [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-13
+time: 2018-03-20 20:03:09.422705Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_client_key
+time: 2018-03-20 20:03:09.425227Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_client_key [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.422942Z
+tags: worker-5
+test: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_body
+time: 2018-03-20 20:03:09.427162Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_body [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-5
+time: 2018-03-20 20:03:09.425861Z
+tags: worker-16
+test: osc_lib.tests.test_clientmanager.TestClientCache.test_singleton
+time: 2018-03-20 20:03:09.426244Z
+successful: osc_lib.tests.test_clientmanager.TestClientCache.test_singleton [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-16
+time: 2018-03-20 20:03:09.427582Z
+tags: worker-5
+test: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_detailed
+time: 2018-03-20 20:03:09.429862Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_detailed [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-5
+time: 2018-03-20 20:03:09.430148Z
+tags: worker-5
+test: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_filtered
+time: 2018-03-20 20:03:09.431815Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_filtered [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-5
+time: 2018-03-20 20:03:09.425655Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_verify
+time: 2018-03-20 20:03:09.433256Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_verify [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.432076Z
+tags: worker-5
+test: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_no_args
+time: 2018-03-20 20:03:09.433840Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_no_args [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-5
+time: 2018-03-20 20:03:09.434101Z
+tags: worker-5
+test: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_params
+time: 2018-03-20 20:03:09.436906Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_params [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-5
+time: 2018-03-20 20:03:09.437183Z
+tags: worker-5
+test: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_wrapped
+time: 2018-03-20 20:03:09.438924Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIList.test_baseapi_list_wrapped [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-5
+time: 2018-03-20 20:03:09.433740Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_verify_ca
+time: 2018-03-20 20:03:09.441998Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_verify_ca [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.442490Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_verify_false
+time: 2018-03-20 20:03:09.450216Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_verify_false [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.450702Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_verify_insecure
+time: 2018-03-20 20:03:09.458603Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_verify_insecure [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.463015Z
+tags: worker-25
+test: osc_lib.tests.cli.test_format_columns.TestDictListColumn.test_dict_list_column
+time: 2018-03-20 20:03:09.463433Z
+successful: osc_lib.tests.cli.test_format_columns.TestDictListColumn.test_dict_list_column [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-25
+time: 2018-03-20 20:03:09.453987Z
+tags: worker-16
+test: osc_lib.tests.test_shell.TestShellOptions.test_empty_auth
+time: 2018-03-20 20:03:09.463424Z
+successful: osc_lib.tests.test_shell.TestShellOptions.test_empty_auth [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+39F
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73015568'>
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-16
+time: 2018-03-20 20:03:09.459127Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_verify_insecure_ca
+time: 2018-03-20 20:03:09.467292Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_password_verify_insecure_ca [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.463921Z
+tags: worker-6
+test: osc_lib.tests.api.test_api.TestBaseAPIDefault.test_baseapi_request_no_url
+time: 2018-03-20 20:03:09.466632Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIDefault.test_baseapi_request_no_url [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.467115Z
+tags: worker-7
+test: osc_lib.tests.command.test_commandmanager.TestCommandManager.test_add_command_group
+time: 2018-03-20 20:03:09.467986Z
+successful: osc_lib.tests.command.test_commandmanager.TestCommandManager.test_add_command_group [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-7
+time: 2018-03-20 20:03:09.467761Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_select_auth_plugin_failure
+time: 2018-03-20 20:03:09.469225Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_select_auth_plugin_failure [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.468475Z
+tags: worker-7
+test: osc_lib.tests.command.test_commandmanager.TestCommandManager.test_get_command_groups
+time: 2018-03-20 20:03:09.468978Z
+successful: osc_lib.tests.command.test_commandmanager.TestCommandManager.test_get_command_groups [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-7
+time: 2018-03-20 20:03:09.467175Z
+tags: worker-6
+test: osc_lib.tests.api.test_api.TestBaseAPIDefault.test_baseapi_request_session
+time: 2018-03-20 20:03:09.472549Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIDefault.test_baseapi_request_session [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.469378Z
+tags: worker-7
+test: osc_lib.tests.command.test_commandmanager.TestCommandManager.test_get_command_names
+time: 2018-03-20 20:03:09.470181Z
+successful: osc_lib.tests.command.test_commandmanager.TestCommandManager.test_get_command_names [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-7
+time: 2018-03-20 20:03:09.473104Z
+tags: worker-6
+test: osc_lib.tests.api.test_api.TestBaseAPIDefault.test_baseapi_request_url
+time: 2018-03-20 20:03:09.476581Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIDefault.test_baseapi_request_url [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.469643Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_select_auth_plugin_password
+time: 2018-03-20 20:03:09.475881Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_select_auth_plugin_password [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.477083Z
+tags: worker-6
+test: osc_lib.tests.api.test_api.TestBaseAPIDefault.test_baseapi_request_url_path
+time: 2018-03-20 20:03:09.479015Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIDefault.test_baseapi_request_url_path [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-6
+time: 2018-03-20 20:03:09.476363Z
+tags: worker-0
+test: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_select_auth_plugin_token
+time: 2018-03-20 20:03:09.480396Z
+successful: osc_lib.tests.test_clientmanager.TestClientManager.test_client_manager_select_auth_plugin_token [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-0
+time: 2018-03-20 20:03:09.491465Z
+tags: worker-14
+test: osc_lib.tests.api.test_api.TestBaseAPIEndpointArg.test_baseapi_endpoint_extra
+time: 2018-03-20 20:03:09.498655Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIEndpointArg.test_baseapi_endpoint_extra [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-14
+time: 2018-03-20 20:03:09.499189Z
+tags: worker-14
+test: osc_lib.tests.api.test_api.TestBaseAPIEndpointArg.test_baseapi_endpoint_no_endpoint
+time: 2018-03-20 20:03:09.501183Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIEndpointArg.test_baseapi_endpoint_no_endpoint [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-14
+time: 2018-03-20 20:03:09.489228Z
+tags: worker-27
+test: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_attr_by_id
+time: 2018-03-20 20:03:09.503029Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_attr_by_id [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.501569Z
+tags: worker-14
+test: osc_lib.tests.api.test_api.TestBaseAPIEndpointArg.test_baseapi_endpoint_no_extra
+time: 2018-03-20 20:03:09.506446Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIEndpointArg.test_baseapi_endpoint_no_extra [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-14
+time: 2018-03-20 20:03:09.507474Z
+tags: worker-17
+test: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_attr_only
+time: 2018-03-20 20:03:09.509238Z
+successful: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_attr_only [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-17
+time: 2018-03-20 20:03:09.509670Z
+tags: worker-17
+test: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_attr_value
+time: 2018-03-20 20:03:09.510657Z
+successful: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_attr_value [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-17
+time: 2018-03-20 20:03:09.501783Z
+tags: worker-19
+test: osc_lib.tests.test_shell.TestShellCliPrecedence.test_shell_args_precedence_1
+time: 2018-03-20 20:03:09.512341Z
+successful: osc_lib.tests.test_shell.TestShellCliPrecedence.test_shell_args_precedence_1 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+851
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {'auth_type': 'password', 'beta_command': False, u'compute_api_version': u'2', u'orchestration_api_version': u'1', u'database_api_version': u'1.0', u'metering_api_version': u'2', u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', 'networks': [], 'cloud': 'megacloud', u'image_api_version': u'2', 'log_level': 'debug', 'verify': True, u'dns_api_version': u'2', u'object_store_api_version': u'1', u'status': u'active', u'container_infra_api_version': u'1', 'verbose_level': 1, 'region_name': 'occ-env', 'api_timeout': None, u'baremetal_api_version': u'1', 'auth': {'username': 'zaphod', 'project_name': 'heart-o-gold', 'auth_url': 'http://127.0.0.1:5000/v2.0/'}, 'default_domain': 'default', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', 'key': 'mickey', 'timing': False, u'application_catalog_api_version': u'1', 'cacert': None, u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'deferred_help': False, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'donut': 'cake', 'cert': 'mycert', u'secgroup_source': u'neutron', u'container_api_version': u'1', 'log_file': '/tmp/test_log_file', u'interface': None, u'disable_vendor_agent': {}}
+END return value: <MagicMock name='run_subcommand()' id='59814736'>
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-19
+time: 2018-03-20 20:03:09.503588Z
+tags: worker-27
+test: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_attr_by_name
+time: 2018-03-20 20:03:09.513027Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_attr_by_name [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.510979Z
+tags: worker-17
+test: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_no_attr
+time: 2018-03-20 20:03:09.511948Z
+successful: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_no_attr [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-17
+time: 2018-03-20 20:03:09.512245Z
+tags: worker-17
+test: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_none
+time: 2018-03-20 20:03:09.512962Z
+successful: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_none [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-17
+time: 2018-03-20 20:03:09.464166Z
+tags: worker-16
+test: osc_lib.tests.test_shell.TestShellOptions.test_global_env
+time: 2018-03-20 20:03:09.513018Z
+successful: osc_lib.tests.test_shell.TestShellOptions.test_global_env [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+5F55
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+START with options: ['module', 'list']
+options: Namespace(cacert=None, cert='', cloud='altocumulus', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+START with options: ['module', 'list']
+START with options: ['module', 'list']
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='ZZ9_Plural_Z_Alpha', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='ZZ9_Plural_Z_Alpha', timing=False, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+START with options: ['module', 'list']
+START with options: ['module', 'list']
+START with options: ['module', 'list']
+options: Namespace(cacert='/dev/null', cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert='/dev/null', cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert='/dev/null', cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+START with options: ['module', 'list']
+START with options: ['module', 'list']
+START with options: ['module', 'list']
+START with options: ['module', 'list']
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+START with options: ['module', 'list']
+START with options: ['module', 'list']
+START with options: ['module', 'list']
+START with options: ['module', 'list']
+START with options: ['module', 'list']
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+END return value: <MagicMock name='run_subcommand()' id='73078096'>
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-16
+time: 2018-03-20 20:03:09.513541Z
+tags: worker-27
+test: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_attr_path_resource
+time: 2018-03-20 20:03:09.518300Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_attr_path_resource [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.513236Z
+tags: worker-17
+test: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_prop_attr_only
+time: 2018-03-20 20:03:09.513944Z
+successful: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_prop_attr_only [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-17
+time: 2018-03-20 20:03:09.512894Z
+tags: worker-19
+test: osc_lib.tests.test_shell.TestShellCliPrecedence.test_shell_args_precedence_2
+time: 2018-03-20 20:03:09.522851Z
+successful: osc_lib.tests.test_shell.TestShellCliPrecedence.test_shell_args_precedence_2 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+851
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {'auth_type': 'password', 'beta_command': False, u'compute_api_version': u'2', u'orchestration_api_version': u'1', u'database_api_version': u'1.0', u'metering_api_version': u'2', u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', 'networks': [], 'cloud': 'megacloud', u'image_api_version': u'2', 'log_level': 'debug', 'verify': True, u'dns_api_version': u'2', u'object_store_api_version': u'1', u'status': u'active', u'container_infra_api_version': u'1', 'verbose_level': 1, 'region_name': 'krikkit', 'api_timeout': None, u'baremetal_api_version': u'1', 'auth': {'username': 'zaphod', 'project_name': 'heart-o-gold', 'auth_url': 'http://127.0.0.1:5000/v2.0/'}, 'default_domain': 'default', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', 'key': 'mickey', 'timing': False, u'application_catalog_api_version': u'1', 'cacert': None, u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'deferred_help': False, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'donut': 'cake', 'cert': 'mycert', u'secgroup_source': u'neutron', u'container_api_version': u'1', 'log_file': '/tmp/test_log_file', u'interface': None, u'disable_vendor_agent': {}}
+END return value: <MagicMock name='run_subcommand()' id='59863440'>
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-19
+time: 2018-03-20 20:03:09.518786Z
+tags: worker-27
+test: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_bulk_dict
+time: 2018-03-20 20:03:09.521484Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_bulk_dict [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+C
+keys: ['id']0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.514333Z
+tags: worker-17
+test: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_prop_attr_value
+time: 2018-03-20 20:03:09.515405Z
+successful: osc_lib.tests.api.test_utils.TestBaseAPIFilter.test_simple_filter_prop_attr_value [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-17
+time: 2018-03-20 20:03:09.521914Z
+tags: worker-27
+test: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_bulk_none
+time: 2018-03-20 20:03:09.526080Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_bulk_none [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+11
+keys: []
+keys: []0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.523270Z
+tags: worker-21
+test: osc_lib.tests.test_shell.TestShellArgV.test_shell_argv
+time: 2018-03-20 20:03:09.526476Z
+successful: osc_lib.tests.test_shell.TestShellArgV.test_shell_argv [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-21
+time: 2018-03-20 20:03:09.524355Z
+tags: worker-12
+test: osc_lib.tests.api.test_api.TestBaseAPICreate.test_baseapi_create_post
+time: 2018-03-20 20:03:09.529596Z
+successful: osc_lib.tests.api.test_api.TestBaseAPICreate.test_baseapi_create_post [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-12
+time: 2018-03-20 20:03:09.528655Z
+tags: worker-8
+test: osc_lib.tests.cli.test_format_columns.TestListDictColumn.test_list_dict_column
+time: 2018-03-20 20:03:09.529302Z
+successful: osc_lib.tests.cli.test_format_columns.TestListDictColumn.test_list_dict_column [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-8
+time: 2018-03-20 20:03:09.530141Z
+tags: worker-12
+test: osc_lib.tests.api.test_api.TestBaseAPICreate.test_baseapi_create_put
+time: 2018-03-20 20:03:09.533165Z
+successful: osc_lib.tests.api.test_api.TestBaseAPICreate.test_baseapi_create_put [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-12
+time: 2018-03-20 20:03:09.523373Z
+tags: worker-19
+test: osc_lib.tests.test_shell.TestShellCliPrecedence.test_shell_args_precedence_3
+time: 2018-03-20 20:03:09.533403Z
+successful: osc_lib.tests.test_shell.TestShellCliPrecedence.test_shell_args_precedence_3 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-19
+time: 2018-03-20 20:03:09.526571Z
+tags: worker-27
+test: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_bulk_one
+time: 2018-03-20 20:03:09.535753Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_bulk_one [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+45
+keys: ['id']
+keys: ['id']
+keys: ['id']
+keys: ['name']
+keys: ['error']0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.533635Z
+tags: worker-12
+test: osc_lib.tests.api.test_api.TestBaseAPICreate.test_baseapi_delete
+time: 2018-03-20 20:03:09.536278Z
+successful: osc_lib.tests.api.test_api.TestBaseAPICreate.test_baseapi_delete [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-12
+time: 2018-03-20 20:03:09.534588Z
+tags: worker-22
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_invalid_key
+time: 2018-03-20 20:03:09.535814Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_invalid_key [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-22
+time: 2018-03-20 20:03:09.535061Z
+tags: worker-20
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_empty_required_optional
+time: 2018-03-20 20:03:09.536988Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_empty_required_optional [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-20
+time: 2018-03-20 20:03:09.536277Z
+tags: worker-27
+test: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_bulk_two
+time: 2018-03-20 20:03:09.541809Z
+successful: osc_lib.tests.api.test_api.TestBaseAPIFind.test_baseapi_find_bulk_two [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+3F
+keys: ['id', 'name']
+keys: ['id', 'name']
+keys: ['id', 'error']0
+]
+tags: -worker-27
+time: 2018-03-20 20:03:09.536116Z
+tags: worker-22
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_multiples
+time: 2018-03-20 20:03:09.536594Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_multiples [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-22
+time: 2018-03-20 20:03:09.537459Z
+tags: worker-20
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_error_values_with_comma
+time: 2018-03-20 20:03:09.538987Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_error_values_with_comma [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-20
+time: 2018-03-20 20:03:09.536816Z
+tags: worker-22
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_no_required_optional
+time: 2018-03-20 20:03:09.537511Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_no_required_optional [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-22
+time: 2018-03-20 20:03:09.539394Z
+tags: worker-20
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_error_values_without_comma
+time: 2018-03-20 20:03:09.540369Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_error_values_without_comma [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-20
+time: 2018-03-20 20:03:09.537739Z
+tags: worker-22
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_optional
+time: 2018-03-20 20:03:09.538373Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_optional [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-22
+time: 2018-03-20 20:03:09.538595Z
+tags: worker-22
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_optional_keys_not_list
+time: 2018-03-20 20:03:09.539142Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_optional_keys_not_list [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-22
+time: 2018-03-20 20:03:09.540761Z
+tags: worker-20
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_good_values
+time: 2018-03-20 20:03:09.541646Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_good_values [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-20
+time: 2018-03-20 20:03:09.542021Z
+tags: worker-20
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_invalid_key
+time: 2018-03-20 20:03:09.543040Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_invalid_key [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-20
+time: 2018-03-20 20:03:09.539373Z
+tags: worker-22
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_required
+time: 2018-03-20 20:03:09.539956Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_required [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-22
+time: 2018-03-20 20:03:09.543438Z
+tags: worker-20
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_missing_key
+time: 2018-03-20 20:03:09.544392Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_missing_key [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-20
+time: 2018-03-20 20:03:09.540187Z
+tags: worker-22
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_required_keys_not_list
+time: 2018-03-20 20:03:09.540699Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_required_keys_not_list [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-22
+time: 2018-03-20 20:03:09.540926Z
+tags: worker-22
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_value_no_key
+time: 2018-03-20 20:03:09.541515Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueCommaAction.test_mkvca_value_no_key [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-22
+time: 2018-03-20 20:03:09.544761Z
+tags: worker-20
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_optional_keys_not_list
+time: 2018-03-20 20:03:09.545708Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_optional_keys_not_list [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-20
+time: 2018-03-20 20:03:09.546105Z
+tags: worker-20
+test: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_required_keys_not_list
+time: 2018-03-20 20:03:09.547010Z
+successful: osc_lib.tests.cli.test_parseractions.TestMultiKeyValueAction.test_required_keys_not_list [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-20
+time: 2018-03-20 20:03:09.552254Z
+tags: worker-23
+test: osc_lib.tests.test_shell.TestShellCli.test_shell_args_cert_options
+time: 2018-03-20 20:03:09.568064Z
+successful: osc_lib.tests.test_shell.TestShellCli.test_shell_args_cert_options [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-23
+time: 2018-03-20 20:03:09.568639Z
+tags: worker-23
+test: osc_lib.tests.test_shell.TestShellCli.test_shell_args_cloud_no_vendor
+time: 2018-03-20 20:03:09.575697Z
+successful: osc_lib.tests.test_shell.TestShellCli.test_shell_args_cloud_no_vendor [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-23
+time: 2018-03-20 20:03:09.579063Z
+tags: worker-30
+test: osc_lib.tests.test_logs.TestContext.test_log_level_from_config
+time: 2018-03-20 20:03:09.579474Z
+successful: osc_lib.tests.test_logs.TestContext.test_log_level_from_config [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-30
+time: 2018-03-20 20:03:09.579753Z
+tags: worker-30
+test: osc_lib.tests.test_logs.TestContext.test_log_level_from_options
+time: 2018-03-20 20:03:09.580039Z
+successful: osc_lib.tests.test_logs.TestContext.test_log_level_from_options [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-30
+time: 2018-03-20 20:03:09.513830Z
+tags: worker-16
+test: osc_lib.tests.test_shell.TestShellOptions.test_global_options
+time: 2018-03-20 20:03:09.577655Z
+successful: osc_lib.tests.test_shell.TestShellOptions.test_global_options [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+82A9
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+START with options: ['--os-cloud', 'altocumulus', 'module', 'list']
+options: Namespace(cacert=None, cert='', cloud='altocumulus', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+START with options: ['--os-region-name', 'ZZ9_Plural_Z_Alpha', 'module', 'list']
+START with options: ['--os-region-name', 'ZZ9_Plural_Z_Alpha', 'module', 'list']
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='ZZ9_Plural_Z_Alpha', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='ZZ9_Plural_Z_Alpha', timing=False, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+START with options: ['--timing', 'module', 'list']
+START with options: ['--timing', 'module', 'list']
+START with options: ['--timing', 'module', 'list']
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=True, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=True, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=True, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+START with options: ['--os-cacert', '/dev/null', 'module', 'list']
+START with options: ['--os-cacert', '/dev/null', 'module', 'list']
+START with options: ['--os-cacert', '/dev/null', 'module', 'list']
+START with options: ['--os-cacert', '/dev/null', 'module', 'list']
+options: Namespace(cacert='/dev/null', cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert='/dev/null', cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert='/dev/null', cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert='/dev/null', cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+START with options: ['--os-default-domain', 'default', 'module', 'list']
+START with options: ['--os-default-domain', 'default', 'module', 'list']
+START with options: ['--os-default-domain', 'default', 'module', 'list']
+START with options: ['--os-default-domain', 'default', 'module', 'list']
+START with options: ['--os-default-domain', 'default', 'module', 'list']
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+START with options: ['--os-interface', 'internal', 'module', 'list']
+START with options: ['--os-interface', 'internal', 'module', 'list']
+START with options: ['--os-interface', 'internal', 'module', 'list']
+START with options: ['--os-interface', 'internal', 'module', 'list']
+START with options: ['--os-interface', 'internal', 'module', 'list']
+START with options: ['--os-interface', 'internal', 'module', 'list']
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+options: Namespace(cacert=None, cert='', cloud='', debug=False, default_domain='default', deferred_help=False, insecure=None, interface='internal', key='', keystone_region_name='', log_file=None, os_beta_command=False, profile='', region_name='', timing=False, verbose_level=1, verify=None)
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+END return value: <MagicMock name='run_subcommand()' id='73070864'>
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-16
+time: 2018-03-20 20:03:09.576250Z
+tags: worker-23
+test: osc_lib.tests.test_shell.TestShellCli.test_shell_args_cloud_public
+time: 2018-03-20 20:03:09.585302Z
+successful: osc_lib.tests.test_shell.TestShellCli.test_shell_args_cloud_public [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+853
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {'auth_type': 'password', 'beta_command': False, u'compute_api_version': u'2', u'orchestration_api_version': u'1', u'database_api_version': u'1.0', u'metering_api_version': u'2', u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', 'networks': [], 'cloud': 'megacloud', u'image_api_version': u'2', 'log_level': 'debug', 'verify': True, u'dns_api_version': u'2', u'object_store_api_version': u'1', u'status': u'active', u'container_infra_api_version': u'1', 'verbose_level': 1, 'region_name': 'occ-cloud', 'api_timeout': None, u'baremetal_api_version': u'1', 'auth': {'username': 'zaphod', 'project_name': 'heart-o-gold', 'auth_url': 'http://127.0.0.1:5000/v2.0/'}, 'default_domain': 'default', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', 'key': 'mickey', 'timing': False, u'application_catalog_api_version': u'1', 'cacert': None, u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'deferred_help': False, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'donut': 'cake', 'cert': 'mycert', u'secgroup_source': u'neutron', u'container_api_version': u'1', 'log_file': '/tmp/test_log_file', u'interface': None, u'disable_vendor_agent': {}}
+END return value: <MagicMock name='run_subcommand()' id='42035536'>
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-23
+time: 2018-03-20 20:03:09.580265Z
+tags: worker-30
+test: osc_lib.tests.test_logs.TestContext.test_set_warning_filter
+time: 2018-03-20 20:03:09.581059Z
+successful: osc_lib.tests.test_logs.TestContext.test_set_warning_filter [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-30
+time: 2018-03-20 20:03:09.578595Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_config_hook_default
+time: 2018-03-20 20:03:09.579375Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_config_hook_default [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.579662Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_default_domain_not_set
+time: 2018-03-20 20:03:09.580091Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_default_domain_not_set [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.580322Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_default_domain_use_default
+time: 2018-03-20 20:03:09.580812Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_default_domain_use_default [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.578558Z
+tags: worker-16
+test: osc_lib.tests.test_shell.TestShellOptions.test_no_options
+time: 2018-03-20 20:03:09.590305Z
+successful: osc_lib.tests.test_shell.TestShellOptions.test_no_options [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+39F
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {}
+END return value: <MagicMock name='run_subcommand()' id='73168464'>
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-16
+time: 2018-03-20 20:03:09.581041Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_default_domain_use_given
+time: 2018-03-20 20:03:09.581460Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_default_domain_use_given [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.585858Z
+tags: worker-23
+test: osc_lib.tests.test_shell.TestShellCli.test_shell_args_no_options
+time: 2018-03-20 20:03:09.592271Z
+successful: osc_lib.tests.test_shell.TestShellCli.test_shell_args_no_options [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-23
+time: 2018-03-20 20:03:09.581687Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin
+time: 2018-03-20 20:03:09.582090Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.582317Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_password
+time: 2018-03-20 20:03:09.582715Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_password [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.582944Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_password_v2
+time: 2018-03-20 20:03:09.583355Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_password_v2 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.583580Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_password_v2_int
+time: 2018-03-20 20:03:09.583988Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_password_v2_int [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.584233Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_password_v3
+time: 2018-03-20 20:03:09.584639Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_password_v3 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.584863Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_password_v3_int
+time: 2018-03-20 20:03:09.585272Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_password_v3_int [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.585496Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_token
+time: 2018-03-20 20:03:09.585888Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_token [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.586123Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_token_v2
+time: 2018-03-20 20:03:09.586516Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_token_v2 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.586737Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_token_v3
+time: 2018-03-20 20:03:09.587138Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_select_default_plugin_token_v3 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.596163Z
+tags: worker-25
+test: osc_lib.tests.command.test_timing.TestTiming.test_timing_list
+time: 2018-03-20 20:03:09.603985Z
+successful: osc_lib.tests.command.test_timing.TestTiming.test_timing_list [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-25
+time: 2018-03-20 20:03:09.587359Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_v2_arguments
+time: 2018-03-20 20:03:09.587763Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_v2_arguments [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.604320Z
+tags: worker-25
+test: osc_lib.tests.command.test_timing.TestTiming.test_timing_list_no_data
+time: 2018-03-20 20:03:09.605094Z
+successful: osc_lib.tests.command.test_timing.TestTiming.test_timing_list_no_data [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-25
+time: 2018-03-20 20:03:09.592777Z
+tags: worker-23
+test: osc_lib.tests.test_shell.TestShellCli.test_shell_args_precedence
+time: 2018-03-20 20:03:09.605456Z
+successful: osc_lib.tests.test_shell.TestShellCli.test_shell_args_precedence [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+851
+defaults: {u'auth_type': None, u'status': u'active', u'compute_api_version': u'2', 'key': None, u'database_api_version': u'1.0', 'api_timeout': None, u'baremetal_api_version': u'1', u'image_api_version': u'2', u'container_infra_api_version': u'1', u'metering_api_version': u'2', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', u'orchestration_api_version': u'1', 'cacert': None, u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', u'application_catalog_api_version': u'1', u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'verify': True, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'cert': None, u'secgroup_source': u'neutron', u'container_api_version': u'1', u'dns_api_version': u'2', u'object_store_api_version': u'1', u'interface': None, u'disable_vendor_agent': {}}
+cloud cfg: {'auth_type': 'password', 'beta_command': False, u'compute_api_version': u'2', u'orchestration_api_version': u'1', u'database_api_version': u'1.0', u'metering_api_version': u'2', u'network_api_version': u'2', u'message': u'', u'image_format': u'qcow2', 'networks': [], 'cloud': 'megacloud', u'image_api_version': u'2', 'log_level': 'debug', 'verify': True, u'dns_api_version': u'2', u'object_store_api_version': u'1', u'status': u'active', u'container_infra_api_version': u'1', 'verbose_level': 1, 'region_name': 'krikkit', 'api_timeout': None, u'baremetal_api_version': u'1', 'auth': {'username': 'zaphod', 'project_name': 'heart-o-gold', 'auth_url': 'http://127.0.0.1:5000/v2.0/'}, 'default_domain': 'default', u'image_api_use_tasks': False, u'floating_ip_source': u'neutron', 'key': 'mickey', 'timing': False, u'application_catalog_api_version': u'1', 'cacert': None, u'key_manager_api_version': u'v1', u'workflow_api_version': u'2', 'deferred_help': False, u'identity_api_version': u'2.0', u'volume_api_version': u'2', 'donut': 'cake', 'cert': 'mycert', u'secgroup_source': u'neutron', u'container_api_version': u'1', 'log_file': '/tmp/test_log_file', u'interface': None, u'disable_vendor_agent': {}}
+END return value: <MagicMock name='run_subcommand()' id='42064272'>
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-23
+time: 2018-03-20 20:03:09.587990Z
+tags: worker-29
+test: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_v2_ignore_v3
+time: 2018-03-20 20:03:09.588735Z
+successful: osc_lib.tests.cli.test_client_config.TestOSCConfig.test_auth_v2_ignore_v3 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+42
+No handlers could be found for logger "osc_lib.cli.client_config"
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-29
+time: 2018-03-20 20:03:09.633906Z
+tags: worker-28
+test: osc_lib.tests.command.test_command.TestCommand.test_command_has_logger
+time: 2018-03-20 20:03:09.634680Z
+successful: osc_lib.tests.command.test_command.TestCommand.test_command_has_logger [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-28
+time: 2018-03-20 20:03:09.635158Z
+tags: worker-28
+test: osc_lib.tests.command.test_command.TestCommand.test_validate_os_beta_command_enabled
+time: 2018-03-20 20:03:09.635887Z
+successful: osc_lib.tests.command.test_command.TestCommand.test_validate_os_beta_command_enabled [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-28
+time: 2018-03-20 20:03:09.606013Z
+tags: worker-23
+test: osc_lib.tests.test_shell.TestShellCli.test_shell_args_tls_options
+time: 2018-03-20 20:03:09.638415Z
+successful: osc_lib.tests.test_shell.TestShellCli.test_shell_args_tls_options [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-23
+time: 2018-03-20 20:03:09.661344Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_backward_compat_col_lister
+time: 2018-03-20 20:03:09.662079Z
+successful: osc_lib.tests.test_utils.TestUtils.test_backward_compat_col_lister [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+36
+No handlers could be found for logger "osc_lib.utils"
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.662478Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_backward_compat_col_lister_no_specify_column
+time: 2018-03-20 20:03:09.662807Z
+successful: osc_lib.tests.test_utils.TestUtils.test_backward_compat_col_lister_no_specify_column [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.663130Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_backward_compat_col_lister_with_tuple_headers
+time: 2018-03-20 20:03:09.663531Z
+successful: osc_lib.tests.test_utils.TestUtils.test_backward_compat_col_lister_with_tuple_headers [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.663837Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_backward_compat_col_showone
+time: 2018-03-20 20:03:09.664256Z
+successful: osc_lib.tests.test_utils.TestUtils.test_backward_compat_col_showone [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.664563Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_backward_compat_col_showone_no_specify_column
+time: 2018-03-20 20:03:09.664881Z
+successful: osc_lib.tests.test_utils.TestUtils.test_backward_compat_col_showone_no_specify_column [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.665204Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_build_kwargs_dict_value_None
+time: 2018-03-20 20:03:09.665509Z
+successful: osc_lib.tests.test_utils.TestUtils.test_build_kwargs_dict_value_None [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.665828Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_build_kwargs_dict_value_empty_str
+time: 2018-03-20 20:03:09.666132Z
+successful: osc_lib.tests.test_utils.TestUtils.test_build_kwargs_dict_value_empty_str [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.666454Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_build_kwargs_dict_value_set
+time: 2018-03-20 20:03:09.666747Z
+successful: osc_lib.tests.test_utils.TestUtils.test_build_kwargs_dict_value_set [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.667074Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_find_min_match_a2
+time: 2018-03-20 20:03:09.667409Z
+successful: osc_lib.tests.test_utils.TestUtils.test_find_min_match_a2 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.667714Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_find_min_match_a2_b2
+time: 2018-03-20 20:03:09.668038Z
+successful: osc_lib.tests.test_utils.TestUtils.test_find_min_match_a2_b2 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.668363Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_find_min_match_b2
+time: 2018-03-20 20:03:09.668689Z
+successful: osc_lib.tests.test_utils.TestUtils.test_find_min_match_b2 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.668994Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_find_min_match_b5
+time: 2018-03-20 20:03:09.669321Z
+successful: osc_lib.tests.test_utils.TestUtils.test_find_min_match_b5 [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.669631Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_find_min_match_no_flair
+time: 2018-03-20 20:03:09.669954Z
+successful: osc_lib.tests.test_utils.TestUtils.test_find_min_match_no_flair [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.670278Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_find_min_match_no_sort
+time: 2018-03-20 20:03:09.670593Z
+successful: osc_lib.tests.test_utils.TestUtils.test_find_min_match_no_sort [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.670917Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_format_size
+time: 2018-03-20 20:03:09.671282Z
+successful: osc_lib.tests.test_utils.TestUtils.test_format_size [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.671605Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_get_password_bad_once
+time: 2018-03-20 20:03:09.672831Z
+successful: osc_lib.tests.test_utils.TestUtils.test_get_password_bad_once [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+27
+The passwords entered were not the same0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.673182Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_get_password_cntrl_d
+time: 2018-03-20 20:03:09.674202Z
+successful: osc_lib.tests.test_utils.TestUtils.test_get_password_cntrl_d [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.674580Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_get_password_good
+time: 2018-03-20 20:03:09.675729Z
+successful: osc_lib.tests.test_utils.TestUtils.test_get_password_good [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.676120Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_get_password_no_tty
+time: 2018-03-20 20:03:09.676775Z
+successful: osc_lib.tests.test_utils.TestUtils.test_get_password_no_tty [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.677139Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_is_ascii_bytes
+time: 2018-03-20 20:03:09.677490Z
+successful: osc_lib.tests.test_utils.TestUtils.test_is_ascii_bytes [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.677819Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_is_ascii_string
+time: 2018-03-20 20:03:09.678154Z
+successful: osc_lib.tests.test_utils.TestUtils.test_is_ascii_string [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.678485Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_sort_items_all_with_direction
+time: 2018-03-20 20:03:09.678880Z
+successful: osc_lib.tests.test_utils.TestUtils.test_sort_items_all_with_direction [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.679245Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_sort_items_some_with_direction
+time: 2018-03-20 20:03:09.679614Z
+successful: osc_lib.tests.test_utils.TestUtils.test_sort_items_some_with_direction [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.679964Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_empty_key
+time: 2018-03-20 20:03:09.680321Z
+successful: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_empty_key [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.680671Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_invalid_direction
+time: 2018-03-20 20:03:09.681200Z
+successful: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_invalid_direction [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.681578Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_invalid_key
+time: 2018-03-20 20:03:09.682160Z
+successful: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_invalid_key [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.682529Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_multiple_keys
+time: 2018-03-20 20:03:09.682907Z
+successful: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_multiple_keys [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.683276Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_object
+time: 2018-03-20 20:03:09.683995Z
+successful: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_object [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.684352Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_one_key
+time: 2018-03-20 20:03:09.684711Z
+successful: osc_lib.tests.test_utils.TestUtils.test_sort_items_with_one_key [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.685030Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_wait_for_delete_error
+time: 2018-03-20 20:03:09.686718Z
+successful: osc_lib.tests.test_utils.TestUtils.test_wait_for_delete_error [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.687115Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_wait_for_delete_error_with_overrides
+time: 2018-03-20 20:03:09.688771Z
+successful: osc_lib.tests.test_utils.TestUtils.test_wait_for_delete_error_with_overrides [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.689187Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_wait_for_delete_error_with_overrides_exception
+time: 2018-03-20 20:03:09.690314Z
+successful: osc_lib.tests.test_utils.TestUtils.test_wait_for_delete_error_with_overrides_exception [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.690689Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_wait_for_delete_ok
+time: 2018-03-20 20:03:09.692819Z
+successful: osc_lib.tests.test_utils.TestUtils.test_wait_for_delete_ok [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.693223Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_wait_for_delete_timeout
+time: 2018-03-20 20:03:09.696857Z
+successful: osc_lib.tests.test_utils.TestUtils.test_wait_for_delete_timeout [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.697303Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_wait_for_status_error
+time: 2018-03-20 20:03:09.698386Z
+successful: osc_lib.tests.test_utils.TestUtils.test_wait_for_status_error [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.698741Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_wait_for_status_error_with_overrides
+time: 2018-03-20 20:03:09.700055Z
+successful: osc_lib.tests.test_utils.TestUtils.test_wait_for_status_error_with_overrides [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.700435Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_wait_for_status_ok
+time: 2018-03-20 20:03:09.701472Z
+successful: osc_lib.tests.test_utils.TestUtils.test_wait_for_status_ok [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31
+time: 2018-03-20 20:03:09.701825Z
+tags: worker-31
+test: osc_lib.tests.test_utils.TestUtils.test_wait_for_status_ok_with_overrides
+time: 2018-03-20 20:03:09.703135Z
+successful: osc_lib.tests.test_utils.TestUtils.test_wait_for_status_ok_with_overrides [ multipart
+Content-Type: text/plain;charset=utf8
+stderr
+0
+Content-Type: text/plain;charset=utf8
+stdout
+0
+]
+tags: -worker-31

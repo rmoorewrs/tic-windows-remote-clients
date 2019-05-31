@@ -1,0 +1,751 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Using neutron CLI</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Using neutron CLI</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="osc/v2/networking-sfc.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: networking sfc"></i></a>
+    
+    
+    <a href="neutron-reference.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: neutron CLI reference"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-05-24 09:09</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Using neutron CLI</a><ul>
+<li><a class="reference internal" href="#basic-usage">Basic Usage</a><ul>
+<li><a class="reference internal" href="#using-with-os-client-config">Using with os-client-config</a></li>
+<li><a class="reference internal" href="#using-with-keystone-token">Using with keystone token</a></li>
+<li><a class="reference internal" href="#using-noauth-mode">Using noauth mode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#display-options">Display options</a><ul>
+<li><a class="reference internal" href="#filtering">Filtering</a></li>
+<li><a class="reference internal" href="#changing-displayed-columns">Changing displayed columns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extra-arguments-for-create-update-operation">Extra arguments for create/update operation</a><ul>
+<li><a class="reference internal" href="#key-interpretation">Key interpretation</a></li>
+<li><a class="reference internal" href="#value-interpretation">Value interpretation</a><ul>
+<li><a class="reference internal" href="#specify-a-list-value">Specify a list value</a></li>
+<li><a class="reference internal" href="#specify-a-dict-value">Specify a dict value</a></li>
+<li><a class="reference internal" href="#specify-a-list-of-dicts">Specify a list of dicts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#passing-none-as-a-value">Passing None as a value</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debugging">Debugging</a><ul>
+<li><a class="reference internal" href="#display-api-level-communication">Display API-level communication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="using-neutron-cli">
+<h1>Using neutron CLI<a class="headerlink" href="#using-neutron-cli" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>neutron</strong> shell utility interacts with OpenStack Networking API from the
+command-line. It supports the entire features of OpenStack Networking API.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">neutron CLI is now deprecated and will be removed in the future.
+Use openstack CLI instead. See <a class="reference external" href="https://docs.openstack.org/python-openstackclient/latest/cli/command-list.html">openstack CLI command list</a>
+and <a class="reference internal" href="osc_plugins.html"><span class="doc">its extensions for advanced networking services</span></a>.
+The command mapping from neutron CLI to openstack CLI is available
+<a class="reference external" href="https://docs.openstack.org/python-openstackclient/latest/cli/decoder.html#neutron-cli">here</a>.</p>
+</div>
+<div class="section" id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<p>In order to use the CLI, you must provide your OpenStack username, password,
+project, domain information for both user and project, and auth endpoint. Use
+the corresponding configuration options (<code class="docutils literal"><span class="pre">--os-username</span></code>, <code class="docutils literal"><span class="pre">--os-password</span></code>,
+<code class="docutils literal"><span class="pre">--os-project-name</span></code>, <code class="docutils literal"><span class="pre">--os-user-domain-id</span></code>, <code class="docutils literal"><span class="pre">os-project-domain-id</span></code>, and
+<code class="docutils literal"><span class="pre">--os-auth-url</span></code>), but it is easier to set them in environment variables.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">OS_USERNAME</span><span class="o">=</span>user
+<span class="nb">export</span> <span class="nv">OS_PASSWORD</span><span class="o">=</span>pass
+<span class="nb">export</span> <span class="nv">OS_PROJECT_NAME</span><span class="o">=</span>project
+<span class="nb">export</span> <span class="nv">OS_USER_DOMAIN_ID</span><span class="o">=</span>default
+<span class="nb">export</span> <span class="nv">OS_PROJECT_DOMAIN_ID</span><span class="o">=</span>default
+<span class="nb">export</span> <span class="nv">OS_AUTH_URL</span><span class="o">=</span>http://auth.example.com:5000/v3
+</pre></div>
+</div>
+<p>If you are using Identity v2.0 API (DEPRECATED), you don’t need to pass domain
+information.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">OS_USERNAME</span><span class="o">=</span>user
+<span class="nb">export</span> <span class="nv">OS_PASSWORD</span><span class="o">=</span>pass
+<span class="nb">export</span> <span class="nv">OS_TENANT_NAME</span><span class="o">=</span>tenant
+<span class="nb">export</span> <span class="nv">OS_AUTH_URL</span><span class="o">=</span>http://auth.example.com:5000/v2.0
+</pre></div>
+</div>
+<p>Once you’ve configured your authentication parameters, you can run <strong>neutron</strong>
+commands.  All commands take the form of:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>neutron &lt;command&gt; [arguments...]
+</pre></div>
+</div>
+<p>Run <strong>neutron help</strong> to get a full list of all possible commands, and run
+<strong>neutron help &lt;command&gt;</strong> to get detailed help for that command.</p>
+<div class="section" id="using-with-os-client-config">
+<h3>Using with os-client-config<a class="headerlink" href="#using-with-os-client-config" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://docs.openstack.org/os-client-config/latest/">os-client-config</a>
+provides more convenient way to manage a collection of client configurations
+and you can easily switch multiple OpenStack-based configurations.</p>
+<p>To use os-client-config, you first need to prepare
+<code class="docutils literal"><span class="pre">~/.config/openstack/clouds.yaml</span></code> like the following.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">clouds</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">devstack</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">auth</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">auth_url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://auth.example.com:5000</span>
+      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">your-secret</span>
+      <span class="l l-Scalar l-Scalar-Plain">project_domain_id</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+      <span class="l l-Scalar l-Scalar-Plain">project_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">demo</span>
+      <span class="l l-Scalar l-Scalar-Plain">user_domain_id</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">demo</span>
+    <span class="l l-Scalar l-Scalar-Plain">identity_api_version</span><span class="p p-Indicator">:</span> <span class="s">&#39;3&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">region_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">RegionOne</span>
+  <span class="l l-Scalar l-Scalar-Plain">devstack-admin</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">auth</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">auth_url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://auth.example.com:35357</span>
+      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">another-secret</span>
+      <span class="l l-Scalar l-Scalar-Plain">project_domain_id</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+      <span class="l l-Scalar l-Scalar-Plain">project_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">admin</span>
+      <span class="l l-Scalar l-Scalar-Plain">user_domain_id</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">admin</span>
+    <span class="l l-Scalar l-Scalar-Plain">identity_api_version</span><span class="p p-Indicator">:</span> <span class="s">&#39;3&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">region_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">RegionOne</span>
+</pre></div>
+</div>
+<p>Then, you need to specify a configuration name defined in the above clouds.yaml.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">OS_CLOUD</span><span class="o">=</span>devstack
+</pre></div>
+</div>
+<p>For more detail information, see the
+<a class="reference external" href="https://docs.openstack.org/os-client-config/latest/">os-client-config</a>
+documentation.</p>
+</div>
+<div class="section" id="using-with-keystone-token">
+<h3>Using with keystone token<a class="headerlink" href="#using-with-keystone-token" title="Permalink to this headline">¶</a></h3>
+<p>The command-line tool will attempt to re-authenticate using your provided
+credentials for every request. You can override this behavior by manually
+supplying an auth token using <code class="docutils literal"><span class="pre">--os-url</span></code> and <code class="docutils literal"><span class="pre">--os-auth-token</span></code>. You can
+alternatively set these environment variables.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">OS_URL</span><span class="o">=</span>http://neutron.example.org:9696/
+<span class="nb">export</span> <span class="nv">OS_TOKEN</span><span class="o">=</span>3bcc3d3a03f44e3d8377f9247b0ad155
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-noauth-mode">
+<h3>Using noauth mode<a class="headerlink" href="#using-noauth-mode" title="Permalink to this headline">¶</a></h3>
+<p>If neutron server does not require authentication, besides these two arguments
+or environment variables (We can use any value as token.), we need manually
+supply <code class="docutils literal"><span class="pre">--os-auth-strategy</span></code> or set the environment variable.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">OS_AUTH_STRATEGY</span><span class="o">=</span>noauth
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="display-options">
+<h2>Display options<a class="headerlink" href="#display-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="filtering">
+<h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h3>
+<p>Neutron API supports filtering in the listing operation.
+<strong>neutron</strong> CLI supports this feature too.</p>
+<p>To specify a filter in <code class="docutils literal"><span class="pre">*-list</span></code> command, you need to pass a pair of an
+attribute name and an expected value with the format of <code class="docutils literal"><span class="pre">--&lt;attribute&gt;</span> <span class="pre">&lt;value&gt;</span></code>.
+The example below retrieves ports owned by compute instances.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> neutron port-list --device_owner network:dhcp
+<span class="go">+--------------------------------------+------+-------------------+-------------------------------------------------------------------------------------------------------------+</span>
+<span class="go">| id                                   | name | mac_address       | fixed_ips                                                                                                   |</span>
+<span class="go">+--------------------------------------+------+-------------------+-------------------------------------------------------------------------------------------------------------+</span>
+<span class="go">| 8953d683-29ad-4be3-b73f-060727c7849b |      | fa:16:3e:4b:9e:0a | {&quot;subnet_id&quot;: &quot;6b832dfe-f271-443c-abad-629961414a73&quot;, &quot;ip_address&quot;: &quot;10.0.0.2&quot;}                             |</span>
+<span class="go">|                                      |      |                   | {&quot;subnet_id&quot;: &quot;cdcc616b-0cff-482f-96f5-06fc63d21247&quot;, &quot;ip_address&quot;: &quot;fd12:877c:1d66:0:f816:3eff:fe4b:9e0a&quot;} |</span>
+<span class="go">+--------------------------------------+------+-------------------+-------------------------------------------------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+<p>You can also specify multiple filters.
+The example below retrieves security group rules applied to IPv4 traffic
+which belongs to a security group bfa493f9-2b03-46d2-8399-b9b038a53bc1.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> neutron security-group-rule-list --security-group-id bfa493f9-2b03-46d2-8399-b9b038a53bc1 --ethertype IPv4
+<span class="go">+--------------------------------------+----------------+-----------+-----------+---------------+-----------------+</span>
+<span class="go">| id                                   | security_group | direction | ethertype | protocol/port | remote          |</span>
+<span class="go">+--------------------------------------+----------------+-----------+-----------+---------------+-----------------+</span>
+<span class="go">| 65489805-0400-4bce-9bd9-16a81952263c | default        | egress    | IPv4      | any           | any             |</span>
+<span class="go">| 9429f336-4947-4643-bbd9-24528cc65648 | default        | ingress   | IPv4      | any           | default (group) |</span>
+<span class="go">+--------------------------------------+----------------+-----------+-----------+---------------+-----------------+</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Looking up UUID from name is not supported when specifying a filter.
+You need to use UUID to specify a specific resource.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Filtering for dictionary or list attributes is not supported.</p>
+</div>
+</div>
+<div class="section" id="changing-displayed-columns">
+<h3>Changing displayed columns<a class="headerlink" href="#changing-displayed-columns" title="Permalink to this headline">¶</a></h3>
+<p>If you want displayed columns in a list operation, <code class="docutils literal"><span class="pre">-c</span></code> option can be used.
+<code class="docutils literal"><span class="pre">-c</span></code> can be specified multiple times and the column order will be same as
+the order of <code class="docutils literal"><span class="pre">-c</span></code> options.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> neutron port-list -c id -c device_owner -c fixed_ips
+<span class="go">+--------------------------------------+--------------------------+-------------------------------------------------------------------------------------------------------------+</span>
+<span class="go">| id                                   | device_owner             | fixed_ips                                                                                                   |</span>
+<span class="go">+--------------------------------------+--------------------------+-------------------------------------------------------------------------------------------------------------+</span>
+<span class="go">| 41ca1b9b-4bbd-4aa8-bcaa-31d3d5704205 | network:router_interface | {&quot;subnet_id&quot;: &quot;6b832dfe-f271-443c-abad-629961414a73&quot;, &quot;ip_address&quot;: &quot;10.0.0.1&quot;}                             |</span>
+<span class="go">| 8953d683-29ad-4be3-b73f-060727c7849b | network:dhcp             | {&quot;subnet_id&quot;: &quot;6b832dfe-f271-443c-abad-629961414a73&quot;, &quot;ip_address&quot;: &quot;10.0.0.2&quot;}                             |</span>
+<span class="go">|                                      |                          | {&quot;subnet_id&quot;: &quot;cdcc616b-0cff-482f-96f5-06fc63d21247&quot;, &quot;ip_address&quot;: &quot;fd12:877c:1d66:0:f816:3eff:fe4b:9e0a&quot;} |</span>
+<span class="go">| a9da29f8-4504-4526-a5ce-cd3624fbd173 | neutron:LOADBALANCER     | {&quot;subnet_id&quot;: &quot;6b832dfe-f271-443c-abad-629961414a73&quot;, &quot;ip_address&quot;: &quot;10.0.0.3&quot;}                             |</span>
+<span class="go">|                                      |                          | {&quot;subnet_id&quot;: &quot;cdcc616b-0cff-482f-96f5-06fc63d21247&quot;, &quot;ip_address&quot;: &quot;fd12:877c:1d66:0:f816:3eff:feb1:ab71&quot;} |</span>
+<span class="go">| d6a1ff96-0a99-416f-a4d6-65d9614cf64e | compute:nova             | {&quot;subnet_id&quot;: &quot;6b832dfe-f271-443c-abad-629961414a73&quot;, &quot;ip_address&quot;: &quot;10.0.0.4&quot;}                             |</span>
+<span class="go">|                                      |                          | {&quot;subnet_id&quot;: &quot;cdcc616b-0cff-482f-96f5-06fc63d21247&quot;, &quot;ip_address&quot;: &quot;fd12:877c:1d66:0:f816:3eff:fe2c:348e&quot;} |</span>
+<span class="go">| f4789225-26d0-409f-8047-82d2c7a87a95 | network:router_interface | {&quot;subnet_id&quot;: &quot;cdcc616b-0cff-482f-96f5-06fc63d21247&quot;, &quot;ip_address&quot;: &quot;fd12:877c:1d66::1&quot;}                    |</span>
+<span class="go">+--------------------------------------+--------------------------+-------------------------------------------------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="extra-arguments-for-create-update-operation">
+<span id="cli-extra-arguments"></span><h2>Extra arguments for create/update operation<a class="headerlink" href="#extra-arguments-for-create-update-operation" title="Permalink to this headline">¶</a></h2>
+<p><strong>neutron</strong> CLI has a mechanism called the <em>extra arguments</em> for <code class="docutils literal"><span class="pre">*-create</span></code>
+and <code class="docutils literal"><span class="pre">*-update</span></code> commands. It allows users to specify a set of <em>unknown
+options</em> which are not defined as options and not shown in the help text.
+<strong>Unknown options MUST be placed at the end of the command line.</strong>
+<em>unknown options</em> will be directly passed to the API layer.  By this mechanism,
+you can pass an attribute which is not defined in the upstream <strong>neutron</strong>
+CLI. For example, when you are developing a new feature which add a new
+attribute to an existing resource, it is useful because we can test your
+feature without changing the existing neutron CLI.</p>
+<p>For example, if you run the following command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neutron</span> <span class="n">resource</span><span class="o">-</span><span class="n">update</span> <span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">key1</span> <span class="n">value1</span> <span class="o">--</span><span class="n">key2</span> <span class="n">value2</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">resource</span></code> is some resource name and <code class="docutils literal"><span class="pre">--key1</span></code> and <code class="docutils literal"><span class="pre">--key2</span></code> are
+unknown options, then the following JSON will be sent to the neutron API:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">resources</span><span class="o">/&lt;</span><span class="n">ID</span><span class="o">&gt;</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="key-interpretation">
+<h3>Key interpretation<a class="headerlink" href="#key-interpretation" title="Permalink to this headline">¶</a></h3>
+<p>This means an option name (<code class="docutils literal"><span class="pre">--key1</span></code> in this case) must be one of valid
+resources of a corresponding resource. An option name <code class="docutils literal"><span class="pre">--foo_bar</span></code> is
+recognized as an attribute name <code class="docutils literal"><span class="pre">foo_bar</span></code>. <code class="docutils literal"><span class="pre">--foo-bar</span></code> is also interpreted
+as an attribute name <code class="docutils literal"><span class="pre">foo_bar</span></code>.</p>
+</div>
+<div class="section" id="value-interpretation">
+<h3>Value interpretation<a class="headerlink" href="#value-interpretation" title="Permalink to this headline">¶</a></h3>
+<p>By default, if the number of values is 1, the option value is interpreted as a
+string and is passed to the API layer as specified in a command-line.</p>
+<p>If the number of values is greater than 1, the option value is interpreted as a
+list and the result in the API layer will be same as when specifying a list as
+described below.</p>
+<blockquote>
+<div>neutron resource-update &lt;ID&gt; –key1 val1 val2 val3 –key2 val4</div></blockquote>
+<p>In the above example, a value of <code class="docutils literal"><span class="pre">key1</span></code> is interpreted as
+<code class="docutils literal"><span class="pre">[&quot;val1&quot;,</span> <span class="pre">&quot;val2&quot;,</span> <span class="pre">&quot;val3&quot;]</span></code> and a value of <code class="docutils literal"><span class="pre">key2</span></code> is interpreted
+as <code class="docutils literal"><span class="pre">val4</span></code>.</p>
+<p>The extra argument mechanism supports more complex value like a list or a dict.</p>
+<div class="section" id="specify-a-list-value">
+<h4>Specify a list value<a class="headerlink" href="#specify-a-list-value" title="Permalink to this headline">¶</a></h4>
+<p>A command-line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neutron</span> <span class="n">resource</span><span class="o">-</span><span class="n">update</span> <span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">key</span> <span class="nb">list</span><span class="o">=</span><span class="n">true</span> <span class="n">val1</span> <span class="n">val2</span> <span class="n">val3</span>
+</pre></div>
+</div>
+<p>will send the following in the API layer:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;val1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;val2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;val3&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you want to specify a list value, it is recommended to specify
+<code class="docutils literal"><span class="pre">list=true</span></code>. When <code class="docutils literal"><span class="pre">list=true</span></code> is specified, specified values are
+interpreted as a list even regardless of the number of values.</p>
+<p class="last">If <code class="docutils literal"><span class="pre">list=true</span></code> is not specified, specified values are interpreted
+depends on the number of values how. If the number of values is more than 2,
+the specified values are interpreted as a list. If 1, the value
+is interpreted as a string.</p>
+</div>
+</div>
+<div class="section" id="specify-a-dict-value">
+<h4>Specify a dict value<a class="headerlink" href="#specify-a-dict-value" title="Permalink to this headline">¶</a></h4>
+<p>A command-line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neutron</span> <span class="n">resource</span><span class="o">-</span><span class="n">update</span> <span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">key</span> <span class="nb">type</span><span class="o">=</span><span class="nb">dict</span> <span class="n">key1</span><span class="o">=</span><span class="n">val1</span><span class="p">,</span><span class="n">key2</span><span class="o">=</span><span class="n">val2</span><span class="p">,</span><span class="n">key3</span><span class="o">=</span><span class="n">val3</span>
+</pre></div>
+</div>
+<p>will send the following in the API layer:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;val1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;val2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;key3&quot;</span><span class="p">:</span> <span class="s2">&quot;val3&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">type=bool</span> <span class="pre">True/False</span></code> and <code class="docutils literal"><span class="pre">type=int</span> <span class="pre">10</span></code> are also supported.</p>
+</div>
+</div>
+<div class="section" id="specify-a-list-of-dicts">
+<h4>Specify a list of dicts<a class="headerlink" href="#specify-a-list-of-dicts" title="Permalink to this headline">¶</a></h4>
+<p>A command-line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neutron</span> <span class="n">resource</span><span class="o">-</span><span class="n">update</span> <span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">key</span> <span class="nb">type</span><span class="o">=</span><span class="nb">dict</span> <span class="nb">list</span><span class="o">=</span><span class="n">true</span> <span class="n">key1</span><span class="o">=</span><span class="n">val1</span> <span class="n">key2</span><span class="o">=</span><span class="n">val2</span> <span class="n">key3</span><span class="o">=</span><span class="n">val3</span>
+</pre></div>
+</div>
+<p>will send the following in the API layer:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;val1&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;val2&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;key3&quot;</span><span class="p">:</span> <span class="s2">&quot;val3&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="passing-none-as-a-value">
+<h3>Passing None as a value<a class="headerlink" href="#passing-none-as-a-value" title="Permalink to this headline">¶</a></h3>
+<p>There is a case where we would like to pass <code class="docutils literal"><span class="pre">None</span></code> (<code class="docutils literal"><span class="pre">null</span></code> in JSON)
+in the API layer. To do this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neutron</span> <span class="n">resource</span><span class="o">-</span><span class="n">update</span> <span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">key</span> <span class="n">action</span><span class="o">=</span><span class="n">clear</span>
+</pre></div>
+</div>
+<p>The following body will be in the API layer:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If <code class="docutils literal"><span class="pre">action=clear</span></code> is specified, <code class="docutils literal"><span class="pre">list=true</span></code> or <code class="docutils literal"><span class="pre">type=dict</span></code> is ignored.
+It means when <code class="docutils literal"><span class="pre">action=clear</span></code> is specified <code class="docutils literal"><span class="pre">None</span></code> is always sent.</p>
+</div>
+</div>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="display-api-level-communication">
+<h3>Display API-level communication<a class="headerlink" href="#display-api-level-communication" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">-v</span></code> (or <code class="docutils literal"><span class="pre">--verbose</span></code>, <code class="docutils literal"><span class="pre">--debug</span></code>) option displays a detail interaction
+with your neutron server. It is useful to debug what happens in the API level.</p>
+<p>Here is an sample output of <code class="docutils literal"><span class="pre">net-show</span></code> command.</p>
+<p>The first line show what parameters are recognized by neutronclient.
+It is sometimes useful to check if command-line parameters you specify are recognized properly.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> neutron -v net-show mynetwork
+<span class="go">DEBUG: neutronclient.neutron.v2_0.network.ShowNetwork get_data(Namespace(columns=[], fields=[], formatter=&#39;table&#39;, id=u&#39;mynetwork&#39;, max_width=0, noindent=False, prefix=&#39;&#39;, request_format=&#39;json&#39;, show_details=False, variables=[]))</span>
+</pre></div>
+</div>
+<p>Next, neutronclient sends an authentication request to keystone to get a token
+which is used in further operations.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">DEBUG: keystoneauth.session REQ: curl -g -i -X GET http://172.16.18.47:5000 -H &quot;Accept: application/json&quot; -H &quot;User-Agent: keystoneauth1&quot;</span>
+<span class="go">DEBUG: keystoneauth.session RESP: [300] Content-Length: 593 Vary: X-Auth-Token Keep-Alive: timeout=5, max=100 Server: Apache/2.4.7 (Ubuntu) Connection: Keep-Alive Date: Fri, 27 Nov 2015 20:10:54 GMT Content-Type: application/json</span>
+<span class="go">RESP BODY: {&quot;versions&quot;: {&quot;values&quot;: [{&quot;status&quot;: &quot;stable&quot;, &quot;updated&quot;: &quot;2015-03-30T00:00:00Z&quot;, &quot;media-types&quot;: [{&quot;base&quot;: &quot;application/json&quot;, &quot;type&quot;: &quot;application/vnd.openstack.identity-v3+json&quot;}], &quot;id&quot;: &quot;v3.4&quot;, &quot;links&quot;: [{&quot;href&quot;: &quot;http://172.16.18.47:5000/v3/&quot;, &quot;rel&quot;: &quot;self&quot;}]}, {&quot;status&quot;: &quot;stable&quot;, &quot;updated&quot;: &quot;2014-04-17T00:00:00Z&quot;, &quot;media-types&quot;: [{&quot;base&quot;: &quot;application/json&quot;, &quot;type&quot;: &quot;application/vnd.openstack.identity-v2.0+json&quot;}], &quot;id&quot;: &quot;v2.0&quot;, &quot;links&quot;: [{&quot;href&quot;: &quot;http://172.16.18.47:5000/v2.0/&quot;, &quot;rel&quot;: &quot;self&quot;}, {&quot;href&quot;: &quot;http://docs.openstack.org/&quot;, &quot;type&quot;: &quot;text/html&quot;, &quot;rel&quot;: &quot;describedby&quot;}]}]}}</span>
+
+<span class="go">DEBUG: keystoneauth.identity.v3.base Making authentication request to http://172.16.18.47:5000/v3/auth/tokens</span>
+</pre></div>
+</div>
+<p>Neutronclient looks up a network ID corresponding to a given network name.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">DEBUG: keystoneauth.session REQ: curl -g -i -X GET http://172.16.18.47:9696/v2.0/networks.json?fields=id&amp;name=mynetwork -H &quot;User-Agent: python-neutronclient&quot; -H &quot;Accept: application/json&quot; -H &quot;X-Auth-Token: {SHA1}39300e7398d53a02afd183f13cb6afaef95ec4e5&quot;</span>
+<span class="go">DEBUG: keystoneauth.session RESP: [200] Date: Fri, 27 Nov 2015 20:10:55 GMT Connection: keep-alive Content-Type: application/json; charset=UTF-8 Content-Length: 62 X-Openstack-Request-Id: req-ccebf6e4-4f52-4874-a1ab-5499abcba378</span>
+<span class="go">RESP BODY: {&quot;networks&quot;: [{&quot;id&quot;: &quot;3698d3c7-d581-443e-bf86-53c4e3a738f7&quot;}]}</span>
+</pre></div>
+</div>
+<p>Finally, neutronclient retrieves a detail of a given network using the resolved ID.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">DEBUG: keystoneauth.session REQ: curl -g -i -X GET http://172.16.18.47:9696/v2.0/networks/3698d3c7-d581-443e-bf86-53c4e3a738f7.json -H &quot;User-Agent: python-neutronclient&quot; -H &quot;Accept: application/json&quot; -H &quot;X-Auth-Token: {SHA1}39300e7398d53a02afd183f13cb6afaef95ec4e5&quot;</span>
+<span class="go">DEBUG: keystoneauth.session RESP: [200] Date: Fri, 27 Nov 2015 20:10:55 GMT Connection: keep-alive Content-Type: application/json; charset=UTF-8 Content-Length: 272 X-Openstack-Request-Id: req-261add00-d6d3-4ea7-becc-105b60ac7369</span>
+<span class="go">RESP BODY: {&quot;network&quot;: {&quot;status&quot;: &quot;ACTIVE&quot;, &quot;subnets&quot;: [], &quot;name&quot;: &quot;mynetwork&quot;, &quot;admin_state_up&quot;: true, &quot;tenant_id&quot;: &quot;8f0ebf767043483a987736c8c684178d&quot;, &quot;mtu&quot;: 0, &quot;router:external&quot;: false, &quot;shared&quot;: false, &quot;port_security_enabled&quot;: true, &quot;id&quot;: &quot;3698d3c7-d581-443e-bf86-53c4e3a738f7&quot;}}</span>
+
+<span class="go">+-----------------------+--------------------------------------+</span>
+<span class="go">| Field                 | Value                                |</span>
+<span class="go">+-----------------------+--------------------------------------+</span>
+<span class="go">| admin_state_up        | True                                 |</span>
+<span class="go">| id                    | 3698d3c7-d581-443e-bf86-53c4e3a738f7 |</span>
+<span class="go">| mtu                   | 0                                    |</span>
+<span class="go">| name                  | mynetwork                            |</span>
+<span class="go">| port_security_enabled | True                                 |</span>
+<span class="go">| router:external       | False                                |</span>
+<span class="go">| shared                | False                                |</span>
+<span class="go">| status                | ACTIVE                               |</span>
+<span class="go">| subnets               |                                      |</span>
+<span class="go">| tenant_id             | 8f0ebf767043483a987736c8c684178d     |</span>
+<span class="go">+-----------------------+--------------------------------------+</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="osc/v2/networking-sfc.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: networking sfc"></i></a>
+          
+          
+            <a href="neutron-reference.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: neutron CLI reference"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-05-24 09:09</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using CLI</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#openstackclient">OpenStackClient</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#neutron-cli">neutron CLI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">neutronclient Python API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributor/index.html">Contributor Guide</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/neutron" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-neutronclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: a7662ab36ddabd69c3a84602d0f99a0adb3acd34";
+        var bugProject = "python-neutronclient";
+        var bugTitle = "Using neutron CLI in python-neutronclient";
+    var fieldTags = "doc";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 6.5.0 on 2018-05-24 09:09";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

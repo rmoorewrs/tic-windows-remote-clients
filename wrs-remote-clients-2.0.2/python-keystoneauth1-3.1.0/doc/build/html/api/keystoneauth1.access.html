@@ -1,0 +1,2396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: keystoneauth1.access package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>keystoneauth1.access package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="keystoneauth1.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneauth1 package"></i></a>
+    
+    
+    <a href="keystoneauth1.exceptions.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.exceptions package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">keystoneauth1.access package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.access.access">keystoneauth1.access.access module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.access.service_catalog">keystoneauth1.access.service_catalog module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.access.service_providers">keystoneauth1.access.service_providers module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.access">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="keystoneauth1-access-package">
+<h1>keystoneauth1.access package<a class="headerlink" href="#keystoneauth1-access-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-keystoneauth1.access.access">
+<span id="keystoneauth1-access-access-module"></span><h2>keystoneauth1.access.access module<a class="headerlink" href="#module-keystoneauth1.access.access" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.access.access.AccessInfo">
+<em class="property">class </em><code class="descclassname">keystoneauth1.access.access.</code><code class="descname">AccessInfo</code><span class="sig-paren">(</span><em>body</em>, <em>auth_token=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Encapsulates a raw authentication token from keystone.</p>
+<p>Provides helper methods for extracting useful values from that token.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.audit_chain_id">
+<code class="descname">audit_chain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.audit_chain_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the audit chain ID if present.</p>
+<p>In the event that a token was rescoped then this ID will be the
+<a class="reference internal" href="#keystoneauth1.access.access.AccessInfo.audit_id" title="keystoneauth1.access.access.AccessInfo.audit_id"><code class="xref py py-attr docutils literal"><span class="pre">audit_id</span></code></a> of the initial token. Returns None if no value
+present.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.audit_id">
+<code class="descname">audit_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.audit_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the audit ID if present.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.auth_token">
+<code class="descname">auth_token</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.auth_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the token_id associated with the auth request.</p>
+<p>To be used in headers for authenticating OpenStack API requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.bind">
+<code class="descname">bind</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Information about external mechanisms the token is bound to.</p>
+<p>If a token is bound to an external authentication mechanism it can only
+be used in conjunction with that mechanism. For example if bound to a
+kerberos principal it may only be accepted if there is also kerberos
+authentication performed on the request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dictionary or None. The key will be the bind type the value
+is a dictionary that is specific to the format of the bind
+type. Returns None if there is no bind information in the
+token.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.domain_id">
+<code class="descname">domain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.domain_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the domain id associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no domain associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.domain_name">
+<code class="descname">domain_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.domain_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the domain name associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no domain associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.domain_scoped">
+<code class="descname">domain_scoped</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.domain_scoped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the auth token was scoped to a domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.expires">
+<code class="descname">expires</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.expires" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the token expiration (as datetime object).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">datetime</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.access.AccessInfo.has_service_catalog">
+<code class="descname">has_service_catalog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.has_service_catalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the auth token has a service catalog.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.initial_audit_id">
+<code class="descname">initial_audit_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.initial_audit_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The audit ID of the initially requested token.</p>
+<p>This is the <a class="reference internal" href="#keystoneauth1.access.access.AccessInfo.audit_chain_id" title="keystoneauth1.access.access.AccessInfo.audit_chain_id"><code class="xref py py-attr docutils literal"><span class="pre">audit_chain_id</span></code></a> if present or the
+<a class="reference internal" href="#keystoneauth1.access.access.AccessInfo.audit_id" title="keystoneauth1.access.access.AccessInfo.audit_id"><code class="xref py py-attr docutils literal"><span class="pre">audit_id</span></code></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.is_admin_project">
+<code class="descname">is_admin_project</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.is_admin_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the current project scope is the admin project.</p>
+<p>For backwards compatibility purposes if there is nothing specified in
+the token we always assume we are in the admin project, so this will
+default to True.</p>
+<p>:returns boolean</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.is_federated">
+<code class="descname">is_federated</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.is_federated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if federation was used to get the token.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.issued">
+<code class="descname">issued</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.issued" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the token issue time (as datetime object).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">datetime</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.oauth_access_token_id">
+<code class="descname">oauth_access_token_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.oauth_access_token_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the access token ID if OAuth authentication used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.oauth_consumer_id">
+<code class="descname">oauth_consumer_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.oauth_consumer_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the consumer ID if OAuth authentication used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.project_domain_id">
+<code class="descname">project_domain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.project_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project’s domain id associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.project_domain_name">
+<code class="descname">project_domain_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.project_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project’s domain name associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.project_id">
+<code class="descname">project_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.project_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project ID associated with the auth request.</p>
+<p>This returns None if the auth token wasn’t scoped to a project.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no project associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.project_is_domain">
+<code class="descname">project_is_domain</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.project_is_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return if a project act as a domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.project_name">
+<code class="descname">project_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.project_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project name associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no project associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.project_scoped">
+<code class="descname">project_scoped</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.project_scoped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the auth token was scoped to a tenant (project).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.role_ids">
+<code class="descname">role_ids</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.role_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of user’s role ids associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of strings of role ids</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.role_names">
+<code class="descname">role_names</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.role_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of user’s role names associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of strings of role names</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.scoped">
+<code class="descname">scoped</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.scoped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the auth token was scoped.</p>
+<p>Returns true if scoped to a tenant(project) or domain,
+and contains a populated service catalog.</p>
+<p>This is deprecated, use project_scoped instead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.service_catalog">
+<code class="descname">service_catalog</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.service_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.service_providers">
+<code class="descname">service_providers</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.service_providers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an object representing the list of trusted service providers.</p>
+<p>Used for Keystone2Keystone federating-out.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.service_providers.ServiceProviders</span></code>
+or None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.tenant_id">
+<code class="descname">tenant_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.tenant_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synonym for project_id.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.tenant_name">
+<code class="descname">tenant_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.tenant_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synonym for project_name.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.trust_id">
+<code class="descname">trust_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.trust_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trust id associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no trust associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.trust_scoped">
+<code class="descname">trust_scoped</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.trust_scoped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the auth token was scoped from a delegated trust.</p>
+<p>The trust delegation is via the OS-TRUST v3 extension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.trustee_user_id">
+<code class="descname">trustee_user_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.trustee_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trustee user id associated with a trust.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no trust associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.trustor_user_id">
+<code class="descname">trustor_user_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.trustor_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trustor user id associated with a trust.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no trust associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.user_domain_id">
+<code class="descname">user_domain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.user_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the user’s domain id associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.user_domain_name">
+<code class="descname">user_domain_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.user_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the user’s domain name associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the user id associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfo.username">
+<code class="descname">username</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.username" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the username associated with the auth request.</p>
+<p>Follows the pattern defined in the V2 API of first looking for ‘name’,
+returning that if available, and falling back to ‘username’ if name
+is unavailable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.access.AccessInfo.will_expire_soon">
+<code class="descname">will_expire_soon</code><span class="sig-paren">(</span><em>stale_duration=30</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.access.AccessInfo.will_expire_soon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if expiration is about to occur.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if expiration is within the given duration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.access.access.AccessInfoV2">
+<em class="property">class </em><code class="descclassname">keystoneauth1.access.access.</code><code class="descname">AccessInfoV2</code><span class="sig-paren">(</span><em>body</em>, <em>auth_token=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.access.access.AccessInfo" title="keystoneauth1.access.access.AccessInfo"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.access.access.AccessInfo</span></code></a></p>
+<p>An object for encapsulating raw v2 auth token from identity service.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.audit_chain_id">
+<code class="descname">audit_chain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.audit_chain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.audit_id">
+<code class="descname">audit_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.audit_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.auth_token">
+<code class="descname">auth_token</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.auth_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.bind">
+<code class="descname">bind</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.domain_id">
+<code class="descname">domain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.domain_name">
+<code class="descname">domain_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.domain_scoped">
+<code class="descname">domain_scoped</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.domain_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.expires">
+<code class="descname">expires</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.expires" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.access.AccessInfoV2.has_service_catalog">
+<code class="descname">has_service_catalog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.has_service_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.is_admin_project">
+<code class="descname">is_admin_project</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.is_admin_project" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.is_federated">
+<code class="descname">is_federated</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.is_federated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.issued">
+<code class="descname">issued</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.issued" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.oauth_access_token_id">
+<code class="descname">oauth_access_token_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.oauth_access_token_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.oauth_consumer_id">
+<code class="descname">oauth_consumer_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.oauth_consumer_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.project_domain_id">
+<code class="descname">project_domain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.project_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.project_domain_name">
+<code class="descname">project_domain_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.project_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.project_id">
+<code class="descname">project_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.project_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.project_is_domain">
+<code class="descname">project_is_domain</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.project_is_domain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.project_name">
+<code class="descname">project_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.project_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.role_ids">
+<code class="descname">role_ids</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.role_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.role_names">
+<code class="descname">role_names</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.role_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.service_providers">
+<code class="descname">service_providers</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.service_providers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.trust_id">
+<code class="descname">trust_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.trust_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.trust_scoped">
+<code class="descname">trust_scoped</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.trust_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.trustee_user_id">
+<code class="descname">trustee_user_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.trustee_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.trustor_user_id">
+<code class="descname">trustor_user_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.trustor_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.user_domain_id">
+<code class="descname">user_domain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.user_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.user_domain_name">
+<code class="descname">user_domain_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.user_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.username">
+<code class="descname">username</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV2.version">
+<code class="descname">version</code><em class="property"> = ‘v2.0’</em><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV2.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.access.access.AccessInfoV3">
+<em class="property">class </em><code class="descclassname">keystoneauth1.access.access.</code><code class="descname">AccessInfoV3</code><span class="sig-paren">(</span><em>body</em>, <em>auth_token=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.access.access.AccessInfo" title="keystoneauth1.access.access.AccessInfo"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.access.access.AccessInfo</span></code></a></p>
+<p>An object encapsulating raw v3 auth token from identity service.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.audit_chain_id">
+<code class="descname">audit_chain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.audit_chain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.audit_id">
+<code class="descname">audit_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.audit_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.bind">
+<code class="descname">bind</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.domain_id">
+<code class="descname">domain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.domain_name">
+<code class="descname">domain_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.domain_scoped">
+<code class="descname">domain_scoped</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.domain_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.expires">
+<code class="descname">expires</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.expires" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.access.AccessInfoV3.has_service_catalog">
+<code class="descname">has_service_catalog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.has_service_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.is_admin_project">
+<code class="descname">is_admin_project</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.is_admin_project" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.is_federated">
+<code class="descname">is_federated</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.is_federated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.issued">
+<code class="descname">issued</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.issued" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.oauth_access_token_id">
+<code class="descname">oauth_access_token_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.oauth_access_token_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.oauth_consumer_id">
+<code class="descname">oauth_consumer_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.oauth_consumer_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.project_domain_id">
+<code class="descname">project_domain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.project_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.project_domain_name">
+<code class="descname">project_domain_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.project_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.project_id">
+<code class="descname">project_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.project_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.project_is_domain">
+<code class="descname">project_is_domain</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.project_is_domain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.project_name">
+<code class="descname">project_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.project_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.role_ids">
+<code class="descname">role_ids</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.role_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.role_names">
+<code class="descname">role_names</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.role_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.service_providers">
+<code class="descname">service_providers</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.service_providers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.trust_id">
+<code class="descname">trust_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.trust_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.trust_scoped">
+<code class="descname">trust_scoped</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.trust_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.trustee_user_id">
+<code class="descname">trustee_user_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.trustee_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.trustor_user_id">
+<code class="descname">trustor_user_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.trustor_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.user_domain_id">
+<code class="descname">user_domain_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.user_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.user_domain_name">
+<code class="descname">user_domain_name</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.user_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.username">
+<code class="descname">username</code><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.access.AccessInfoV3.version">
+<code class="descname">version</code><em class="property"> = ‘v3’</em><a class="headerlink" href="#keystoneauth1.access.access.AccessInfoV3.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.access.access.create">
+<code class="descclassname">keystoneauth1.access.access.</code><code class="descname">create</code><span class="sig-paren">(</span><em>resp=None</em>, <em>body=None</em>, <em>auth_token=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.access.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.access.service_catalog">
+<span id="keystoneauth1-access-service-catalog-module"></span><h2>keystoneauth1.access.service_catalog module<a class="headerlink" href="#module-keystoneauth1.access.service_catalog" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog">
+<em class="property">class </em><code class="descclassname">keystoneauth1.access.service_catalog.</code><code class="descname">ServiceCatalog</code><span class="sig-paren">(</span><em>catalog</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Helper methods for dealing with a Keystone Service Catalog.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog.catalog">
+<code class="descname">catalog</code><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog.catalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the raw service catalog content, mostly useful for debugging.</p>
+<p>Applications should avoid this and use accessor methods instead.
+However, there are times when inspecting the raw catalog can be useful
+for analysis and other reasons.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog.endpoint_data_for">
+<code class="descname">endpoint_data_for</code><span class="sig-paren">(</span><em>service_type=None</em>, <em>interface=’public’</em>, <em>region_name=None</em>, <em>service_name=None</em>, <em>service_id=None</em>, <em>endpoint_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog.endpoint_data_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch endpoint data from the service catalog.</p>
+<p>Fetch the specified endpoint data from the service catalog for
+a particular endpoint attribute. If no attribute is given, return
+the first endpoint of the specified type.</p>
+<dl class="docutils">
+<dt>Valid interface types: <cite>public</cite> or <cite>publicURL</cite>,</dt>
+<dd><cite>internal</cite> or <cite>internalURL</cite>,
+<cite>admin</cite> or ‘adminURL`</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>service_type</strong> (<em>string</em>) – Service type of the endpoint.</li>
+<li><strong>interface</strong> – Type of endpoint. Can be a single value or a list
+of values. If it’s a list of values, they will be
+looked for in order of preference.</li>
+<li><strong>region_name</strong> (<em>string</em>) – Region of the endpoint.</li>
+<li><strong>service_name</strong> (<em>string</em>) – The assigned name of the service.</li>
+<li><strong>service_id</strong> (<em>string</em>) – The identifier of a service.</li>
+<li><strong>endpoint_id</strong> (<em>string</em>) – The identifier of an endpoint.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog.get_endpoint_data_list">
+<code class="descname">get_endpoint_data_list</code><span class="sig-paren">(</span><em>service_type=None</em>, <em>interface=’public’</em>, <em>region_name=None</em>, <em>service_name=None</em>, <em>service_id=None</em>, <em>endpoint_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog.get_endpoint_data_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch a flat list of matching EndpointData objects.</p>
+<p>Fetch the endpoints from the service catalog for a particular
+endpoint attribute. If no attribute is given, return the first
+endpoint of the specified type.</p>
+<dl class="docutils">
+<dt>Valid interface types: <cite>public</cite> or <cite>publicURL</cite>,</dt>
+<dd><cite>internal</cite> or <cite>internalURL</cite>,
+<cite>admin</cite> or ‘adminURL`</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service_type</strong> (<em>string</em>) – Service type of the endpoint.</li>
+<li><strong>interface</strong> – Type of endpoint. Can be a single value or a list
+of values. If it’s a list of values, they will be
+looked for in order of preference.</li>
+<li><strong>region_name</strong> (<em>string</em>) – Region of the endpoint.</li>
+<li><strong>service_name</strong> (<em>string</em>) – The assigned name of the service.</li>
+<li><strong>service_id</strong> (<em>string</em>) – The identifier of a service.</li>
+<li><strong>endpoint_id</strong> (<em>string</em>) – The identifier of an endpoint.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a list of matching EndpointData objects</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list(<cite>keystoneauth1.discover.EndpointData</cite>)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog.get_endpoints">
+<code class="descname">get_endpoints</code><span class="sig-paren">(</span><em>service_type=None</em>, <em>interface=None</em>, <em>region_name=None</em>, <em>service_name=None</em>, <em>service_id=None</em>, <em>endpoint_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog.get_endpoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch and filter endpoint data for the specified service(s).</p>
+<p>Returns endpoints for the specified service (or all) containing
+the specified type (or all) and region (or all) and service name.</p>
+<p>If there is no name in the service catalog the service_name check will
+be skipped.  This allows compatibility with services that existed
+before the name was available in the catalog.</p>
+<p>Returns a dict keyed by service_type with a list of endpoint dicts</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog.get_endpoints_data">
+<code class="descname">get_endpoints_data</code><span class="sig-paren">(</span><em>service_type=None</em>, <em>interface=None</em>, <em>region_name=None</em>, <em>service_name=None</em>, <em>service_id=None</em>, <em>endpoint_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog.get_endpoints_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch and filter endpoint data for the specified service(s).</p>
+<p>Returns endpoints for the specified service (or all) containing
+the specified type (or all) and region (or all) and service name.</p>
+<p>If there is no name in the service catalog the service_name check will
+be skipped.  This allows compatibility with services that existed
+before the name was available in the catalog.</p>
+<dl class="docutils">
+<dt>Valid interface types: <cite>public</cite> or <cite>publicURL</cite>,</dt>
+<dd><cite>internal</cite> or <cite>internalURL</cite>,
+<cite>admin</cite> or ‘adminURL`</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service_type</strong> (<em>string</em>) – Service type of the endpoint.</li>
+<li><strong>interface</strong> – Type of endpoint. Can be a single value or a list
+of values. If it’s a list of values, they will be
+looked for in order of preference.</li>
+<li><strong>region_name</strong> (<em>string</em>) – Region of the endpoint.</li>
+<li><strong>service_name</strong> (<em>string</em>) – The assigned name of the service.</li>
+<li><strong>service_id</strong> (<em>string</em>) – The identifier of a service.</li>
+<li><strong>endpoint_id</strong> (<em>string</em>) – The identifier of an endpoint.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a list of matching EndpointData objects</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list(<cite>keystoneauth1.discover.EndpointData</cite>)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a dict, keyed by service_type, of lists of EndpointData</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog.get_urls">
+<code class="descname">get_urls</code><span class="sig-paren">(</span><em>service_type=None</em>, <em>interface=’public’</em>, <em>region_name=None</em>, <em>service_name=None</em>, <em>service_id=None</em>, <em>endpoint_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog.get_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch endpoint urls from the service catalog.</p>
+<p>Fetch the urls of endpoints from the service catalog for a particular
+endpoint attribute. If no attribute is given, return the url of the
+first endpoint of the specified type.</p>
+<dl class="docutils">
+<dt>Valid interface types: <cite>public</cite> or <cite>publicURL</cite>,</dt>
+<dd><cite>internal</cite> or <cite>internalURL</cite>,
+<cite>admin</cite> or ‘adminURL`</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service_type</strong> (<em>string</em>) – Service type of the endpoint.</li>
+<li><strong>interface</strong> – Type of endpoint. Can be a single value or a list
+of values. If it’s a list of values, they will be
+looked for in order of preference.</li>
+<li><strong>region_name</strong> (<em>string</em>) – Region of the endpoint.</li>
+<li><strong>service_name</strong> (<em>string</em>) – The assigned name of the service.</li>
+<li><strong>service_id</strong> (<em>string</em>) – The identifier of a service.</li>
+<li><strong>endpoint_id</strong> (<em>string</em>) – The identifier of an endpoint.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">tuple of urls</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog.is_interface_match">
+<code class="descname">is_interface_match</code><span class="sig-paren">(</span><em>endpoint</em>, <em>interface</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog.is_interface_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to normalize endpoint matching across v2 and v3.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the provided endpoint matches the required
+interface otherwise False.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog.normalize_catalog">
+<code class="descname">normalize_catalog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog.normalize_catalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the catalog normalized into v3 format.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog.normalize_interface">
+<em class="property">static </em><code class="descname">normalize_interface</code><span class="sig-paren">(</span><em>interface</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog.normalize_interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle differences in the way v2 and v3 catalogs specify endpoint.</p>
+<p>Both v2 and v3 must be able to handle the endpoint style of the other.
+For example v2 must be able to handle a ‘public’ interface and
+v3 must be able to handle a ‘publicURL’ interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the endpoint string in the format appropriate for this
+service catalog.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalog.url_for">
+<code class="descname">url_for</code><span class="sig-paren">(</span><em>service_type=None</em>, <em>interface=’public’</em>, <em>region_name=None</em>, <em>service_name=None</em>, <em>service_id=None</em>, <em>endpoint_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalog.url_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch an endpoint from the service catalog.</p>
+<p>Fetch the specified endpoint from the service catalog for
+a particular endpoint attribute. If no attribute is given, return
+the first endpoint of the specified type.</p>
+<dl class="docutils">
+<dt>Valid interface types: <cite>public</cite> or <cite>publicURL</cite>,</dt>
+<dd><cite>internal</cite> or <cite>internalURL</cite>,
+<cite>admin</cite> or ‘adminURL`</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>service_type</strong> (<em>string</em>) – Service type of the endpoint.</li>
+<li><strong>interface</strong> – Type of endpoint. Can be a single value or a list
+of values. If it’s a list of values, they will be
+looked for in order of preference.</li>
+<li><strong>region_name</strong> (<em>string</em>) – Region of the endpoint.</li>
+<li><strong>service_name</strong> (<em>string</em>) – The assigned name of the service.</li>
+<li><strong>service_id</strong> (<em>string</em>) – The identifier of a service.</li>
+<li><strong>endpoint_id</strong> (<em>string</em>) – The identifier of an endpoint.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalogV2">
+<em class="property">class </em><code class="descclassname">keystoneauth1.access.service_catalog.</code><code class="descname">ServiceCatalogV2</code><span class="sig-paren">(</span><em>catalog</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalogV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.access.service_catalog.ServiceCatalog" title="keystoneauth1.access.service_catalog.ServiceCatalog"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.access.service_catalog.ServiceCatalog</span></code></a></p>
+<p>An object for encapsulating the v2 service catalog.</p>
+<p>The object is created using raw v2 auth token from Keystone.</p>
+<dl class="classmethod">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalogV2.from_token">
+<em class="property">classmethod </em><code class="descname">from_token</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalogV2.from_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalogV2.is_interface_match">
+<code class="descname">is_interface_match</code><span class="sig-paren">(</span><em>endpoint</em>, <em>interface</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalogV2.is_interface_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalogV2.normalize_interface">
+<em class="property">static </em><code class="descname">normalize_interface</code><span class="sig-paren">(</span><em>interface</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalogV2.normalize_interface" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalogV3">
+<em class="property">class </em><code class="descclassname">keystoneauth1.access.service_catalog.</code><code class="descname">ServiceCatalogV3</code><span class="sig-paren">(</span><em>catalog</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalogV3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.access.service_catalog.ServiceCatalog" title="keystoneauth1.access.service_catalog.ServiceCatalog"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.access.service_catalog.ServiceCatalog</span></code></a></p>
+<p>An object for encapsulating the v3 service catalog.</p>
+<p>The object is created using raw v3 auth token from Keystone.</p>
+<dl class="classmethod">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalogV3.from_token">
+<em class="property">classmethod </em><code class="descname">from_token</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalogV3.from_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalogV3.is_interface_match">
+<code class="descname">is_interface_match</code><span class="sig-paren">(</span><em>endpoint</em>, <em>interface</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalogV3.is_interface_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="keystoneauth1.access.service_catalog.ServiceCatalogV3.normalize_interface">
+<em class="property">static </em><code class="descname">normalize_interface</code><span class="sig-paren">(</span><em>interface</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_catalog.ServiceCatalogV3.normalize_interface" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.access.service_providers">
+<span id="keystoneauth1-access-service-providers-module"></span><h2>keystoneauth1.access.service_providers module<a class="headerlink" href="#module-keystoneauth1.access.service_providers" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.access.service_providers.ServiceProviders">
+<em class="property">class </em><code class="descclassname">keystoneauth1.access.service_providers.</code><code class="descname">ServiceProviders</code><span class="sig-paren">(</span><em>service_providers</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_providers.ServiceProviders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Helper methods for dealing with Service Providers.</p>
+<dl class="classmethod">
+<dt id="keystoneauth1.access.service_providers.ServiceProviders.from_token">
+<em class="property">classmethod </em><code class="descname">from_token</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_providers.ServiceProviders.from_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_providers.ServiceProviders.get_auth_url">
+<code class="descname">get_auth_url</code><span class="sig-paren">(</span><em>sp_id</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_providers.ServiceProviders.get_auth_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.service_providers.ServiceProviders.get_sp_url">
+<code class="descname">get_sp_url</code><span class="sig-paren">(</span><em>sp_id</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.service_providers.ServiceProviders.get_sp_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.access">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-keystoneauth1.access" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.access.AccessInfo">
+<em class="property">class </em><code class="descclassname">keystoneauth1.access.</code><code class="descname">AccessInfo</code><span class="sig-paren">(</span><em>body</em>, <em>auth_token=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.AccessInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Encapsulates a raw authentication token from keystone.</p>
+<p>Provides helper methods for extracting useful values from that token.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.audit_chain_id">
+<code class="descname">audit_chain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.audit_chain_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the audit chain ID if present.</p>
+<p>In the event that a token was rescoped then this ID will be the
+<a class="reference internal" href="#keystoneauth1.access.AccessInfo.audit_id" title="keystoneauth1.access.AccessInfo.audit_id"><code class="xref py py-attr docutils literal"><span class="pre">audit_id</span></code></a> of the initial token. Returns None if no value
+present.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.audit_id">
+<code class="descname">audit_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.audit_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the audit ID if present.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.auth_token">
+<code class="descname">auth_token</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.auth_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the token_id associated with the auth request.</p>
+<p>To be used in headers for authenticating OpenStack API requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.bind">
+<code class="descname">bind</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Information about external mechanisms the token is bound to.</p>
+<p>If a token is bound to an external authentication mechanism it can only
+be used in conjunction with that mechanism. For example if bound to a
+kerberos principal it may only be accepted if there is also kerberos
+authentication performed on the request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dictionary or None. The key will be the bind type the value
+is a dictionary that is specific to the format of the bind
+type. Returns None if there is no bind information in the
+token.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.domain_id">
+<code class="descname">domain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.domain_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the domain id associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no domain associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.domain_name">
+<code class="descname">domain_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.domain_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the domain name associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no domain associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.domain_scoped">
+<code class="descname">domain_scoped</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.domain_scoped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the auth token was scoped to a domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.expires">
+<code class="descname">expires</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.expires" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the token expiration (as datetime object).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">datetime</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.AccessInfo.has_service_catalog">
+<code class="descname">has_service_catalog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.AccessInfo.has_service_catalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the auth token has a service catalog.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.initial_audit_id">
+<code class="descname">initial_audit_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.initial_audit_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The audit ID of the initially requested token.</p>
+<p>This is the <a class="reference internal" href="#keystoneauth1.access.AccessInfo.audit_chain_id" title="keystoneauth1.access.AccessInfo.audit_chain_id"><code class="xref py py-attr docutils literal"><span class="pre">audit_chain_id</span></code></a> if present or the
+<a class="reference internal" href="#keystoneauth1.access.AccessInfo.audit_id" title="keystoneauth1.access.AccessInfo.audit_id"><code class="xref py py-attr docutils literal"><span class="pre">audit_id</span></code></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.is_admin_project">
+<code class="descname">is_admin_project</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.is_admin_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the current project scope is the admin project.</p>
+<p>For backwards compatibility purposes if there is nothing specified in
+the token we always assume we are in the admin project, so this will
+default to True.</p>
+<p>:returns boolean</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.is_federated">
+<code class="descname">is_federated</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.is_federated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if federation was used to get the token.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.issued">
+<code class="descname">issued</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.issued" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the token issue time (as datetime object).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">datetime</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.oauth_access_token_id">
+<code class="descname">oauth_access_token_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.oauth_access_token_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the access token ID if OAuth authentication used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.oauth_consumer_id">
+<code class="descname">oauth_consumer_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.oauth_consumer_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the consumer ID if OAuth authentication used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.project_domain_id">
+<code class="descname">project_domain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.project_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project’s domain id associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.project_domain_name">
+<code class="descname">project_domain_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.project_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project’s domain name associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.project_id">
+<code class="descname">project_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.project_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project ID associated with the auth request.</p>
+<p>This returns None if the auth token wasn’t scoped to a project.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no project associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.project_is_domain">
+<code class="descname">project_is_domain</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.project_is_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return if a project act as a domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.project_name">
+<code class="descname">project_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.project_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project name associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no project associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.project_scoped">
+<code class="descname">project_scoped</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.project_scoped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the auth token was scoped to a tenant (project).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.role_ids">
+<code class="descname">role_ids</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.role_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of user’s role ids associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of strings of role ids</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.role_names">
+<code class="descname">role_names</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.role_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of user’s role names associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of strings of role names</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.scoped">
+<code class="descname">scoped</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.scoped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the auth token was scoped.</p>
+<p>Returns true if scoped to a tenant(project) or domain,
+and contains a populated service catalog.</p>
+<p>This is deprecated, use project_scoped instead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.service_catalog">
+<code class="descname">service_catalog</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.service_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.service_providers">
+<code class="descname">service_providers</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.service_providers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an object representing the list of trusted service providers.</p>
+<p>Used for Keystone2Keystone federating-out.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.service_providers.ServiceProviders</span></code>
+or None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.tenant_id">
+<code class="descname">tenant_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.tenant_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synonym for project_id.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.tenant_name">
+<code class="descname">tenant_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.tenant_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synonym for project_name.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.trust_id">
+<code class="descname">trust_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.trust_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trust id associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no trust associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.trust_scoped">
+<code class="descname">trust_scoped</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.trust_scoped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the auth token was scoped from a delegated trust.</p>
+<p>The trust delegation is via the OS-TRUST v3 extension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.trustee_user_id">
+<code class="descname">trustee_user_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.trustee_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trustee user id associated with a trust.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no trust associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.trustor_user_id">
+<code class="descname">trustor_user_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.trustor_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trustor user id associated with a trust.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str or None (if no trust associated with the token)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.user_domain_id">
+<code class="descname">user_domain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.user_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the user’s domain id associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.user_domain_name">
+<code class="descname">user_domain_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.user_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the user’s domain name associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the user id associated with the auth request.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfo.username">
+<code class="descname">username</code><a class="headerlink" href="#keystoneauth1.access.AccessInfo.username" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the username associated with the auth request.</p>
+<p>Follows the pattern defined in the V2 API of first looking for ‘name’,
+returning that if available, and falling back to ‘username’ if name
+is unavailable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.AccessInfo.will_expire_soon">
+<code class="descname">will_expire_soon</code><span class="sig-paren">(</span><em>stale_duration=30</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.AccessInfo.will_expire_soon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if expiration is about to occur.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if expiration is within the given duration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.access.AccessInfoV2">
+<em class="property">class </em><code class="descclassname">keystoneauth1.access.</code><code class="descname">AccessInfoV2</code><span class="sig-paren">(</span><em>body</em>, <em>auth_token=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.access.access.AccessInfo" title="keystoneauth1.access.access.AccessInfo"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.access.access.AccessInfo</span></code></a></p>
+<p>An object for encapsulating raw v2 auth token from identity service.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.audit_chain_id">
+<code class="descname">audit_chain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.audit_chain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.audit_id">
+<code class="descname">audit_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.audit_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.auth_token">
+<code class="descname">auth_token</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.auth_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.bind">
+<code class="descname">bind</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.domain_id">
+<code class="descname">domain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.domain_name">
+<code class="descname">domain_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.domain_scoped">
+<code class="descname">domain_scoped</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.domain_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.expires">
+<code class="descname">expires</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.expires" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.AccessInfoV2.has_service_catalog">
+<code class="descname">has_service_catalog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.has_service_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.is_admin_project">
+<code class="descname">is_admin_project</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.is_admin_project" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.is_federated">
+<code class="descname">is_federated</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.is_federated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.issued">
+<code class="descname">issued</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.issued" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.oauth_access_token_id">
+<code class="descname">oauth_access_token_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.oauth_access_token_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.oauth_consumer_id">
+<code class="descname">oauth_consumer_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.oauth_consumer_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.project_domain_id">
+<code class="descname">project_domain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.project_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.project_domain_name">
+<code class="descname">project_domain_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.project_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.project_id">
+<code class="descname">project_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.project_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.project_is_domain">
+<code class="descname">project_is_domain</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.project_is_domain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.project_name">
+<code class="descname">project_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.project_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.role_ids">
+<code class="descname">role_ids</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.role_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.role_names">
+<code class="descname">role_names</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.role_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.service_providers">
+<code class="descname">service_providers</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.service_providers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.trust_id">
+<code class="descname">trust_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.trust_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.trust_scoped">
+<code class="descname">trust_scoped</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.trust_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.trustee_user_id">
+<code class="descname">trustee_user_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.trustee_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.trustor_user_id">
+<code class="descname">trustor_user_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.trustor_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.user_domain_id">
+<code class="descname">user_domain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.user_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.user_domain_name">
+<code class="descname">user_domain_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.user_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.username">
+<code class="descname">username</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV2.version">
+<code class="descname">version</code><em class="property"> = ‘v2.0’</em><a class="headerlink" href="#keystoneauth1.access.AccessInfoV2.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.access.AccessInfoV3">
+<em class="property">class </em><code class="descclassname">keystoneauth1.access.</code><code class="descname">AccessInfoV3</code><span class="sig-paren">(</span><em>body</em>, <em>auth_token=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.access.access.AccessInfo" title="keystoneauth1.access.access.AccessInfo"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.access.access.AccessInfo</span></code></a></p>
+<p>An object encapsulating raw v3 auth token from identity service.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.audit_chain_id">
+<code class="descname">audit_chain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.audit_chain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.audit_id">
+<code class="descname">audit_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.audit_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.bind">
+<code class="descname">bind</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.domain_id">
+<code class="descname">domain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.domain_name">
+<code class="descname">domain_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.domain_scoped">
+<code class="descname">domain_scoped</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.domain_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.expires">
+<code class="descname">expires</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.expires" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.access.AccessInfoV3.has_service_catalog">
+<code class="descname">has_service_catalog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.has_service_catalog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.is_admin_project">
+<code class="descname">is_admin_project</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.is_admin_project" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.is_federated">
+<code class="descname">is_federated</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.is_federated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.issued">
+<code class="descname">issued</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.issued" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.oauth_access_token_id">
+<code class="descname">oauth_access_token_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.oauth_access_token_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.oauth_consumer_id">
+<code class="descname">oauth_consumer_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.oauth_consumer_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.project_domain_id">
+<code class="descname">project_domain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.project_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.project_domain_name">
+<code class="descname">project_domain_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.project_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.project_id">
+<code class="descname">project_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.project_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.project_is_domain">
+<code class="descname">project_is_domain</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.project_is_domain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.project_name">
+<code class="descname">project_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.project_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.role_ids">
+<code class="descname">role_ids</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.role_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.role_names">
+<code class="descname">role_names</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.role_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.service_providers">
+<code class="descname">service_providers</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.service_providers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.trust_id">
+<code class="descname">trust_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.trust_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.trust_scoped">
+<code class="descname">trust_scoped</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.trust_scoped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.trustee_user_id">
+<code class="descname">trustee_user_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.trustee_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.trustor_user_id">
+<code class="descname">trustor_user_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.trustor_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.user_domain_id">
+<code class="descname">user_domain_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.user_domain_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.user_domain_name">
+<code class="descname">user_domain_name</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.user_domain_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.username">
+<code class="descname">username</code><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.access.AccessInfoV3.version">
+<code class="descname">version</code><em class="property"> = ‘v3’</em><a class="headerlink" href="#keystoneauth1.access.AccessInfoV3.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.access.create">
+<code class="descclassname">keystoneauth1.access.</code><code class="descname">create</code><span class="sig-paren">(</span><em>resp=None</em>, <em>body=None</em>, <em>auth_token=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.access.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="keystoneauth1.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneauth1 package"></i></a>
+          
+          
+            <a href="keystoneauth1.exceptions.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.exceptions package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../using-sessions.html">Using Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication-plugins.html">Authentication Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin-options.html">Plugin Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extras.html">Extras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating.html">Migrating from keystoneclient</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="keystoneauth1.html">keystoneauth1 package</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">CHANGES</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "api/keystoneauth1.access" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/keystoneauth/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 774691368a72297ed9bacec1afa15cfcb12ca896";
+        var bugProject = "keystoneauth";
+        var bugTitle = "keystoneauth1.access package in keystoneauth1";
+    var fieldTags = "doc";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.1.0 on 2018-03-20 15:50";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

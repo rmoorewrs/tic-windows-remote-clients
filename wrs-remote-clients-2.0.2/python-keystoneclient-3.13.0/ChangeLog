@@ -1,0 +1,5 @@
+CHANGES
+=======
+
+* internal-keystone-client-public-adminURL-detection.patch
+* python-keystoneclient-3.13.0 base

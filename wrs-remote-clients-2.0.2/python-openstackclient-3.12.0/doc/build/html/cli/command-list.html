@@ -1,0 +1,1059 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Command List</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Command List</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="man/openstack.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: <strong class="program">openstack</strong>"></i></a>
+    
+    
+    <a href="command-objects/access-token.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: access token"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Command List</a></li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="command-list">
+<span id="id1"></span><h1>Command List<a class="headerlink" href="#command-list" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/access-token.html">access token</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/access-token.html#access-token-create">access token create</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/address-scope.html">address scope</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/address-scope.html#address-scope-create">address scope create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/address-scope.html#address-scope-delete">address scope delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/address-scope.html#address-scope-list">address scope list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/address-scope.html#address-scope-set">address scope set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/address-scope.html#address-scope-show">address scope show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/aggregate.html">aggregate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/aggregate.html#aggregate-add-host">aggregate add host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/aggregate.html#aggregate-create">aggregate create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/aggregate.html#aggregate-delete">aggregate delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/aggregate.html#aggregate-list">aggregate list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/aggregate.html#aggregate-remove-host">aggregate remove host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/aggregate.html#aggregate-set">aggregate set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/aggregate.html#aggregate-show">aggregate show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/aggregate.html#aggregate-unset">aggregate unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/availability-zone.html">availability zone</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/availability-zone.html#availability-zone-list">availability zone list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/backup.html">backup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/backup.html#backup-create">backup create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/backup.html#backup-delete">backup delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/backup.html#backup-list">backup list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/backup.html#backup-restore">backup restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/backup.html#backup-show">backup show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/catalog.html">catalog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/catalog.html#catalog-list">catalog list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/catalog.html#catalog-show">catalog show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/command.html">command</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/command.html#command-list">command list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/complete.html">complete</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/complete.html#id1">complete</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/compute-agent.html">compute agent</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/compute-agent.html#compute-agent-create">compute agent create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/compute-agent.html#compute-agent-delete">compute agent delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/compute-agent.html#compute-agent-list">compute agent list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/compute-agent.html#compute-agent-set">compute agent set</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/compute-service.html">compute service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/compute-service.html#compute-service-delete">compute service delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/compute-service.html#compute-service-list">compute service list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/compute-service.html#compute-service-set">compute service set</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/configuration.html">configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/configuration.html#configuration-show">configuration show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/consistency-group.html">consistency group</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group.html#consistency-group-add-volume">consistency group add volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group.html#consistency-group-create">consistency group create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group.html#consistency-group-delete">consistency group delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group.html#consistency-group-list">consistency group list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group.html#consistency-group-remove-volume">consistency group remove volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group.html#consistency-group-set">consistency group set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group.html#consistency-group-show">consistency group show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/consistency-group-snapshot.html">consistency group snapshot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group-snapshot.html#consistency-group-snapshot-create">consistency group snapshot create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group-snapshot.html#consistency-group-snapshot-delete">consistency group snapshot delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group-snapshot.html#consistency-group-snapshot-list">consistency group snapshot list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consistency-group-snapshot.html#consistency-group-snapshot-show">consistency group snapshot show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/console-log.html">console log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/console-log.html#console-log-show">console log show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/console-url.html">console url</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/console-url.html#console-url-show">console url show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/consumer.html">consumer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consumer.html#consumer-create">consumer create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consumer.html#consumer-delete">consumer delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consumer.html#consumer-list">consumer list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consumer.html#consumer-set">consumer set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/consumer.html#consumer-show">consumer show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/container.html">container</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/container.html#container-create">container create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/container.html#container-delete">container delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/container.html#container-list">container list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/container.html#container-save">container save</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/container.html#container-set">container set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/container.html#container-show">container show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/container.html#container-unset">container unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/credential.html">credential</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/credential.html#credential-create">credential create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/credential.html#credential-delete">credential delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/credential.html#credential-list">credential list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/credential.html#credential-set">credential set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/credential.html#credential-show">credential show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/domain.html">domain</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/domain.html#domain-create">domain create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/domain.html#domain-delete">domain delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/domain.html#domain-list">domain list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/domain.html#domain-set">domain set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/domain.html#domain-show">domain show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/ec2-credentials.html">ec2 credentials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ec2-credentials.html#ec2-credentials-create">ec2 credentials create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ec2-credentials.html#ec2-credentials-delete">ec2 credentials delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ec2-credentials.html#ec2-credentials-list">ec2 credentials list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ec2-credentials.html#ec2-credentials-show">ec2 credentials show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/endpoint.html">endpoint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/endpoint.html#endpoint-create">endpoint create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/endpoint.html#endpoint-delete">endpoint delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/endpoint.html#endpoint-list">endpoint list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/endpoint.html#endpoint-set">endpoint set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/endpoint.html#endpoint-show">endpoint show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/extension.html">extension</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/extension.html#extension-list">extension list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/extension.html#extension-show">extension show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/federation-protocol.html">federation protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/federation-protocol.html#federation-protocol-create">federation protocol create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/federation-protocol.html#federation-protocol-delete">federation protocol delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/federation-protocol.html#federation-protocol-list">federation protocol list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/federation-protocol.html#federation-protocol-set">federation protocol set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/federation-protocol.html#federation-protocol-show">federation protocol show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/flavor.html">flavor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/flavor.html#flavor-create">flavor create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/flavor.html#flavor-delete">flavor delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/flavor.html#flavor-list">flavor list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/flavor.html#flavor-set">flavor set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/flavor.html#flavor-show">flavor show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/flavor.html#flavor-unset">flavor unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/floating-ip.html">floating ip</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/floating-ip.html#floating-ip-create">floating ip create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/floating-ip.html#floating-ip-delete">floating ip delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/floating-ip.html#floating-ip-list">floating ip list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/floating-ip.html#floating-ip-set">floating ip set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/floating-ip.html#floating-ip-show">floating ip show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/floating-ip.html#floating-ip-unset">floating ip unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/floating-ip-pool.html">floating ip pool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/floating-ip-pool.html#floating-ip-pool-list">floating ip pool list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/group.html">group</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/group.html#group-add-user">group add user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/group.html#group-contains-user">group contains user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/group.html#group-create">group create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/group.html#group-delete">group delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/group.html#group-list">group list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/group.html#group-remove-user">group remove user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/group.html#group-set">group set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/group.html#group-show">group show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/host.html">host</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/host.html#host-list">host list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/host.html#host-set">host set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/host.html#host-show">host show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/hypervisor.html">hypervisor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/hypervisor.html#hypervisor-list">hypervisor list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/hypervisor.html#hypervisor-show">hypervisor show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/hypervisor-stats.html">hypervisor stats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/hypervisor-stats.html#hypervisor-stats-show">hypervisor stats show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/identity-provider.html">identity provider</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/identity-provider.html#identity-provider-create">identity provider create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/identity-provider.html#identity-provider-delete">identity provider delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/identity-provider.html#identity-provider-list">identity provider list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/identity-provider.html#identity-provider-set">identity provider set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/identity-provider.html#identity-provider-show">identity provider show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/image.html">image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/image.html#image-add-project">image add project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/image.html#image-create">image create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/image.html#image-delete">image delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/image.html#image-list">image list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/image.html#image-remove-project">image remove project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/image.html#image-save">image save</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/image.html#image-set">image set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/image.html#image-show">image show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/image.html#image-unset">image unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/ip-availability.html">ip availability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-availability.html#ip-availability-list">ip availability list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-availability.html#ip-availability-show">ip availability show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/ip-fixed.html">ip fixed</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-fixed.html#ip-fixed-add">ip fixed add</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-fixed.html#ip-fixed-remove">ip fixed remove</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/ip-floating.html">ip floating</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-floating.html#ip-floating-add">ip floating add</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-floating.html#ip-floating-create">ip floating create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-floating.html#ip-floating-delete">ip floating delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-floating.html#ip-floating-list">ip floating list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-floating.html#ip-floating-remove">ip floating remove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-floating.html#ip-floating-show">ip floating show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/ip-floating-pool.html">ip floating pool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/ip-floating-pool.html#ip-floating-pool-list">ip floating pool list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/keypair.html">keypair</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/keypair.html#keypair-create">keypair create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/keypair.html#keypair-delete">keypair delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/keypair.html#keypair-list">keypair list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/keypair.html#keypair-show">keypair show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/limits.html">limits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/limits.html#limits-show">limits show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/mapping.html">mapping</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/mapping.html#mapping-create">mapping create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/mapping.html#mapping-delete">mapping delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/mapping.html#mapping-list">mapping list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/mapping.html#mapping-set">mapping set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/mapping.html#mapping-show">mapping show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/module.html">module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/module.html#module-list">module list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network.html">network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network.html#network-create">network create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network.html#network-delete">network delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network.html#network-list">network list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network.html#network-set">network set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network.html#network-show">network show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network.html#network-unset">network unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-agent.html">network agent</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-agent.html#network-agent-add-network">network agent add network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-agent.html#network-agent-add-router">network agent add router</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-agent.html#network-agent-delete">network agent delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-agent.html#network-agent-list">network agent list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-agent.html#network-agent-remove-network">network agent remove network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-agent.html#network-agent-remove-router">network agent remove router</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-agent.html#network-agent-set">network agent set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-agent.html#network-agent-show">network agent show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-auto-allocated-topology.html">network auto allocated topology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-auto-allocated-topology.html#network-auto-allocated-topology-create">network auto allocated topology create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-auto-allocated-topology.html#network-auto-allocated-topology-delete">network auto allocated topology delete</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-flavor.html">network flavor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor.html#network-flavor-add-profile">network flavor add profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor.html#network-flavor-create">network flavor create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor.html#network-flavor-delete">network flavor delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor.html#network-flavor-list">network flavor list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor.html#network-flavor-remove-profile">network flavor remove profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor.html#network-flavor-set">network flavor set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor.html#network-flavor-show">network flavor show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-flavor-profile.html">network flavor profile</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor-profile.html#network-flavor-profile-create">network flavor profile create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor-profile.html#network-flavor-profile-delete">network flavor profile delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor-profile.html#network-flavor-profile-list">network flavor profile list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor-profile.html#network-flavor-profile-set">network flavor profile set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-flavor-profile.html#network-flavor-profile-show">network flavor profile show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-meter.html">network meter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-meter.html#network-meter-create">network meter create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-meter.html#network-meter-delete">network meter delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-meter.html#network-meter-list">network meter list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-meter.html#network-meter-show">network meter show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-meter-rule.html">network meter rule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-meter-rule.html#network-meter-rule-create">network meter rule create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-meter-rule.html#network-meter-rule-delete">network meter rule delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-meter-rule.html#network-meter-rule-list">network meter rule list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-meter-rule.html#network-meter-rule-show">network meter rule show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-qos-policy.html">network qos policy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-policy.html#network-qos-policy-create">network qos policy create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-policy.html#network-qos-policy-delete">network qos policy delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-policy.html#network-qos-policy-list">network qos policy list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-policy.html#network-qos-policy-set">network qos policy set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-policy.html#network-qos-policy-show">network qos policy show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-qos-rule.html">network qos rule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-rule.html#network-qos-rule-create">network qos rule create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-rule.html#network-qos-rule-delete">network qos rule delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-rule.html#network-qos-rule-list">network qos rule list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-rule.html#network-qos-rule-set">network qos rule set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-rule.html#network-qos-rule-show">network qos rule show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-qos-rule-type.html">network qos rule type</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-qos-rule-type.html#network-qos-rule-type-list">network qos rule type list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-rbac.html">network rbac</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-rbac.html#network-rbac-create">network rbac create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-rbac.html#network-rbac-delete">network rbac delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-rbac.html#network-rbac-list">network rbac list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-rbac.html#network-rbac-set">network rbac set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-rbac.html#network-rbac-show">network rbac show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-segment.html">network segment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-segment.html#network-segment-create">network segment create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-segment.html#network-segment-delete">network segment delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-segment.html#network-segment-list">network segment list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-segment.html#network-segment-set">network segment set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-segment.html#network-segment-show">network segment show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/network-service-provider.html">network service provider</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/network-service-provider.html#network-service-provider-list">network service provider list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/object.html">object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/object.html#object-create">object create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/object.html#object-delete">object delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/object.html#object-list">object list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/object.html#object-save">object save</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/object.html#object-set">object set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/object.html#object-show">object show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/object.html#object-unset">object unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/object-store-account.html">object store account</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/object-store-account.html#object-store-account-set">object store account set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/object-store-account.html#object-store-account-show">object store account show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/object-store-account.html#object-store-account-unset">object store account unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/policy.html">policy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/policy.html#policy-create">policy create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/policy.html#policy-delete">policy delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/policy.html#policy-list">policy list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/policy.html#policy-set">policy set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/policy.html#policy-show">policy show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/port.html">port</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/port.html#port-create">port create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/port.html#port-delete">port delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/port.html#port-list">port list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/port.html#port-set">port set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/port.html#port-show">port show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/port.html#port-unset">port unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/project.html">project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/project.html#project-create">project create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/project.html#project-delete">project delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/project.html#project-list">project list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/project.html#project-set">project set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/project.html#project-show">project show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/project.html#project-unset">project unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/project-purge.html">project purge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/project-purge.html#id1">project purge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/quota.html">quota</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/quota.html#quota-list">quota list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/quota.html#quota-set">quota set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/quota.html#quota-show">quota show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/region.html">region</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/region.html#region-create">region create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/region.html#region-delete">region delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/region.html#region-list">region list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/region.html#region-set">region set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/region.html#region-show">region show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/request-token.html">request token</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/request-token.html#request-token-authorize">request token authorize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/request-token.html#request-token-create">request token create</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/role.html">role</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/role.html#role-add">role add</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/role.html#role-create">role create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/role.html#role-delete">role delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/role.html#role-list">role list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/role.html#role-remove">role remove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/role.html#role-set">role set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/role.html#role-show">role show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/role-assignment.html">role assignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/role-assignment.html#role-assignment-list">role assignment list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/router.html">router</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/router.html#router-add-port">router add port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/router.html#router-add-subnet">router add subnet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/router.html#router-create">router create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/router.html#router-delete">router delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/router.html#router-list">router list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/router.html#router-remove-port">router remove port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/router.html#router-remove-subnet">router remove subnet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/router.html#router-set">router set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/router.html#router-show">router show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/router.html#router-unset">router unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/security-group.html">security group</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/security-group.html#security-group-create">security group create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/security-group.html#security-group-delete">security group delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/security-group.html#security-group-list">security group list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/security-group.html#security-group-set">security group set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/security-group.html#security-group-show">security group show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/security-group-rule.html">security group rule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/security-group-rule.html#security-group-rule-create">security group rule create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/security-group-rule.html#security-group-rule-delete">security group rule delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/security-group-rule.html#security-group-rule-list">security group rule list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/security-group-rule.html#security-group-rule-show">security group rule show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/server.html">server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-add-fixed-ip">server add fixed ip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-add-floating-ip">server add floating ip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-add-port">server add port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-add-security-group">server add security group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-add-volume">server add volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-create">server create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-delete">server delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-dump-create">server dump create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-list">server list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-lock">server lock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-migrate">server migrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-pause">server pause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-reboot">server reboot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-rebuild">server rebuild</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-remove-fixed-ip">server remove fixed ip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-remove-floating-ip">server remove floating ip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-remove-port">server remove port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-remove-security-group">server remove security group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-remove-volume">server remove volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-rescue">server rescue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-resize">server resize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-restore">server restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-resume">server resume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-set">server set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-shelve">server shelve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-show">server show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-ssh">server ssh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-start">server start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-stop">server stop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-suspend">server suspend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-unlock">server unlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-unpause">server unpause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-unrescue">server unrescue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-unset">server unset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server.html#server-unshelve">server unshelve</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/server-backup.html">server backup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server-backup.html#server-backup-create">server backup create</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/server-event.html">server event</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server-event.html#server-event-list">server event list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server-event.html#server-event-show">server event show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/server-group.html">server group</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server-group.html#server-group-create">server group create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server-group.html#server-group-delete">server group delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server-group.html#server-group-list">server group list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server-group.html#server-group-show">server group show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/server-image.html">server image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/server-image.html#server-image-create">server image create</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/service.html">service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/service.html#service-create">service create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/service.html#service-delete">service delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/service.html#service-list">service list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/service.html#service-set">service set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/service.html#service-show">service show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/service-provider.html">service provider</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/service-provider.html#service-provider-create">service provider create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/service-provider.html#service-provider-delete">service provider delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/service-provider.html#service-provider-list">service provider list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/service-provider.html#service-provider-set">service provider set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/service-provider.html#service-provider-show">service provider show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/snapshot.html">snapshot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/snapshot.html#snapshot-create">snapshot create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/snapshot.html#snapshot-delete">snapshot delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/snapshot.html#snapshot-list">snapshot list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/snapshot.html#snapshot-set">snapshot set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/snapshot.html#snapshot-show">snapshot show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/snapshot.html#snapshot-unset">snapshot unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/subnet.html">subnet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet.html#subnet-create">subnet create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet.html#subnet-delete">subnet delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet.html#subnet-list">subnet list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet.html#subnet-set">subnet set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet.html#subnet-show">subnet show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet.html#subnet-unset">subnet unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/subnet-pool.html">subnet pool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet-pool.html#subnet-pool-create">subnet pool create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet-pool.html#subnet-pool-delete">subnet pool delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet-pool.html#subnet-pool-list">subnet pool list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet-pool.html#subnet-pool-set">subnet pool set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet-pool.html#subnet-pool-show">subnet pool show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/subnet-pool.html#subnet-pool-unset">subnet pool unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/token.html">token</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/token.html#token-issue">token issue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/token.html#token-revoke">token revoke</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/trust.html">trust</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/trust.html#trust-create">trust create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/trust.html#trust-delete">trust delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/trust.html#trust-list">trust list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/trust.html#trust-show">trust show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/usage.html">usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/usage.html#usage-list">usage list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/usage.html#usage-show">usage show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/user.html">user</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/user.html#user-create">user create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/user.html#user-delete">user delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/user.html#user-list">user list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/user.html#user-set">user set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/user.html#user-show">user show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/user-role.html">user role</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/user-role.html#user-role-list">user role list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/volume.html">volume</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume.html#volume-create">volume create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume.html#volume-delete">volume delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume.html#volume-list">volume list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume.html#volume-migrate">volume migrate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume.html#volume-set">volume set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume.html#volume-show">volume show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume.html#volume-unset">volume unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/volume-backup.html">volume backup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-backup.html#volume-backup-create">volume backup create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-backup.html#volume-backup-delete">volume backup delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-backup.html#volume-backup-list">volume backup list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-backup.html#volume-backup-restore">volume backup restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-backup.html#volume-backup-set">volume backup set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-backup.html#volume-backup-show">volume backup show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/volume-host.html">volume host</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-host.html#volume-host-failover">volume host failover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-host.html#volume-host-set">volume host set</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/volume-qos.html">volume qos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-qos.html#volume-qos-associate">volume qos associate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-qos.html#volume-qos-create">volume qos create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-qos.html#volume-qos-delete">volume qos delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-qos.html#volume-qos-disassociate">volume qos disassociate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-qos.html#volume-qos-list">volume qos list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-qos.html#volume-qos-set">volume qos set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-qos.html#volume-qos-show">volume qos show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-qos.html#volume-qos-unset">volume qos unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/volume-service.html">volume service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-service.html#volume-service-list">volume service list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-service.html#volume-service-set">volume service set</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/volume-snapshot.html">volume snapshot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-snapshot.html#volume-snapshot-create">volume snapshot create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-snapshot.html#volume-snapshot-delete">volume snapshot delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-snapshot.html#volume-snapshot-list">volume snapshot list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-snapshot.html#volume-snapshot-set">volume snapshot set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-snapshot.html#volume-snapshot-show">volume snapshot show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-snapshot.html#volume-snapshot-unset">volume snapshot unset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/volume-transfer-request.html">volume transfer request</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-transfer-request.html#volume-transfer-request-accept">volume transfer request accept</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-transfer-request.html#volume-transfer-request-create">volume transfer request create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-transfer-request.html#volume-transfer-request-delete">volume transfer request delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-transfer-request.html#volume-transfer-request-list">volume transfer request list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-transfer-request.html#volume-transfer-request-show">volume transfer request show</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command-objects/volume-type.html">volume type</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-type.html#volume-type-create">volume type create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-type.html#volume-type-delete">volume type delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-type.html#volume-type-list">volume type list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-type.html#volume-type-set">volume type set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-type.html#volume-type-show">volume type show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-objects/volume-type.html#volume-type-unset">volume type unset</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="man/openstack.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: <strong class="program">openstack</strong>"></i></a>
+          
+          
+            <a href="command-objects/access-token.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: access token"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="man/openstack.html">Manual Page</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Command List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Command Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugin-commands.html">Plugin Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interactive.html">Interactive Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decoder.html">Mapping Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backwards-incompatible.html">Backwards Incompatible Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributor/index.html">Contributor Documentation</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "cli/command-list" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "Command List in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

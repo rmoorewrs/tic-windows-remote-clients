@@ -1,0 +1,704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Command Options</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Command Options</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="command-beta.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Command Beta"></i></a>
+    
+    
+    <a href="command-wrappers.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Command Class Wrappers"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Command Options</a><ul>
+<li><a class="reference internal" href="#general-command-options">General Command Options</a><ul>
+<li><a class="reference internal" href="#boolean-options">Boolean Options</a><ul>
+<li><a class="reference internal" href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#options-with-choices">Options with Choices</a><ul>
+<li><a class="reference internal" href="#id1">Implementation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#options-with-multiple-values">Options with Multiple Values</a><ul>
+<li><a class="reference internal" href="#id2">Implementation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#required-options">Required Options</a><ul>
+<li><a class="reference internal" href="#id3">Implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#list-command-options">List Command Options</a><ul>
+<li><a class="reference internal" href="#additional-fields">Additional Fields</a><ul>
+<li><a class="reference internal" href="#id4">Implementation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pagination">Pagination</a><ul>
+<li><a class="reference internal" href="#id5">Implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="command-options">
+<h1>Command Options<a class="headerlink" href="#command-options" title="Permalink to this headline">¶</a></h1>
+<p>OpenStackClient commands all have a set of zero or more options unique to
+the command, however there are of course ways in which these options are
+common and consistent across all of the commands that include them.</p>
+<p>These are the set of guidelines for OSC developers that help keep the
+interface and commands consistent.</p>
+<p>In some cases (like the boolean variables below) we use the same pattern
+for defining and using options in all situations.  The alternative of only
+using it when necessary leads to errors when copy-n-paste is used for a
+new command without understanding why or why not that instance is correct.</p>
+<p>The <a class="reference internal" href="humaninterfaceguide.html#hig"><span class="std std-ref">Human Interface Guide</span></a> describes the guildelines for option names and usage.
+In short:</p>
+<ul class="simple">
+<li>All option names shall be GNU-style long names (two leading dashes).</li>
+<li>Some global options may have short names, generally limited to those defined
+in support libraries such as <code class="docutils literal"><span class="pre">cliff</span></code>.</li>
+</ul>
+<div class="section" id="general-command-options">
+<h2>General Command Options<a class="headerlink" href="#general-command-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="boolean-options">
+<h3>Boolean Options<a class="headerlink" href="#boolean-options" title="Permalink to this headline">¶</a></h3>
+<p>Boolean options for any command that sets a resource state, such as ‘enabled’
+or ‘public’, shall always have both positive and negative options defined.
+The names of those options shall either be a naturally occurring pair of
+words (in English) or a positive option and a negative option with <cite>no-</cite>
+prepended (such as in the traditional GNU option usage) like <cite>–share</cite> and
+<cite>–no-share</cite>.</p>
+<p>In order to handle those APIs that behave differently when a field is set to
+<cite>None</cite> and when the field is not present in a passed argument list or dict,
+each of the boolean options shall set its own variable to <cite>True</cite> as part of
+a mutually exclusive group, rather than the more common configuration of
+setting a single destination variable <cite>True</cite> or <cite>False</cite> directly.  This allows
+us to detect the situation when neither option is present (both variables will
+be <cite>False</cite>) and act accordingly for those APIs where this matters.</p>
+<p>This also requires that each of the boolean values be tested in the
+<cite>take_action()</cite> method to correctly set (or not) the underlying API field
+values.</p>
+<dl class="option">
+<dt id="cmdoption-enable">
+<code class="descname">--enable</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable &lt;resource&gt; (default)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-disable">
+<code class="descname">--disable</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-disable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable &lt;resource&gt;</p>
+</dd></dl>
+
+<div class="section" id="implementation">
+<h4>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h4>
+<p>The parser declaration should look like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">enable_group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
+<span class="n">enable_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s1">&#39;--enable&#39;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Enable &lt;resource&gt; (default)&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">enable_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s1">&#39;--disable&#39;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Disable &lt;resource&gt;&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>An example handler in <cite>take_action()</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># This leaves &#39;enabled&#39; undefined if neither option is present</span>
+<span class="k">if</span> <span class="n">parsed_args</span><span class="o">.</span><span class="n">enable</span><span class="p">:</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;enabled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">if</span> <span class="n">parsed_args</span><span class="o">.</span><span class="n">disable</span><span class="p">:</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;enabled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="options-with-choices">
+<h3>Options with Choices<a class="headerlink" href="#options-with-choices" title="Permalink to this headline">¶</a></h3>
+<p>Some options have a specific set of values (or choices) that are valid.
+These choices may be validated by the CLI. If the underlying API is stable
+and the list of choices are unlikely to change then the CLI may validate
+the choices. Otherwise, the CLI must defer validation of the choices to
+the API. If the option has a default choice then it must be documented.</p>
+<p>Having the CLI validate choices will be faster and may provide a better
+error message for the user if an invalid choice is specified
+(for example: <code class="docutils literal"><span class="pre">argument</span> <span class="pre">--test:</span> <span class="pre">invalid</span> <span class="pre">choice:</span> <span class="pre">'choice4'</span> <span class="pre">(choose</span> <span class="pre">from</span> <span class="pre">'choice1',</span> <span class="pre">'choice2',</span> <span class="pre">'choice3')</span></code>).
+The trade-off is that CLI changes are required in order to take advantage
+of new choices.</p>
+<div class="section" id="id1">
+<h4>Implementation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>An example parser declaration:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">choice_option</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s1">&#39;--test&#39;</span><span class="p">,</span>
+    <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;&lt;test&gt;&#39;</span><span class="p">,</span>
+    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;choice1&#39;</span><span class="p">,</span> <span class="s1">&#39;choice2&#39;</span><span class="p">,</span> <span class="s1">&#39;choice3&#39;</span><span class="p">],</span>
+    <span class="n">help</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Test type (choice1, choice2 or choice3)&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="options-with-multiple-values">
+<h3>Options with Multiple Values<a class="headerlink" href="#options-with-multiple-values" title="Permalink to this headline">¶</a></h3>
+<p>Some options can be repeated to build a collection of values for a property.
+Adding a value to the collection must be provided via the <code class="docutils literal"><span class="pre">set</span></code> action.
+Removing a value from the collection must be provided via an <code class="docutils literal"><span class="pre">unset</span></code> action.
+As a convenience, removing all values from the collection may be provided via a
+<code class="docutils literal"><span class="pre">--no</span></code> option on the <code class="docutils literal"><span class="pre">set</span></code> action and a <code class="docutils literal"><span class="pre">--all</span></code> option on <code class="docutils literal"><span class="pre">unset</span></code>
+action. If both <code class="docutils literal"><span class="pre">--no</span></code> option and option are specified, the values specified
+on the command would overwrite the collection property instead of appending on
+the <code class="docutils literal"><span class="pre">set</span></code> action. The <code class="docutils literal"><span class="pre">--all</span></code> option must be part of a mutually exclusive
+group with the related property option on the <code class="docutils literal"><span class="pre">unset</span></code> action, overwrite case
+don’t exist in <code class="docutils literal"><span class="pre">unset</span></code> action.</p>
+<p>An example behavior for <code class="docutils literal"><span class="pre">set</span></code> action:</p>
+<p>Append:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>object <span class="nb">set</span> --example-property xxx
+</pre></div>
+</div>
+<p>Overwrite:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>object <span class="nb">set</span> --no-example-property --example-property xxx
+</pre></div>
+</div>
+<p>The example below assumes a property that contains a list of unique values.
+However, this example can also be applied to other collections using the
+appropriate parser action and action implementation (e.g. a dict of key/value
+pairs). Implementations will vary depending on how the REST API handles
+adding/removing values to/from the collection and whether or not duplicate
+values are allowed.</p>
+<div class="section" id="id2">
+<h4>Implementation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>An example parser declaration for <cite>set</cite> action:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s1">&#39;--no-example-property&#39;</span><span class="p">,</span>
+    <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;no_example_property&#39;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Remove all example properties for this &lt;resource&gt; &#39;</span>
+           <span class="s1">&#39;(specify both --no-example-property and --example-property&#39;</span>
+           <span class="s1">&#39; to remove the current properties before setting&#39;</span>
+           <span class="s1">&#39; new properties.)&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s1">&#39;--example-property&#39;</span><span class="p">,</span>
+    <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;&lt;example-property&gt;&#39;</span><span class="p">,</span>
+    <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;example_property&#39;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Example property for this &lt;resource&gt; &#39;</span>
+           <span class="s1">&#39;(repeat option to set multiple properties)&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Please make <cite>–no-example-property</cite> be shown in front of <cite>–example-property</cite>
+in the help, like above, that help make users aware of the processing order.</p>
+<p>An example handler in <cite>take_action()</cite> for <cite>set</cite> action:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">parsed_args</span><span class="o">.</span><span class="n">no_example_property</span> <span class="ow">and</span> <span class="n">parsed_args</span><span class="o">.</span><span class="n">example_property</span><span class="p">:</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;example_property&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parsed_args</span><span class="o">.</span><span class="n">example_property</span>
+<span class="k">elif</span> <span class="n">parsed_args</span><span class="o">.</span><span class="n">no_example_property</span><span class="p">:</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;example_property&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">elif</span> <span class="n">parsed_args</span><span class="o">.</span><span class="n">example_property</span><span class="p">:</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;example_property&#39;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="n">resource_example_property</span> <span class="o">+</span> <span class="n">parsed_args</span><span class="o">.</span><span class="n">example_property</span>
+</pre></div>
+</div>
+<p>An example parser declaration for <cite>unset</cite> action:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">example_property_group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_mutually_exclusive_group</span><span class="p">()</span>
+<span class="n">example_property_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s1">&#39;--example-property&#39;</span><span class="p">,</span>
+    <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;&lt;example-property&gt;&#39;</span><span class="p">,</span>
+    <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;example_property&#39;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Example property for this &lt;resource&gt; &#39;</span>
+           <span class="s1">&#39;(repeat option to remove multiple properties)&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">example_property_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s1">&#39;--all-example-property&#39;</span><span class="p">,</span>
+    <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;all_example_property&#39;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Remove all example properties for this &lt;resource&gt;&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>An example handler in <cite>take_action()</cite> for <cite>unset</cite> action:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">parsed_args</span><span class="o">.</span><span class="n">example_property</span><span class="p">:</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;example_property&#39;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">resource_example_property</span><span class="p">)</span> <span class="o">-</span> \
+             <span class="nb">set</span><span class="p">(</span><span class="n">parsed_args</span><span class="o">.</span><span class="n">example_property</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">parsed_args</span><span class="o">.</span><span class="n">all_example_property</span><span class="p">:</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;example_property&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="required-options">
+<h3>Required Options<a class="headerlink" href="#required-options" title="Permalink to this headline">¶</a></h3>
+<p>Some options have no default value and the API does not allow them to be
+<cite>None</cite>, then these options are always required when users use the command
+to which these options belong.</p>
+<p>Required options must be validated by the CLI to avoid omissions. The CLI
+validation may provide an error message for the user if a required option
+is not specified.
+(for example: <code class="docutils literal"><span class="pre">error:</span> <span class="pre">argument</span> <span class="pre">--test</span> <span class="pre">is</span> <span class="pre">required</span></code>)</p>
+<dl class="option">
+<dt id="cmdoption-test">
+<code class="descname">--test</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test option (required)</p>
+</dd></dl>
+
+<div class="section" id="id3">
+<h4>Implementation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>The parser declaration should look like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s1">&#39;--test&#39;</span><span class="p">,</span>
+    <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;&lt;test&gt;&#39;</span><span class="p">,</span>
+    <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Test option (required)&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-command-options">
+<h2>List Command Options<a class="headerlink" href="#list-command-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="additional-fields">
+<h3>Additional Fields<a class="headerlink" href="#additional-fields" title="Permalink to this headline">¶</a></h3>
+<p>Most list commands only return a subset of the available fields by default.
+Additional fields are available with the <cite>–long</cite> option.  All list
+commands should allow <cite>–long</cite> even if they return all fields by default.</p>
+<dl class="option">
+<dt id="cmdoption-long">
+<code class="descname">--long</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-long" title="Permalink to this definition">¶</a></dt>
+<dd><p>List additional fields in output</p>
+</dd></dl>
+
+<div class="section" id="id4">
+<h4>Implementation<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>The parser declaration should look like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s1">&#39;--long&#39;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;List additional fields in output&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pagination">
+<h3>Pagination<a class="headerlink" href="#pagination" title="Permalink to this headline">¶</a></h3>
+<p>There are many ways to do pagination, some OpenStack APIs support it, some
+don’t. OpenStackClient attempts to define a single common way to specify
+pagination on the command line.</p>
+<dl class="option">
+<dt id="cmdoption-marker">
+<code class="descname">--marker</code><code class="descclassname"> &lt;resource&gt;</code><a class="headerlink" href="#cmdoption-marker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Anchor for paging (name or ID)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-limit">
+<code class="descname">--limit</code><code class="descclassname"> &lt;num-resources&gt;</code><a class="headerlink" href="#cmdoption-limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Limit number of &lt;resource&gt; returned (<em>integer</em>)</p>
+</dd></dl>
+
+<div class="section" id="id5">
+<h4>Implementation<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>The parser declaration should look like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s2">&quot;--marker&quot;</span><span class="p">,</span>
+    <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;&lt;resource&gt;&quot;</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Anchor for paging (name or ID)&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+    <span class="s2">&quot;--limit&quot;</span><span class="p">,</span>
+    <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;&lt;num-resources&gt;&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Limit the number of &lt;resource&gt; returned&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="command-beta.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Command Beta"></i></a>
+          
+          
+            <a href="command-wrappers.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Command Class Wrappers"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributor Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="developing.html">Developing with OpenStackClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-beta.html">Command Beta</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Command Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-wrappers.html">Command Class Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-errors.html">Command Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-logs.html">Command Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specs/commands.html">Command Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="humaninterfaceguide.html">Human Interface Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/modules.html">Modules</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "contributor/command-options" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "Command Options in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

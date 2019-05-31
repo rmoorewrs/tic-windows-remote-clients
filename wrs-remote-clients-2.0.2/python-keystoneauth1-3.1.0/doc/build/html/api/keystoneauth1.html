@@ -1,0 +1,2388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: keystoneauth1 package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>keystoneauth1 package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="modules.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Modules"></i></a>
+    
+    
+    <a href="keystoneauth1.access.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.access package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">keystoneauth1 package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.adapter">keystoneauth1.adapter module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.discover">keystoneauth1.discover module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.noauth">keystoneauth1.noauth module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.plugin">keystoneauth1.plugin module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.service_token">keystoneauth1.service_token module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.session">keystoneauth1.session module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.token_endpoint">keystoneauth1.token_endpoint module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="keystoneauth1-package">
+<h1>keystoneauth1 package<a class="headerlink" href="#keystoneauth1-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="keystoneauth1.access.html">keystoneauth1.access package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.access.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.access.html#module-keystoneauth1.access.access">keystoneauth1.access.access module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.access.html#module-keystoneauth1.access.service_catalog">keystoneauth1.access.service_catalog module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.access.html#module-keystoneauth1.access.service_providers">keystoneauth1.access.service_providers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.access.html#module-keystoneauth1.access">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="keystoneauth1.exceptions.html">keystoneauth1.exceptions package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions.auth">keystoneauth1.exceptions.auth module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions.auth_plugins">keystoneauth1.exceptions.auth_plugins module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions.base">keystoneauth1.exceptions.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions.catalog">keystoneauth1.exceptions.catalog module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions.connection">keystoneauth1.exceptions.connection module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions.discovery">keystoneauth1.exceptions.discovery module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions.http">keystoneauth1.exceptions.http module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions.oidc">keystoneauth1.exceptions.oidc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions.response">keystoneauth1.exceptions.response module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions.service_providers">keystoneauth1.exceptions.service_providers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.exceptions.html#module-keystoneauth1.exceptions">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="keystoneauth1.extras.html">keystoneauth1.extras package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.extras.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="keystoneauth1.extras.kerberos.html">keystoneauth1.extras.kerberos package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.extras.kerberos.html#module-keystoneauth1.extras.kerberos">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="keystoneauth1.extras.oauth1.html">keystoneauth1.extras.oauth1 package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.extras.oauth1.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.extras.oauth1.html#module-keystoneauth1.extras.oauth1.v3">keystoneauth1.extras.oauth1.v3 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.extras.oauth1.html#module-keystoneauth1.extras.oauth1">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.extras.html#module-keystoneauth1.extras">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="keystoneauth1.fixture.html">keystoneauth1.fixture package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.fixture.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.fixture.html#module-keystoneauth1.fixture.discovery">keystoneauth1.fixture.discovery module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.fixture.html#module-keystoneauth1.fixture.exception">keystoneauth1.fixture.exception module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.fixture.html#module-keystoneauth1.fixture.hooks">keystoneauth1.fixture.hooks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.fixture.html#module-keystoneauth1.fixture.keystoneauth_betamax">keystoneauth1.fixture.keystoneauth_betamax module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.fixture.html#module-keystoneauth1.fixture.serializer">keystoneauth1.fixture.serializer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.fixture.html#module-keystoneauth1.fixture.v2">keystoneauth1.fixture.v2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.fixture.html#module-keystoneauth1.fixture.v3">keystoneauth1.fixture.v3 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.fixture.html#module-keystoneauth1.fixture">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="keystoneauth1.hacking.html">keystoneauth1.hacking package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.hacking.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.hacking.html#module-keystoneauth1.hacking.checks">keystoneauth1.hacking.checks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.hacking.html#module-keystoneauth1.hacking">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="keystoneauth1.identity.html">keystoneauth1.identity package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.identity.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="keystoneauth1.identity.generic.html">keystoneauth1.identity.generic package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.generic.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.generic.html#module-keystoneauth1.identity.generic.base">keystoneauth1.identity.generic.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.generic.html#module-keystoneauth1.identity.generic.password">keystoneauth1.identity.generic.password module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.generic.html#module-keystoneauth1.identity.generic.token">keystoneauth1.identity.generic.token module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.generic.html#module-keystoneauth1.identity.generic">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="keystoneauth1.identity.v3.html">keystoneauth1.identity.v3 package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.v3.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.v3.html#module-keystoneauth1.identity.v3.base">keystoneauth1.identity.v3.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.v3.html#module-keystoneauth1.identity.v3.federation">keystoneauth1.identity.v3.federation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.v3.html#module-keystoneauth1.identity.v3.k2k">keystoneauth1.identity.v3.k2k module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.v3.html#module-keystoneauth1.identity.v3.oidc">keystoneauth1.identity.v3.oidc module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.v3.html#module-keystoneauth1.identity.v3.password">keystoneauth1.identity.v3.password module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.v3.html#module-keystoneauth1.identity.v3.token">keystoneauth1.identity.v3.token module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.v3.html#module-keystoneauth1.identity.v3.tokenless_auth">keystoneauth1.identity.v3.tokenless_auth module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.v3.html#module-keystoneauth1.identity.v3.totp">keystoneauth1.identity.v3.totp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.identity.v3.html#module-keystoneauth1.identity.v3">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.identity.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.identity.html#module-keystoneauth1.identity.access">keystoneauth1.identity.access module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.identity.html#module-keystoneauth1.identity.base">keystoneauth1.identity.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.identity.html#module-keystoneauth1.identity.v2">keystoneauth1.identity.v2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.identity.html#module-keystoneauth1.identity">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="keystoneauth1.loading.html">keystoneauth1.loading package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.loading.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.loading.html#module-keystoneauth1.loading.adapter">keystoneauth1.loading.adapter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.loading.html#module-keystoneauth1.loading.base">keystoneauth1.loading.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.loading.html#module-keystoneauth1.loading.cli">keystoneauth1.loading.cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.loading.html#module-keystoneauth1.loading.conf">keystoneauth1.loading.conf module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.loading.html#module-keystoneauth1.loading.identity">keystoneauth1.loading.identity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.loading.html#module-keystoneauth1.loading.opts">keystoneauth1.loading.opts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.loading.html#module-keystoneauth1.loading.session">keystoneauth1.loading.session module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.loading.html#module-keystoneauth1.loading">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="keystoneauth1.tests.html">keystoneauth1.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.tests.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="keystoneauth1.tests.unit.html">keystoneauth1.tests.unit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="keystoneauth1.tests.unit.access.html">keystoneauth1.tests.unit.access package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.access.html#submodules">Submodules</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.access.html#module-keystoneauth1.tests.unit.access.test_v2_access">keystoneauth1.tests.unit.access.test_v2_access module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.access.html#module-keystoneauth1.tests.unit.access.test_v2_service_catalog">keystoneauth1.tests.unit.access.test_v2_service_catalog module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.access.html#module-keystoneauth1.tests.unit.access.test_v3_access">keystoneauth1.tests.unit.access.test_v3_access module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.access.html#module-keystoneauth1.tests.unit.access.test_v3_service_catalog">keystoneauth1.tests.unit.access.test_v3_service_catalog module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.access.html#module-keystoneauth1.tests.unit.access">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="keystoneauth1.tests.unit.exceptions.html">keystoneauth1.tests.unit.exceptions package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.exceptions.html#submodules">Submodules</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.exceptions.html#module-keystoneauth1.tests.unit.exceptions.test_exceptions">keystoneauth1.tests.unit.exceptions.test_exceptions module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.exceptions.html#module-keystoneauth1.tests.unit.exceptions">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="keystoneauth1.tests.unit.extras.html">keystoneauth1.tests.unit.extras package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.extras.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="keystoneauth1.tests.unit.extras.kerberos.html">keystoneauth1.tests.unit.extras.kerberos package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.kerberos.html#submodules">Submodules</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.kerberos.html#module-keystoneauth1.tests.unit.extras.kerberos.base">keystoneauth1.tests.unit.extras.kerberos.base module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.kerberos.html#module-keystoneauth1.tests.unit.extras.kerberos.test_fedkerb_loading">keystoneauth1.tests.unit.extras.kerberos.test_fedkerb_loading module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.kerberos.html#module-keystoneauth1.tests.unit.extras.kerberos.test_kerberos_loading">keystoneauth1.tests.unit.extras.kerberos.test_kerberos_loading module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.kerberos.html#module-keystoneauth1.tests.unit.extras.kerberos.test_mapped">keystoneauth1.tests.unit.extras.kerberos.test_mapped module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.kerberos.html#module-keystoneauth1.tests.unit.extras.kerberos.test_v3">keystoneauth1.tests.unit.extras.kerberos.test_v3 module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.kerberos.html#module-keystoneauth1.tests.unit.extras.kerberos.utils">keystoneauth1.tests.unit.extras.kerberos.utils module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.kerberos.html#module-keystoneauth1.tests.unit.extras.kerberos">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="keystoneauth1.tests.unit.extras.oauth1.html">keystoneauth1.tests.unit.extras.oauth1 package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.oauth1.html#submodules">Submodules</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.oauth1.html#module-keystoneauth1.tests.unit.extras.oauth1.test_oauth1">keystoneauth1.tests.unit.extras.oauth1.test_oauth1 module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.oauth1.html#module-keystoneauth1.tests.unit.extras.oauth1.test_oauth1_loading">keystoneauth1.tests.unit.extras.oauth1.test_oauth1_loading module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.oauth1.html#module-keystoneauth1.tests.unit.extras.oauth1">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="keystoneauth1.tests.unit.extras.saml2.html">keystoneauth1.tests.unit.extras.saml2 package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.saml2.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="keystoneauth1.tests.unit.extras.saml2.fixtures.html">keystoneauth1.tests.unit.extras.saml2.fixtures package</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="keystoneauth1.tests.unit.extras.saml2.fixtures.html#module-keystoneauth1.tests.unit.extras.saml2.fixtures">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.saml2.html#submodules">Submodules</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.saml2.html#module-keystoneauth1.tests.unit.extras.saml2.test_auth_adfs">keystoneauth1.tests.unit.extras.saml2.test_auth_adfs module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.saml2.html#module-keystoneauth1.tests.unit.extras.saml2.test_auth_saml2">keystoneauth1.tests.unit.extras.saml2.test_auth_saml2 module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.saml2.html#module-keystoneauth1.tests.unit.extras.saml2.utils">keystoneauth1.tests.unit.extras.saml2.utils module</a></li>
+<li class="toctree-l8"><a class="reference internal" href="keystoneauth1.tests.unit.extras.saml2.html#module-keystoneauth1.tests.unit.extras.saml2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.extras.html#module-keystoneauth1.tests.unit.extras">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html">keystoneauth1.tests.unit.identity package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#submodules">Submodules</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity.test_access">keystoneauth1.tests.unit.identity.test_access module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity.test_identity_common">keystoneauth1.tests.unit.identity.test_identity_common module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity.test_identity_v2">keystoneauth1.tests.unit.identity.test_identity_v2 module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity.test_identity_v3">keystoneauth1.tests.unit.identity.test_identity_v3 module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity.test_identity_v3_federation">keystoneauth1.tests.unit.identity.test_identity_v3_federation module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity.test_identity_v3_oidc">keystoneauth1.tests.unit.identity.test_identity_v3_oidc module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity.test_password">keystoneauth1.tests.unit.identity.test_password module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity.test_token">keystoneauth1.tests.unit.identity.test_token module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity.test_tokenless_auth">keystoneauth1.tests.unit.identity.test_tokenless_auth module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity.utils">keystoneauth1.tests.unit.identity.utils module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.identity.html#module-keystoneauth1.tests.unit.identity">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html">keystoneauth1.tests.unit.loading package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#submodules">Submodules</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#module-keystoneauth1.tests.unit.loading.test_adapter">keystoneauth1.tests.unit.loading.test_adapter module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#module-keystoneauth1.tests.unit.loading.test_cli">keystoneauth1.tests.unit.loading.test_cli module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#module-keystoneauth1.tests.unit.loading.test_conf">keystoneauth1.tests.unit.loading.test_conf module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#module-keystoneauth1.tests.unit.loading.test_entry_points">keystoneauth1.tests.unit.loading.test_entry_points module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#module-keystoneauth1.tests.unit.loading.test_generic">keystoneauth1.tests.unit.loading.test_generic module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#module-keystoneauth1.tests.unit.loading.test_loading">keystoneauth1.tests.unit.loading.test_loading module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#module-keystoneauth1.tests.unit.loading.test_session">keystoneauth1.tests.unit.loading.test_session module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#module-keystoneauth1.tests.unit.loading.test_v3">keystoneauth1.tests.unit.loading.test_v3 module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#module-keystoneauth1.tests.unit.loading.utils">keystoneauth1.tests.unit.loading.utils module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="keystoneauth1.tests.unit.loading.html#module-keystoneauth1.tests.unit.loading">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.client_fixtures">keystoneauth1.tests.unit.client_fixtures module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.k2k_fixtures">keystoneauth1.tests.unit.k2k_fixtures module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.keystoneauth_fixtures">keystoneauth1.tests.unit.keystoneauth_fixtures module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.matchers">keystoneauth1.tests.unit.matchers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.oidc_fixtures">keystoneauth1.tests.unit.oidc_fixtures module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_betamax_fixture">keystoneauth1.tests.unit.test_betamax_fixture module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_betamax_hooks">keystoneauth1.tests.unit.test_betamax_hooks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_betamax_serializer">keystoneauth1.tests.unit.test_betamax_serializer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_discovery">keystoneauth1.tests.unit.test_discovery module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_fixtures">keystoneauth1.tests.unit.test_fixtures module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_hacking_checks">keystoneauth1.tests.unit.test_hacking_checks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_matchers">keystoneauth1.tests.unit.test_matchers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_noauth">keystoneauth1.tests.unit.test_noauth module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_service_token">keystoneauth1.tests.unit.test_service_token module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_session">keystoneauth1.tests.unit.test_session module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_token_endpoint">keystoneauth1.tests.unit.test_token_endpoint module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.test_utils">keystoneauth1.tests.unit.test_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit.utils">keystoneauth1.tests.unit.utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="keystoneauth1.tests.unit.html#module-keystoneauth1.tests.unit">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="keystoneauth1.tests.html#module-keystoneauth1.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-keystoneauth1.adapter">
+<span id="keystoneauth1-adapter-module"></span><h2>keystoneauth1.adapter module<a class="headerlink" href="#module-keystoneauth1.adapter" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.adapter.Adapter">
+<em class="property">class </em><code class="descclassname">keystoneauth1.adapter.</code><code class="descname">Adapter</code><span class="sig-paren">(</span><em>session</em>, <em>service_type=None</em>, <em>service_name=None</em>, <em>interface=None</em>, <em>region_name=None</em>, <em>endpoint_override=None</em>, <em>version=None</em>, <em>auth=None</em>, <em>user_agent=None</em>, <em>connect_retries=None</em>, <em>logger=None</em>, <em>allow={}</em>, <em>additional_headers=None</em>, <em>client_name=None</em>, <em>client_version=None</em>, <em>allow_version_hack=None</em>, <em>global_request_id=None</em>, <em>min_version=None</em>, <em>max_version=None</em>, <em>default_microversion=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>An instance of a session with local variables.</p>
+<p>A session is a global object that is shared around amongst many clients. It
+therefore contains state that is relevant to everyone. There is a lot of
+state such as the service type and region_name that are only relevant to a
+particular client that is using the session. An adapter provides a wrapper
+of client local data around the global session object.</p>
+<p>version, min_version, max_version and default_microversion can all be
+given either as a string or a tuple.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> (<a class="reference internal" href="#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – The session object to wrap.</li>
+<li><strong>service_type</strong> (<em>str</em>) – The default service_type for URL discovery.</li>
+<li><strong>service_name</strong> (<em>str</em>) – The default service_name for URL discovery.</li>
+<li><strong>interface</strong> (<em>str</em>) – The default interface for URL discovery.</li>
+<li><strong>region_name</strong> (<em>str</em>) – The default region_name for URL discovery.</li>
+<li><strong>endpoint_override</strong> (<em>str</em>) – Always use this endpoint URL for requests
+for this client.</li>
+<li><strong>version</strong> – The minimum version restricted to a given Major API.
+Mutually exclusive with min_version and max_version.
+(optional)</li>
+<li><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – An auth plugin to use instead of the session one.</li>
+<li><strong>user_agent</strong> (<em>str</em>) – The User-Agent string to set.</li>
+<li><strong>connect_retries</strong> (<em>int</em>) – the maximum number of retries that should
+be attempted for connection errors.
+Default None - use session default which
+is don’t retry.</li>
+<li><strong>logger</strong> (<em>logging.Logger</em>) – A logging object to use for requests that pass through this
+adapter.</li>
+<li><strong>allow</strong> (<em>dict</em>) – Extra filters to pass when discovering API versions.
+(optional)</li>
+<li><strong>additional_headers</strong> (<em>dict</em>) – Additional headers that should be attached
+to every request passing through the
+adapter. Headers of the same name specified
+per request will take priority.</li>
+<li><strong>client_name</strong> (<em>str</em>) – The name of the client that created the adapter.
+This will be used to create the user_agent.</li>
+<li><strong>client_version</strong> (<em>str</em>) – The version of the client that created the
+adapter. This will be used to create the
+user_agent.</li>
+<li><strong>allow_version_hack</strong> (<em>bool</em>) – Allow keystoneauth to hack up catalog
+URLS to support older schemes.
+(optional, default True)</li>
+<li><strong>global_request_id</strong> (<em>str</em>) – A global_request_id (in the form of
+<code class="docutils literal"><span class="pre">req-$uuid</span></code>) that will be passed on all
+requests. Enables cross project request id
+tracking.</li>
+<li><strong>min_version</strong> – The minimum major version of a given API, intended to
+be used as the lower bound of a range with
+max_version. Mutually exclusive with version.
+If min_version is given with no max_version it is as
+if max version is ‘latest’. (optional)</li>
+<li><strong>max_version</strong> – The maximum major version of a given API, intended to
+be used as the upper bound of a range with min_version.
+Mutually exclusive with version. (optional)</li>
+<li><strong>default_microversion</strong> – The default microversion value to send
+with API requests. While microversions are
+a per-request feature, a user may know they
+want to default to sending a specific value.
+(optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.adapter.Adapter.client_name">
+<code class="descname">client_name</code><em class="property"> = None</em><a class="headerlink" href="#keystoneauth1.adapter.Adapter.client_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.adapter.Adapter.client_version">
+<code class="descname">client_version</code><em class="property"> = None</em><a class="headerlink" href="#keystoneauth1.adapter.Adapter.client_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>auth=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an endpoint as provided by the auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin on
+the session. (optional)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a
+plugin is not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An endpoint if available or None.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.get_endpoint_data">
+<code class="descname">get_endpoint_data</code><span class="sig-paren">(</span><em>auth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.get_endpoint_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the endpoint data for this Adapter’s endpoint.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin on
+the session. (optional)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a
+plugin is not available.</li>
+<li><strong>TypeError</strong> – If arguments are invalid</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Endpoint data if available or None.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#keystoneauth1.discover.EndpointData" title="keystoneauth1.discover.EndpointData">keystoneauth1.discover.EndpointData</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.get_project_id">
+<code class="descname">get_project_id</code><span class="sig-paren">(</span><em>auth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.get_project_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the authenticated project_id as provided by the auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin
+on the session. (optional)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth.AuthorizationFailure" title="keystoneauth1.exceptions.auth.AuthorizationFailure"><strong>keystoneauth1.exceptions.auth.AuthorizationFailure</strong></a> – if a new token fetch fails.</li>
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a plugin is not available.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Current <cite>project_id</cite> or None if not supported by plugin.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>auth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a token as provided by the auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin
+on the session. (optional)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth.AuthorizationFailure" title="keystoneauth1.exceptions.auth.AuthorizationFailure"><strong>keystoneauth1.exceptions.auth.AuthorizationFailure</strong></a> – if a new
+token fetch fails.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A valid token.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.get_user_id">
+<code class="descname">get_user_id</code><span class="sig-paren">(</span><em>auth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.get_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the authenticated user_id as provided by the auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin
+on the session. (optional)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth.AuthorizationFailure" title="keystoneauth1.exceptions.auth.AuthorizationFailure"><strong>keystoneauth1.exceptions.auth.AuthorizationFailure</strong></a> – if a new token fetch fails.</li>
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a plugin is not available.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Current <cite>user_id</cite> or None if not supported by plugin.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.head">
+<code class="descname">head</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.head" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.invalidate">
+<code class="descname">invalidate</code><span class="sig-paren">(</span><em>auth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalidate an authentication plugin.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.patch">
+<code class="descname">patch</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.patch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.post">
+<code class="descname">post</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.post" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.put">
+<code class="descname">put</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.put" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneauth1.adapter.Adapter.register_argparse_arguments">
+<em class="property">classmethod </em><code class="descname">register_argparse_arguments</code><span class="sig-paren">(</span><em>parser</em>, <em>service_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.register_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach arguments to a given argparse Parser for Adapters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parser</strong> (<em>argparse.ArgumentParser</em>) – The argparse parser to attach options to.</li>
+<li><strong>service_type</strong> (<em>str</em>) – Default service_type value. (optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="keystoneauth1.adapter.Adapter.register_service_argparse_arguments">
+<em class="property">classmethod </em><code class="descname">register_service_argparse_arguments</code><span class="sig-paren">(</span><em>parser</em>, <em>service_type</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.register_service_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach arguments to a given argparse Parser for Adapters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parser</strong> (<em>argparse.ArgumentParser</em>) – The argparse parser to attach options to.</li>
+<li><strong>service_type</strong> (<em>str</em>) – Name of a service to generate additional
+arguments for.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.adapter.Adapter.request">
+<code class="descname">request</code><span class="sig-paren">(</span><em>url</em>, <em>method</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.Adapter.request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.adapter.LegacyJsonAdapter">
+<em class="property">class </em><code class="descclassname">keystoneauth1.adapter.</code><code class="descname">LegacyJsonAdapter</code><span class="sig-paren">(</span><em>session</em>, <em>service_type=None</em>, <em>service_name=None</em>, <em>interface=None</em>, <em>region_name=None</em>, <em>endpoint_override=None</em>, <em>version=None</em>, <em>auth=None</em>, <em>user_agent=None</em>, <em>connect_retries=None</em>, <em>logger=None</em>, <em>allow={}</em>, <em>additional_headers=None</em>, <em>client_name=None</em>, <em>client_version=None</em>, <em>allow_version_hack=None</em>, <em>global_request_id=None</em>, <em>min_version=None</em>, <em>max_version=None</em>, <em>default_microversion=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.LegacyJsonAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.adapter.Adapter" title="keystoneauth1.adapter.Adapter"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.adapter.Adapter</span></code></a></p>
+<p>Make something that looks like an old HTTPClient.</p>
+<p>A common case when using an adapter is that we want an interface similar to
+the HTTPClients of old which returned the body as JSON as well.</p>
+<p>You probably don’t want this if you are starting from scratch.</p>
+<dl class="method">
+<dt id="keystoneauth1.adapter.LegacyJsonAdapter.request">
+<code class="descname">request</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.LegacyJsonAdapter.request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.adapter.register_adapter_argparse_arguments">
+<code class="descclassname">keystoneauth1.adapter.</code><code class="descname">register_adapter_argparse_arguments</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.register_adapter_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.adapter.register_service_adapter_argparse_arguments">
+<code class="descclassname">keystoneauth1.adapter.</code><code class="descname">register_service_adapter_argparse_arguments</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.adapter.register_service_adapter_argparse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.discover">
+<span id="keystoneauth1-discover-module"></span><h2>keystoneauth1.discover module<a class="headerlink" href="#module-keystoneauth1.discover" title="Permalink to this headline">¶</a></h2>
+<p>The passive components to version discovery.</p>
+<p>The Discover object in discover.py contains functions that can create objects
+on your behalf. These functions are not usable from within the keystoneauth1
+library because you will get dependency resolution issues.</p>
+<p>The Discover object in this file provides the querying components of Discovery.
+This includes functions like url_for which allow you to retrieve URLs and the
+raw data specified in version discovery responses.</p>
+<dl class="class">
+<dt id="keystoneauth1.discover.Discover">
+<em class="property">class </em><code class="descclassname">keystoneauth1.discover.</code><code class="descname">Discover</code><span class="sig-paren">(</span><em>session</em>, <em>url</em>, <em>authenticated=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.Discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="keystoneauth1.discover.Discover.CURRENT_STATUSES">
+<code class="descname">CURRENT_STATUSES</code><em class="property"> = (‘stable’, ‘current’, ‘supported’)</em><a class="headerlink" href="#keystoneauth1.discover.Discover.CURRENT_STATUSES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.discover.Discover.DEPRECATED_STATUSES">
+<code class="descname">DEPRECATED_STATUSES</code><em class="property"> = (‘deprecated’,)</em><a class="headerlink" href="#keystoneauth1.discover.Discover.DEPRECATED_STATUSES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.discover.Discover.EXPERIMENTAL_STATUSES">
+<code class="descname">EXPERIMENTAL_STATUSES</code><em class="property"> = (‘experimental’,)</em><a class="headerlink" href="#keystoneauth1.discover.Discover.EXPERIMENTAL_STATUSES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.discover.Discover.data_for">
+<code class="descname">data_for</code><span class="sig-paren">(</span><em>version</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.Discover.data_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return endpoint data for a version.</p>
+<dl class="docutils">
+<dt>NOTE: This method raises a TypeError if version is None. It is</dt>
+<dd>kept for backwards compatability. New code should use
+versioned_data_for instead.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>version</strong> (<em>tuple</em>) – The version is always a minimum version in the
+same major release as there should be no compatibility issues with
+using a version newer than the one asked for.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the endpoint data for a URL that matches the required version
+(the format is described in version_data) or None if no
+match.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.discover.Discover.raw_version_data">
+<code class="descname">raw_version_data</code><span class="sig-paren">(</span><em>allow_experimental=False</em>, <em>allow_deprecated=True</em>, <em>allow_unknown=False</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.Discover.raw_version_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get raw version information from URL.</p>
+<p>Raw data indicates that only minimal validation processing is performed
+on the data, so what is returned here will be the data in the same
+format it was received from the endpoint.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>allow_experimental</strong> (<em>bool</em>) – Allow experimental version endpoints.</li>
+<li><strong>allow_deprecated</strong> (<em>bool</em>) – Allow deprecated version endpoints.</li>
+<li><strong>allow_unknown</strong> (<em>bool</em>) – Allow endpoints with an unrecognised status.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The endpoints returned from the server that match the
+criteria.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.discover.Discover.url_for">
+<code class="descname">url_for</code><span class="sig-paren">(</span><em>version</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.Discover.url_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the endpoint url for a version.</p>
+<dl class="docutils">
+<dt>NOTE: This method raises a TypeError if version is None. It is</dt>
+<dd>kept for backwards compatability. New code should use
+versioned_url_for instead.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>version</strong> (<em>tuple</em>) – The version is always a minimum version in the
+same major release as there should be no compatibility issues with
+using a version newer than the one asked for.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The url for the specified version or None if no match.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.discover.Discover.version_data">
+<code class="descname">version_data</code><span class="sig-paren">(</span><em>reverse=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.Discover.version_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get normalized version data.</p>
+<p>Return version data in a structured way.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reverse</strong> (<em>bool</em>) – Reverse the list. reverse=true will mean the
+returned list is sorted from newest to oldest
+version.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>A list of version data dictionaries sorted by version number.</dt>
+<dd>Each data element in the returned list is a dictionary
+consisting of:</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">version tuple:</th><td class="field-body">The normalized version of the endpoint.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">url str:</th><td class="field-body">The url for the endpoint.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">collection:</th><td class="field-body">The URL for the discovery document.  May be None.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">min_microversion:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">The minimum microversion supported by the
+endpoint.  May be None.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">max_microversion:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">The maximum microversion supported by the
+endpoint.  May be None.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">raw_status str:</th><td class="field-body">The status as provided by the server</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(dict)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.discover.Discover.versioned_data_for">
+<code class="descname">versioned_data_for</code><span class="sig-paren">(</span><em>url=None</em>, <em>min_version=None</em>, <em>max_version=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.Discover.versioned_data_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return endpoint data for the service at a url.</p>
+<p>min_version and max_version can be given either as strings or tuples.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>url</strong> (<em>string</em>) – If url is given, the data will be returned for the
+endpoint data that has a self link matching the url.</li>
+<li><strong>min_version</strong> – The minimum endpoint version that is acceptable. If
+min_version is given with no max_version it is as if max version is
+‘latest’. If min_version is ‘latest’, max_version may only be
+‘latest’ or None.</li>
+<li><strong>max_version</strong> – The maximum endpoint version that is acceptable. If
+min_version is given with no max_version it is as if max version is
+‘latest’. If min_version is ‘latest’, max_version may only be
+‘latest’ or None.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the endpoint data for a URL that matches the required version
+(the format is described in version_data) or None if no
+match.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.discover.Discover.versioned_url_for">
+<code class="descname">versioned_url_for</code><span class="sig-paren">(</span><em>min_version=None</em>, <em>max_version=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.Discover.versioned_url_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the endpoint url for a version.</p>
+<p>min_version and max_version can be given either as strings or tuples.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>min_version</strong> – The minimum version that is acceptable. If
+min_version is given with no max_version it is as if max version
+is ‘latest’.</li>
+<li><strong>max_version</strong> – The maximum version that is acceptable. If
+min_version is given with no max_version it is as if max version is
+‘latest’.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The url for the specified version or None if no match.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.discover.EndpointData">
+<em class="property">class </em><code class="descclassname">keystoneauth1.discover.</code><code class="descname">EndpointData</code><span class="sig-paren">(</span><em>catalog_url=None</em>, <em>service_url=None</em>, <em>service_type=None</em>, <em>service_name=None</em>, <em>service_id=None</em>, <em>region_name=None</em>, <em>interface=None</em>, <em>endpoint_id=None</em>, <em>raw_endpoint=None</em>, <em>api_version=None</em>, <em>major_version=None</em>, <em>min_microversion=None</em>, <em>max_microversion=None</em>, <em>next_min_version=None</em>, <em>not_before=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.EndpointData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Normalized information about a discovered endpoint.</p>
+<p>Contains url, version, microversion, interface and region information.
+This is essentially the data contained in the catalog and the version
+discovery documents about an endpoint that is used to select the endpoint
+desired by the user. It is returned so that a user can know which qualities
+a discovered endpoint had, in case their request allowed for a range of
+possibilities.</p>
+<dl class="method">
+<dt id="keystoneauth1.discover.EndpointData.get_current_versioned_data">
+<code class="descname">get_current_versioned_data</code><span class="sig-paren">(</span><em>session</em>, <em>allow=None</em>, <em>cache=None</em>, <em>project_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.EndpointData.get_current_versioned_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run version discovery on the current endpoint.</p>
+<p>A simplified version of get_versioned_data, get_current_versioned_data
+runs discovery but only on the endpoint that has been found already.</p>
+<p>It can be useful in some workflows where the user wants version
+information about the endpoint they have.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> (<a class="reference internal" href="#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – A session object that can be used for communication.</li>
+<li><strong>allow</strong> (<em>dict</em>) – Extra filters to pass when discovering API
+versions. (optional)</li>
+<li><strong>cache</strong> (<em>dict</em>) – A dict to be used for caching results in
+addition to caching them on the Session.
+(optional)</li>
+<li><strong>project_id</strong> (<em>string</em>) – ID of the currently scoped project. Used for
+removing project_id components of URLs from
+the catalog. (optional)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new EndpointData with the requested versioned data.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#keystoneauth1.discover.EndpointData" title="keystoneauth1.discover.EndpointData"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.discover.EndpointData</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.discovery.DiscoveryFailure" title="keystoneauth1.exceptions.discovery.DiscoveryFailure"><strong>keystoneauth1.exceptions.discovery.DiscoveryFailure</strong></a> – If the
+appropriate versioned data
+could not be discovered.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.discover.EndpointData.get_versioned_data">
+<code class="descname">get_versioned_data</code><span class="sig-paren">(</span><em>session</em>, <em>allow=None</em>, <em>cache=None</em>, <em>allow_version_hack=True</em>, <em>project_id=None</em>, <em>discover_versions=True</em>, <em>min_version=None</em>, <em>max_version=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.EndpointData.get_versioned_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run version discovery for the service described.</p>
+<p>Performs Version Discovery and returns a new EndpointData object with
+information found.</p>
+<p>min_version and max_version can be given either as strings or tuples.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> (<a class="reference internal" href="#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – A session object that can be used for communication.</li>
+<li><strong>allow</strong> (<em>dict</em>) – Extra filters to pass when discovering API
+versions. (optional)</li>
+<li><strong>cache</strong> (<em>dict</em>) – A dict to be used for caching results in
+addition to caching them on the Session.
+(optional)</li>
+<li><strong>allow_version_hack</strong> (<em>bool</em>) – Allow keystoneauth to hack up catalog
+URLS to support older schemes.
+(optional, default True)</li>
+<li><strong>project_id</strong> (<em>string</em>) – ID of the currently scoped project. Used for
+removing project_id components of URLs from
+the catalog. (optional)</li>
+<li><strong>discover_versions</strong> (<em>bool</em>) – Whether to get version metadata from
+the version discovery document even
+if it’s not neccessary to fulfill the
+major version request. (optional,
+defaults to True)</li>
+<li><strong>min_version</strong> – The minimum version that is acceptable. If
+min_version is given with no max_version it is as
+if max version is ‘latest’.</li>
+<li><strong>max_version</strong> – The maximum version that is acceptable. If
+min_version is given with no max_version it is as
+if max version is ‘latest’.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new EndpointData with the requested versioned data.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#keystoneauth1.discover.EndpointData" title="keystoneauth1.discover.EndpointData"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.discover.EndpointData</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.discovery.DiscoveryFailure" title="keystoneauth1.exceptions.discovery.DiscoveryFailure"><strong>keystoneauth1.exceptions.discovery.DiscoveryFailure</strong></a> – If the
+appropriate versioned data
+could not be discovered.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.discover.EndpointData.url">
+<code class="descname">url</code><a class="headerlink" href="#keystoneauth1.discover.EndpointData.url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.discover.add_catalog_discover_hack">
+<code class="descclassname">keystoneauth1.discover.</code><code class="descname">add_catalog_discover_hack</code><span class="sig-paren">(</span><em>service_type</em>, <em>old</em>, <em>new</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.add_catalog_discover_hack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a version removal rule for a particular service.</p>
+<p>Originally deployments of OpenStack would contain a versioned endpoint in
+the catalog for different services. E.g. an identity service might look
+like <code class="docutils literal"><span class="pre">http://localhost:5000/v2.0</span></code>. This is a problem when we want to use
+a different version like v3.0 as there is no way to tell where it is
+located. We cannot simply change all service catalogs either so there must
+be a way to handle the older style of catalog.</p>
+<p>This function adds a rule for a given service type that if part of the URL
+matches a given regular expression in <em>old</em> then it will be replaced with
+the <em>new</em> value. This will replace all instances of old with new. It should
+therefore contain a regex anchor.</p>
+<p>For example the included rule states:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">add_catalog_version_hack</span><span class="p">(</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;/v2.0/?$&#39;</span><span class="p">),</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>so if the catalog retrieves an <em>identity</em> URL that ends with /v2.0 or
+/v2.0/ then it should replace it simply with / to fix the user’s catalog.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>service_type</strong> (<em>str</em>) – The service type as defined in the catalog that
+the rule will apply to.</li>
+<li><strong>old</strong> (<em>re.RegexObject</em>) – The regular expression to search for and replace
+if found.</li>
+<li><strong>new</strong> (<em>str</em>) – The new string to replace the pattern with.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.discover.get_discovery">
+<code class="descclassname">keystoneauth1.discover.</code><code class="descname">get_discovery</code><span class="sig-paren">(</span><em>session</em>, <em>url</em>, <em>cache=None</em>, <em>authenticated=False</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.get_discovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the discovery object for a URL.</p>
+<p>Check the session and the plugin cache to see if we have already
+performed discovery on the URL and if so return it, otherwise create
+a new discovery object, cache it and return it.</p>
+<p>NOTE: This function is expected to be used by keystoneauth and should not
+be needed by users part of normal usage. A normal user should use
+get_endpoint or get_endpoint_data on <cite>keystoneauth.session.Session</cite> or
+endpoint_filters on <cite>keystoneauth.session.Session</cite> or
+<cite>keystoneauth.session.Session</cite>. However, should the user need to perform
+direct discovery for some reason, this function should be used so that
+the discovery caching is used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> (<a class="reference internal" href="#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – A session object to discover with.</li>
+<li><strong>url</strong> (<em>str</em>) – The url to lookup.</li>
+<li><strong>cache</strong> (<em>dict</em>) – A dict to be used for caching results, in addition to caching them
+on the Session. (optional) Defaults to None.</li>
+<li><strong>authenticated</strong> (<em>bool</em>) – Include a token in the discovery call. (optional) Defaults to None,
+which will use a token if an auth plugin is installed.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.discovery.DiscoveryFailure" title="keystoneauth1.exceptions.discovery.DiscoveryFailure"><strong>keystoneauth1.exceptions.discovery.DiscoveryFailure</strong></a> – if for some reason the lookup fails.</li>
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.http.HttpError" title="keystoneauth1.exceptions.http.HttpError"><strong>keystoneauth1.exceptions.http.HttpError</strong></a> – An error from an invalid HTTP response.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A discovery object with the results of looking up that URL.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.discover.Discovery</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.discover.get_version_data">
+<code class="descclassname">keystoneauth1.discover.</code><code class="descname">get_version_data</code><span class="sig-paren">(</span><em>session</em>, <em>url</em>, <em>authenticated=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.get_version_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve raw version data from a url.</p>
+<p>The return is a list of dicts of the form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[{</span>
+    <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;STABLE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;v2.3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;links&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;href&#39;</span><span class="p">:</span> <span class="s1">&#39;http://network.example.com/v2.3&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;rel&#39;</span><span class="p">:</span> <span class="s1">&#39;self&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;href&#39;</span><span class="p">:</span> <span class="s1">&#39;http://network.example.com/&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;rel&#39;</span><span class="p">:</span> <span class="s1">&#39;collection&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;min_version&#39;</span><span class="p">:</span> <span class="s1">&#39;2.0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;max_version&#39;</span><span class="p">:</span> <span class="s1">&#39;2.7&#39;</span><span class="p">,</span>
+ <span class="p">},</span>
+ <span class="o">...</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Note:
+The maximum microversion may be specified by <cite>max_version</cite> or <cite>version</cite>,
+the former superseding the latter.
+All <cite>*version</cite> keys are optional.
+Other keys and ‘links’ entries are permitted, but ignored.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>session</strong> (<a class="reference internal" href="#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – A Session object that can be used for communication.</li>
+<li><strong>url</strong> (<em>string</em>) – Endpoint or discovery URL from which to retrieve data.</li>
+<li><strong>authenticated</strong> (<em>bool</em>) – Include a token in the discovery call.
+(optional) Defaults to None.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of dicts containing version information.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list(dict)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.discover.normalize_version_number">
+<code class="descclassname">keystoneauth1.discover.</code><code class="descname">normalize_version_number</code><span class="sig-paren">(</span><em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.normalize_version_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn a version representation into a tuple.</p>
+<p>Examples:</p>
+<p>The following all produce a return value of (1, 0):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;v1&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">],</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="s1">&#39;v1.0&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following all produce a return value of (1, 20, 3):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;v1.20.3&#39;</span><span class="p">,</span> <span class="s1">&#39;1.20.3&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The following all produce a return value of (LATEST, LATEST):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;latest&#39;</span><span class="p">,</span> <span class="s1">&#39;vlatest&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;latest&#39;</span><span class="p">,</span> <span class="s1">&#39;latest&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">LATEST</span><span class="p">,</span> <span class="n">LATEST</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following all produce a return value of (2, LATEST):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;2.latest&#39;</span><span class="p">,</span> <span class="s1">&#39;v2.latest&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">LATEST</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;latest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>version</strong> – A version specifier in any of the following forms:
+String, possibly prefixed with ‘v’, containing one or more numbers
+<em>or</em> the string ‘latest’, separated by periods.  Examples: ‘v1’,
+‘v1.2’, ‘1.2.3’, ‘123’, ‘latest’, ‘1.latest’, ‘v1.latest’.
+Integer.  This will be assumed to be the major version, with a minor
+version of 0.
+Float.  The integer part is assumed to be the major version; the
+decimal part the minor version.
+Non-string iterable comprising integers, integer strings, the string
+‘latest’, or the special value LATEST.
+Examples: (1,), [1, 2], (‘12’, ‘34’, ‘56’), (LATEST,), (2, ‘latest’)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A tuple of len &gt;= 2 comprising integers and/or LATEST.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>TypeError</strong> – If the input version cannot be interpreted.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.discover.version_match">
+<code class="descclassname">keystoneauth1.discover.</code><code class="descname">version_match</code><span class="sig-paren">(</span><em>required</em>, <em>candidate</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.version_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that an available version satisfies the required version.</p>
+<p>To be suitable a version must be of the same major version as required
+and be at least a match in minor/patch level.</p>
+<p>eg. 3.3 is a match for a required 3.1 but 4.1 is not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>required</strong> (<em>tuple</em>) – the version that must be met.</li>
+<li><strong>candidate</strong> (<em>tuple</em>) – the version to test against required.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if candidate is suitable False otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.discover.version_to_string">
+<code class="descclassname">keystoneauth1.discover.</code><code class="descname">version_to_string</code><span class="sig-paren">(</span><em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.discover.version_to_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn a version tuple into a string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>version</strong> (<em>tuple</em>) – A version represented as a tuple of ints.  As a
+special case, a tuple member may be LATEST, which
+translates to ‘latest’.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A version represented as a period-delimited string.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.noauth">
+<span id="keystoneauth1-noauth-module"></span><h2>keystoneauth1.noauth module<a class="headerlink" href="#module-keystoneauth1.noauth" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.noauth.NoAuth">
+<em class="property">class </em><code class="descclassname">keystoneauth1.noauth.</code><code class="descname">NoAuth</code><a class="headerlink" href="#keystoneauth1.noauth.NoAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.plugin.BaseAuthPlugin</span></code></a></p>
+<p>A provider that will always use no auth.</p>
+<p>This is useful to unify session/adapter loading for services
+that might be deployed in standalone/noauth mode.</p>
+<dl class="method">
+<dt id="keystoneauth1.noauth.NoAuth.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.noauth.NoAuth.get_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.plugin">
+<span id="keystoneauth1-plugin-module"></span><h2>keystoneauth1.plugin module<a class="headerlink" href="#module-keystoneauth1.plugin" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin">
+<em class="property">class </em><code class="descclassname">keystoneauth1.plugin.</code><code class="descname">BaseAuthPlugin</code><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>The basic structure of an authentication plugin.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">See <a class="reference internal" href="../authentication-plugins.html"><span class="doc">Authentication Plugins</span></a> for a description of plugins
+provided by this library.</p>
+</div>
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.get_auth_state">
+<code class="descname">get_auth_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.get_auth_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the current authentication state for the plugin.</p>
+<p>Retrieve any internal state that represents the authenticated plugin.</p>
+<p>This should not fetch any new data if it is not present.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>NotImplementedError</strong> – if the plugin does not support this
+feature.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">raw python data (which can be JSON serialized) that can be
+moved into another plugin (of the same type) to have the
+same authenticated state.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">object or None if unauthenticated.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.get_cache_id">
+<code class="descname">get_cache_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.get_cache_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch an identifier that uniquely identifies the auth options.</p>
+<p>The returned identifier need not be decomposable or otherwise provide
+anyway to recreate the plugin. It should not contain sensitive data in
+plaintext.</p>
+<p>This string MUST change if any of the parameters that are used to
+uniquely identity this plugin change.</p>
+<p>If get_cache_id returns a str value suggesting that caching is
+supported then get_auth_cache and set_auth_cache must also be
+implemented.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A unique string for the set of options</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str or None if this is unsupported or unavailable.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.get_connection_params">
+<code class="descname">get_connection_params</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.get_connection_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return any additional connection parameters required for the plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<em>keystoneclient.session.Session</em>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Headers that are set to authenticate a message or None for
+failure. Note that when checking this value that the empty
+dict is a valid, non-failure response.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an endpoint for the client.</p>
+<p>There are no required keyword arguments to <code class="docutils literal"><span class="pre">get_endpoint</span></code> as a plugin
+implementation should use best effort with the information available to
+determine the endpoint. However there are certain standard options that
+will be generated by the clients and should be used by plugins:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">service_type</span></code>: what sort of service is required.</li>
+<li><code class="docutils literal"><span class="pre">service_name</span></code>: the name of the service in the catalog.</li>
+<li><code class="docutils literal"><span class="pre">interface</span></code>: what visibility the endpoint should have.</li>
+<li><code class="docutils literal"><span class="pre">region_name</span></code>: the region the endpoint exists in.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The base URL that will be used to talk to the required
+service or None if not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.get_headers">
+<code class="descname">get_headers</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.get_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch authentication headers for message.</p>
+<p>This is a more generalized replacement of the older get_token to allow
+plugins to specify different or additional authentication headers to
+the OpenStack standard ‘X-Auth-Token’ header.</p>
+<p>How the authentication headers are obtained is up to the plugin. If the
+headers are still valid they may be re-used, retrieved from cache or
+the plugin may invoke an authentication request against a server.</p>
+<p>The default implementation of get_headers calls the <cite>get_token</cite> method
+to enable older style plugins to continue functioning unchanged.
+Subclasses should feel free to completely override this function to
+provide the headers that they want.</p>
+<p>There are no required kwargs. They are passed directly to the auth
+plugin and they are implementation specific.</p>
+<p>Returning None will indicate that no token was able to be retrieved and
+that authorization was a failure. Adding no authentication data can be
+achieved by returning an empty dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – The session object that the auth_plugin belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Headers that are set to authenticate a message or None for
+failure. Note that when checking this value that the empty
+dict is a valid, non-failure response.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.get_project_id">
+<code class="descname">get_project_id</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.get_project_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the project id that we are authenticated to.</p>
+<p>Wherever possible the project id should be inferred from the token
+however there are certain URLs and other places that require access to
+the currently authenticated project id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – A session object so the plugin can make HTTP calls.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A project identifier or None if one is not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.get_sp_auth_url">
+<code class="descname">get_sp_auth_url</code><span class="sig-paren">(</span><em>session</em>, <em>sp_id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.get_sp_auth_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return auth_url from the Service Provider object.</p>
+<p>This url is used for obtaining unscoped federated token from remote
+cloud.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sp_id</strong> (<em>string</em>) – ID of the Service Provider to be queried.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A Service Provider auth_url or None if one is not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.get_sp_url">
+<code class="descname">get_sp_url</code><span class="sig-paren">(</span><em>session</em>, <em>sp_id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.get_sp_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sp_url from the Service Provider object.</p>
+<p>This url is used for passing SAML2 assertion to the remote cloud.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sp_id</strong> (<em>str</em>) – ID of the Service Provider to be queried.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A Service Provider sp_url or None if one is not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain a token.</p>
+<p>How the token is obtained is up to the plugin. If it is still valid
+it may be re-used, retrieved from cache or invoke an authentication
+request against a server.</p>
+<p>There are no required kwargs. They are passed directly to the auth
+plugin and they are implementation specific.</p>
+<p>Returning None will indicate that no token was able to be retrieved.</p>
+<p>This function is misplaced as it should only be required for auth
+plugins that use the ‘X-Auth-Token’ header. However due to the way
+plugins evolved this method is required and often called to trigger an
+authentication request on a new plugin.</p>
+<p>When implementing a new plugin it is advised that you implement this
+method, however if you don’t require the ‘X-Auth-Token’ header override
+the <cite>get_headers</cite> method instead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – A session object so the plugin can make HTTP calls.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A token to use.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.get_user_id">
+<code class="descname">get_user_id</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.get_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a unique user identifier of the plugin.</p>
+<p>Wherever possible the user id should be inferred from the token however
+there are certain URLs and other places that require access to the
+currently authenticated user id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="#keystoneauth1.session.Session" title="keystoneauth1.session.Session"><em>keystoneauth1.session.Session</em></a>) – A session object so the plugin can make HTTP calls.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A user identifier or None if one is not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.invalidate">
+<code class="descname">invalidate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalidate the current authentication data.</p>
+<p>This should result in fetching a new token on next call.</p>
+<p>A plugin may be invalidated if an Unauthorized HTTP response is
+returned to indicate that the token may have been revoked or is
+otherwise now invalid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if there was something that the plugin did to
+invalidate. This means that it makes sense to try again. If
+nothing happens returns False to indicate give up.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.plugin.BaseAuthPlugin.set_auth_state">
+<code class="descname">set_auth_state</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.plugin.BaseAuthPlugin.set_auth_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Install existing authentication state for a plugin.</p>
+<p>Take the output of get_auth_state and install that authentication state
+into the current authentication plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>NotImplementedError</strong> – if the plugin does not support this
+feature.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.service_token">
+<span id="keystoneauth1-service-token-module"></span><h2>keystoneauth1.service_token module<a class="headerlink" href="#module-keystoneauth1.service_token" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.service_token.ServiceTokenAuthWrapper">
+<em class="property">class </em><code class="descclassname">keystoneauth1.service_token.</code><code class="descname">ServiceTokenAuthWrapper</code><span class="sig-paren">(</span><em>user_auth</em>, <em>service_auth</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.service_token.ServiceTokenAuthWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.plugin.BaseAuthPlugin</span></code></a></p>
+<dl class="method">
+<dt id="keystoneauth1.service_token.ServiceTokenAuthWrapper.get_connection_params">
+<code class="descname">get_connection_params</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.service_token.ServiceTokenAuthWrapper.get_connection_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.service_token.ServiceTokenAuthWrapper.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.service_token.ServiceTokenAuthWrapper.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.service_token.ServiceTokenAuthWrapper.get_headers">
+<code class="descname">get_headers</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.service_token.ServiceTokenAuthWrapper.get_headers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.service_token.ServiceTokenAuthWrapper.get_project_id">
+<code class="descname">get_project_id</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.service_token.ServiceTokenAuthWrapper.get_project_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.service_token.ServiceTokenAuthWrapper.get_sp_auth_url">
+<code class="descname">get_sp_auth_url</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.service_token.ServiceTokenAuthWrapper.get_sp_auth_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.service_token.ServiceTokenAuthWrapper.get_sp_url">
+<code class="descname">get_sp_url</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.service_token.ServiceTokenAuthWrapper.get_sp_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.service_token.ServiceTokenAuthWrapper.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.service_token.ServiceTokenAuthWrapper.get_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.service_token.ServiceTokenAuthWrapper.get_user_id">
+<code class="descname">get_user_id</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.service_token.ServiceTokenAuthWrapper.get_user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.service_token.ServiceTokenAuthWrapper.invalidate">
+<code class="descname">invalidate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.service_token.ServiceTokenAuthWrapper.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.session">
+<span id="keystoneauth1-session-module"></span><h2>keystoneauth1.session module<a class="headerlink" href="#module-keystoneauth1.session" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.session.Session">
+<em class="property">class </em><code class="descclassname">keystoneauth1.session.</code><code class="descname">Session</code><span class="sig-paren">(</span><em>auth=None</em>, <em>session=None</em>, <em>original_ip=None</em>, <em>verify=True</em>, <em>cert=None</em>, <em>timeout=None</em>, <em>user_agent=None</em>, <em>redirect=30</em>, <em>additional_headers=None</em>, <em>app_name=None</em>, <em>app_version=None</em>, <em>additional_user_agent=None</em>, <em>discovery_cache=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Maintains client communication state and common functionality.</p>
+<p>As much as possible the parameters to this class reflect and are passed
+directly to the <code class="xref py py-mod docutils literal"><span class="pre">requests</span></code> library.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – An authentication plugin to authenticate the session with.
+(optional, defaults to None)</li>
+<li><strong>session</strong> (<em>requests.Session</em>) – A requests session object that can be used
+for issuing requests. (optional)</li>
+<li><strong>original_ip</strong> (<em>str</em>) – The original IP of the requesting user which will
+be sent to identity service in a ‘Forwarded’
+header. (optional)</li>
+<li><strong>verify</strong> – The verification arguments to pass to requests. These are of
+the same form as requests expects, so True or False to
+verify (or not) against system certificates or a path to a
+bundle or CA certs to check against or None for requests to
+attempt to locate and use certificates. (optional, defaults
+to True)</li>
+<li><strong>cert</strong> – A client certificate to pass to requests. These are of the
+same form as requests expects. Either a single filename
+containing both the certificate and key or a tuple containing
+the path to the certificate then a path to the key. (optional)</li>
+<li><strong>timeout</strong> (<em>float</em>) – A timeout to pass to requests. This should be a
+numerical value indicating some amount (or fraction)
+of seconds or 0 for no timeout. (optional, defaults
+to 0)</li>
+<li><strong>user_agent</strong> (<em>str</em>) – A User-Agent header string to use for the request.
+If not provided, a default of
+<code class="xref py py-attr docutils literal"><span class="pre">DEFAULT_USER_AGENT</span></code> is
+used, which contains the keystoneauth1 version as
+well as those of the requests library and which
+Python is being used. When a non-None value is
+passed, it will be prepended to the default.</li>
+<li><strong>redirect</strong> (<em>int/bool</em>) – Controls the maximum number of redirections that
+can be followed by a request. Either an integer
+for a specific count or True/False for
+forever/never. (optional, default to 30)</li>
+<li><strong>additional_headers</strong> (<em>dict</em>) – Additional headers that should be attached
+to every request passing through the
+session. Headers of the same name specified
+per request will take priority.</li>
+<li><strong>app_name</strong> (<em>str</em>) – The name of the application that is creating the
+session. This will be used to create the user_agent.</li>
+<li><strong>app_version</strong> (<em>str</em>) – The version of the application creating the
+session. This will be used to create the
+user_agent.</li>
+<li><strong>additional_user_agent</strong> (<em>list</em>) – A list of tuple of name, version that
+will be added to the user agent. This
+can be used by libraries that are part
+of the communication process.</li>
+<li><strong>discovery_cache</strong> (<em>dict</em>) – A dict to be used for caching of discovery
+information. This is normally managed
+transparently, but if the user wants to
+share a single cache across multiple sessions
+that do not share an auth plugin, it can
+be provided here. (optional, defaults to
+None which means automatically manage)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.session.Session.adapters">
+<code class="descname">adapters</code><a class="headerlink" href="#keystoneauth1.session.Session.adapters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a DELETE request.</p>
+<p>This calls <a class="reference internal" href="#keystoneauth1.session.Session.request" title="keystoneauth1.session.Session.request"><code class="xref py py-meth docutils literal"><span class="pre">request()</span></code></a> with <code class="docutils literal"><span class="pre">method</span></code> set to <code class="docutils literal"><span class="pre">DELETE</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a GET request.</p>
+<p>This calls <a class="reference internal" href="#keystoneauth1.session.Session.request" title="keystoneauth1.session.Session.request"><code class="xref py py-meth docutils literal"><span class="pre">request()</span></code></a> with <code class="docutils literal"><span class="pre">method</span></code> set to <code class="docutils literal"><span class="pre">GET</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.get_auth_connection_params">
+<code class="descname">get_auth_connection_params</code><span class="sig-paren">(</span><em>auth=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.get_auth_connection_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return auth connection params as provided by the auth plugin.</p>
+<p>An auth plugin may specify connection parameters to the request like
+providing a client certificate for communication.</p>
+<p>We restrict the values that may be returned from this function to
+prevent an auth plugin overriding values unrelated to connection
+parmeters. The values that are currently accepted are:</p>
+<ul class="simple">
+<li><cite>cert</cite>: a path to a client certificate, or tuple of client
+certificate and key pair that are used with this request.</li>
+<li><cite>verify</cite>: a boolean value to indicate verifying SSL certificates
+against the system CAs or a path to a CA file to verify with.</li>
+</ul>
+<p>These values are passed to the requests library and further information
+on accepted values may be found there.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for tokens. Overrides the plugin
+on the session. (optional)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth.AuthorizationFailure" title="keystoneauth1.exceptions.auth.AuthorizationFailure"><strong>keystoneauth1.exceptions.auth.AuthorizationFailure</strong></a> – if a new token fetch fails.</li>
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a plugin is not available.</li>
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.UnsupportedParameters" title="keystoneauth1.exceptions.auth_plugins.UnsupportedParameters"><strong>keystoneauth1.exceptions.auth_plugins.UnsupportedParameters</strong></a> – if the plugin returns a parameter that is not supported by this
+session.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Authentication headers or None for failure.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.get_auth_headers">
+<code class="descname">get_auth_headers</code><span class="sig-paren">(</span><em>auth=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.get_auth_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return auth headers as provided by the auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin
+on the session. (optional)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth.AuthorizationFailure" title="keystoneauth1.exceptions.auth.AuthorizationFailure"><strong>keystoneauth1.exceptions.auth.AuthorizationFailure</strong></a> – if a new token fetch fails.</li>
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a plugin is not available.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Authentication headers or None for failure.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>auth=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an endpoint as provided by the auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin on
+the session. (optional)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a plugin is not available.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An endpoint if available or None.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.get_endpoint_data">
+<code class="descname">get_endpoint_data</code><span class="sig-paren">(</span><em>auth=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.get_endpoint_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get endpoint data as provided by the auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin on
+the session. (optional)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a plugin is not available.</li>
+<li><strong>TypeError</strong> – If arguments are invalid</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Endpoint data if available or None.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#keystoneauth1.discover.EndpointData" title="keystoneauth1.discover.EndpointData">keystoneauth1.discover.EndpointData</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.get_project_id">
+<code class="descname">get_project_id</code><span class="sig-paren">(</span><em>auth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.get_project_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the authenticated project_id as provided by the auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin
+on the session. (optional)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth.AuthorizationFailure" title="keystoneauth1.exceptions.auth.AuthorizationFailure"><strong>keystoneauth1.exceptions.auth.AuthorizationFailure</strong></a> – if a new token fetch fails.</li>
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a plugin is not available.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Current project_id or None if not supported by plugin.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>auth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a token as provided by the auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin
+on the session. (optional)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth.AuthorizationFailure" title="keystoneauth1.exceptions.auth.AuthorizationFailure"><strong>keystoneauth1.exceptions.auth.AuthorizationFailure</strong></a> – if a new token fetch fails.</li>
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a plugin is not available.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><strong>DEPRECATED</strong>: This assumes that the only header that is used to
+authenticate a message is <code class="docutils literal"><span class="pre">X-Auth-Token</span></code>. This may not be
+correct. Use <a class="reference internal" href="#keystoneauth1.session.Session.get_auth_headers" title="keystoneauth1.session.Session.get_auth_headers"><code class="xref py py-meth docutils literal"><span class="pre">get_auth_headers()</span></code></a> instead.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A valid token.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.get_user_id">
+<code class="descname">get_user_id</code><span class="sig-paren">(</span><em>auth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.get_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the authenticated user_id as provided by the auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use for token. Overrides the plugin
+on the session. (optional)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first simple">
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth.AuthorizationFailure" title="keystoneauth1.exceptions.auth.AuthorizationFailure"><strong>keystoneauth1.exceptions.auth.AuthorizationFailure</strong></a> – if a new token fetch fails.</li>
+<li><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin"><strong>keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin</strong></a> – if a plugin is not available.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Current user_id or None if not supported by plugin.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.head">
+<code class="descname">head</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.head" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a HEAD request.</p>
+<p>This calls <a class="reference internal" href="#keystoneauth1.session.Session.request" title="keystoneauth1.session.Session.request"><code class="xref py py-meth docutils literal"><span class="pre">request()</span></code></a> with <code class="docutils literal"><span class="pre">method</span></code> set to <code class="docutils literal"><span class="pre">HEAD</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.invalidate">
+<code class="descname">invalidate</code><span class="sig-paren">(</span><em>auth=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalidate an authentication plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to invalidate. Overrides the plugin on the
+session. (optional)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.mount">
+<code class="descname">mount</code><span class="sig-paren">(</span><em>scheme</em>, <em>adapter</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.mount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.patch">
+<code class="descname">patch</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.patch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a PATCH request.</p>
+<p>This calls <a class="reference internal" href="#keystoneauth1.session.Session.request" title="keystoneauth1.session.Session.request"><code class="xref py py-meth docutils literal"><span class="pre">request()</span></code></a> with <code class="docutils literal"><span class="pre">method</span></code> set to <code class="docutils literal"><span class="pre">PATCH</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.post">
+<code class="descname">post</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a POST request.</p>
+<p>This calls <a class="reference internal" href="#keystoneauth1.session.Session.request" title="keystoneauth1.session.Session.request"><code class="xref py py-meth docutils literal"><span class="pre">request()</span></code></a> with <code class="docutils literal"><span class="pre">method</span></code> set to <code class="docutils literal"><span class="pre">POST</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.put">
+<code class="descname">put</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.put" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a PUT request.</p>
+<p>This calls <a class="reference internal" href="#keystoneauth1.session.Session.request" title="keystoneauth1.session.Session.request"><code class="xref py py-meth docutils literal"><span class="pre">request()</span></code></a> with <code class="docutils literal"><span class="pre">method</span></code> set to <code class="docutils literal"><span class="pre">PUT</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.session.Session.request">
+<code class="descname">request</code><span class="sig-paren">(</span><em>url</em>, <em>method</em>, <em>json=None</em>, <em>original_ip=None</em>, <em>user_agent=None</em>, <em>redirect=None</em>, <em>authenticated=None</em>, <em>endpoint_filter=None</em>, <em>auth=None</em>, <em>requests_auth=None</em>, <em>raise_exc=True</em>, <em>allow_reauth=True</em>, <em>log=True</em>, <em>endpoint_override=None</em>, <em>connect_retries=0</em>, <em>logger=&lt;logging.Logger object at 0x308bdd0&gt;</em>, <em>allow={}</em>, <em>client_name=None</em>, <em>client_version=None</em>, <em>microversion=None</em>, <em>microversion_service_type=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.Session.request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send an HTTP request with the specified characteristics.</p>
+<p>Wrapper around <cite>requests.Session.request</cite> to handle tasks such as
+setting headers, JSON encoding/decoding, and error handling.</p>
+<p>Arguments that are not handled are passed through to the requests
+library.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>url</strong> (<em>str</em>) – Path or fully qualified URL of HTTP request. If only a
+path is provided then endpoint_filter must also be
+provided such that the base URL can be determined. If a
+fully qualified URL is provided then endpoint_filter
+will be ignored.</li>
+<li><strong>method</strong> (<em>str</em>) – The http method to use. (e.g. ‘GET’, ‘POST’)</li>
+<li><strong>original_ip</strong> (<em>str</em>) – Mark this request as forwarded for this ip.
+(optional)</li>
+<li><strong>headers</strong> (<em>dict</em>) – Headers to be included in the request. (optional)</li>
+<li><strong>json</strong> – Some data to be represented as JSON. (optional)</li>
+<li><strong>user_agent</strong> (<em>str</em>) – A user_agent to use for the request. If present
+will override one present in headers. (optional)</li>
+<li><strong>redirect</strong> (<em>int/bool</em>) – the maximum number of redirections that
+can be followed by a request. Either an
+integer for a specific count or True/False
+for forever/never. (optional)</li>
+<li><strong>connect_retries</strong> (<em>int</em>) – the maximum number of retries that should
+be attempted for connection errors.
+(optional, defaults to 0 - never retry).</li>
+<li><strong>authenticated</strong> (<em>bool</em>) – True if a token should be attached to this
+request, False if not or None for attach if
+an auth_plugin is available.
+(optional, defaults to None)</li>
+<li><strong>endpoint_filter</strong> (<em>dict</em>) – Data to be provided to an auth plugin with
+which it should be able to determine an
+endpoint to use for this request. If not
+provided then URL is expected to be a
+fully qualified URL. (optional)</li>
+<li><strong>endpoint_override</strong> (<em>str</em>) – The URL to use instead of looking up the
+endpoint in the auth plugin. This will be
+ignored if a fully qualified URL is
+provided but take priority over an
+endpoint_filter. This string may contain
+the values <code class="docutils literal"><span class="pre">%(project_id)s</span></code> and
+<code class="docutils literal"><span class="pre">%(user_id)s</span></code> to have those values
+replaced by the project_id/user_id of the
+current authentication. (optional)</li>
+<li><strong>auth</strong> (<a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><em>keystoneauth1.plugin.BaseAuthPlugin</em></a>) – The auth plugin to use when authenticating this request.
+This will override the plugin that is attached to the
+session (if any). (optional)</li>
+<li><strong>requests_auth</strong> (<code class="xref py py-class docutils literal"><span class="pre">requests.auth.AuthBase</span></code>) – A requests library auth plugin that cannot be
+passed via kwarg because the <cite>auth</cite> kwarg
+collides with our own auth plugins. (optional)</li>
+<li><strong>raise_exc</strong> (<em>bool</em>) – If True then raise an appropriate exception for
+failed HTTP requests. If False then return the
+request object. (optional, default True)</li>
+<li><strong>allow_reauth</strong> (<em>bool</em>) – Allow fetching a new token and retrying the
+request on receiving a 401 Unauthorized
+response. (optional, default True)</li>
+<li><strong>log</strong> (<em>bool</em>) – If True then log the request and response data to the
+debug log. (optional, default True)</li>
+<li><strong>logger</strong> (<em>logging.Logger</em>) – The logger object to use to log request and responses.
+If not provided the keystoneauth1.session default
+logger will be used.</li>
+<li><strong>allow</strong> (<em>dict</em>) – Extra filters to pass when discovering API
+versions. (optional)</li>
+<li><strong>microversion</strong> – Microversion to send for this request.
+microversion can be given as a string or a tuple.
+(optional)</li>
+<li><strong>microversion_service_type</strong> (<em>str</em>) – The service_type to be sent in
+the microversion header, if a microversion is given.
+Defaults to the value of service_type from
+endpoint_filter if one exists. If endpoint_filter is not
+provided or does not have a service_type, microversion
+is given and microversion_service_type is not provided,
+an exception will be raised.</li>
+<li><strong>kwargs</strong> – <p>any other parameter that can be passed to
+<code class="xref py py-meth docutils literal"><span class="pre">requests.Session.request()</span></code> (such as <cite>headers</cite>).
+Except:</p>
+<ul>
+<li><cite>data</cite> will be overwritten by the data in the <cite>json</cite>
+param.</li>
+<li><cite>allow_redirects</cite> is ignored as redirects are handled
+by the session.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="keystoneauth1.exceptions.html#keystoneauth1.exceptions.base.ClientException" title="keystoneauth1.exceptions.base.ClientException"><strong>keystoneauth1.exceptions.base.ClientException</strong></a> – For connection
+failure, or to indicate an error response code.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The response to the request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.session.Session.user_agent">
+<code class="descname">user_agent</code><em class="property"> = None</em><a class="headerlink" href="#keystoneauth1.session.Session.user_agent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneauth1.session.TCPKeepAliveAdapter">
+<em class="property">class </em><code class="descclassname">keystoneauth1.session.</code><code class="descname">TCPKeepAliveAdapter</code><span class="sig-paren">(</span><em>pool_connections=10</em>, <em>pool_maxsize=10</em>, <em>max_retries=0</em>, <em>pool_block=False</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.TCPKeepAliveAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">requests.adapters.HTTPAdapter</span></code></p>
+<p>The custom adapter used to set TCP Keep-Alive on all connections.</p>
+<p>This Adapter also preserves the default behaviour of Requests which
+disables Nagle’s Algorithm. See also:
+<a class="reference external" href="https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx">https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx</a></p>
+<dl class="method">
+<dt id="keystoneauth1.session.TCPKeepAliveAdapter.init_poolmanager">
+<code class="descname">init_poolmanager</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.session.TCPKeepAliveAdapter.init_poolmanager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.token_endpoint">
+<span id="keystoneauth1-token-endpoint-module"></span><h2>keystoneauth1.token_endpoint module<a class="headerlink" href="#module-keystoneauth1.token_endpoint" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneauth1.token_endpoint.Token">
+<em class="property">class </em><code class="descclassname">keystoneauth1.token_endpoint.</code><code class="descname">Token</code><span class="sig-paren">(</span><em>endpoint</em>, <em>token</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.token_endpoint.Token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.plugin.BaseAuthPlugin</span></code></a></p>
+<p>A provider that will always use the given token and endpoint.</p>
+<p>This is really only useful for testing and in certain CLI cases where you
+have a known endpoint and admin token that you want to use.</p>
+<dl class="method">
+<dt id="keystoneauth1.token_endpoint.Token.get_auth_ref">
+<code class="descname">get_auth_ref</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.token_endpoint.Token.get_auth_ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the authentication reference of an auth plugin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<em>keystoneauth1.session.session</em>) – A session object to be used for communication</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.token_endpoint.Token.get_endpoint">
+<code class="descname">get_endpoint</code><span class="sig-paren">(</span><em>session</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.token_endpoint.Token.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the supplied endpoint.</p>
+<p>Using this plugin the same endpoint is returned regardless of the
+parameters passed to the plugin.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneauth1.token_endpoint.Token.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.token_endpoint.Token.get_token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-keystoneauth1" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="modules.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Modules"></i></a>
+          
+          
+            <a href="keystoneauth1.access.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.access package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../using-sessions.html">Using Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication-plugins.html">Authentication Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin-options.html">Plugin Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extras.html">Extras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating.html">Migrating from keystoneclient</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">keystoneauth1 package</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">CHANGES</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "api/keystoneauth1" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/keystoneauth/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 774691368a72297ed9bacec1afa15cfcb12ca896";
+        var bugProject = "keystoneauth";
+        var bugTitle = "keystoneauth1 package in keystoneauth1";
+    var fieldTags = "doc";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.1.0 on 2018-03-20 15:50";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,677 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: Authentication Plugins</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>Authentication Plugins</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="using-sessions.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Using Sessions"></i></a>
+    
+    
+    <a href="plugin-options.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Plugin Options"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">Authentication Plugins</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#available-plugins">Available Plugins</a><ul>
+<li><a class="reference internal" href="#v2-identity-plugins">V2 Identity Plugins</a></li>
+<li><a class="reference internal" href="#v3-identity-plugins">V3 Identity Plugins</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#federation">Federation</a><ul>
+<li><a class="reference internal" href="#version-independent-identity-plugins">Version Independent Identity Plugins</a></li>
+<li><a class="reference internal" href="#simple-plugins">Simple Plugins</a></li>
+<li><a class="reference internal" href="#v3-oauth-1-0a-plugins">V3 OAuth 1.0a Plugins</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tokenless-auth">Tokenless Auth</a></li>
+<li><a class="reference internal" href="#loading-plugins-by-name">Loading Plugins by Name</a></li>
+<li><a class="reference internal" href="#creating-authentication-plugins">Creating Authentication Plugins</a><ul>
+<li><a class="reference internal" href="#creating-an-identity-plugin">Creating an Identity Plugin</a></li>
+<li><a class="reference internal" href="#creating-a-custom-plugin">Creating a Custom Plugin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="authentication-plugins">
+<h1>Authentication Plugins<a class="headerlink" href="#authentication-plugins" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Authentication plugins provide a generic means by which to extend the
+authentication mechanisms known to OpenStack clients.</p>
+<p>In the vast majority of cases the authentication plugins used will be those
+written for use with the OpenStack Identity Service (Keystone), however this is
+not the only possible case, and the mechanisms by which authentication plugins
+are used and implemented should be generic enough to cover completely
+customized authentication solutions.</p>
+<p>The subset of authentication plugins intended for use with an OpenStack
+Identity server (such as Keystone) are called Identity Plugins.</p>
+</div>
+<div class="section" id="available-plugins">
+<h2>Available Plugins<a class="headerlink" href="#available-plugins" title="Permalink to this headline">¶</a></h2>
+<p>Keystoneauth ships with a number of plugins and particularly Identity
+Plugins.</p>
+<div class="section" id="v2-identity-plugins">
+<h3>V2 Identity Plugins<a class="headerlink" href="#v2-identity-plugins" title="Permalink to this headline">¶</a></h3>
+<p>Standard V2 identity plugins are defined in the module:
+<a class="reference internal" href="api/keystoneauth1.identity.html#module-keystoneauth1.identity.v2" title="keystoneauth1.identity.v2"><code class="xref py py-mod docutils literal"><span class="pre">keystoneauth1.identity.v2</span></code></a></p>
+<p>They include:</p>
+<ul class="simple">
+<li><a class="reference internal" href="api/keystoneauth1.identity.html#keystoneauth1.identity.v2.Password" title="keystoneauth1.identity.v2.Password"><code class="xref py py-class docutils literal"><span class="pre">Password</span></code></a>: Authenticate against
+a V2 identity service using a username and password.</li>
+<li><a class="reference internal" href="api/keystoneauth1.identity.html#keystoneauth1.identity.v2.Token" title="keystoneauth1.identity.v2.Token"><code class="xref py py-class docutils literal"><span class="pre">Token</span></code></a>: Authenticate against a
+V2 identity service using an existing token.</li>
+</ul>
+<p>V2 identity plugins must use an <cite>auth_url</cite> that points to the root of a V2
+identity server URL, i.e.: <code class="docutils literal"><span class="pre">http://hostname:5000/v2.0</span></code>.</p>
+</div>
+<div class="section" id="v3-identity-plugins">
+<h3>V3 Identity Plugins<a class="headerlink" href="#v3-identity-plugins" title="Permalink to this headline">¶</a></h3>
+<p>Standard V3 identity plugins are defined in the module
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#module-keystoneauth1.identity.v3" title="keystoneauth1.identity.v3"><code class="xref py py-mod docutils literal"><span class="pre">keystoneauth1.identity.v3</span></code></a>.</p>
+<p>V3 Identity plugins are slightly different from their V2 counterparts as a V3
+authentication request can contain multiple authentication methods.  To handle
+this V3 defines a number of different
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.AuthMethod" title="keystoneauth1.identity.v3.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">AuthMethod</span></code></a> classes:</p>
+<ul class="simple">
+<li><a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.PasswordMethod" title="keystoneauth1.identity.v3.PasswordMethod"><code class="xref py py-class docutils literal"><span class="pre">PasswordMethod</span></code></a>: Authenticate
+against a V3 identity service using a username and password.</li>
+<li><a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.TokenMethod" title="keystoneauth1.identity.v3.TokenMethod"><code class="xref py py-class docutils literal"><span class="pre">TokenMethod</span></code></a>: Authenticate against
+a V3 identity service using an existing token.</li>
+<li><a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.TOTPMethod" title="keystoneauth1.identity.v3.TOTPMethod"><code class="xref py py-class docutils literal"><span class="pre">TOTPMethod</span></code></a>: Authenticate against
+a V3 identity service using Time-Based One-Time Password (TOTP).</li>
+<li><a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.TokenlessAuth" title="keystoneauth1.identity.v3.TokenlessAuth"><code class="xref py py-class docutils literal"><span class="pre">TokenlessAuth</span></code></a>: Authenticate against
+a V3 identity service using tokenless authentication.</li>
+<li><a class="reference internal" href="api/keystoneauth1.extras.kerberos.html#keystoneauth1.extras.kerberos.KerberosMethod" title="keystoneauth1.extras.kerberos.KerberosMethod"><code class="xref py py-class docutils literal"><span class="pre">KerberosMethod</span></code></a>: Authenticate
+against a V3 identity service using Kerberos.</li>
+</ul>
+<p>The <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.AuthMethod" title="keystoneauth1.identity.v3.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">AuthMethod</span></code></a> objects are then
+passed to the <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.Auth" title="keystoneauth1.identity.v3.Auth"><code class="xref py py-class docutils literal"><span class="pre">Auth</span></code></a> plugin:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keystoneauth1</span> <span class="k">import</span> <span class="n">session</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keystoneauth1.identity</span> <span class="k">import</span> <span class="n">v3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">password</span> <span class="o">=</span> <span class="n">v3</span><span class="o">.</span><span class="n">PasswordMethod</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;user&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                             <span class="n">password</span><span class="o">=</span><span class="s1">&#39;password&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                             <span class="n">user_domain_name</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">v3</span><span class="o">.</span><span class="n">Auth</span><span class="p">(</span><span class="n">auth_url</span><span class="o">=</span><span class="s1">&#39;http://my.keystone.com:5000/v3&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="n">auth_methods</span><span class="o">=</span><span class="p">[</span><span class="n">password</span><span class="p">],</span>
+<span class="gp">... </span>               <span class="n">project_id</span><span class="o">=</span><span class="s1">&#39;projectid&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As in the majority of cases you will only want to use one
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.AuthMethod" title="keystoneauth1.identity.v3.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">AuthMethod</span></code></a> there are also helper
+authentication plugins for the various
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.AuthMethod" title="keystoneauth1.identity.v3.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">AuthMethod</span></code></a> which can be used more
+like the V2 plugins:</p>
+<ul class="simple">
+<li><a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.Password" title="keystoneauth1.identity.v3.Password"><code class="xref py py-class docutils literal"><span class="pre">Password</span></code></a>: Authenticate using
+only a <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.PasswordMethod" title="keystoneauth1.identity.v3.PasswordMethod"><code class="xref py py-class docutils literal"><span class="pre">PasswordMethod</span></code></a>.</li>
+<li><a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.Token" title="keystoneauth1.identity.v3.Token"><code class="xref py py-class docutils literal"><span class="pre">Token</span></code></a>: Authenticate using only a
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.TokenMethod" title="keystoneauth1.identity.v3.TokenMethod"><code class="xref py py-class docutils literal"><span class="pre">TokenMethod</span></code></a>.</li>
+<li><a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.TOTP" title="keystoneauth1.identity.v3.TOTP"><code class="xref py py-class docutils literal"><span class="pre">TOTP</span></code></a>: Authenticate using
+only a <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.TOTPMethod" title="keystoneauth1.identity.v3.TOTPMethod"><code class="xref py py-class docutils literal"><span class="pre">TOTPMethod</span></code></a>.</li>
+<li><a class="reference internal" href="api/keystoneauth1.extras.kerberos.html#keystoneauth1.extras.kerberos.Kerberos" title="keystoneauth1.extras.kerberos.Kerberos"><code class="xref py py-class docutils literal"><span class="pre">Kerberos</span></code></a>: Authenticate using
+only a <a class="reference internal" href="api/keystoneauth1.extras.kerberos.html#keystoneauth1.extras.kerberos.KerberosMethod" title="keystoneauth1.extras.kerberos.KerberosMethod"><code class="xref py py-class docutils literal"><span class="pre">KerberosMethod</span></code></a>.</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">v3</span><span class="o">.</span><span class="n">Password</span><span class="p">(</span><span class="n">auth_url</span><span class="o">=</span><span class="s1">&#39;http://my.keystone.com:5000/v3&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="n">username</span><span class="o">=</span><span class="s1">&#39;username&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="n">password</span><span class="o">=</span><span class="s1">&#39;password&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="n">project_id</span><span class="o">=</span><span class="s1">&#39;projectid&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="n">user_domain_name</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will have exactly the same effect as using the single
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.PasswordMethod" title="keystoneauth1.identity.v3.PasswordMethod"><code class="xref py py-class docutils literal"><span class="pre">PasswordMethod</span></code></a> above.</p>
+<p>V3 identity plugins must use an <cite>auth_url</cite> that points to the root of a V3
+identity server URL, i.e.: <code class="docutils literal"><span class="pre">http://hostname:5000/v3</span></code>.</p>
+</div>
+</div>
+<div class="section" id="federation">
+<h2>Federation<a class="headerlink" href="#federation" title="Permalink to this headline">¶</a></h2>
+<p>The following V3 plugins are provided to support federation:</p>
+<ul class="simple">
+<li><a class="reference internal" href="api/keystoneauth1.extras.kerberos.html#keystoneauth1.extras.kerberos.MappedKerberos" title="keystoneauth1.extras.kerberos.MappedKerberos"><code class="xref py py-class docutils literal"><span class="pre">MappedKerberos</span></code></a>: Federated (mapped)
+Kerberos.</li>
+<li><code class="xref py py-class docutils literal"><span class="pre">Password</span></code>: SAML2 password
+authentication.</li>
+<li><a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.Keystone2Keystone" title="keystoneauth1.identity.v3.Keystone2Keystone"><code class="xref py py-class docutils literal"><span class="pre">Keystone2Keystone</span></code></a>: Keystone to
+Keystone Federation.</li>
+<li><code class="xref py py-class docutils literal"><span class="pre">v3:OpenIDConnectAccessToken</span></code>: Plugin to
+reuse an existing OpenID Connect access token.</li>
+<li><code class="xref py py-class docutils literal"><span class="pre">v3:OpenIDConnectAuthorizationCode</span></code>: OpenID
+Connect Authorization Code grant type.</li>
+<li><code class="xref py py-class docutils literal"><span class="pre">v3:OpenIDConnectClientCredentials</span></code>: OpenID
+Connect Client Credentials grant type.</li>
+<li><code class="xref py py-class docutils literal"><span class="pre">v3:OpenIDConnectPassword</span></code>: OpenID Connect
+Resource Owner Password Credentials grant type.</li>
+</ul>
+<div class="section" id="version-independent-identity-plugins">
+<h3>Version Independent Identity Plugins<a class="headerlink" href="#version-independent-identity-plugins" title="Permalink to this headline">¶</a></h3>
+<p>Standard version independent identity plugins are defined in the module
+<a class="reference internal" href="api/keystoneauth1.identity.generic.html#module-keystoneauth1.identity.generic" title="keystoneauth1.identity.generic"><code class="xref py py-mod docutils literal"><span class="pre">keystoneauth1.identity.generic</span></code></a>.</p>
+<p>For the cases of plugins that exist under both the identity V2 and V3 APIs
+there is an abstraction to allow the plugin to determine which of the V2 and V3
+APIs are supported by the server and use the most appropriate API.</p>
+<p>These plugins are:</p>
+<ul class="simple">
+<li><a class="reference internal" href="api/keystoneauth1.identity.generic.html#keystoneauth1.identity.generic.Password" title="keystoneauth1.identity.generic.Password"><code class="xref py py-class docutils literal"><span class="pre">Password</span></code></a>: Authenticate
+using a user/password against either v2 or v3 API.</li>
+<li><a class="reference internal" href="api/keystoneauth1.identity.generic.html#keystoneauth1.identity.generic.Token" title="keystoneauth1.identity.generic.Token"><code class="xref py py-class docutils literal"><span class="pre">Token</span></code></a>: Authenticate using
+an existing token against either v2 or v3 API.</li>
+</ul>
+<p>These plugins work by first querying the identity server to determine available
+versions and so the <cite>auth_url</cite> used with the plugins should point to the base
+URL of the identity server to use. If the <cite>auth_url</cite> points to either a V2 or
+V3 endpoint it will restrict the plugin to only working with that version of
+the API.</p>
+</div>
+<div class="section" id="simple-plugins">
+<h3>Simple Plugins<a class="headerlink" href="#simple-plugins" title="Permalink to this headline">¶</a></h3>
+<p>In addition to the Identity plugins a simple plugin that will always use the
+same provided token and endpoint is available. This is useful in situations
+where you have an token or in testing when you specifically know the endpoint
+you want to communicate with.</p>
+<p>It can be found at <a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.token_endpoint.Token" title="keystoneauth1.token_endpoint.Token"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.token_endpoint.Token</span></code></a>.</p>
+</div>
+<div class="section" id="v3-oauth-1-0a-plugins">
+<h3>V3 OAuth 1.0a Plugins<a class="headerlink" href="#v3-oauth-1-0a-plugins" title="Permalink to this headline">¶</a></h3>
+<p>There also exists a plugin for OAuth 1.0a authentication. We provide a helper
+authentication plugin at:
+<a class="reference internal" href="api/keystoneauth1.extras.oauth1.html#keystoneauth1.extras.oauth1.V3OAuth1" title="keystoneauth1.extras.oauth1.V3OAuth1"><code class="xref py py-class docutils literal"><span class="pre">V3OAuth1</span></code></a>.
+The plugin requires the OAuth consumer’s key and secret, as well as the OAuth
+access token’s key and secret. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keystoneauth1.extras</span> <span class="k">import</span> <span class="n">oauth1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keystoneauth1</span> <span class="k">import</span> <span class="n">session</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">oauth1</span><span class="o">.</span><span class="n">V3OAuth1</span><span class="p">(</span><span class="s1">&#39;http://my.keystone.com:5000/v3&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">consumer_key</span><span class="o">=</span><span class="n">consumer_id</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">consumer_secret</span><span class="o">=</span><span class="n">consumer_secret</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">access_key</span><span class="o">=</span><span class="n">access_token_key</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">access_secret</span><span class="o">=</span><span class="n">access_token_secret</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">auth</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tokenless-auth">
+<h2>Tokenless Auth<a class="headerlink" href="#tokenless-auth" title="Permalink to this headline">¶</a></h2>
+<p>A plugin for tokenless authentication also exists. It provides a means to
+authorize client operations within the Identity server by using an X.509
+TLS client certificate without having to issue a token. We provide a
+tokenless authentication plugin at:</p>
+<ul class="simple">
+<li><a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.TokenlessAuth" title="keystoneauth1.identity.v3.TokenlessAuth"><code class="xref py py-class docutils literal"><span class="pre">TokenlessAuth</span></code></a></li>
+</ul>
+<p>It is mostly used by service clients for token validation and here is
+an example of how this plugin would be used in practice:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keystoneauth1</span> <span class="k">import</span> <span class="n">session</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">keystoneauth1.identity</span> <span class="k">import</span> <span class="n">v3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">v3</span><span class="o">.</span><span class="n">TokenlessAuth</span><span class="p">(</span><span class="n">auth_url</span><span class="o">=</span><span class="s1">&#39;https://keystone:5000/v3&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="n">domain_name</span><span class="o">=</span><span class="s1">&#39;my_service_domain&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span>
+<span class="gp">... </span>                <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">cert</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;/opt/service_client.crt&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                      <span class="s1">&#39;/opt/service_client.key&#39;</span><span class="p">),</span>
+<span class="gp">... </span>                <span class="n">verify</span><span class="o">=</span><span class="s1">&#39;/opt/ca.crt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loading-plugins-by-name">
+<h2>Loading Plugins by Name<a class="headerlink" href="#loading-plugins-by-name" title="Permalink to this headline">¶</a></h2>
+<p>In auth_token middleware and for some service to service communication it is
+possible to specify a plugin to load via name. The authentication options that
+are available are then specific to the plugin that you specified. Currently the
+authentication plugins that are available in <cite>keystoneauth</cite> are:</p>
+<ul class="simple">
+<li>password: <a class="reference internal" href="api/keystoneauth1.identity.generic.html#keystoneauth1.identity.generic.Password" title="keystoneauth1.identity.generic.Password"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.generic.Password</span></code></a></li>
+<li>token: <a class="reference internal" href="api/keystoneauth1.identity.generic.html#keystoneauth1.identity.generic.Token" title="keystoneauth1.identity.generic.Token"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.generic.Token</span></code></a></li>
+<li>v2password: <a class="reference internal" href="api/keystoneauth1.identity.html#keystoneauth1.identity.v2.Password" title="keystoneauth1.identity.v2.Password"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v2.Password</span></code></a></li>
+<li>v2token: <a class="reference internal" href="api/keystoneauth1.identity.html#keystoneauth1.identity.v2.Token" title="keystoneauth1.identity.v2.Token"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v2.Token</span></code></a></li>
+<li>v3password: <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.Password" title="keystoneauth1.identity.v3.Password"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.Password</span></code></a></li>
+<li>v3token: <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.Token" title="keystoneauth1.identity.v3.Token"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.Token</span></code></a></li>
+<li>v3fedkerb: <a class="reference internal" href="api/keystoneauth1.extras.kerberos.html#keystoneauth1.extras.kerberos.MappedKerberos" title="keystoneauth1.extras.kerberos.MappedKerberos"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.extras.kerberos.MappedKerberos</span></code></a></li>
+<li>v3kerberos: <a class="reference internal" href="api/keystoneauth1.extras.kerberos.html#keystoneauth1.extras.kerberos.Kerberos" title="keystoneauth1.extras.kerberos.Kerberos"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.extras.kerberos.Kerberos</span></code></a></li>
+<li>v3oauth1: <a class="reference internal" href="api/keystoneauth1.extras.oauth1.html#keystoneauth1.extras.oauth1.v3.OAuth1" title="keystoneauth1.extras.oauth1.v3.OAuth1"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.extras.oauth1.v3.OAuth1</span></code></a></li>
+<li>v3oidcaccesstoken: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3:OpenIDConnectAccessToken</span></code></li>
+<li>v3oidcauthcode: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3:OpenIDConnectAuthorizationCode</span></code></li>
+<li>v3oidcclientcredentials: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3:OpenIDConnectClientCredentials</span></code></li>
+<li>v3oidcpassword: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3:OpenIDConnectPassword</span></code></li>
+<li>v3samlpassword: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.extras._saml2.v3.Password</span></code></li>
+<li>v3tokenlessauth: <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.TokenlessAuth" title="keystoneauth1.identity.v3.TokenlessAuth"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.TokenlessAuth</span></code></a></li>
+<li>v3totp: <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.TOTP" title="keystoneauth1.identity.v3.TOTP"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.TOTP</span></code></a></li>
+</ul>
+</div>
+<div class="section" id="creating-authentication-plugins">
+<h2>Creating Authentication Plugins<a class="headerlink" href="#creating-authentication-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-an-identity-plugin">
+<h3>Creating an Identity Plugin<a class="headerlink" href="#creating-an-identity-plugin" title="Permalink to this headline">¶</a></h3>
+<p>If you have implemented a new authentication mechanism into the Identity
+service then you will be able to reuse a lot of the infrastructure available
+for the existing Identity mechanisms. As the V2 identity API is essentially
+frozen, it is expected that new plugins are for the V3 API.</p>
+<p>To implement a new V3 plugin that can be combined with others you should
+implement the base <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.AuthMethod" title="keystoneauth1.identity.v3.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.AuthMethod</span></code></a> class
+and implement the
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.AuthMethod.get_auth_data" title="keystoneauth1.identity.v3.AuthMethod.get_auth_data"><code class="xref py py-meth docutils literal"><span class="pre">get_auth_data()</span></code></a> function.
+If your Plugin cannot be used in conjunction with existing
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.AuthMethod" title="keystoneauth1.identity.v3.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.AuthMethod</span></code></a> then you should just
+override <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.Auth" title="keystoneauth1.identity.v3.Auth"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.Auth</span></code></a> directly.</p>
+<p>The new <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.AuthMethod" title="keystoneauth1.identity.v3.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">AuthMethod</span></code></a> should take all
+the required parameters via
+<code class="xref py py-meth docutils literal"><span class="pre">__init__()</span></code> and return from
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.AuthMethod.get_auth_data" title="keystoneauth1.identity.v3.AuthMethod.get_auth_data"><code class="xref py py-meth docutils literal"><span class="pre">get_auth_data()</span></code></a> a tuple
+with the unique identifier of this plugin (e.g. <em>password</em>) and a dictionary
+containing the payload of values to send to the authentication server. The
+session, calling auth object and request headers are also passed to this
+function so that the plugin may use or manipulate them.</p>
+<p>You should also provide a class that inherits from
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.Auth" title="keystoneauth1.identity.v3.Auth"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.Auth</span></code></a> with an instance of your new
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.AuthMethod" title="keystoneauth1.identity.v3.AuthMethod"><code class="xref py py-class docutils literal"><span class="pre">AuthMethod</span></code></a> as the <cite>auth_methods</cite>
+parameter to <a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.Auth" title="keystoneauth1.identity.v3.Auth"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.identity.v3.Auth</span></code></a>.</p>
+<p>By convention (and like above) these are named <cite>PluginType</cite> and
+<cite>PluginTypeMethod</cite> (for example
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.Password" title="keystoneauth1.identity.v3.Password"><code class="xref py py-class docutils literal"><span class="pre">Password</span></code></a> and
+<a class="reference internal" href="api/keystoneauth1.identity.v3.html#keystoneauth1.identity.v3.PasswordMethod" title="keystoneauth1.identity.v3.PasswordMethod"><code class="xref py py-class docutils literal"><span class="pre">PasswordMethod</span></code></a>).</p>
+</div>
+<div class="section" id="creating-a-custom-plugin">
+<h3>Creating a Custom Plugin<a class="headerlink" href="#creating-a-custom-plugin" title="Permalink to this headline">¶</a></h3>
+<p>To implement an entirely new plugin you should implement the base class
+<a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin" title="keystoneauth1.plugin.BaseAuthPlugin"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.plugin.BaseAuthPlugin</span></code></a> and provide the
+<a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin.get_endpoint" title="keystoneauth1.plugin.BaseAuthPlugin.get_endpoint"><code class="xref py py-meth docutils literal"><span class="pre">get_endpoint()</span></code></a>,
+<a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin.get_token" title="keystoneauth1.plugin.BaseAuthPlugin.get_token"><code class="xref py py-meth docutils literal"><span class="pre">get_token()</span></code></a> and
+<a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin.invalidate" title="keystoneauth1.plugin.BaseAuthPlugin.invalidate"><code class="xref py py-meth docutils literal"><span class="pre">invalidate()</span></code></a> methods.</p>
+<p><a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin.get_token" title="keystoneauth1.plugin.BaseAuthPlugin.get_token"><code class="xref py py-meth docutils literal"><span class="pre">get_token()</span></code></a> is called to retrieve
+the string token from a plugin. It is intended that a plugin will cache a
+received token and so if the token is still valid then it should be re-used
+rather than fetching a new one. A session object is provided with which the
+plugin can contact it’s server. (Note: use <cite>authenticated=False</cite> when making
+those requests or it will end up being called recursively). The return value
+should be the token as a string.</p>
+<p><a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin.get_endpoint" title="keystoneauth1.plugin.BaseAuthPlugin.get_endpoint"><code class="xref py py-meth docutils literal"><span class="pre">get_endpoint()</span></code></a> is called to
+determine a base URL for a particular service’s requests. The keyword arguments
+provided to the function are those that are given by the <cite>endpoint_filter</cite>
+variable in <a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.session.Session.request" title="keystoneauth1.session.Session.request"><code class="xref py py-meth docutils literal"><span class="pre">keystoneauth1.session.Session.request()</span></code></a>. A session object
+is also provided so that the plugin may contact an external source to determine
+the endpoint.  Again this will be generally be called once per request and so
+it is up to the plugin to cache these responses if appropriate. The return
+value should be the base URL to communicate with.</p>
+<p><a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin.invalidate" title="keystoneauth1.plugin.BaseAuthPlugin.invalidate"><code class="xref py py-meth docutils literal"><span class="pre">invalidate()</span></code></a> should also be
+implemented to clear the current user credentials so that on the next
+<a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.plugin.BaseAuthPlugin.get_token" title="keystoneauth1.plugin.BaseAuthPlugin.get_token"><code class="xref py py-meth docutils literal"><span class="pre">get_token()</span></code></a> call a new token can
+be retrieved.</p>
+<p>The most simple example of a plugin is the
+<a class="reference internal" href="api/keystoneauth1.html#keystoneauth1.token_endpoint.Token" title="keystoneauth1.token_endpoint.Token"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.token_endpoint.Token</span></code></a> plugin.</p>
+</div>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="using-sessions.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: Using Sessions"></i></a>
+          
+          
+            <a href="plugin-options.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: Plugin Options"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="using-sessions.html">Using Sessions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Authentication Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#available-plugins">Available Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#federation">Federation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tokenless-auth">Tokenless Auth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loading-plugins-by-name">Loading Plugins by Name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-authentication-plugins">Creating Authentication Plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugin-options.html">Plugin Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">Extras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating from keystoneclient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">Modules</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="history.html">CHANGES</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "authentication-plugins" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/keystoneauth/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 774691368a72297ed9bacec1afa15cfcb12ca896";
+        var bugProject = "keystoneauth";
+        var bugTitle = "Authentication Plugins in keystoneauth1";
+    var fieldTags = "doc";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.1.0 on 2018-03-20 15:50";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

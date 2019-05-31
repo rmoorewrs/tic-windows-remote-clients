@@ -1,0 +1,3 @@
+[console_scripts]
+dcmanager = dcmanagerclient.shell:main
+

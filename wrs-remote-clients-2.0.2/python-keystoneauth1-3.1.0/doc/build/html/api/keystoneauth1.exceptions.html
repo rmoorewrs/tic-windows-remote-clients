@@ -1,0 +1,1280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: keystoneauth1.exceptions package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>keystoneauth1.exceptions package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="keystoneauth1.access.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneauth1.access package"></i></a>
+    
+    
+    <a href="keystoneauth1.extras.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.extras package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">keystoneauth1.exceptions package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions.auth">keystoneauth1.exceptions.auth module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions.auth_plugins">keystoneauth1.exceptions.auth_plugins module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions.base">keystoneauth1.exceptions.base module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions.catalog">keystoneauth1.exceptions.catalog module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions.connection">keystoneauth1.exceptions.connection module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions.discovery">keystoneauth1.exceptions.discovery module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions.http">keystoneauth1.exceptions.http module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions.oidc">keystoneauth1.exceptions.oidc module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions.response">keystoneauth1.exceptions.response module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions.service_providers">keystoneauth1.exceptions.service_providers module</a></li>
+<li><a class="reference internal" href="#module-keystoneauth1.exceptions">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="keystoneauth1-exceptions-package">
+<h1>keystoneauth1.exceptions package<a class="headerlink" href="#keystoneauth1-exceptions-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-keystoneauth1.exceptions.auth">
+<span id="keystoneauth1-exceptions-auth-module"></span><h2>keystoneauth1.exceptions.auth module<a class="headerlink" href="#module-keystoneauth1.exceptions.auth" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.auth.AuthorizationFailure">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.auth.</code><code class="descname">AuthorizationFailure</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.auth.AuthorizationFailure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.base.ClientException" title="keystoneauth1.exceptions.base.ClientException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.base.ClientException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.auth.AuthorizationFailure.message">
+<code class="descname">message</code><em class="property"> = ‘Cannot authorize API client.’</em><a class="headerlink" href="#keystoneauth1.exceptions.auth.AuthorizationFailure.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.exceptions.auth_plugins">
+<span id="keystoneauth1-exceptions-auth-plugins-module"></span><h2>keystoneauth1.exceptions.auth_plugins module<a class="headerlink" href="#module-keystoneauth1.exceptions.auth_plugins" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.auth_plugins.AuthPluginException">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.auth_plugins.</code><code class="descname">AuthPluginException</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.base.ClientException" title="keystoneauth1.exceptions.base.ClientException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.base.ClientException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.auth_plugins.AuthPluginException.message">
+<code class="descname">message</code><em class="property"> = ‘Unknown error with authentication plugins.’</em><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.auth_plugins.</code><code class="descname">MissingAuthPlugin</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="keystoneauth1.exceptions.auth_plugins.AuthPluginException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.AuthPluginException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin.message">
+<code class="descname">message</code><em class="property"> = ‘An authenticated request is required but no plugin available.’</em><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.MissingAuthPlugin.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.auth_plugins.NoMatchingPlugin">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.auth_plugins.</code><code class="descname">NoMatchingPlugin</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.NoMatchingPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="keystoneauth1.exceptions.auth_plugins.AuthPluginException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.AuthPluginException</span></code></a></p>
+<p>No auth plugins could be created from the parameters provided.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – The name of the plugin that was attempted to load.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.auth_plugins.NoMatchingPlugin.name">
+<code class="descname">name</code><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.NoMatchingPlugin.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the plugin that was attempted to load.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.auth_plugins.UnsupportedParameters">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.auth_plugins.</code><code class="descname">UnsupportedParameters</code><span class="sig-paren">(</span><em>names</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.UnsupportedParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="keystoneauth1.exceptions.auth_plugins.AuthPluginException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.AuthPluginException</span></code></a></p>
+<p>A parameter that was provided or returned is not supported.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>names</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Names of the unsupported parameters.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.auth_plugins.UnsupportedParameters.names">
+<code class="descname">names</code><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.UnsupportedParameters.names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Names of the unsupported parameters.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.auth_plugins.OptionError">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.auth_plugins.</code><code class="descname">OptionError</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.OptionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="keystoneauth1.exceptions.auth_plugins.AuthPluginException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.AuthPluginException</span></code></a></p>
+<p>A requirement of this plugin loader was not met.</p>
+<p>This error can be raised by a specific plugin loader during the
+load_from_options stage to indicate a parameter problem that can not be
+handled by the generic options loader.</p>
+<p>The intention here is that a plugin can do checks like if a name parameter
+is provided then a domain parameter must also be provided, but that Opt
+checking doesn’t handle.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.auth_plugins.</code><code class="descname">MissingRequiredOptions</code><span class="sig-paren">(</span><em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.OptionError" title="keystoneauth1.exceptions.auth_plugins.OptionError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.OptionError</span></code></a></p>
+<p>One or more required options were not provided.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>options</strong> (<em>list</em><em>(</em><a class="reference internal" href="keystoneauth1.loading.html#keystoneauth1.loading.Opt" title="keystoneauth1.loading.Opt"><em>keystoneauth1.loading.Opt</em></a><em>)</em>) – Missing options.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions.options">
+<code class="descname">options</code><a class="headerlink" href="#keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions.options" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of the missing options.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.exceptions.base">
+<span id="keystoneauth1-exceptions-base-module"></span><h2>keystoneauth1.exceptions.base module<a class="headerlink" href="#module-keystoneauth1.exceptions.base" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.base.ClientException">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.base.</code><code class="descname">ClientException</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.base.ClientException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>The base exception for everything to do with clients.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.base.ClientException.message">
+<code class="descname">message</code><em class="property"> = ‘ClientException’</em><a class="headerlink" href="#keystoneauth1.exceptions.base.ClientException.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.exceptions.catalog">
+<span id="keystoneauth1-exceptions-catalog-module"></span><h2>keystoneauth1.exceptions.catalog module<a class="headerlink" href="#module-keystoneauth1.exceptions.catalog" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.catalog.CatalogException">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.catalog.</code><code class="descname">CatalogException</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.catalog.CatalogException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.base.ClientException" title="keystoneauth1.exceptions.base.ClientException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.base.ClientException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.catalog.CatalogException.message">
+<code class="descname">message</code><em class="property"> = ‘Unknown error with service catalog.’</em><a class="headerlink" href="#keystoneauth1.exceptions.catalog.CatalogException.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.catalog.EmptyCatalog">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.catalog.</code><code class="descname">EmptyCatalog</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.catalog.EmptyCatalog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.catalog.EndpointNotFound" title="keystoneauth1.exceptions.catalog.EndpointNotFound"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.catalog.EndpointNotFound</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.catalog.EmptyCatalog.message">
+<code class="descname">message</code><em class="property"> = ‘The service catalog is empty.’</em><a class="headerlink" href="#keystoneauth1.exceptions.catalog.EmptyCatalog.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.catalog.EndpointNotFound">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.catalog.</code><code class="descname">EndpointNotFound</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.catalog.EndpointNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.catalog.CatalogException" title="keystoneauth1.exceptions.catalog.CatalogException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.catalog.CatalogException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.catalog.EndpointNotFound.message">
+<code class="descname">message</code><em class="property"> = ‘Could not find requested endpoint in Service Catalog.’</em><a class="headerlink" href="#keystoneauth1.exceptions.catalog.EndpointNotFound.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.exceptions.connection">
+<span id="keystoneauth1-exceptions-connection-module"></span><h2>keystoneauth1.exceptions.connection module<a class="headerlink" href="#module-keystoneauth1.exceptions.connection" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.connection.ConnectionError">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.connection.</code><code class="descname">ConnectionError</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.connection.ConnectionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.base.ClientException" title="keystoneauth1.exceptions.base.ClientException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.base.ClientException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.connection.ConnectionError.message">
+<code class="descname">message</code><em class="property"> = ‘Cannot connect to API service.’</em><a class="headerlink" href="#keystoneauth1.exceptions.connection.ConnectionError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.connection.ConnectTimeout">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.connection.</code><code class="descname">ConnectTimeout</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.connection.ConnectTimeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.connection.ConnectionError" title="keystoneauth1.exceptions.connection.ConnectionError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.connection.ConnectionError</span></code></a>, <a class="reference internal" href="#keystoneauth1.exceptions.connection.RetriableConnectionFailure" title="keystoneauth1.exceptions.connection.RetriableConnectionFailure"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.connection.RetriableConnectionFailure</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.connection.ConnectTimeout.message">
+<code class="descname">message</code><em class="property"> = ‘Timed out connecting to service.’</em><a class="headerlink" href="#keystoneauth1.exceptions.connection.ConnectTimeout.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.connection.ConnectFailure">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.connection.</code><code class="descname">ConnectFailure</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.connection.ConnectFailure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.connection.ConnectionError" title="keystoneauth1.exceptions.connection.ConnectionError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.connection.ConnectionError</span></code></a>, <a class="reference internal" href="#keystoneauth1.exceptions.connection.RetriableConnectionFailure" title="keystoneauth1.exceptions.connection.RetriableConnectionFailure"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.connection.RetriableConnectionFailure</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.connection.ConnectFailure.message">
+<code class="descname">message</code><em class="property"> = ‘Connection failure that may be retried.’</em><a class="headerlink" href="#keystoneauth1.exceptions.connection.ConnectFailure.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.connection.SSLError">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.connection.</code><code class="descname">SSLError</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.connection.SSLError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.connection.ConnectionError" title="keystoneauth1.exceptions.connection.ConnectionError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.connection.ConnectionError</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.connection.SSLError.message">
+<code class="descname">message</code><em class="property"> = ‘An SSL error occurred.’</em><a class="headerlink" href="#keystoneauth1.exceptions.connection.SSLError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.connection.RetriableConnectionFailure">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.connection.</code><code class="descname">RetriableConnectionFailure</code><a class="headerlink" href="#keystoneauth1.exceptions.connection.RetriableConnectionFailure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>A mixin class that implies you can retry the most recent request.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.connection.UnknownConnectionError">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.connection.</code><code class="descname">UnknownConnectionError</code><span class="sig-paren">(</span><em>msg</em>, <em>original</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.connection.UnknownConnectionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.connection.ConnectionError" title="keystoneauth1.exceptions.connection.ConnectionError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.connection.ConnectionError</span></code></a></p>
+<p>An error was encountered but we don’t know what it is.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.exceptions.discovery">
+<span id="keystoneauth1-exceptions-discovery-module"></span><h2>keystoneauth1.exceptions.discovery module<a class="headerlink" href="#module-keystoneauth1.exceptions.discovery" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.discovery.DiscoveryFailure">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.discovery.</code><code class="descname">DiscoveryFailure</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.discovery.DiscoveryFailure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.base.ClientException" title="keystoneauth1.exceptions.base.ClientException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.base.ClientException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.discovery.DiscoveryFailure.message">
+<code class="descname">message</code><em class="property"> = ‘Discovery of client versions failed.’</em><a class="headerlink" href="#keystoneauth1.exceptions.discovery.DiscoveryFailure.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.discovery.VersionNotAvailable">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.discovery.</code><code class="descname">VersionNotAvailable</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.discovery.VersionNotAvailable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.discovery.DiscoveryFailure" title="keystoneauth1.exceptions.discovery.DiscoveryFailure"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.discovery.DiscoveryFailure</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.discovery.VersionNotAvailable.message">
+<code class="descname">message</code><em class="property"> = ‘Discovery failed. Requested version is not available.’</em><a class="headerlink" href="#keystoneauth1.exceptions.discovery.VersionNotAvailable.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.exceptions.http">
+<span id="keystoneauth1-exceptions-http-module"></span><h2>keystoneauth1.exceptions.http module<a class="headerlink" href="#module-keystoneauth1.exceptions.http" title="Permalink to this headline">¶</a></h2>
+<p>HTTP Exceptions used by keystoneauth1.</p>
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.HttpError">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">HttpError</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.base.ClientException" title="keystoneauth1.exceptions.base.ClientException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.base.ClientException</span></code></a></p>
+<p>The base exception class for all HTTP exceptions.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.HttpError.http_status">
+<code class="descname">http_status</code><em class="property"> = 0</em><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpError.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.HttpError.message">
+<code class="descname">message</code><em class="property"> = ‘HTTP Error’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.HTTPClientError">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">HTTPClientError</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.HTTPClientError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HttpError" title="keystoneauth1.exceptions.http.HttpError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HttpError</span></code></a></p>
+<p>Client-side HTTP error.</p>
+<p>Exception for cases in which the client seems to have erred.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.HTTPClientError.message">
+<code class="descname">message</code><em class="property"> = ‘HTTP Client Error’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.HTTPClientError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.BadRequest">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">BadRequest</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.BadRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 400 - Bad Request.</p>
+<p>The request cannot be fulfilled due to bad syntax.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.BadRequest.http_status">
+<code class="descname">http_status</code><em class="property"> = 400</em><a class="headerlink" href="#keystoneauth1.exceptions.http.BadRequest.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.BadRequest.message">
+<code class="descname">message</code><em class="property"> = ‘Bad Request’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.BadRequest.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.Unauthorized">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">Unauthorized</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.Unauthorized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 401 - Unauthorized.</p>
+<p>Similar to 403 Forbidden, but specifically for use when authentication
+is required and has failed or has not yet been provided.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.Unauthorized.http_status">
+<code class="descname">http_status</code><em class="property"> = 401</em><a class="headerlink" href="#keystoneauth1.exceptions.http.Unauthorized.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.Unauthorized.message">
+<code class="descname">message</code><em class="property"> = ‘Unauthorized’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.Unauthorized.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.PaymentRequired">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">PaymentRequired</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.PaymentRequired" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 402 - Payment Required.</p>
+<p>Reserved for future use.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.PaymentRequired.http_status">
+<code class="descname">http_status</code><em class="property"> = 402</em><a class="headerlink" href="#keystoneauth1.exceptions.http.PaymentRequired.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.PaymentRequired.message">
+<code class="descname">message</code><em class="property"> = ‘Payment Required’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.PaymentRequired.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.Forbidden">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">Forbidden</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.Forbidden" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 403 - Forbidden.</p>
+<p>The request was a valid request, but the server is refusing to respond
+to it.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.Forbidden.http_status">
+<code class="descname">http_status</code><em class="property"> = 403</em><a class="headerlink" href="#keystoneauth1.exceptions.http.Forbidden.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.Forbidden.message">
+<code class="descname">message</code><em class="property"> = ‘Forbidden’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.Forbidden.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.NotFound">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">NotFound</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.NotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 404 - Not Found.</p>
+<p>The requested resource could not be found but may be available again
+in the future.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.NotFound.http_status">
+<code class="descname">http_status</code><em class="property"> = 404</em><a class="headerlink" href="#keystoneauth1.exceptions.http.NotFound.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.NotFound.message">
+<code class="descname">message</code><em class="property"> = ‘Not Found’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.NotFound.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.MethodNotAllowed">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">MethodNotAllowed</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.MethodNotAllowed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 405 - Method Not Allowed.</p>
+<p>A request was made of a resource using a request method not supported
+by that resource.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.MethodNotAllowed.http_status">
+<code class="descname">http_status</code><em class="property"> = 405</em><a class="headerlink" href="#keystoneauth1.exceptions.http.MethodNotAllowed.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.MethodNotAllowed.message">
+<code class="descname">message</code><em class="property"> = ‘Method Not Allowed’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.MethodNotAllowed.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.NotAcceptable">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">NotAcceptable</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.NotAcceptable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 406 - Not Acceptable.</p>
+<p>The requested resource is only capable of generating content not
+acceptable according to the Accept headers sent in the request.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.NotAcceptable.http_status">
+<code class="descname">http_status</code><em class="property"> = 406</em><a class="headerlink" href="#keystoneauth1.exceptions.http.NotAcceptable.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.NotAcceptable.message">
+<code class="descname">message</code><em class="property"> = ‘Not Acceptable’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.NotAcceptable.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.ProxyAuthenticationRequired">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">ProxyAuthenticationRequired</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.ProxyAuthenticationRequired" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 407 - Proxy Authentication Required.</p>
+<p>The client must first authenticate itself with the proxy.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.ProxyAuthenticationRequired.http_status">
+<code class="descname">http_status</code><em class="property"> = 407</em><a class="headerlink" href="#keystoneauth1.exceptions.http.ProxyAuthenticationRequired.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.ProxyAuthenticationRequired.message">
+<code class="descname">message</code><em class="property"> = ‘Proxy Authentication Required’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.ProxyAuthenticationRequired.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.RequestTimeout">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">RequestTimeout</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestTimeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 408 - Request Timeout.</p>
+<p>The server timed out waiting for the request.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.RequestTimeout.http_status">
+<code class="descname">http_status</code><em class="property"> = 408</em><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestTimeout.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.RequestTimeout.message">
+<code class="descname">message</code><em class="property"> = ‘Request Timeout’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestTimeout.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.Conflict">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">Conflict</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.Conflict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 409 - Conflict.</p>
+<p>Indicates that the request could not be processed because of conflict
+in the request, such as an edit conflict.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.Conflict.http_status">
+<code class="descname">http_status</code><em class="property"> = 409</em><a class="headerlink" href="#keystoneauth1.exceptions.http.Conflict.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.Conflict.message">
+<code class="descname">message</code><em class="property"> = ‘Conflict’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.Conflict.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.Gone">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">Gone</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.Gone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 410 - Gone.</p>
+<p>Indicates that the resource requested is no longer available and will
+not be available again.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.Gone.http_status">
+<code class="descname">http_status</code><em class="property"> = 410</em><a class="headerlink" href="#keystoneauth1.exceptions.http.Gone.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.Gone.message">
+<code class="descname">message</code><em class="property"> = ‘Gone’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.Gone.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.LengthRequired">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">LengthRequired</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.LengthRequired" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 411 - Length Required.</p>
+<p>The request did not specify the length of its content, which is
+required by the requested resource.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.LengthRequired.http_status">
+<code class="descname">http_status</code><em class="property"> = 411</em><a class="headerlink" href="#keystoneauth1.exceptions.http.LengthRequired.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.LengthRequired.message">
+<code class="descname">message</code><em class="property"> = ‘Length Required’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.LengthRequired.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.PreconditionFailed">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">PreconditionFailed</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.PreconditionFailed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 412 - Precondition Failed.</p>
+<p>The server does not meet one of the preconditions that the requester
+put on the request.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.PreconditionFailed.http_status">
+<code class="descname">http_status</code><em class="property"> = 412</em><a class="headerlink" href="#keystoneauth1.exceptions.http.PreconditionFailed.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.PreconditionFailed.message">
+<code class="descname">message</code><em class="property"> = ‘Precondition Failed’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.PreconditionFailed.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.RequestEntityTooLarge">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">RequestEntityTooLarge</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestEntityTooLarge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 413 - Request Entity Too Large.</p>
+<p>The request is larger than the server is willing or able to process.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.RequestEntityTooLarge.http_status">
+<code class="descname">http_status</code><em class="property"> = 413</em><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestEntityTooLarge.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.RequestEntityTooLarge.message">
+<code class="descname">message</code><em class="property"> = ‘Request Entity Too Large’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestEntityTooLarge.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.RequestUriTooLong">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">RequestUriTooLong</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestUriTooLong" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 414 - Request-URI Too Long.</p>
+<p>The URI provided was too long for the server to process.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.RequestUriTooLong.http_status">
+<code class="descname">http_status</code><em class="property"> = 414</em><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestUriTooLong.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.RequestUriTooLong.message">
+<code class="descname">message</code><em class="property"> = ‘Request-URI Too Long’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestUriTooLong.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.UnsupportedMediaType">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">UnsupportedMediaType</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.UnsupportedMediaType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 415 - Unsupported Media Type.</p>
+<p>The request entity has a media type which the server or resource does
+not support.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.UnsupportedMediaType.http_status">
+<code class="descname">http_status</code><em class="property"> = 415</em><a class="headerlink" href="#keystoneauth1.exceptions.http.UnsupportedMediaType.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.UnsupportedMediaType.message">
+<code class="descname">message</code><em class="property"> = ‘Unsupported Media Type’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.UnsupportedMediaType.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.RequestedRangeNotSatisfiable">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">RequestedRangeNotSatisfiable</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestedRangeNotSatisfiable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 416 - Requested Range Not Satisfiable.</p>
+<p>The client has asked for a portion of the file, but the server cannot
+supply that portion.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.RequestedRangeNotSatisfiable.http_status">
+<code class="descname">http_status</code><em class="property"> = 416</em><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestedRangeNotSatisfiable.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.RequestedRangeNotSatisfiable.message">
+<code class="descname">message</code><em class="property"> = ‘Requested Range Not Satisfiable’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.RequestedRangeNotSatisfiable.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.ExpectationFailed">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">ExpectationFailed</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.ExpectationFailed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 417 - Expectation Failed.</p>
+<p>The server cannot meet the requirements of the Expect request-header field.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.ExpectationFailed.http_status">
+<code class="descname">http_status</code><em class="property"> = 417</em><a class="headerlink" href="#keystoneauth1.exceptions.http.ExpectationFailed.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.ExpectationFailed.message">
+<code class="descname">message</code><em class="property"> = ‘Expectation Failed’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.ExpectationFailed.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.UnprocessableEntity">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">UnprocessableEntity</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.UnprocessableEntity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HTTPClientError" title="keystoneauth1.exceptions.http.HTTPClientError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HTTPClientError</span></code></a></p>
+<p>HTTP 422 - Unprocessable Entity.</p>
+<p>The request was well-formed but was unable to be followed due to semantic
+errors.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.UnprocessableEntity.http_status">
+<code class="descname">http_status</code><em class="property"> = 422</em><a class="headerlink" href="#keystoneauth1.exceptions.http.UnprocessableEntity.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.UnprocessableEntity.message">
+<code class="descname">message</code><em class="property"> = ‘Unprocessable Entity’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.UnprocessableEntity.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.HttpServerError">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">HttpServerError</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpServerError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HttpError" title="keystoneauth1.exceptions.http.HttpError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HttpError</span></code></a></p>
+<p>Server-side HTTP error.</p>
+<p>Exception for cases in which the server is aware that it has
+erred or is incapable of performing the request.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.HttpServerError.message">
+<code class="descname">message</code><em class="property"> = ‘HTTP Server Error’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpServerError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.InternalServerError">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">InternalServerError</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.InternalServerError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HttpServerError" title="keystoneauth1.exceptions.http.HttpServerError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HttpServerError</span></code></a></p>
+<p>HTTP 500 - Internal Server Error.</p>
+<p>A generic error message, given when no more specific message is suitable.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.InternalServerError.http_status">
+<code class="descname">http_status</code><em class="property"> = 500</em><a class="headerlink" href="#keystoneauth1.exceptions.http.InternalServerError.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.InternalServerError.message">
+<code class="descname">message</code><em class="property"> = ‘Internal Server Error’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.InternalServerError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.HttpNotImplemented">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">HttpNotImplemented</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpNotImplemented" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HttpServerError" title="keystoneauth1.exceptions.http.HttpServerError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HttpServerError</span></code></a></p>
+<p>HTTP 501 - Not Implemented.</p>
+<p>The server either does not recognize the request method, or it lacks
+the ability to fulfill the request.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.HttpNotImplemented.http_status">
+<code class="descname">http_status</code><em class="property"> = 501</em><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpNotImplemented.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.HttpNotImplemented.message">
+<code class="descname">message</code><em class="property"> = ‘Not Implemented’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpNotImplemented.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.BadGateway">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">BadGateway</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.BadGateway" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HttpServerError" title="keystoneauth1.exceptions.http.HttpServerError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HttpServerError</span></code></a></p>
+<p>HTTP 502 - Bad Gateway.</p>
+<p>The server was acting as a gateway or proxy and received an invalid
+response from the upstream server.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.BadGateway.http_status">
+<code class="descname">http_status</code><em class="property"> = 502</em><a class="headerlink" href="#keystoneauth1.exceptions.http.BadGateway.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.BadGateway.message">
+<code class="descname">message</code><em class="property"> = ‘Bad Gateway’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.BadGateway.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.ServiceUnavailable">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">ServiceUnavailable</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.ServiceUnavailable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HttpServerError" title="keystoneauth1.exceptions.http.HttpServerError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HttpServerError</span></code></a></p>
+<p>HTTP 503 - Service Unavailable.</p>
+<p>The server is currently unavailable.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.ServiceUnavailable.http_status">
+<code class="descname">http_status</code><em class="property"> = 503</em><a class="headerlink" href="#keystoneauth1.exceptions.http.ServiceUnavailable.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.ServiceUnavailable.message">
+<code class="descname">message</code><em class="property"> = ‘Service Unavailable’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.ServiceUnavailable.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.GatewayTimeout">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">GatewayTimeout</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.GatewayTimeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HttpServerError" title="keystoneauth1.exceptions.http.HttpServerError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HttpServerError</span></code></a></p>
+<p>HTTP 504 - Gateway Timeout.</p>
+<p>The server was acting as a gateway or proxy and did not receive a timely
+response from the upstream server.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.GatewayTimeout.http_status">
+<code class="descname">http_status</code><em class="property"> = 504</em><a class="headerlink" href="#keystoneauth1.exceptions.http.GatewayTimeout.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.GatewayTimeout.message">
+<code class="descname">message</code><em class="property"> = ‘Gateway Timeout’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.GatewayTimeout.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.http.HttpVersionNotSupported">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">HttpVersionNotSupported</code><span class="sig-paren">(</span><em>message=None</em>, <em>details=None</em>, <em>response=None</em>, <em>request_id=None</em>, <em>url=None</em>, <em>method=None</em>, <em>http_status=None</em>, <em>retry_after=0</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpVersionNotSupported" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.http.HttpServerError" title="keystoneauth1.exceptions.http.HttpServerError"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.http.HttpServerError</span></code></a></p>
+<p>HTTP 505 - HttpVersion Not Supported.</p>
+<p>The server does not support the HTTP protocol version used in the request.</p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.HttpVersionNotSupported.http_status">
+<code class="descname">http_status</code><em class="property"> = 505</em><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpVersionNotSupported.http_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.http.HttpVersionNotSupported.message">
+<code class="descname">message</code><em class="property"> = ‘HTTP Version Not Supported’</em><a class="headerlink" href="#keystoneauth1.exceptions.http.HttpVersionNotSupported.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="keystoneauth1.exceptions.http.from_response">
+<code class="descclassname">keystoneauth1.exceptions.http.</code><code class="descname">from_response</code><span class="sig-paren">(</span><em>response</em>, <em>method</em>, <em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.http.from_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an instance of <a class="reference internal" href="#keystoneauth1.exceptions.http.HttpError" title="keystoneauth1.exceptions.http.HttpError"><code class="xref py py-class docutils literal"><span class="pre">HttpError</span></code></a> or subclass based on response.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>response</strong> – instance of <cite>requests.Response</cite> class</li>
+<li><strong>method</strong> – HTTP method used for request</li>
+<li><strong>url</strong> – URL used for request</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.exceptions.oidc">
+<span id="keystoneauth1-exceptions-oidc-module"></span><h2>keystoneauth1.exceptions.oidc module<a class="headerlink" href="#module-keystoneauth1.exceptions.oidc" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.oidc.InvalidDiscoveryEndpoint">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.oidc.</code><code class="descname">InvalidDiscoveryEndpoint</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.oidc.InvalidDiscoveryEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="keystoneauth1.exceptions.auth_plugins.AuthPluginException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.AuthPluginException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.oidc.InvalidDiscoveryEndpoint.message">
+<code class="descname">message</code><em class="property"> = ‘OpenID Connect Discovery Document endpoint not set.’</em><a class="headerlink" href="#keystoneauth1.exceptions.oidc.InvalidDiscoveryEndpoint.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.oidc.InvalidOidcDiscoveryDocument">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.oidc.</code><code class="descname">InvalidOidcDiscoveryDocument</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.oidc.InvalidOidcDiscoveryDocument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="keystoneauth1.exceptions.auth_plugins.AuthPluginException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.AuthPluginException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.oidc.InvalidOidcDiscoveryDocument.message">
+<code class="descname">message</code><em class="property"> = ‘OpenID Connect Discovery Document is not valid JSON.’</em><a class="headerlink" href="#keystoneauth1.exceptions.oidc.InvalidOidcDiscoveryDocument.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.oidc.OidcAccessTokenEndpointNotFound">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.oidc.</code><code class="descname">OidcAccessTokenEndpointNotFound</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.oidc.OidcAccessTokenEndpointNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="keystoneauth1.exceptions.auth_plugins.AuthPluginException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.AuthPluginException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.oidc.OidcAccessTokenEndpointNotFound.message">
+<code class="descname">message</code><em class="property"> = ‘OpenID Connect access token endpoint not provided.’</em><a class="headerlink" href="#keystoneauth1.exceptions.oidc.OidcAccessTokenEndpointNotFound.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.oidc.OidcAuthorizationEndpointNotFound">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.oidc.</code><code class="descname">OidcAuthorizationEndpointNotFound</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.oidc.OidcAuthorizationEndpointNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="keystoneauth1.exceptions.auth_plugins.AuthPluginException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.AuthPluginException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.oidc.OidcAuthorizationEndpointNotFound.message">
+<code class="descname">message</code><em class="property"> = ‘OpenID Connect authorization endpoint not provided.’</em><a class="headerlink" href="#keystoneauth1.exceptions.oidc.OidcAuthorizationEndpointNotFound.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.oidc.OidcGrantTypeMissmatch">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.oidc.</code><code class="descname">OidcGrantTypeMissmatch</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.oidc.OidcGrantTypeMissmatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="keystoneauth1.exceptions.auth_plugins.AuthPluginException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.AuthPluginException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.oidc.OidcGrantTypeMissmatch.message">
+<code class="descname">message</code><em class="property"> = ‘Missmatch between OpenID Connect plugin and grant_type argument’</em><a class="headerlink" href="#keystoneauth1.exceptions.oidc.OidcGrantTypeMissmatch.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.oidc.OidcPluginNotSupported">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.oidc.</code><code class="descname">OidcPluginNotSupported</code><span class="sig-paren">(</span><em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.oidc.OidcPluginNotSupported" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.auth_plugins.AuthPluginException" title="keystoneauth1.exceptions.auth_plugins.AuthPluginException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.auth_plugins.AuthPluginException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.oidc.OidcPluginNotSupported.message">
+<code class="descname">message</code><em class="property"> = ‘OpenID Connect grant type not supported by provider.’</em><a class="headerlink" href="#keystoneauth1.exceptions.oidc.OidcPluginNotSupported.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.exceptions.response">
+<span id="keystoneauth1-exceptions-response-module"></span><h2>keystoneauth1.exceptions.response module<a class="headerlink" href="#module-keystoneauth1.exceptions.response" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.response.InvalidResponse">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.response.</code><code class="descname">InvalidResponse</code><span class="sig-paren">(</span><em>response</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.response.InvalidResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.base.ClientException" title="keystoneauth1.exceptions.base.ClientException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.base.ClientException</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneauth1.exceptions.response.InvalidResponse.message">
+<code class="descname">message</code><em class="property"> = ‘Invalid response from server.’</em><a class="headerlink" href="#keystoneauth1.exceptions.response.InvalidResponse.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.exceptions.service_providers">
+<span id="keystoneauth1-exceptions-service-providers-module"></span><h2>keystoneauth1.exceptions.service_providers module<a class="headerlink" href="#module-keystoneauth1.exceptions.service_providers" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="keystoneauth1.exceptions.service_providers.ServiceProviderNotFound">
+<em class="property">exception </em><code class="descclassname">keystoneauth1.exceptions.service_providers.</code><code class="descname">ServiceProviderNotFound</code><span class="sig-paren">(</span><em>sp_id</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneauth1.exceptions.service_providers.ServiceProviderNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneauth1.exceptions.base.ClientException" title="keystoneauth1.exceptions.base.ClientException"><code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.exceptions.base.ClientException</span></code></a></p>
+<p>A Service Provider cannot be found.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneauth1.exceptions">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-keystoneauth1.exceptions" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="keystoneauth1.access.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneauth1.access package"></i></a>
+          
+          
+            <a href="keystoneauth1.extras.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneauth1.extras package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 15:50</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../using-sessions.html">Using Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authentication-plugins.html">Authentication Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin-options.html">Plugin Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extras.html">Extras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migrating.html">Migrating from keystoneclient</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="keystoneauth1.html">keystoneauth1 package</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">CHANGES</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "api/keystoneauth1.exceptions" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/keystoneauth/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 774691368a72297ed9bacec1afa15cfcb12ca896";
+        var bugProject = "keystoneauth";
+        var bugTitle = "keystoneauth1.exceptions package in keystoneauth1";
+    var fieldTags = "doc";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.1.0 on 2018-03-20 15:50";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

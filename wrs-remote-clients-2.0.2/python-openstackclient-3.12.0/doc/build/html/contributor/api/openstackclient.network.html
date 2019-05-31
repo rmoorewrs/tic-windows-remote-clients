@@ -1,0 +1,693 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: openstackclient.network package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>openstackclient.network package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="openstackclient.image.v2.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient.image.v2 package"></i></a>
+    
+    
+    <a href="openstackclient.network.v2.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: openstackclient.network.v2 package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">openstackclient.network package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-openstackclient.network.client">openstackclient.network.client module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.network.common">openstackclient.network.common module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.network.sdk_utils">openstackclient.network.sdk_utils module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.network.utils">openstackclient.network.utils module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.network">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="openstackclient-network-package">
+<h1>openstackclient.network package<a class="headerlink" href="#openstackclient-network-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="openstackclient.network.v2.html">openstackclient.network.v2 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.address_scope">openstackclient.network.v2.address_scope module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.floating_ip">openstackclient.network.v2.floating_ip module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.floating_ip_pool">openstackclient.network.v2.floating_ip_pool module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.host">openstackclient.network.v2.host module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.ip_availability">openstackclient.network.v2.ip_availability module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network">openstackclient.network.v2.network module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_agent">openstackclient.network.v2.network_agent module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_auto_allocated_topology">openstackclient.network.v2.network_auto_allocated_topology module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_flavor">openstackclient.network.v2.network_flavor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_flavor_profile">openstackclient.network.v2.network_flavor_profile module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_meter">openstackclient.network.v2.network_meter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_meter_rule">openstackclient.network.v2.network_meter_rule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_qos_policy">openstackclient.network.v2.network_qos_policy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_qos_rule">openstackclient.network.v2.network_qos_rule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_qos_rule_type">openstackclient.network.v2.network_qos_rule_type module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_rbac">openstackclient.network.v2.network_rbac module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_segment">openstackclient.network.v2.network_segment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.network_service_provider">openstackclient.network.v2.network_service_provider module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.port">openstackclient.network.v2.port module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.portforwarding">openstackclient.network.v2.portforwarding module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.providernet">openstackclient.network.v2.providernet module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.providernet_connectivity_test">openstackclient.network.v2.providernet_connectivity_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.providernet_range">openstackclient.network.v2.providernet_range module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.providernet_type">openstackclient.network.v2.providernet_type module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.qos">openstackclient.network.v2.qos module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.router">openstackclient.network.v2.router module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.security_group">openstackclient.network.v2.security_group module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.security_group_rule">openstackclient.network.v2.security_group_rule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.setting">openstackclient.network.v2.setting module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.subnet">openstackclient.network.v2.subnet module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2.subnet_pool">openstackclient.network.v2.subnet_pool module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstackclient.network.v2.html#module-openstackclient.network.v2">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.network.client">
+<span id="openstackclient-network-client-module"></span><h2>openstackclient.network.client module<a class="headerlink" href="#module-openstackclient.network.client" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="openstackclient.network.client.build_option_parser">
+<code class="descclassname">openstackclient.network.client.</code><code class="descname">build_option_parser</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.client.build_option_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook to add global options</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openstackclient.network.client.make_client">
+<code class="descclassname">openstackclient.network.client.</code><code class="descname">make_client</code><span class="sig-paren">(</span><em>instance</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.client.make_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a network proxy</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.network.common">
+<span id="openstackclient-network-common-module"></span><h2>openstackclient.network.common module<a class="headerlink" href="#module-openstackclient.network.common" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="openstackclient.network.common.NetworkAndComputeCommand">
+<em class="property">class </em><code class="descclassname">openstackclient.network.common.</code><code class="descname">NetworkAndComputeCommand</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Command</span></code></p>
+<p>Network and Compute Command</p>
+<p>Command class for commands that support implementation via
+the network or compute endpoint. Such commands have different
+implementations for take_action() and may even have different
+arguments.</p>
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeCommand.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeCommand.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.network.common.NetworkAndComputeCommand.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa4b7110&gt;</em><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeCommand.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeCommand.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeCommand.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeCommand.take_action_compute">
+<code class="descname">take_action_compute</code><span class="sig-paren">(</span><em>client</em>, <em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeCommand.take_action_compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to do something useful.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeCommand.take_action_network">
+<code class="descname">take_action_network</code><span class="sig-paren">(</span><em>client</em>, <em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeCommand.take_action_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to do something useful.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeCommand.update_parser_common">
+<code class="descname">update_parser_common</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeCommand.update_parser_common" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default is no updates to parser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeCommand.update_parser_compute">
+<code class="descname">update_parser_compute</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeCommand.update_parser_compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default is no updates to parser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeCommand.update_parser_network">
+<code class="descname">update_parser_network</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeCommand.update_parser_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default is no updates to parser.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.network.common.NetworkAndComputeDelete">
+<em class="property">class </em><code class="descclassname">openstackclient.network.common.</code><code class="descname">NetworkAndComputeDelete</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeDelete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#openstackclient.network.common.NetworkAndComputeCommand" title="openstackclient.network.common.NetworkAndComputeCommand"><code class="xref py py-class docutils literal"><span class="pre">openstackclient.network.common.NetworkAndComputeCommand</span></code></a></p>
+<p>Network and Compute Delete</p>
+<p>Delete class for commands that support implementation via
+the network or compute endpoint. Such commands have different
+implementations for take_action() and may even have different
+arguments. This class supports bulk deletion, and error handling
+following the rules in doc/source/command-errors.rst.</p>
+<dl class="attribute">
+<dt id="openstackclient.network.common.NetworkAndComputeDelete.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa4b7290&gt;</em><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeDelete.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeDelete.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeDelete.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.network.common.NetworkAndComputeLister">
+<em class="property">class </em><code class="descclassname">openstackclient.network.common.</code><code class="descname">NetworkAndComputeLister</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeLister" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.Lister</span></code></p>
+<p>Network and Compute Lister</p>
+<p>Lister class for commands that support implementation via
+the network or compute endpoint. Such commands have different
+implementations for take_action() and may even have different
+arguments.</p>
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeLister.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeLister.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.network.common.NetworkAndComputeLister.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa4b7450&gt;</em><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeLister.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeLister.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeLister.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeLister.take_action_compute">
+<code class="descname">take_action_compute</code><span class="sig-paren">(</span><em>client</em>, <em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeLister.take_action_compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to do something useful.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeLister.take_action_network">
+<code class="descname">take_action_network</code><span class="sig-paren">(</span><em>client</em>, <em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeLister.take_action_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to do something useful.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeLister.update_parser_common">
+<code class="descname">update_parser_common</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeLister.update_parser_common" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default is no updates to parser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeLister.update_parser_compute">
+<code class="descname">update_parser_compute</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeLister.update_parser_compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default is no updates to parser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeLister.update_parser_network">
+<code class="descname">update_parser_network</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeLister.update_parser_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default is no updates to parser.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.network.common.NetworkAndComputeShowOne">
+<em class="property">class </em><code class="descclassname">openstackclient.network.common.</code><code class="descname">NetworkAndComputeShowOne</code><span class="sig-paren">(</span><em>app</em>, <em>app_args</em>, <em>cmd_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeShowOne" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.command.command.ShowOne</span></code></p>
+<p>Network and Compute ShowOne</p>
+<p>ShowOne class for commands that support implementation via
+the network or compute endpoint. Such commands have different
+implementations for take_action() and may even have different
+arguments.</p>
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeShowOne.get_parser">
+<code class="descname">get_parser</code><span class="sig-paren">(</span><em>prog_name</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeShowOne.get_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.network.common.NetworkAndComputeShowOne.log">
+<code class="descname">log</code><em class="property"> = &lt;logging.Logger object at 0xa4b75d0&gt;</em><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeShowOne.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeShowOne.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeShowOne.take_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeShowOne.take_action_compute">
+<code class="descname">take_action_compute</code><span class="sig-paren">(</span><em>client</em>, <em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeShowOne.take_action_compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to do something useful.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeShowOne.take_action_network">
+<code class="descname">take_action_network</code><span class="sig-paren">(</span><em>client</em>, <em>parsed_args</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeShowOne.take_action_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to do something useful.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeShowOne.update_parser_common">
+<code class="descname">update_parser_common</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeShowOne.update_parser_common" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default is no updates to parser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeShowOne.update_parser_compute">
+<code class="descname">update_parser_compute</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeShowOne.update_parser_compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default is no updates to parser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.network.common.NetworkAndComputeShowOne.update_parser_network">
+<code class="descname">update_parser_network</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.common.NetworkAndComputeShowOne.update_parser_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default is no updates to parser.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.network.sdk_utils">
+<span id="openstackclient-network-sdk-utils-module"></span><h2>openstackclient.network.sdk_utils module<a class="headerlink" href="#module-openstackclient.network.sdk_utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="openstackclient.network.sdk_utils.get_osc_show_columns_for_sdk_resource">
+<code class="descclassname">openstackclient.network.sdk_utils.</code><code class="descname">get_osc_show_columns_for_sdk_resource</code><span class="sig-paren">(</span><em>sdk_resource</em>, <em>osc_column_map</em>, <em>invisible_columns=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.sdk_utils.get_osc_show_columns_for_sdk_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get and filter the display and attribute columns for an SDK resource.</p>
+<p>Common utility function for preparing the output of an OSC show command.
+Some of the columns may need to get renamed, others made invisible.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sdk_resource</strong> – An SDK resource</li>
+<li><strong>osc_column_map</strong> – A hash of mappings for display column names</li>
+<li><strong>invisible_columns</strong> – A list of invisible column names</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Two tuples containing the names of the display and attribute
+columns</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.network.utils">
+<span id="openstackclient-network-utils-module"></span><h2>openstackclient.network.utils module<a class="headerlink" href="#module-openstackclient.network.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="openstackclient.network.utils.transform_compute_security_group_rule">
+<code class="descclassname">openstackclient.network.utils.</code><code class="descname">transform_compute_security_group_rule</code><span class="sig-paren">(</span><em>sg_rule</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.network.utils.transform_compute_security_group_rule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.network">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openstackclient.network" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="openstackclient.image.v2.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient.image.v2 package"></i></a>
+          
+          
+            <a href="openstackclient.network.v2.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: openstackclient.network.v2 package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Contributor Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../developing.html">Developing with OpenStackClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-beta.html">Command Beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-options.html">Command Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-wrappers.html">Command Class Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-errors.html">Command Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-logs.html">Command Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specs/commands.html">Command Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../humaninterfaceguide.html">Human Interface Guide</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "contributor/api/openstackclient.network" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "openstackclient.network package in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

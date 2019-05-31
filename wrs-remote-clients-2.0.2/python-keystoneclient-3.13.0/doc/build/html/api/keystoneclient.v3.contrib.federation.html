@@ -1,0 +1,1151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: keystoneclient.v3.contrib.federation package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>keystoneclient.v3.contrib.federation package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="keystoneclient.v3.contrib.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneclient.v3.contrib package"></i></a>
+    
+    
+    <a href="keystoneclient.v3.contrib.oauth1.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneclient.v3.contrib.oauth1 package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-03-20 15:51</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">keystoneclient.v3.contrib.federation package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.v3.contrib.federation.base">keystoneclient.v3.contrib.federation.base module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.v3.contrib.federation.core">keystoneclient.v3.contrib.federation.core module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.v3.contrib.federation.domains">keystoneclient.v3.contrib.federation.domains module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.v3.contrib.federation.identity_providers">keystoneclient.v3.contrib.federation.identity_providers module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.v3.contrib.federation.mappings">keystoneclient.v3.contrib.federation.mappings module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.v3.contrib.federation.projects">keystoneclient.v3.contrib.federation.projects module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.v3.contrib.federation.protocols">keystoneclient.v3.contrib.federation.protocols module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.v3.contrib.federation.saml">keystoneclient.v3.contrib.federation.saml module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.v3.contrib.federation.service_providers">keystoneclient.v3.contrib.federation.service_providers module</a></li>
+<li><a class="reference internal" href="#module-keystoneclient.v3.contrib.federation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="keystoneclient-v3-contrib-federation-package">
+<h1>keystoneclient.v3.contrib.federation package<a class="headerlink" href="#keystoneclient-v3-contrib-federation-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-keystoneclient.v3.contrib.federation.base">
+<span id="keystoneclient-v3-contrib-federation-base-module"></span><h2>keystoneclient.v3.contrib.federation.base module<a class="headerlink" href="#module-keystoneclient.v3.contrib.federation.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.base.EntityManager">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.base.</code><code class="descname">EntityManager</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.base.EntityManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneclient.html#keystoneclient.base.Manager" title="keystoneclient.base.Manager"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.base.Manager</span></code></a></p>
+<p>Manager class for listing federated accessible objects.</p>
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.base.EntityManager.list">
+<code class="descname">list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.base.EntityManager.list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.base.EntityManager.object_type">
+<code class="descname">object_type</code><a class="headerlink" href="#keystoneclient.v3.contrib.federation.base.EntityManager.object_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.base.EntityManager.resource_class">
+<code class="descname">resource_class</code><em class="property"> = None</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.base.EntityManager.resource_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.v3.contrib.federation.core">
+<span id="keystoneclient-v3-contrib-federation-core-module"></span><h2>keystoneclient.v3.contrib.federation.core module<a class="headerlink" href="#module-keystoneclient.v3.contrib.federation.core" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.core.FederationManager">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.core.</code><code class="descname">FederationManager</code><span class="sig-paren">(</span><em>api</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.core.FederationManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.v3.contrib.federation.domains">
+<span id="keystoneclient-v3-contrib-federation-domains-module"></span><h2>keystoneclient.v3.contrib.federation.domains module<a class="headerlink" href="#module-keystoneclient.v3.contrib.federation.domains" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.domains.DomainManager">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.domains.</code><code class="descname">DomainManager</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.domains.DomainManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneclient.v3.contrib.federation.base.EntityManager" title="keystoneclient.v3.contrib.federation.base.EntityManager"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.v3.contrib.federation.base.EntityManager</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.domains.DomainManager.object_type">
+<code class="descname">object_type</code><em class="property"> = ‘domains’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.domains.DomainManager.object_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.domains.DomainManager.resource_class">
+<code class="descname">resource_class</code><a class="headerlink" href="#keystoneclient.v3.contrib.federation.domains.DomainManager.resource_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Domain</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.v3.contrib.federation.identity_providers">
+<span id="keystoneclient-v3-contrib-federation-identity-providers-module"></span><h2>keystoneclient.v3.contrib.federation.identity_providers module<a class="headerlink" href="#module-keystoneclient.v3.contrib.federation.identity_providers" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProvider">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.identity_providers.</code><code class="descname">IdentityProvider</code><span class="sig-paren">(</span><em>manager</em>, <em>info</em>, <em>loaded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneclient.html#keystoneclient.base.Resource" title="keystoneclient.base.Resource"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.base.Resource</span></code></a></p>
+<p>Object representing Identity Provider container.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><ul class="first last simple">
+<li>id: user-defined unique string identifying Identity Provider.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.identity_providers.</code><code class="descname">IdentityProviderManager</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneclient.html#keystoneclient.base.CrudManager" title="keystoneclient.base.CrudManager"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.base.CrudManager</span></code></a></p>
+<p>Manager class for manipulating Identity Providers.</p>
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.base_url">
+<code class="descname">base_url</code><em class="property"> = ‘OS-FEDERATION’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.base_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.collection_key">
+<code class="descname">collection_key</code><em class="property"> = ‘identity_providers’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.collection_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create Identity Provider object.</p>
+<p>Utilize Keystone URI:
+PUT /OS-FEDERATION/identity_providers/$identity_provider</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>id</strong> – unique id of the identity provider.</li>
+<li><strong>kwargs</strong> – optional attributes: description (str), enabled
+(boolean) and remote_ids (list).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">an IdentityProvider resource object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.v3.federation.IdentityProvider</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>identity_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete Identity Provider object.</p>
+<p>Utilize Keystone URI:
+DELETE /OS-FEDERATION/identity_providers/$identity_provider</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>identity_provider</strong> – the Identity Provider ID itself or an object
+with it stored inside.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>identity_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch Identity Provider object.</p>
+<p>Utilize Keystone URI:
+GET /OS-FEDERATION/identity_providers/$identity_provider</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>identity_provider</strong> – an object with identity_provider_id
+stored inside.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an IdentityProvider resource object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.v3.federation.IdentityProvider</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.key">
+<code class="descname">key</code><em class="property"> = ‘identity_provider’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.list">
+<code class="descname">list</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all Identity Providers.</p>
+<p>Utilize Keystone URI:
+GET /OS-FEDERATION/identity_providers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of IdentityProvider resource objects.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">List</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.resource_class">
+<code class="descname">resource_class</code><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.resource_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProvider" title="keystoneclient.v3.contrib.federation.identity_providers.IdentityProvider"><code class="xref py py-class docutils literal"><span class="pre">IdentityProvider</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>identity_provider</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.identity_providers.IdentityProviderManager.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update Identity Provider object.</p>
+<p>Utilize Keystone URI:
+PATCH /OS-FEDERATION/identity_providers/$identity_provider</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>identity_provider</strong> – an object with identity_provider_id
+stored inside.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an IdentityProvider resource object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.v3.federation.IdentityProvider</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.v3.contrib.federation.mappings">
+<span id="keystoneclient-v3-contrib-federation-mappings-module"></span><h2>keystoneclient.v3.contrib.federation.mappings module<a class="headerlink" href="#module-keystoneclient.v3.contrib.federation.mappings" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.mappings.Mapping">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.mappings.</code><code class="descname">Mapping</code><span class="sig-paren">(</span><em>manager</em>, <em>info</em>, <em>loaded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.Mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneclient.html#keystoneclient.base.Resource" title="keystoneclient.base.Resource"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.base.Resource</span></code></a></p>
+<p>An object representing mapping container.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><ul class="first last simple">
+<li>id: user defined unique string identifying mapping.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.mappings.MappingManager">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.mappings.</code><code class="descname">MappingManager</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.MappingManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneclient.html#keystoneclient.base.CrudManager" title="keystoneclient.base.CrudManager"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.base.CrudManager</span></code></a></p>
+<p>Manager class for manipulating federation mappings.</p>
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.mappings.MappingManager.base_url">
+<code class="descname">base_url</code><em class="property"> = ‘OS-FEDERATION’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.MappingManager.base_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.mappings.MappingManager.collection_key">
+<code class="descname">collection_key</code><em class="property"> = ‘mappings’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.MappingManager.collection_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.mappings.MappingManager.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>mapping_id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.MappingManager.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create federation mapping.</p>
+<p>Utilize Identity API operation:
+PUT /OS-FEDERATION/mappings/$mapping_id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mapping_id</strong> – user defined string identifier of the federation
+mapping.</li>
+<li><strong>rules</strong> – a list of mapping rules.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example of the <code class="docutils literal"><span class="pre">rules</span></code> parameter:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;local&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;0cd5e9&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;remote&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;orgPersonType&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;not_any_of&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;Contractor&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Guest&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.mappings.MappingManager.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.MappingManager.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete federation mapping identified by mapping id.</p>
+<p>Utilize Identity API operation:
+DELETE /OS-FEDERATION/mappings/$mapping_id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mapping</strong> – a Mapping type object with mapping id
+stored inside.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.mappings.MappingManager.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.MappingManager.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch federation mapping identified by mapping id.</p>
+<p>Utilize Identity API operation:
+GET /OS-FEDERATION/mappings/$mapping_id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mapping</strong> – a Mapping type object with mapping id
+stored inside.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.mappings.MappingManager.key">
+<code class="descname">key</code><em class="property"> = ‘mapping’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.MappingManager.key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.mappings.MappingManager.list">
+<code class="descname">list</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.MappingManager.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all federation mappings.</p>
+<p>Utilize Identity API operation:
+GET /OS-FEDERATION/mappings</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.mappings.MappingManager.resource_class">
+<code class="descname">resource_class</code><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.MappingManager.resource_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#keystoneclient.v3.contrib.federation.mappings.Mapping" title="keystoneclient.v3.contrib.federation.mappings.Mapping"><code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.mappings.MappingManager.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>mapping</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.mappings.MappingManager.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update federation mapping identified by mapping id.</p>
+<p>Utilize Identity API operation:
+PATCH /OS-FEDERATION/mappings/$mapping_id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mapping</strong> – a Mapping type object with mapping id
+stored inside.</li>
+<li><strong>rules</strong> – a list of mapping rules.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example of the <code class="docutils literal"><span class="pre">rules</span></code> parameter:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;local&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;0cd5e9&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;remote&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;orgPersonType&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;not_any_of&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;Contractor&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Guest&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.v3.contrib.federation.projects">
+<span id="keystoneclient-v3-contrib-federation-projects-module"></span><h2>keystoneclient.v3.contrib.federation.projects module<a class="headerlink" href="#module-keystoneclient.v3.contrib.federation.projects" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.projects.ProjectManager">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.projects.</code><code class="descname">ProjectManager</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.projects.ProjectManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#keystoneclient.v3.contrib.federation.base.EntityManager" title="keystoneclient.v3.contrib.federation.base.EntityManager"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.v3.contrib.federation.base.EntityManager</span></code></a></p>
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.projects.ProjectManager.object_type">
+<code class="descname">object_type</code><em class="property"> = ‘projects’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.projects.ProjectManager.object_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.projects.ProjectManager.resource_class">
+<code class="descname">resource_class</code><a class="headerlink" href="#keystoneclient.v3.contrib.federation.projects.ProjectManager.resource_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Project</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.v3.contrib.federation.protocols">
+<span id="keystoneclient-v3-contrib-federation-protocols-module"></span><h2>keystoneclient.v3.contrib.federation.protocols module<a class="headerlink" href="#module-keystoneclient.v3.contrib.federation.protocols" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.protocols.Protocol">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.protocols.</code><code class="descname">Protocol</code><span class="sig-paren">(</span><em>manager</em>, <em>info</em>, <em>loaded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.Protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneclient.html#keystoneclient.base.Resource" title="keystoneclient.base.Resource"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.base.Resource</span></code></a></p>
+<p>An object representing federation protocol container.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>id: user-defined unique per Identity Provider string identifying</dt>
+<dd><p class="first last">federation protocol.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.protocols.</code><code class="descname">ProtocolManager</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneclient.html#keystoneclient.base.CrudManager" title="keystoneclient.base.CrudManager"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.base.CrudManager</span></code></a></p>
+<p>Manager class for manipulating federation protocols.</p>
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager.base_url">
+<code class="descname">base_url</code><em class="property"> = ‘OS-FEDERATION/identity_providers’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager.base_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager.build_url">
+<code class="descname">build_url</code><span class="sig-paren">(</span><em>dict_args_in_out=None</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager.build_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build URL for federation protocols.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager.collection_key">
+<code class="descname">collection_key</code><em class="property"> = ‘protocols’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager.collection_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>protocol_id</em>, <em>identity_provider</em>, <em>mapping</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create federation protocol object and tie to the Identity Provider.</p>
+<p>Utilize Identity API operation:
+PUT /OS-FEDERATION/identity_providers/
+$identity_provider/protocols/$protocol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>protocol_id</strong> – a string type parameter identifying a federation
+protocol</li>
+<li><strong>identity_provider</strong> – a string type parameter identifying an
+Identity Provider</li>
+<li><strong>mapping</strong> – a base.Resource object with federation mapping id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>identity_provider</em>, <em>protocol</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete Protocol object tied to the Identity Provider.</p>
+<p>Utilize Identity API operation:
+DELETE /OS-FEDERATION/identity_providers/
+$identity_provider/protocols/$protocol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_provider</strong> – a base.Resource type object with
+Identity Provider id stored inside</li>
+<li><strong>protocol</strong> – a base.Resource type object with federation
+protocol id stored inside</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>identity_provider</em>, <em>protocol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch federation protocol object tied to the Identity Provider.</p>
+<p>Utilize Identity API operation:
+GET /OS-FEDERATION/identity_providers/
+$identity_provider/protocols/$protocol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_provider</strong> – a base.Resource type object with Identity
+Provider id stored inside</li>
+<li><strong>protocol</strong> – a base.Resource type object with federation protocol
+id stored inside</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager.key">
+<code class="descname">key</code><em class="property"> = ‘protocol’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager.key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager.list">
+<code class="descname">list</code><span class="sig-paren">(</span><em>identity_provider</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all federation protocol objects tied to the Identity Provider.</p>
+<p>Utilize Identity API operation:
+GET /OS-FEDERATION/identity_providers/
+$identity_provider/protocols</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>identity_provider</strong> – a base.Resource type object with Identity
+Provider id stored inside</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager.resource_class">
+<code class="descname">resource_class</code><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager.resource_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#keystoneclient.v3.contrib.federation.protocols.Protocol" title="keystoneclient.v3.contrib.federation.protocols.Protocol"><code class="xref py py-class docutils literal"><span class="pre">Protocol</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.protocols.ProtocolManager.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>identity_provider</em>, <em>protocol</em>, <em>mapping</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.protocols.ProtocolManager.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update Protocol object tied to the Identity Provider.</p>
+<p>Utilize Identity API operation:
+PATCH /OS-FEDERATION/identity_providers/
+$identity_provider/protocols/$protocol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>identity_provider</strong> – a base.Resource type object with Identity
+Provider id stored inside</li>
+<li><strong>protocol</strong> – a base.Resource type object with federation protocol
+id stored inside</li>
+<li><strong>mapping</strong> – a base.Resource object with federation mapping id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.v3.contrib.federation.saml">
+<span id="keystoneclient-v3-contrib-federation-saml-module"></span><h2>keystoneclient.v3.contrib.federation.saml module<a class="headerlink" href="#module-keystoneclient.v3.contrib.federation.saml" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.saml.SamlManager">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.saml.</code><code class="descname">SamlManager</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.saml.SamlManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneclient.html#keystoneclient.base.Manager" title="keystoneclient.base.Manager"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.base.Manager</span></code></a></p>
+<p>Manager class for creating SAML assertions.</p>
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.saml.SamlManager.create_ecp_assertion">
+<code class="descname">create_ecp_assertion</code><span class="sig-paren">(</span><em>service_provider</em>, <em>token_id</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.saml.SamlManager.create_ecp_assertion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an ECP wrapped SAML assertion from a token.</p>
+<p>Equivalent Identity API call:
+POST /auth/OS-FEDERATION/saml2/ecp</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – Service Provider resource.</li>
+<li><strong>token_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – Token to transform to SAML assertion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">SAML representation of token_id, wrapped in ECP envelope</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)">string</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.saml.SamlManager.create_saml_assertion">
+<code class="descname">create_saml_assertion</code><span class="sig-paren">(</span><em>service_provider</em>, <em>token_id</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.saml.SamlManager.create_saml_assertion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a SAML assertion from a token.</p>
+<p>Equivalent Identity API call:
+POST /auth/OS-FEDERATION/saml2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service_provider</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – Service Provider resource.</li>
+<li><strong>token_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – Token to transform to SAML assertion.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">SAML representation of token_id</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)">string</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.v3.contrib.federation.service_providers">
+<span id="keystoneclient-v3-contrib-federation-service-providers-module"></span><h2>keystoneclient.v3.contrib.federation.service_providers module<a class="headerlink" href="#module-keystoneclient.v3.contrib.federation.service_providers" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProvider">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.service_providers.</code><code class="descname">ServiceProvider</code><span class="sig-paren">(</span><em>manager</em>, <em>info</em>, <em>loaded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneclient.html#keystoneclient.base.Resource" title="keystoneclient.base.Resource"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.base.Resource</span></code></a></p>
+<p>Object representing Service Provider container.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd><ul class="first last simple">
+<li>id: user-defined unique string identifying Service Provider.</li>
+<li>sp_url: the shibboleth endpoint of a Service Provider.</li>
+<li>auth_url: the authentication url of Service Provider.</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager">
+<em class="property">class </em><code class="descclassname">keystoneclient.v3.contrib.federation.service_providers.</code><code class="descname">ServiceProviderManager</code><span class="sig-paren">(</span><em>client</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="keystoneclient.html#keystoneclient.base.CrudManager" title="keystoneclient.base.CrudManager"><code class="xref py py-class docutils literal"><span class="pre">keystoneclient.base.CrudManager</span></code></a></p>
+<p>Manager class for manipulating Service Providers.</p>
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.base_url">
+<code class="descname">base_url</code><em class="property"> = ‘OS-FEDERATION’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.base_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.collection_key">
+<code class="descname">collection_key</code><em class="property"> = ‘service_providers’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.collection_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create Service Provider object.</p>
+<p>Utilize Keystone URI:
+<code class="docutils literal"><span class="pre">PUT</span> <span class="pre">/OS-FEDERATION/service_providers/{id}</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> – unique id of the service provider.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>service_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete Service Provider object.</p>
+<p>Utilize Keystone URI:
+<code class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/OS-FEDERATION/service_providers/{id}</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service_provider</strong> – an object with service_provider_id
+stored inside.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>service_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch Service Provider object.</p>
+<p>Utilize Keystone URI:
+<code class="docutils literal"><span class="pre">GET</span> <span class="pre">/OS-FEDERATION/service_providers/{id}</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service_provider</strong> – an object with service_provider_id
+stored inside.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.key">
+<code class="descname">key</code><em class="property"> = ‘service_provider’</em><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.list">
+<code class="descname">list</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all Service Providers.</p>
+<p>Utilize Keystone URI:
+<code class="docutils literal"><span class="pre">GET</span> <span class="pre">/OS-FEDERATION/service_providers</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.resource_class">
+<code class="descname">resource_class</code><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.resource_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProvider" title="keystoneclient.v3.contrib.federation.service_providers.ServiceProvider"><code class="xref py py-class docutils literal"><span class="pre">ServiceProvider</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>service_provider</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#keystoneclient.v3.contrib.federation.service_providers.ServiceProviderManager.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the existing Service Provider object on the server.</p>
+<p>Only properties provided to the function are being updated.</p>
+<p>Utilize Keystone URI:
+<code class="docutils literal"><span class="pre">PATCH</span> <span class="pre">/OS-FEDERATION/service_providers/{id}</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service_provider</strong> – an object with service_provider_id
+stored inside.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-keystoneclient.v3.contrib.federation">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-keystoneclient.v3.contrib.federation" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="keystoneclient.v3.contrib.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: keystoneclient.v3.contrib package"></i></a>
+          
+          
+            <a href="keystoneclient.v3.contrib.oauth1.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: keystoneclient.v3.contrib.oauth1 package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-03-20 15:51</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../using-api-v3.html">Using the V3 Client API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using-sessions.html">Using Sessions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using-api-v2.html">Using the V2 client API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="keystoneclient.html">keystoneclient package</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">CHANGES</a></li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "api/keystoneclient.v3.contrib.federation" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-keystoneclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 96e0c5b5625c7a5ad8d3ccd99a52a3fa6050f2ad";
+        var bugProject = "python-keystoneclient";
+        var bugTitle = "keystoneclient.v3.contrib.federation package in python-keystoneclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.13.0 on 2018-03-20 15:51";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>

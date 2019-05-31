@@ -1,0 +1,1371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: openstackclient.api package</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../../_static/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../_static/css/combined.css" rel="stylesheet">
+
+  
+
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>openstackclient.api package</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="openstackclient.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient package"></i></a>
+    
+    
+    <a href="openstackclient.common.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: openstackclient.common package"></i></a>
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">openstackclient.api package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-openstackclient.api.api">openstackclient.api.api module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.api.auth">openstackclient.api.auth module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.api.auth_plugin">openstackclient.api.auth_plugin module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.api.compute_v2">openstackclient.api.compute_v2 module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.api.image_v1">openstackclient.api.image_v1 module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.api.image_v2">openstackclient.api.image_v2 module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.api.object_store_v1">openstackclient.api.object_store_v1 module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.api.utils">openstackclient.api.utils module</a></li>
+<li><a class="reference internal" href="#module-openstackclient.api">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="openstackclient-api-package">
+<h1>openstackclient.api package<a class="headerlink" href="#openstackclient-api-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.api.api">
+<span id="openstackclient-api-api-module"></span><h2>openstackclient.api.api module<a class="headerlink" href="#module-openstackclient.api.api" title="Permalink to this headline">¶</a></h2>
+<p>Base API Library</p>
+<dl class="class">
+<dt id="openstackclient.api.api.BaseAPI">
+<em class="property">class </em><code class="descclassname">openstackclient.api.api.</code><code class="descname">BaseAPI</code><span class="sig-paren">(</span><em>session=None</em>, <em>service_type=None</em>, <em>endpoint=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.api.BaseAPI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#openstackclient.api.api.KeystoneSession" title="openstackclient.api.api.KeystoneSession"><code class="xref py py-class docutils literal"><span class="pre">openstackclient.api.api.KeystoneSession</span></code></a></p>
+<p>Base API</p>
+<dl class="method">
+<dt id="openstackclient.api.api.BaseAPI.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>url</em>, <em>session=None</em>, <em>method=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.api.BaseAPI.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new resource</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>string</em>) – The API-specific portion of the URL path</li>
+<li><strong>session</strong> (<em>Session</em>) – HTTP client session</li>
+<li><strong>method</strong> (<em>string</em>) – HTTP method (default POST)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.api.BaseAPI.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>url</em>, <em>session=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.api.BaseAPI.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a resource</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>string</em>) – The API-specific portion of the URL path</li>
+<li><strong>session</strong> (<em>Session</em>) – HTTP client session</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.api.BaseAPI.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>path</em>, <em>value=None</em>, <em>attr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.api.BaseAPI.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a single resource by name or ID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<em>string</em>) – The API-specific portion of the URL path</li>
+<li><strong>value</strong> (<em>string</em>) – search expression</li>
+<li><strong>attr</strong> (<em>string</em>) – name of attribute for secondary search</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.api.BaseAPI.find_attr">
+<code class="descname">find_attr</code><span class="sig-paren">(</span><em>path</em>, <em>value=None</em>, <em>attr=None</em>, <em>resource=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.api.BaseAPI.find_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a resource via attribute or ID</p>
+<p>Most APIs return a list wrapped by a dict with the resource
+name as key.  Some APIs (Identity) return a dict when a query
+string is present and there is one return value.  Take steps to
+unwrap these bodies and return a single dict without any resource
+wrappers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<em>string</em>) – The API-specific portion of the URL path</li>
+<li><strong>value</strong> (<em>string</em>) – value to search for</li>
+<li><strong>attr</strong> (<em>string</em>) – attribute to use for resource search</li>
+<li><strong>resource</strong> (<em>string</em>) – plural of the object resource name; defaults to path</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>For example:</dt>
+<dd>n = find(netclient, ‘network’, ‘networks’, ‘matrix’)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.api.BaseAPI.find_bulk">
+<code class="descname">find_bulk</code><span class="sig-paren">(</span><em>path</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.api.BaseAPI.find_bulk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bulk load and filter locally</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>string</em>) – The API-specific portion of the URL path</li>
+<li><strong>kwargs</strong> – A dict of AVPs to match - logical AND</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list of resource dicts</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.api.BaseAPI.find_one">
+<code class="descname">find_one</code><span class="sig-paren">(</span><em>path</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.api.BaseAPI.find_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a resource by name or ID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>string</em>) – The API-specific portion of the URL path</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">resource dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.api.BaseAPI.list">
+<code class="descname">list</code><span class="sig-paren">(</span><em>path</em>, <em>session=None</em>, <em>body=None</em>, <em>detailed=False</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.api.BaseAPI.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of resources</p>
+<p>GET ${ENDPOINT}/${PATH}?${PARAMS}</p>
+<p>path is often the object’s plural resource type</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>string</em>) – The API-specific portion of the URL path</li>
+<li><strong>session</strong> (<em>Session</em>) – HTTP client session</li>
+<li><strong>body</strong> – data that will be encoded as JSON and passed in POST
+request (GET will be sent by default)</li>
+<li><strong>detailed</strong> (<em>bool</em>) – Adds ‘/details’ to path for some APIs to return extended attributes</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">JSON-decoded response, could be a list or a dict-wrapped-list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openstackclient.api.api.KeystoneSession">
+<em class="property">class </em><code class="descclassname">openstackclient.api.api.</code><code class="descname">KeystoneSession</code><span class="sig-paren">(</span><em>session=None</em>, <em>endpoint=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.api.KeystoneSession" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Wrapper for the Keystone Session</p>
+<p>Restore some requests.session.Session compatibility;
+keystoneauth1.session.Session.request() has the method and url
+arguments swapped from the rest of the requests-using world.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.api.auth">
+<span id="openstackclient-api-auth-module"></span><h2>openstackclient.api.auth module<a class="headerlink" href="#module-openstackclient.api.auth" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openstackclient.api.auth_plugin">
+<span id="openstackclient-api-auth-plugin-module"></span><h2>openstackclient.api.auth_plugin module<a class="headerlink" href="#module-openstackclient.api.auth_plugin" title="Permalink to this headline">¶</a></h2>
+<p>Authentication Plugin Library</p>
+<dl class="class">
+<dt id="openstackclient.api.auth_plugin.TokenEndpoint">
+<em class="property">class </em><code class="descclassname">openstackclient.api.auth_plugin.</code><code class="descname">TokenEndpoint</code><a class="headerlink" href="#openstackclient.api.auth_plugin.TokenEndpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">keystoneauth1.loading.base.BaseLoader</span></code></p>
+<p>Auth plugin to handle traditional token/endpoint usage</p>
+<p>Keystoneauth contains a Token plugin class that now correctly
+handles the token/endpoint auth compatible with OSC.  However,
+the AdminToken loader deprecates the ‘url’ argument, which breaks
+OSC compatibility, so make one that works.</p>
+<dl class="method">
+<dt id="openstackclient.api.auth_plugin.TokenEndpoint.get_options">
+<code class="descname">get_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.auth_plugin.TokenEndpoint.get_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the legacy options</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.auth_plugin.TokenEndpoint.load_from_options">
+<code class="descname">load_from_options</code><span class="sig-paren">(</span><em>url</em>, <em>token</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.auth_plugin.TokenEndpoint.load_from_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>A plugin for static authentication with an existing token</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> (<em>string</em>) – Service endpoint</li>
+<li><strong>token</strong> (<em>string</em>) – Existing token</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="openstackclient.api.auth_plugin.TokenEndpoint.plugin_class">
+<code class="descname">plugin_class</code><a class="headerlink" href="#openstackclient.api.auth_plugin.TokenEndpoint.plugin_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.api.compute_v2">
+<span id="openstackclient-api-compute-v2-module"></span><h2>openstackclient.api.compute_v2 module<a class="headerlink" href="#module-openstackclient.api.compute_v2" title="Permalink to this headline">¶</a></h2>
+<p>Compute v2 API Library</p>
+<dl class="class">
+<dt id="openstackclient.api.compute_v2.APIv2">
+<em class="property">class </em><code class="descclassname">openstackclient.api.compute_v2.</code><code class="descname">APIv2</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">osc_lib.api.api.BaseAPI</span></code></p>
+<p>Compute v2 API</p>
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>path</em>, <em>value=None</em>, <em>attr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a single resource by name or ID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<em>string</em>) – The API-specific portion of the URL path</li>
+<li><strong>value</strong> (<em>string</em>) – search expression (required, really)</li>
+<li><strong>attr</strong> (<em>string</em>) – name of attribute for secondary search</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.floating_ip_create">
+<code class="descname">floating_ip_create</code><span class="sig-paren">(</span><em>pool=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.floating_ip_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new floating ip</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#create-allocate-floating-ip-address">https://developer.openstack.org/api-ref/compute/#create-allocate-floating-ip-address</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pool</strong> – Name of floating IP pool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.floating_ip_delete">
+<code class="descname">floating_ip_delete</code><span class="sig-paren">(</span><em>floating_ip_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.floating_ip_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a floating IP</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#delete-deallocate-floating-ip-address">https://developer.openstack.org/api-ref/compute/#delete-deallocate-floating-ip-address</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>floating_ip_id</strong> (<em>string</em>) – Floating IP ID</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.floating_ip_find">
+<code class="descname">floating_ip_find</code><span class="sig-paren">(</span><em>floating_ip=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.floating_ip_find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a security group given name or ID</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#list-floating-ip-addresses">https://developer.openstack.org/api-ref/compute/#list-floating-ip-addresses</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>floating_ip</strong> (<em>string</em>) – Floating IP address</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict of the floating IP attributes</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.floating_ip_list">
+<code class="descname">floating_ip_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.floating_ip_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get floating IPs</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#show-floating-ip-address-details">https://developer.openstack.org/api-ref/compute/#show-floating-ip-address-details</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of floating IPs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.floating_ip_pool_list">
+<code class="descname">floating_ip_pool_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.floating_ip_pool_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get floating IP pools</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/?expanded=#list-floating-ip-pools">https://developer.openstack.org/api-ref/compute/?expanded=#list-floating-ip-pools</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of floating IP pools</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.network_create">
+<code class="descname">network_create</code><span class="sig-paren">(</span><em>name=None</em>, <em>subnet=None</em>, <em>share_subnet=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.network_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new network</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#create-network">https://developer.openstack.org/api-ref/compute/#create-network</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>string</em>) – Network label (required)</li>
+<li><strong>subnet</strong> (<em>integer</em>) – Subnet for IPv4 fixed addresses in CIDR notation (required)</li>
+<li><strong>share_subnet</strong> (<em>integer</em>) – Shared subnet between projects, True or False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict of the network attributes</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.network_delete">
+<code class="descname">network_delete</code><span class="sig-paren">(</span><em>network=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.network_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a network</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#delete-network">https://developer.openstack.org/api-ref/compute/#delete-network</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>network</strong> (<em>string</em>) – Network name or ID</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.network_find">
+<code class="descname">network_find</code><span class="sig-paren">(</span><em>network=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.network_find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a network given name or ID</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#show-network-details">https://developer.openstack.org/api-ref/compute/#show-network-details</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>network</strong> (<em>string</em>) – Network name or ID</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict of the network attributes</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.network_list">
+<code class="descname">network_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.network_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get networks</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#list-networks">https://developer.openstack.org/api-ref/compute/#list-networks</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of networks</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.security_group_create">
+<code class="descname">security_group_create</code><span class="sig-paren">(</span><em>name=None</em>, <em>description=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.security_group_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new security group</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#create-security-group">https://developer.openstack.org/api-ref/compute/#create-security-group</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>string</em>) – Security group name</li>
+<li><strong>description</strong> (<em>integer</em>) – Security group description</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.security_group_delete">
+<code class="descname">security_group_delete</code><span class="sig-paren">(</span><em>security_group=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.security_group_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a security group</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#delete-security-group">https://developer.openstack.org/api-ref/compute/#delete-security-group</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>security_group</strong> (<em>string</em>) – Security group name or ID</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.security_group_find">
+<code class="descname">security_group_find</code><span class="sig-paren">(</span><em>security_group=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.security_group_find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a security group given name or ID</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#show-security-group-details">https://developer.openstack.org/api-ref/compute/#show-security-group-details</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>security_group</strong> (<em>string</em>) – Security group name or ID</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict of the security group attributes</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.security_group_list">
+<code class="descname">security_group_list</code><span class="sig-paren">(</span><em>limit=None</em>, <em>marker=None</em>, <em>search_opts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.security_group_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get security groups</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#list-security-groups">https://developer.openstack.org/api-ref/compute/#list-security-groups</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>limit</strong> (<em>integer</em>) – query return count limit</li>
+<li><strong>marker</strong> (<em>string</em>) – query marker</li>
+<li><strong>search_opts</strong> – (undocumented) Search filter dict
+all_tenants: True|False - return all projects</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list of security groups names</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.security_group_rule_create">
+<code class="descname">security_group_rule_create</code><span class="sig-paren">(</span><em>security_group_id=None</em>, <em>ip_protocol=None</em>, <em>from_port=None</em>, <em>to_port=None</em>, <em>remote_ip=None</em>, <em>remote_group=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.security_group_rule_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new security group rule</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#create-security-group-rule">https://developer.openstack.org/api-ref/compute/#create-security-group-rule</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>security_group_id</strong> (<em>string</em>) – Security group ID</li>
+<li><strong>ip_protocol</strong> – IP protocol, ‘tcp’, ‘udp’ or ‘icmp’</li>
+<li><strong>from_port</strong> – Source port</li>
+<li><strong>to_port</strong> – Destination port</li>
+<li><strong>remote_ip</strong> – Source IP address in CIDR notation</li>
+<li><strong>remote_group</strong> – Remote security group</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.security_group_rule_delete">
+<code class="descname">security_group_rule_delete</code><span class="sig-paren">(</span><em>security_group_rule_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.security_group_rule_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a security group rule</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#delete-security-group-rule">https://developer.openstack.org/api-ref/compute/#delete-security-group-rule</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>security_group_rule_id</strong> (<em>string</em>) – Security group rule ID</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.compute_v2.APIv2.security_group_set">
+<code class="descname">security_group_set</code><span class="sig-paren">(</span><em>security_group=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.compute_v2.APIv2.security_group_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a security group</p>
+<p><a class="reference external" href="https://developer.openstack.org/api-ref/compute/#update-security-group">https://developer.openstack.org/api-ref/compute/#update-security-group</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>security_group</strong> (<em>string</em>) – Security group name or ID</td>
+</tr>
+</tbody>
+</table>
+<p>TODO(dtroyer): Create an update method in osc-lib</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="openstackclient.api.compute_v2.InvalidValue">
+<em class="property">exception </em><code class="descclassname">openstackclient.api.compute_v2.</code><code class="descname">InvalidValue</code><a class="headerlink" href="#openstackclient.api.compute_v2.InvalidValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>An argument value is not valid: wrong type, out of range, etc</p>
+<dl class="attribute">
+<dt id="openstackclient.api.compute_v2.InvalidValue.message">
+<code class="descname">message</code><em class="property"> = ‘Supplied value is not valid’</em><a class="headerlink" href="#openstackclient.api.compute_v2.InvalidValue.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.api.image_v1">
+<span id="openstackclient-api-image-v1-module"></span><h2>openstackclient.api.image_v1 module<a class="headerlink" href="#module-openstackclient.api.image_v1" title="Permalink to this headline">¶</a></h2>
+<p>Image v1 API Library</p>
+<dl class="class">
+<dt id="openstackclient.api.image_v1.APIv1">
+<em class="property">class </em><code class="descclassname">openstackclient.api.image_v1.</code><code class="descname">APIv1</code><span class="sig-paren">(</span><em>endpoint=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.image_v1.APIv1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#openstackclient.api.api.BaseAPI" title="openstackclient.api.api.BaseAPI"><code class="xref py py-class docutils literal"><span class="pre">openstackclient.api.api.BaseAPI</span></code></a></p>
+<p>Image v1 API</p>
+<dl class="method">
+<dt id="openstackclient.api.image_v1.APIv1.image_list">
+<code class="descname">image_list</code><span class="sig-paren">(</span><em>detailed=False</em>, <em>public=False</em>, <em>private=False</em>, <em>**filter</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.image_v1.APIv1.image_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get available images</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>detailed</strong> – Retrieve detailed response from server if True</li>
+<li><strong>public</strong> – Return public images if True</li>
+<li><strong>private</strong> – Return private images if True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If public and private are both True or both False then all images are
+returned.  Both arguments False is equivalent to no filter and all
+images are returned.  Both arguments True is a filter that includes
+both public and private images which is the same set as all images.</p>
+<p><a class="reference external" href="http://docs.openstack.org/api/openstack-image-service/1.1/content/requesting-a-list-of-public-vm-images.html">http://docs.openstack.org/api/openstack-image-service/1.1/content/requesting-a-list-of-public-vm-images.html</a>
+<a class="reference external" href="http://docs.openstack.org/api/openstack-image-service/1.1/content/requesting-detailed-metadata-on-public-vm-images.html">http://docs.openstack.org/api/openstack-image-service/1.1/content/requesting-detailed-metadata-on-public-vm-images.html</a>
+<a class="reference external" href="http://docs.openstack.org/api/openstack-image-service/1.1/content/filtering-images-returned-via-get-images-and-get-imagesdetail.html">http://docs.openstack.org/api/openstack-image-service/1.1/content/filtering-images-returned-via-get-images-and-get-imagesdetail.html</a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.api.image_v2">
+<span id="openstackclient-api-image-v2-module"></span><h2>openstackclient.api.image_v2 module<a class="headerlink" href="#module-openstackclient.api.image_v2" title="Permalink to this headline">¶</a></h2>
+<p>Image v2 API Library</p>
+<dl class="class">
+<dt id="openstackclient.api.image_v2.APIv2">
+<em class="property">class </em><code class="descclassname">openstackclient.api.image_v2.</code><code class="descname">APIv2</code><span class="sig-paren">(</span><em>endpoint=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.image_v2.APIv2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#openstackclient.api.image_v1.APIv1" title="openstackclient.api.image_v1.APIv1"><code class="xref py py-class docutils literal"><span class="pre">openstackclient.api.image_v1.APIv1</span></code></a></p>
+<p>Image v2 API</p>
+<dl class="method">
+<dt id="openstackclient.api.image_v2.APIv2.image_list">
+<code class="descname">image_list</code><span class="sig-paren">(</span><em>detailed=False</em>, <em>public=False</em>, <em>private=False</em>, <em>shared=False</em>, <em>**filter</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.image_v2.APIv2.image_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get available images</p>
+<p>can add limit/marker</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>detailed</strong> – For v1 compatibility only, ignored as v2 is always ‘detailed’</li>
+<li><strong>public</strong> – Return public images if True</li>
+<li><strong>private</strong> – Return private images if True</li>
+<li><strong>shared</strong> – Return shared images if True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If public, private and shared are all True or all False then all
+images are returned.  All arguments False is equivalent to no filter
+and all images are returned.  All arguments True is a filter that
+includes all public, private and shared images which is the same set
+as all images.</p>
+<p><a class="reference external" href="http://docs.openstack.org/api/openstack-image-service/2.0/content/list-images.html">http://docs.openstack.org/api/openstack-image-service/2.0/content/list-images.html</a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.api.object_store_v1">
+<span id="openstackclient-api-object-store-v1-module"></span><h2>openstackclient.api.object_store_v1 module<a class="headerlink" href="#module-openstackclient.api.object_store_v1" title="Permalink to this headline">¶</a></h2>
+<p>Object Store v1 API Library</p>
+<dl class="class">
+<dt id="openstackclient.api.object_store_v1.APIv1">
+<em class="property">class </em><code class="descclassname">openstackclient.api.object_store_v1.</code><code class="descname">APIv1</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#openstackclient.api.api.BaseAPI" title="openstackclient.api.api.BaseAPI"><code class="xref py py-class docutils literal"><span class="pre">openstackclient.api.api.BaseAPI</span></code></a></p>
+<p>Object Store v1 API</p>
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.account_set">
+<code class="descname">account_set</code><span class="sig-paren">(</span><em>properties</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.account_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set account properties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>properties</strong> (<em>dict</em>) – properties to add or update for the account</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.account_show">
+<code class="descname">account_show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.account_show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show account details</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.account_unset">
+<code class="descname">account_unset</code><span class="sig-paren">(</span><em>properties</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.account_unset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unset account properties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>properties</strong> (<em>dict</em>) – properties to remove from the account</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.container_create">
+<code class="descname">container_create</code><span class="sig-paren">(</span><em>container=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.container_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a container</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>container</strong> (<em>string</em>) – name of container to create</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict of returned headers</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.container_delete">
+<code class="descname">container_delete</code><span class="sig-paren">(</span><em>container=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.container_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a container</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>container</strong> (<em>string</em>) – name of container to delete</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.container_list">
+<code class="descname">container_list</code><span class="sig-paren">(</span><em>all_data=False</em>, <em>limit=None</em>, <em>marker=None</em>, <em>end_marker=None</em>, <em>prefix=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.container_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get containers in an account</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>all_data</strong> (<em>boolean</em>) – if True, return a full listing, else returns a max of
+10000 listings</li>
+<li><strong>limit</strong> (<em>integer</em>) – query return count limit</li>
+<li><strong>marker</strong> (<em>string</em>) – query marker</li>
+<li><strong>end_marker</strong> (<em>string</em>) – query end_marker</li>
+<li><strong>prefix</strong> (<em>string</em>) – query prefix</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list of container names</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.container_save">
+<code class="descname">container_save</code><span class="sig-paren">(</span><em>container=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.container_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save all the content from a container</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>container</strong> (<em>string</em>) – name of container to save</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.container_set">
+<code class="descname">container_set</code><span class="sig-paren">(</span><em>container</em>, <em>properties</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.container_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set container properties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container</strong> (<em>string</em>) – name of container to modify</li>
+<li><strong>properties</strong> (<em>dict</em>) – properties to add or update for the container</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.container_show">
+<code class="descname">container_show</code><span class="sig-paren">(</span><em>container=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.container_show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get container details</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>container</strong> (<em>string</em>) – name of container to show</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict of returned headers</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.container_unset">
+<code class="descname">container_unset</code><span class="sig-paren">(</span><em>container</em>, <em>properties</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.container_unset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unset container properties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container</strong> (<em>string</em>) – name of container to modify</li>
+<li><strong>properties</strong> (<em>dict</em>) – properties to remove from the container</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.object_create">
+<code class="descname">object_create</code><span class="sig-paren">(</span><em>container=None</em>, <em>object=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.object_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an object inside a container</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>container</strong> (<em>string</em>) – name of container to store object</li>
+<li><strong>object</strong> (<em>string</em>) – local path to object</li>
+<li><strong>name</strong> (<em>string</em>) – name of object to create</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict of returned headers</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.object_delete">
+<code class="descname">object_delete</code><span class="sig-paren">(</span><em>container=None</em>, <em>object=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.object_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an object from a container</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container</strong> (<em>string</em>) – name of container that stores object</li>
+<li><strong>object</strong> (<em>string</em>) – name of object to delete</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.object_list">
+<code class="descname">object_list</code><span class="sig-paren">(</span><em>container=None</em>, <em>all_data=False</em>, <em>limit=None</em>, <em>marker=None</em>, <em>end_marker=None</em>, <em>delimiter=None</em>, <em>prefix=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.object_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List objects in a container</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>container</strong> (<em>string</em>) – container name to get a listing for</li>
+<li><strong>all_data</strong> (<em>boolean</em>) – if True, return a full listing, else returns a max of
+10000 listings</li>
+<li><strong>limit</strong> (<em>integer</em>) – query return count limit</li>
+<li><strong>marker</strong> (<em>string</em>) – query marker</li>
+<li><strong>end_marker</strong> (<em>string</em>) – query end_marker</li>
+<li><strong>prefix</strong> (<em>string</em>) – query prefix</li>
+<li><strong>delimiter</strong> (<em>string</em>) – string to delimit the queries on</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a tuple of (response headers, a list of objects) The response
+headers will be a dict and all header names will be lowercase.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.object_save">
+<code class="descname">object_save</code><span class="sig-paren">(</span><em>container=None</em>, <em>object=None</em>, <em>file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.object_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save an object stored in a container</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container</strong> (<em>string</em>) – name of container that stores object</li>
+<li><strong>object</strong> (<em>string</em>) – name of object to save</li>
+<li><strong>file</strong> (<em>string</em>) – local name of object</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.object_set">
+<code class="descname">object_set</code><span class="sig-paren">(</span><em>container</em>, <em>object</em>, <em>properties</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.object_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set object properties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container</strong> (<em>string</em>) – container name for object to modify</li>
+<li><strong>object</strong> (<em>string</em>) – name of object to modify</li>
+<li><strong>properties</strong> (<em>dict</em>) – properties to add or update for the container</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.object_show">
+<code class="descname">object_show</code><span class="sig-paren">(</span><em>container=None</em>, <em>object=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.object_show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get object details</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>container</strong> (<em>string</em>) – container name for object to get</li>
+<li><strong>object</strong> (<em>string</em>) – name of object to get</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict of object properties</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="openstackclient.api.object_store_v1.APIv1.object_unset">
+<code class="descname">object_unset</code><span class="sig-paren">(</span><em>container</em>, <em>object</em>, <em>properties</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.object_store_v1.APIv1.object_unset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unset object properties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>container</strong> (<em>string</em>) – container name for object to modify</li>
+<li><strong>object</strong> (<em>string</em>) – name of object to modify</li>
+<li><strong>properties</strong> (<em>dict</em>) – properties to remove from the object</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.api.utils">
+<span id="openstackclient-api-utils-module"></span><h2>openstackclient.api.utils module<a class="headerlink" href="#module-openstackclient.api.utils" title="Permalink to this headline">¶</a></h2>
+<p>API Utilities Library</p>
+<dl class="function">
+<dt id="openstackclient.api.utils.simple_filter">
+<code class="descclassname">openstackclient.api.utils.</code><code class="descname">simple_filter</code><span class="sig-paren">(</span><em>data=None</em>, <em>attr=None</em>, <em>value=None</em>, <em>property_field=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openstackclient.api.utils.simple_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter a list of dicts</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<a class="reference internal" href="#openstackclient.api.api.BaseAPI.list" title="openstackclient.api.api.BaseAPI.list"><em>list</em></a>) – The list to be filtered.  The list is modified in-place and will
+be changed if any filtering occurs.</li>
+<li><strong>attr</strong> (<em>string</em>) – The name of the attribute to filter.  If attr does not exist no
+match will succeed and no rows will be returned.  If attr is
+None no filtering will be performed and all rows will be returned.</li>
+<li><strong>value</strong> (<em>string</em>) – The value to filter.  None is considered to be a ‘no filter’ value.
+” matches against a Python empty string.</li>
+<li><strong>property_field</strong> (<em>string</em>) – The name of the data field containing a property dict to filter.
+If property_field is None, attr is a field name. If property_field
+is not None, attr is a property key name inside the named property
+field.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns the filtered list</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Rtype list:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>This simple filter (one attribute, one exact-match value) searches a
+list of dicts to select items.  It first searches the item dict for a
+matching <code class="docutils literal"><span class="pre">attr</span></code> then does an exact-match on the <code class="docutils literal"><span class="pre">value</span></code>.  If
+<code class="docutils literal"><span class="pre">property_field</span></code> is given, it will look inside that field (if it
+exists and is a dict) for a matching <code class="docutils literal"><span class="pre">value</span></code>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openstackclient.api">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openstackclient.api" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="openstackclient.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: openstackclient package"></i></a>
+          
+          
+            <a href="openstackclient.common.html"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: openstackclient.common package"></i></a>
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2018-10-17 03:32</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../../index.html" class="docs-sidebar-section-title"><h4>Contents</h4></a>
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.openstack.org/releasenotes/python-openstackclient">Release Notes</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Contributor Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../developing.html">Developing with OpenStackClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-beta.html">Command Beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-options.html">Command Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-wrappers.html">Command Class Wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-errors.html">Command Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../command-logs.html">Command Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specs/commands.html">Command Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../humaninterfaceguide.html">Human Interface Guide</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "contributor/api/openstackclient.api" + ".rst";
+        gitURL = "Source: https://git.openstack.org/cgit/openstack/python-openstackclient/tree/doc/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 57c5eb6d8a33f5997d6311116716b0ca72bd886f";
+        var bugProject = "python-openstackclient";
+        var bugTitle = "openstackclient.api package in python-openstackclient";
+    var fieldTags = "";
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 3.12.0 on 2018-10-17 03:32";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+  </body>
+</html>
