@@ -1,5 +1,5 @@
 # Titanium Remote CLI CLients for Windows and Mac
-__version 0.3, May 31, 2019 -- rmoorewrs@gmail.com __
+__version 0.3, May 31, 2019 -- rmoorewrs@gmail.com___
 
 The files in this repo can install the Titanium remote clients to your Windows Machine (see requirements). 
 
