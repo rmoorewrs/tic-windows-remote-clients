@@ -1,4 +1,4 @@
-requests==2.11.1
+requests==2.31.0
 oslo.i18n==3.9.0
 tablib
 os-client-config==1.21.1
